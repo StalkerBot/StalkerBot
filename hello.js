@@ -35,7 +35,9 @@ var app = apiai("4921c64eea744c5a8bed203028c5037e");
 
 app.post("/webhook", function (req, res) {
   // Make sure this is a page subscription
+  
   if (req.body.object == "page") {
+    const apiaiApp = require('apiai')(4921c64eea744c5a8bed203028c5037e);
     // Iterate over each entry
     // There may be multiple entries if batched
     req.body.entry.forEach(function(entry) {
@@ -62,7 +64,7 @@ function processPostback(event) {
     request({
       url: "https://graph.facebook.com/v2.6/" + senderId,
       qs: {
-        access_token:process.env.PAGE_ACCESS_TOKEN,
+        access_token: process.env.PAGE_ACCESS_TOKEN,
         fields: "first_name"
       },
       method: "GET"
@@ -95,7 +97,7 @@ let aiText = response.result.fulfillment.speech;
 
     request({
       url: 'https://graph.facebook.com/v2.6/me/messages',
-      qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+      qs: {access_token: PAGE_ACCESS_TOKEN},
       method: 'POST',
       json: {
         recipient: {id: sender},
