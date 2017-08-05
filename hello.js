@@ -65,7 +65,7 @@ function processPostback(event) {
         name = bodyObj.first_name;
         greeting = "Hi " + name + ". ";
       }
-      var message = greeting + "Jalajel is the best";
+      var message = greeting + "Hello my name is Ruaa, and i am here to help :)";
       sendMessage(senderId, {text: message});
     });
   }
