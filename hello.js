@@ -122,7 +122,7 @@ sendMessage(senderId, {text: "I can get people's information for you, right now 
 
 
                 default:
-                    findMovie(senderId, formattedMsg);
+                    sendMessage(senderId, {text: "Hmmm"});
             }
         } else if (message.attachments) {
             sendMessage(senderId, {text: "Sorry, I don't understand your request."});
