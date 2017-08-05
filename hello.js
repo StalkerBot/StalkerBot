@@ -66,7 +66,7 @@ function processPostback(event) {
         name = bodyObj.first_name;
         greeting = "Hi " + name + ". ";
       }
-      var message = greeting + "Hello my name is Ruaa, and i am here to help :)";
+      var message = greeting + "Hello my name is StalkerBot, and i am here to help you with information about people :)";
       sendMessage(senderId, {text: message});
     });
   }
@@ -111,8 +111,15 @@ function processMessage(event) {
                 case "hey":
                 case "bonjour":
                 case "good morning":
-                    sendMessage(senderId, {text: "Sorry, I don't understand your request."});
+                    sendMessage(senderId, {text: "Hello Buddy, welcome to StalkerBot, do you want me to stalk for you?"});
                     break;
+		case "what is your name":
+sendMessage(senderId, {text: "My name is StalkerBot, and i am your at your service :)"});
+break;
+
+case "What can you do?":
+sendMessage(senderId, {text: "I can get people's information for you, right now i am working on email extraction :D"});
+
 
                 default:
                     findMovie(senderId, formattedMsg);
