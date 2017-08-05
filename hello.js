@@ -1,6 +1,8 @@
 var express = require("express");
 var request = require("request");
 var bodyParser = require("body-parser");
+var apiai = require('apiai');
+var app = apiai("4921c64eea744c5a8bed203028c5037e");
 
 var app = express();
 app.use(bodyParser.urlencoded({extended: false}));
@@ -14,16 +16,21 @@ app.get("/", function (req, res) {
 
 // Facebook Webhook
 // Used for verification
+
 app.get("/webhook", function (req, res) {
+  
   if (req.query["hub.verify_token"] === "nadstories") {
 
-const apiaiApp = require('apiai')(4921c64eea744c5a8bed203028c5037e);
     console.log("Verified webhook");
+    
     res.status(200).send(req.query["hub.challenge"]);
+    
   } else {
+    
     console.error("Verification failed. The tokens do not match.");
     res.sendStatus(403);
   }
+  
 });
 
 app.post("/webhook", function (req, res) {
@@ -83,6 +90,7 @@ function sendMessage(event) {
     sessionId: 'tabby_cat' // use any arbitrary id
   });
 
+  apiai.on('response', (response) => {
 let aiText = response.result.fulfillment.speech;
 
     request({
@@ -93,7 +101,8 @@ let aiText = response.result.fulfillment.speech;
         recipient: {id: sender},
         message: {text: aiText}
       }
-    }, (error, response) => {
+    }
+    , (error, response) => {
       if (error) {
           console.log('Error sending message: ', error);
       } else if (response.body.error) {
@@ -101,6 +110,14 @@ let aiText = response.result.fulfillment.speech;
       }
     });
  });
+
+
+  apiai.on('error', (error) => {
+    console.log(error);
+  });
+
+  apiai.end();
+}
 
 function processMessage(event) {
     if (!event.message.is_echo) {
