@@ -1,9 +1,6 @@
 var express = require("express");
 var request = require("request");
 var bodyParser = require("body-parser");
-var apiai = require('apiai');
- 
-var app = apiai("4921c64eea744c5a8bed203028c5037e");
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
