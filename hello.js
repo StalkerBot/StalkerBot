@@ -67,6 +67,7 @@ function processPostback(event) {
       }
       var message = greeting + "Hello my name is Ruaa, and i am here to help :)";
       sendMessage(senderId, {text: message});
+	sendTextMessage(sender, text)
     });
   }
 }
