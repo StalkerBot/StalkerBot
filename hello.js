@@ -16,6 +16,8 @@ app.get("/", function (req, res) {
 // Used for verification
 app.get("/webhook", function (req, res) {
   if (req.query["hub.verify_token"] === "nadstories") {
+
+const apiaiApp = require('apiai')(4921c64eea744c5a8bed203028c5037e);
     console.log("Verified webhook");
     res.status(200).send(req.query["hub.challenge"]);
   } else {
