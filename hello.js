@@ -95,7 +95,7 @@ let aiText = response.result.fulfillment.speech;
 
     request({
       url: 'https://graph.facebook.com/v2.6/me/messages',
-      qs: {access_token: PAGE_ACCESS_TOKEN},
+      qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
       method: 'POST',
       json: {
         recipient: {id: sender},
