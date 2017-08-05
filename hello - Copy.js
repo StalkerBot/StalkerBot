@@ -87,7 +87,3 @@ function sendMessage(recipientId, message) {
     }
   });
 }
-
-botly.sendText({id: userId, text: "Hi Thereee!"}, function (err, data) {
-        //log it
-});
