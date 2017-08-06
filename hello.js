@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const apiaiApp = require('apiai')(fe8a1399f67d45b5bb39d76ab3233d01);
+const apiaiApp = require('apiai')(<fe8a1399f67d45b5bb39d76ab3233d01>);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
