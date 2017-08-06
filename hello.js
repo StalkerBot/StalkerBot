@@ -66,7 +66,9 @@ function processPostback(event) {
         name = bodyObj.first_name;
         greeting = "Hi " + name + ". ";
       }
+var messagenew= "Nice to meet you. This is StalkerBot! Ask away for the information of anyone you would like to find and I will try to find it for you! You can start by giving me a name, a mobile phone number or an email. What would you like to search for?"
 
+      sendMessage(senderId,message);
 var message = {
               attachment: {
                 type: "template",
@@ -149,7 +151,7 @@ function processMessage(event) {
                     break;
 		case "what is your name": case "what is your name?": case "what is your name!":
 
-sendMessage(senderId, {text: "My name is StalkerBot, and i am your at your service :)"});
+sendMessage(senderId, {text: "My name is StalkerBot, and i am at your service :)"});
 break;
 
 	case "what can you do":   case "what do you do": case "what is your job":
