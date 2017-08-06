@@ -110,17 +110,17 @@ function processMessage(event) {
                 case "good morning":
                     sendMessage(senderId, {text: "Hello " + name + "Who do you want to stalk today?"});
                     break;
-		case "what is your name" ||  "what is your name?" ||  "what is your name!":
+		case "what is your name" case "what is your name?": case "what is your name!":
 
 sendMessage(senderId, {text: "My name is StalkerBot, and i am your at your service :)"});
 break;
 
-	case "what can you do" ||  "what do you do" ||  "what is your job":
+	case "what can you do":   case "what do you do": case "what is your job":
 
 sendMessage(senderId, {text: "I can get people's information for you, right now i am working on email extraction :D"});
 break;
 
-case "name" || " i am searching for a name" || "the name is":
+case "name" case" i am searching for a name": case "the name is":
 sendMessage(senderId, {text: "I will search for the name"}); // gets the name from the last message
 // searches for the name
 break;
