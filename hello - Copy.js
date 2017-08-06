@@ -119,6 +119,11 @@ break;
 
 sendMessage(senderId, {text: "I can get people's information for you, right now i am working on email extraction :D"});
 break;
+
+case "name" || " i am searching for a name" || "the name is":
+sendMessage(senderId, {text: "I will search for the name"}); // gets the name from the last message
+// searches for the name
+break;
                 default:
                     sendMessage(senderId, {text: "Please rephrase your message:"});
             }

@@ -1,11 +1,3 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const app = express();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-const server = app.listen(process.env.PORT || 5000, () => {
-  console.log('Express server listening on port %d in %s mode', server.address().port, app.settings.env);
 var express = require("express");
 var request = require("request");
 var bodyParser = require("body-parser");
@@ -118,11 +110,6 @@ function processMessage(event) {
                 case "good morning":
                     sendMessage(senderId, {text: "Hello " + name + "Who do you want to stalk today?"});
                     break;
-
-case "name" || " i am searching for a name" || "the name is":
-sendMessage(senderId, {text: "I will search for the name"}); // gets the name from the last message
-// searches for the name
-break;
 		case "what is your name" ||  "what is your name?" ||  "what is your name!":
 
 sendMessage(senderId, {text: "My name is StalkerBot, and i am your at your service :)"});
@@ -131,6 +118,11 @@ break;
 	case "what can you do" ||  "what do you do" ||  "what is your job":
 
 sendMessage(senderId, {text: "I can get people's information for you, right now i am working on email extraction :D"});
+break;
+
+case "name" || " i am searching for a name" || "the name is":
+sendMessage(senderId, {text: "I will search for the name"}); // gets the name from the last message
+// searches for the name
 break;
                 default:
                     sendMessage(senderId, {text: "Please rephrase your message:"});
