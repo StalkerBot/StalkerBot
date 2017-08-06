@@ -124,6 +124,17 @@ case "name": case" i am searching for a name": case "the name is":
 sendMessage(senderId, {text: "I will search for the name"}); // gets the name from the last message
 // searches for the name
 break;
+
+case "number": case" i am searching for a number": case "the number is":
+sendMessage(senderId, {text: "I will search for the number"}); // gets the name from the last message
+// searches for the number
+break;
+
+
+case "email": case" i am searching for an email": case "the email is":
+sendMessage(senderId, {text: "I will search for the email"}); // gets the name from the last message
+// searches for the email
+break;
                 default:
                     sendMessage(senderId, {text: "Please rephrase your message:"});
             }
