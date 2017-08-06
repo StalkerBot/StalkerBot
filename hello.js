@@ -68,7 +68,7 @@ function processPostback(event) {
       }
 var messagenew= "Nice to meet you. This is StalkerBot! Ask away for the information of anyone you would like to find and I will try to find it for you! You can start by giving me a name, a mobile phone number or an email. What would you like to search for?"
 
-      sendMessage(senderId,messagenew);
+      sendMessage(senderId, {text: messagenew});
 var message = {
               attachment: {
                 type: "template",
