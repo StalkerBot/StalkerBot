@@ -1,5 +1,5 @@
 const FACEBOOK_ACCESS_TOKEN = '<EAATww7C4qdMBAGS5lIQBpQVURCfNlGJoxsIYgjFz2Uwj6k03uFbYdvhO737ZCvdY1ZBBetGLq6nRVrygI0OdKu4mZBfxqj7nReGydiZApxpVQWifhJNuqTqRXQEE1KFEPJMSLxVKKGSTVMKhgvdzqbbfOjQZCCLyXGX31ZBL4WtAZDZD>';
-const CAT_IMAGE_URL = 'https://botcube.co/public/blog/apiai-tutorial-bot/hosico_cat.jpg';
+const CAT_IMAGE_URL = 'http://www.cats.org.uk/uploads/images/featurebox_sidebar_kids/grief-and-loss.jpg';
 const API_AI_TOKEN = '<0ac9a2e05c1649048bc8ea02742bf004>';
 const apiAiClient = require('apiai')(API_AI_TOKEN);
 const request = require('request');
