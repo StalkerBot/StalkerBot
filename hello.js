@@ -147,7 +147,7 @@ function processMessage(event) {
                 case "hey":
                 case "bonjour":
                 case "good morning":
-                    sendMessage(senderId, {text: "Hello " + name + "Who do you want to stalk today?"});
+                    sendMessage(senderId, {text: "Hello " + name + ", Who do you want to stalk today? :P"});
                     break;
 		case "what is your name": case "what is your name?": case "what is your name!":
 
