@@ -108,17 +108,17 @@ function processMessage(event) {
                 case "hey":
                 case "bonjour":
                 case "good morning":
-                    sendMessage(senderId, {text: "Hello" + name + ", Nice to meet you. This is StalkerBot! Ask away for the information of anyone you would like to find and I will try to find it for you! You can start by giving me a name, a mobile phone number or an email. What would you like to search for?"});
+                    sendMessage(senderId, {text: "Hello " + name + ", Nice to meet you. This is StalkerBot! Ask away for the information of anyone you would like to find and I will try to find it for you! You can start by giving me a name, a mobile phone number or an email. What would you like to search for?"});
                     break;
 		case "what is your name" ||  "what is your name?" ||  "what is your name!":
 
 sendMessage(senderId, {text: "My name is StalkerBot, and i am your at your service :)"});
 break;
 
-case "What can you do?" || "What do you do" || "What is your job":
+	case "what can you do" ||  "what do you do" ||  "what is your job":
+
 sendMessage(senderId, {text: "I can get people's information for you, right now i am working on email extraction :D"});
 break;
-
                 default:
                     sendMessage(senderId, {text: "Please rephrase your message:"});
             }
