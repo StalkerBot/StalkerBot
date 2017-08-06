@@ -66,7 +66,7 @@ function processPostback(event) {
         name = bodyObj.first_name;
         greeting = "Hi " + name + ". ";
       }
-      var message = greeting + "Hello my name is StalkerBot, and i am here to help you with information about people :)";
+      var message = greeting + ", Nice to meet you. This is StalkerBot! Ask away for the information of anyone you would like to find and I will try to find it for you! You can start by giving me a name, a mobile phone number or an email. What would you like to search for?";
       sendMessage(senderId, {text: message});
     });
   }
@@ -108,7 +108,7 @@ function processMessage(event) {
                 case "hey":
                 case "bonjour":
                 case "good morning":
-                    sendMessage(senderId, {text: "Hello " + name + ", Nice to meet you. This is StalkerBot! Ask away for the information of anyone you would like to find and I will try to find it for you! You can start by giving me a name, a mobile phone number or an email. What would you like to search for?"});
+                    sendMessage(senderId, {text: "Hello " + name + "Who do you want to stalk today?"});
                     break;
 		case "what is your name" ||  "what is your name?" ||  "what is your name!":
 
