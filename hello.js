@@ -66,10 +66,47 @@ function processPostback(event) {
         name = bodyObj.first_name;
         greeting = "Hi " + name + ". ";
       }
-      var message = greeting + ", Nice to meet you. This is StalkerBot! Ask away for the information of anyone you would like to find and I will try to find it for you! You can start by giving me a name, a mobile phone number or an email. What would you like to search for?";
+
+var message = {
+              attachment: {
+                type: "template",
+                payload: {
+                  template_type: "generic",
+                  elements: [{
+                    title: "Welcome",
+                    subtitle: greeting + "Nice to meet you. This is StalkerBot! Ask away for the information of anyone you would like to find and I will try to find it for you! You can start by giving me a name, a mobile phone number or an email. What would you like to search for?",
+                    buttons: [{
+                      type: "postback",
+                      title: "Name",
+                      payload: "name"
+                    }, {
+                      type: "postback",
+                      title: "Number",
+                      payload: "number"
+                    },{
+                      type: "postback",
+                      title: "Email",
+                      payload: "email"
+                    }]
+                  }]
+                }
+              }
+            };
+            
       sendMessage(senderId, {text: message});
     });
+  } else if (payload === "name") {
+    sendMessage(senderId, {text: "I am searching for the name you have mentioned right now :)"});
+  } else if (payload === "number") {
+    sendMessage(senderId, {text: "Okay, searching for the number :)"});
   }
+  
+  else if (payload === "email") {
+    sendMessage(senderId, {text: "Okay, searching for the email owner ;)"});
+  }
+
+
+  
 }
 
 // sends message to user
@@ -136,7 +173,7 @@ sendMessage(senderId, {text: "I will search for the email"}); // gets the name f
 // searches for the email
 break;
                 default:
-                    sendMessage(senderId, {text: "Please rephrase your message:"});
+                    sendMessage(senderId, {text: "I don't get it, sorry :("});
             }
         } else if (message.attachments) {
             sendMessage(senderId, {text: "Dude, are you really sending me a photo to find a person in it?"});
