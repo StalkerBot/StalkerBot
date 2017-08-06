@@ -93,7 +93,7 @@ var message = {
               }
             };
             
-      sendMessage(senderId, {text: message});
+      sendMessage(senderId,message);
     });
   } else if (payload === "name") {
     sendMessage(senderId, {text: "I am searching for the name you have mentioned right now :)"});
