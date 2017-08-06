@@ -99,11 +99,8 @@ function processMessage(event) {
 
         // You may get a text or attachment but not both
         if (message.text) {
-            var formattedMsg = message.text.toLowerCase().trim();
+            var formattedMsg = message.text.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase().trim();
 
-            // If we receive a text message, check to see if it matches any special
-            // keywords and send back the corresponding movie detail.
-            // Otherwise search for new movie.
             switch (formattedMsg) {
                 case "hello":
                 case "hi":
@@ -111,21 +108,23 @@ function processMessage(event) {
                 case "hey":
                 case "bonjour":
                 case "good morning":
-                    sendMessage(senderId, {text: "Hello Buddy, welcome to StalkerBot, do you want me to stalk for you?"});
+                    sendMessage(senderId, {text: "Hello" + name + ", Nice to meet you. This is StalkerBot! Ask away for the information of anyone you would like to find and I will try to find it for you!
+You can start by giving me a name, a mobile phone number or an email. What would you like to search for?"});
                     break;
-		case "what is your name":
+		case "what is your name" || case "what is your name?" || case "what is your name!":
+
 sendMessage(senderId, {text: "My name is StalkerBot, and i am your at your service :)"});
 break;
 
-case "What can you do?":
+case "What can you do?" || "What do you do" || "What is your job":
 sendMessage(senderId, {text: "I can get people's information for you, right now i am working on email extraction :D"});
 
 
                 default:
-                    sendMessage(senderId, {text: "Hmmm"});
+                    sendMessage(senderId, {text: "Please rephrase your message:"});
             }
         } else if (message.attachments) {
-            sendMessage(senderId, {text: "Sorry, I don't understand your request."});
+            sendMessage(senderId, {text: "Dude, are you really sending me a photo to find a person in it?"});
         }
     }
 }
