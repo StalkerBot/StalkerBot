@@ -11,7 +11,7 @@ const server = app.listen(process.env.PORT || 5000, () => {
 
 /* For Facebook Validation */
 app.get('/webhook', (req, res) => {
-  if (req.query['hub.mode'] && req.query['hub.verify_token'] === 'nadstories') {
+  if (req.query['hub.verify_token'] === "nadstories") {
     res.status(200).send(req.query['hub.challenge']);
   } else {
     res.status(403).end();
@@ -19,11 +19,14 @@ app.get('/webhook', (req, res) => {
 });
 
 /* Handling all messenges */
-app.post('/webhook', (req, res) => {
-  console.log(req.body);
-  if (req.body.object === 'page') {
-    req.body.entry.forEach((entry) => {
-      entry.messaging.forEach((event) => {
+app.post("/webhook", function (req, res) {
+  // Make sure this is a page subscription
+  if (req.body.object == "page") {
+    // Iterate over each entry
+    // There may be multiple entries if batched
+    req.body.entry.forEach(function(entry) {
+      // Iterate over each messaging event
+      entry.messaging.forEach(function(event) {
         if (event.message && event.message.text) {
           sendMessage(event);
         }
@@ -39,7 +42,7 @@ function sendMessage(event) {
   let text = event.message.text;
 
   let apiai = apiaiApp.textRequest(text, {
-    sessionId: '123' // use any arbitrary id
+    sessionId: 'tabby_cat' // use any arbitrary id
   });
 
   apiai.on('response', (response) => {
