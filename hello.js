@@ -5,11 +5,8 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-var port = 5000
 
-app.listen(port, function() {
-    console.log("App is running on port " + port);
-});
+app.listen(5000, () => console.log('Webhook server is listening, port 5000'));
 
 const verificationController = require('./controllers/verification');
 const messageWebhookController = require('./controllers/messageWebhook');
