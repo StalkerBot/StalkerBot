@@ -124,9 +124,9 @@ sendTextMessage(senderID,"I will search for the email"); // gets the name from t
 // searches for the email
 break;
                 default:
-                sendTextMessage(senderID,new Person(messageText));
-                                sendTextMessage(senderID,new Numbers (messageText));
-                sendTextMessage(senderID,new Emails(messageText));
+                sendTextMessage(senderID,Person(messageText));
+                                sendTextMessage(senderID,Numbers (messageText));
+                sendTextMessage(senderID,Emails(messageText));
 break;
     }
   } else if (messageAttachments) {
