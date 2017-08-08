@@ -128,7 +128,7 @@ break;
 
                 //sendTextMessage(senderID,person(messageText));
                 //sendTextMessage(senderID,numbers (messageText));
-                sendTextMessage(senderID,emails(messageText);
+                sendTextMessage(senderID,emails(String(messageText)));
 break;
     }
   } else if (messageAttachments) {
