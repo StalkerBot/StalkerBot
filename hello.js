@@ -12,110 +12,76 @@ app.get("/", function (req, res) {
   res.send("Deployed!");
 });
 
-// Facebook Webhook
-// Used for verification
-app.get("/webhook", function (req, res) {
-  if (req.query["hub.verify_token"] === "nadstories") {
-    console.log("Verified webhook");
-    res.status(200).send(req.query["hub.challenge"]);
+
+app.get('/webhook', function(req, res) {
+  if (req.query['hub.mode'] === 'subscribe' &&
+      req.query['hub.verify_token'] === "nadstories") {
+    console.log("Validating webhook");
+    res.status(200).send(req.query['hub.challenge']);
   } else {
-    console.error("Verification failed. The tokens do not match.");
-    res.sendStatus(403);
-  }
+    console.error("Failed validation. Make sure the validation tokens match.");
+    res.sendStatus(403);          
+  }  
 });
 
-app.post("/webhook", function (req, res) {
+
+app.post('/webhook', function (req, res) {
+  var data = req.body;
+
   // Make sure this is a page subscription
-  if (req.body.object == "page") {
-    // Iterate over each entry
-    // There may be multiple entries if batched
-    req.body.entry.forEach(function(entry) {
+  if (data.object === 'page') {
+
+    // Iterate over each entry - there may be multiple if batched
+    data.entry.forEach(function(entry) {
+      var pageID = entry.id;
+      var timeOfEvent = entry.time;
+
       // Iterate over each messaging event
       entry.messaging.forEach(function(event) {
-         if (event.postback) {
-                    processPostback(event);
-                } else if (event.message) {
-                    processMessage(event);
-                }
-            });
-        });
-
-        res.sendStatus(200);
-    }
-});
-function processPostback(event) {
-  var senderId = event.sender.id;
-  var payload = event.postback.payload;
-
-  if (payload === "Greeting") {
-    // Get user's first name from the User Profile API
-    // and include it in the greeting
-    request({
-      url: "https://graph.facebook.com/v2.6/" + senderId,
-      qs: {
-        access_token: process.env.PAGE_ACCESS_TOKEN,
-        fields: "last_name"
-      },
-      method: "GET"
-    }, function(error, response, body) {
-      var greeting = "";
-      if (error) {
-        console.log("Error getting user's name: " +  error);
-      } else {
-        var bodyObj = JSON.parse(body);
-        name = bodyObj.last_name;
-        greeting = "Hi " + name+ ". ";
-      }
-var messagenew= "Nice to meet you. This is StalkerBot! Ask away for the information of anyone you would like to find and I will try to find it for you! You can start by giving me a name, a mobile phone number or an email. What would you like to search for?"
-
-      sendMessage(senderId, {text: messagenew});
-
+        if (event.message) {
+          receivedMessage(event);
+        } else {
+          console.log("Webhook received unknown event: ", event);
+        }
+      });
     });
-  } else if (payload === "name") {
-    sendMessage(senderId, {text: "I am searching for the name you have mentioned right now :)"});
-  } else if (payload === "number") {
-    sendMessage(senderId, {text: "Okay, searching for the number :)"});
+
+    // Assume all went well.
+    //
+    // You must send back a 200, within 20 seconds, to let us know
+    // you've successfully received the callback. Otherwise, the request
+    // will time out and we will keep trying to resend.
+    res.sendStatus(200);
   }
-  
-  else if (payload === "email") {
-    sendMessage(senderId, {text: "Okay, searching for the email owner ;)"});
-  }
+});
 
 
-  
-}
+function receivedMessage(event) {
+  var senderID = event.sender.id;
+  var recipientID = event.recipient.id;
+  var timeOfMessage = event.timestamp;
+  var message = event.message;
 
-// sends message to user
-function sendMessage(recipientId, message) {
-  request({
-    url: "https://graph.facebook.com/v2.6/me/messages",
-    qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
-    method: "POST",
-    json: {
-      recipient: {id: recipientId},
-      message: message,
-    }
-  }, function(error, response, body) {
-    if (error) {
-      console.log("Error sending message: " + response.error);
-    }
-  });
-}
+  console.log("Received message for user %d and page %d at %d with message:", 
+    senderID, recipientID, timeOfMessage);
+  console.log(JSON.stringify(message));
 
-function processMessage(event) {
-    if (!event.message.is_echo) {
-        var message = event.message;
-        var senderId = event.sender.id;
+  var messageId = message.mid;
 
-        console.log("Received message from senderId: " + senderId);
-        console.log("Message is: " + JSON.stringify(message));
+  var messageText = message.text;
+  var messageAttachments = message.attachments;
 
-        // You may get a text or attachment but not both
-        if (message.text) {
-            var formattedMsg = message.text.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase().trim();
+  if (messageText) {
 
-            switch (formattedMsg) {
-                case "hello":
+    // If we receive a text message, check to see if it matches a keyword
+    // and send back the example. Otherwise, just echo the text we received.
+    switch (messageText) {
+      case 'generic':
+        sendGenericMessage(senderID);
+        break;
+        
+        
+        case "hello":
                 case "hi":
                 case "ciao":
                 case "hey":
@@ -151,9 +117,45 @@ break;
                 default:
                     sendMessage(senderId, {text: "I don't get it, sorry :("});
 break;
-            }
-        } else if (message.attachments) {
-            sendMessage(senderId, {text: "Dude, are you really sending me a photo to find a person in it?"});
-        }
     }
+  } else if (messageAttachments) {
+    sendTextMessage(senderID, "Message with attachment received");
+  }
+}
+
+
+function sendTextMessage(recipientId, messageText) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      text: messageText
+    }
+  };
+
+  callSendAPI(messageData);
+}
+
+
+function callSendAPI(messageData) {
+  request({
+    uri: 'https://graph.facebook.com/v2.6/me/messages',
+    qs: { access_token: PAGE_ACCESS_TOKEN },
+    method: 'POST',
+    json: messageData
+
+  }, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      var recipientId = body.recipient_id;
+      var messageId = body.message_id;
+
+      console.log("Successfully sent generic message with id %s to recipient %s", 
+        messageId, recipientId);
+    } else {
+      console.error("Unable to send message.");
+      console.error(response);
+      console.error(error);
+    }
+  });  
 }
