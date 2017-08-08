@@ -124,9 +124,9 @@ sendTextMessage(senderID,"I will search for the email"); // gets the name from t
 // searches for the email
 break;
                 default:
-                sendTextMessage(senderID,Person(messageText));
-                                sendTextMessage(senderID,Numbers (messageText));
-                sendTextMessage(senderID,Emails(messageText));
+                //sendTextMessage(senderID,Person(messageText));
+                //sendTextMessage(senderID,Numbers (messageText));
+                //sendTextMessage(senderID,Emails(messageText));
 break;
     }
   } else if (messageAttachments) {
@@ -148,7 +148,7 @@ function receivedPostback(event) {
 
   // When a postback is called, we'll send a message back to the sender to 
   // let them know it was successful
-  sendTextMessage(senderID, "Postback called");
+  sendTextMessage(senderID, "Hello! This is StalkerBot, write away any name, email address or phone number you are searching for or chat a little bit with me :)");
 }
 
 //////////////////////////
