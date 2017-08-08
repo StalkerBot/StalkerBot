@@ -138,7 +138,7 @@ function processMessage(event) {
 
         // You may get a text or attachment but not both
         if (message.text) {
-            var formattedMsg = message.text.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase().trim();
+            var formattedMsg = message.text.replace(/[,\/#!$%\^&\*';:?{}=\_`~()]/g,"").toLowerCase().trim();
 
             switch (formattedMsg) {
                 case "hello":
