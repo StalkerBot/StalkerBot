@@ -129,7 +129,7 @@ break;
                 //sendTextMessage(senderID,person(messageText));
                 //sendTextMessage(senderID,numbers (messageText));
 emails(String(messageText));
-                sendTextMessage(senderID,(String(nad)));
+                sendTextMessage(senderID,String(messageText);
 break;
     }
   } else if (messageAttachments) {
