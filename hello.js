@@ -89,45 +89,15 @@ function receivedMessage(event) {
     // If we receive a text message, check to see if it matches a keyword
     // and send back the template example. Otherwise, just echo the text we received.
     switch (messageText) {
-      case "hello":
-                case "hi":
-                case "ciao":
-                case "hey":
-                case "bonjour":
-                case "good morning":
-                    sendTextMessage(senderID, {text: "Hello " + name + ", Who do you want to stalk today? :P"});
-                    break;
-		case "what is your name": case "what is your name?": case "what is your name!":
+      case 'hey':
+        sendGenericMessage(senderID);
+        break;
 
-sendTextMessage(senderID, {text: "My name is StalkerBot, and i am at your service :)"});
-break;
-
-	case "what can you do":   case "what do you do": case "what is your job":
-
-sendTextMessage(senderID, {text: "I can get people's information for you, right now i am working on email extraction :D"});
-break;
-
-case "name": case" i am searching for a name": case "the name is":
-sendTextMessage(senderID, {text: "I will search for the name"}); // gets the name from the last message
-// searches for the name
-break;
-
-case "number": case" i am searching for a number": case "the number is":
-sendTextMessage(senderID, {text: "I will search for the number"}); // gets the name from the last message
-// searches for the number
-break;
-
-
-case "email": case" i am searching for an email": case "the email is":
-sendTextMessage(senderID, {text: "I will search for the email"}); // gets the name from the last message
-// searches for the email
-break;
-                default:
-                    sendTextMessage(senderID, {text: "I don't get it, sorry :("});
-break;
+      default:
+        sendTextMessage(senderID, messageText);
     }
   } else if (messageAttachments) {
-    sendTextMessage(senderID, "Don't send me attachments, especially likes, i hate likes!");
+    sendTextMessage(senderID, "Message with attachment received");
   }
 }
 
@@ -145,7 +115,7 @@ function receivedPostback(event) {
 
   // When a postback is called, we'll send a message back to the sender to 
   // let them know it was successful
-  sendTextMessage(senderID, "Hello! This is StalkerBot! Ask for a name, an email or a mobile phone number and i will try my best to bring it for you :)");
+  sendTextMessage(senderID, "Postback called");
 }
 
 //////////////////////////
