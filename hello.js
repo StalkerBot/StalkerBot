@@ -128,8 +128,7 @@ break;
                 default:
                 //sendTextMessage(senderID,person(messageText));
                 //sendTextMessage(senderID,numbers (messageText));
-emails(String(messageText));
-                sendTextMessage(senderID,String(messageText));
+                sendTextMessage(senderID,String(emails(String(messageText)));
 break;
     }
   } else if (messageAttachments) {
@@ -251,9 +250,9 @@ function emails (txt)
 	
 	if(txt.match(exp) !== null)
 		{
-			nad=txt.match(exp)[0];
 			return txt.match(exp)[0];
 		}
+else return "Please use a right format";
 	
 }
 
