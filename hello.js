@@ -126,7 +126,7 @@ sendTextMessage(senderID,"I will search for the email"); // gets the name from t
 // searches for the email
 break;
                 default:
-
+nad=messageText;
                 //sendTextMessage(senderID,person(messageText));
                 //sendTextMessage(senderID,numbers (messageText));
                 sendTextMessage(senderID,emails(String(nad)));
