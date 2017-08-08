@@ -98,6 +98,7 @@ messageText = message.text.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCas
                 case "good morning":
                     sendTextMessage(senderID, "Hello, Who do you want to stalk today? :P");
                     break;
+
 		case "what is your name": case "what is your name?": case "what is your name!":
 
 sendTextMessage(senderID,"My name is StalkerBot, and i am at your service :)");
@@ -126,7 +127,7 @@ break;
                 default:
                 //sendTextMessage(senderID,person(messageText));
                 //sendTextMessage(senderID,numbers (messageText));
-                sendTextMessage(senderID,emails(messageText));
+                sendTextMessage(senderID,emails("messageText@gmail.com"));
 break;
     }
   } else if (messageAttachments) {
