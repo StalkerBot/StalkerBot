@@ -95,35 +95,35 @@ function receivedMessage(event) {
                 case "hey":
                 case "bonjour":
                 case "good morning":
-                    sendMessage(senderId, {text: "Hello " + name + ", Who do you want to stalk today? :P"});
+                    sendTextMessage(senderID, {text: "Hello " + name + ", Who do you want to stalk today? :P"});
                     break;
 		case "what is your name": case "what is your name?": case "what is your name!":
 
-sendMessage(senderId, {text: "My name is StalkerBot, and i am at your service :)"});
+sendTextMessage(senderID, {text: "My name is StalkerBot, and i am at your service :)"});
 break;
 
 	case "what can you do":   case "what do you do": case "what is your job":
 
-sendMessage(senderId, {text: "I can get people's information for you, right now i am working on email extraction :D"});
+sendTextMessage(senderID, {text: "I can get people's information for you, right now i am working on email extraction :D"});
 break;
 
 case "name": case" i am searching for a name": case "the name is":
-sendMessage(senderId, {text: "I will search for the name"}); // gets the name from the last message
+sendTextMessage(senderID, {text: "I will search for the name"}); // gets the name from the last message
 // searches for the name
 break;
 
 case "number": case" i am searching for a number": case "the number is":
-sendMessage(senderId, {text: "I will search for the number"}); // gets the name from the last message
+sendTextMessage(senderID, {text: "I will search for the number"}); // gets the name from the last message
 // searches for the number
 break;
 
 
 case "email": case" i am searching for an email": case "the email is":
-sendMessage(senderId, {text: "I will search for the email"}); // gets the name from the last message
+sendTextMessage(senderID, {text: "I will search for the email"}); // gets the name from the last message
 // searches for the email
 break;
                 default:
-                    sendMessage(senderId, {text: "I don't get it, sorry :("});
+                    sendTextMessage(senderID, {text: "I don't get it, sorry :("});
 break;
     }
   } else if (messageAttachments) {
