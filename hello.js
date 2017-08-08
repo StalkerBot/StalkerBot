@@ -15,7 +15,7 @@ app.get("/", function (req, res) {
 
 app.get('/webhook', function(req, res) {
   if (req.query['hub.mode'] === 'subscribe' &&
-      req.query['hub.verify_token'] ===<nadstories>) {
+      req.query['hub.verify_token'] ==='nadstories') {
     console.log("Validating webhook");
     res.status(200).send(req.query['hub.challenge']);
   } else {
