@@ -124,9 +124,9 @@ sendTextMessage(senderID,"I will search for the email"); // gets the name from t
 // searches for the email
 break;
                 default:
-                //sendTextMessage(senderID,Person(messageText));
-                //sendTextMessage(senderID,Numbers (messageText));
-                //sendTextMessage(senderID,Emails(messageText));
+                //sendTextMessage(senderID,person(messageText));
+                //sendTextMessage(senderID,numbers (messageText));
+                sendTextMessage(senderID,emails(messageText));
 break;
     }
   } else if (messageAttachments) {
@@ -242,17 +242,18 @@ var server = app.listen(process.env.PORT || 3000, function () {
 });
 
 
-function Emails (txt)
+function emails (txt)
 {
 	var exp = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gim;
 	
-	if(txt.match(exp).length > 0)
+	if(txt.match(exp) !== null)
 		{
 			return txt.match(exp)[0];
 		}
+	
 }
 
-function Numbers (txt)
+function numbers (txt)
 {
 		var exp = /([0-9-]+[0-9-]+[0-9]+)/g;
 		if(txt.match(exp).length > 0)
@@ -263,7 +264,7 @@ function Numbers (txt)
 }
 
 
-function Person(txt)
+function person(txt)
 {
 	var exp = /(?:find | find: | find me | stalk | stalk: | search | search for | search for me | find for me | tell me about | who is | who's | whos)(\w+)/;
 	var r = txt.match(exp);
