@@ -128,7 +128,7 @@ break;
                 default:
                 //sendTextMessage(senderID,person(messageText));
                 //sendTextMessage(senderID,numbers (messageText));
-                sendTextMessage(senderID,String(emails(String(messageText)));
+                sendTextMessage(senderID,String(emails(String(messageText))));
 break;
     }
   } else if (messageAttachments) {
