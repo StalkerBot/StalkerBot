@@ -63,8 +63,8 @@ function processPostback(event) {
         console.log("Error getting user's name: " +  error);
       } else {
         var bodyObj = JSON.parse(body);
-        name = bodyObj.last_name;
-        greeting = "Hi " + name + ". ";
+        //name = bodyObj.last_name;
+        greeting = "Hi " + last_name+ ". ";
       }
 var messagenew= "Nice to meet you. This is StalkerBot! Ask away for the information of anyone you would like to find and I will try to find it for you! You can start by giving me a name, a mobile phone number or an email. What would you like to search for?"
 
