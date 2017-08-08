@@ -92,6 +92,8 @@ function receivedMessage(event) {
       case 'hey':
         sendGenericMessage(senderID);
         break;
+case 'hi':
+sendTextMessage(senderID, "Hiii");
 
       default:
         sendTextMessage(senderID, messageText);
