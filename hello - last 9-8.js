@@ -109,7 +109,7 @@ sendTextMessage(senderID,"I can get people's information for you, right now i am
 break;
 
 case "name": case" i am searching for a name": case "the name is":
-sendTextMessage(senderID,"Tell me the name you are searching for"); // gets the name from the last message
+sendTextMessage(senderID,"I will search for the name"); // gets the name from the last message
 // searches for the name
 break;
 
@@ -124,9 +124,7 @@ sendTextMessage(senderID,"I will search for the email"); // gets the name from t
 // searches for the email
 break;
                 default:
-                sendTextMessage(senderID,new Person(messageText));
-                                sendTextMessage(senderID,new Numbers (messageText));
-                sendTextMessage(senderID,new Emails(messageText));
+                    sendTextMessage(senderID,"I don't get it, sorry :(");
 break;
     }
   } else if (messageAttachments) {
@@ -240,33 +238,3 @@ function callSendAPI(messageData) {
 var server = app.listen(process.env.PORT || 3000, function () {
   console.log("Listening on port %s", server.address().port);
 });
-
-
-function Emails (txt)
-{
-	var exp = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gim;
-	
-	if(txt.match(exp).length > 0)
-		{
-			return txt.match(exp)[0];
-		}
-}
-
-function Numbers (txt)
-{
-		var exp = /([0-9-]+[0-9-]+[0-9]+)/g;
-		if(txt.match(exp).length > 0)
-		{	
-			return txt.match(exp)[0];
-		}
-		return null;
-}
-
-
-function Person(txt)
-{
-	var exp = /(?:find | find: | find me | stalk | stalk: | search | search for | search for me | find for me | tell me about | who is | who's | whos)(\w+)/;
-	var r = txt.match(exp);
-	///p (.*?) /gi
-	return r[1];
-}
