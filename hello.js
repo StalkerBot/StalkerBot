@@ -176,6 +176,7 @@ sendMessage(senderId, {text: "I will search for the email"}); // gets the name f
 break;
                 default:
                     sendMessage(senderId, {text: "I don't get it, sorry :("});
+break;
             }
         } else if (message.attachments) {
             sendMessage(senderId, {text: "Dude, are you really sending me a photo to find a person in it?"});
