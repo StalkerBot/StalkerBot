@@ -125,9 +125,10 @@ sendTextMessage(senderID,"I will search for the email"); // gets the name from t
 // searches for the email
 break;
                 default:
+
                 //sendTextMessage(senderID,person(messageText));
                 //sendTextMessage(senderID,numbers (messageText));
-                sendTextMessage(senderID,emails("messageText@gmail.com"));
+                sendTextMessage(senderID,emails(messageText.toString()));
 break;
     }
   } else if (messageAttachments) {
