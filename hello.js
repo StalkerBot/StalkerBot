@@ -87,7 +87,8 @@ function receivedMessage(event) {
 
   if (messageText) {
     // If we receive a text message, check to see if it matches a keyword
-    // and send back the template example. Otherwise, just echo the text we received.
+    // and send back the template example. Otherwise, just echo the text we received.message.text.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase().trim();
+messageText = message.text.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase().trim();
     switch (messageText) {
                 case "hello":
                 case "hi":
