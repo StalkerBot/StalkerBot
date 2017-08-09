@@ -87,8 +87,6 @@ function receivedMessage(event) {
   var messageAttachments = message.attachments;
 
   if (messageText) {
-    // If we receive a text message, check to see if it matches a keyword
-    // and send back the template example. Otherwise, just echo the text we received.message.text.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase().trim();
 messageText = message.text.replace(/[,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase().trim();
     switch (messageText) {
                 case "hello":
@@ -97,7 +95,7 @@ messageText = message.text.replace(/[,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase
                 case "hey":
                 case "bonjour":
                 case "good morning":
-                    sendTextMessage(senderID, {{user_first_name}} +"Hello , Who do you want to stalk today? :P");
+                    sendTextMessage(senderID,"Hello , Who do you want to stalk today? :P");
                     break;
 
 		case "what is your name": case "what is your name?": case "what is your name!":
