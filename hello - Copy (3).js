@@ -97,7 +97,7 @@ messageText = message.text.replace(/[,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase
                 case "hey":
                 case "bonjour":
                 case "good morning":
-                    sendTextMessage(senderID, "Hello {{user_first_name}}, Who do you want to stalk today? :P");
+                    sendTextMessage(senderID, "Hello, Who do you want to stalk today? :P");
                     break;
 
 		case "what is your name": case "what is your name?": case "what is your name!":
