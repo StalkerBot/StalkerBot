@@ -252,6 +252,7 @@ function emails (txt)
 		{
 			return txt.match(exp)[0];
 		}
+else numbers(txt);
 	
 }
 
@@ -262,7 +263,7 @@ function numbers (txt)
 		{	
 			return txt.match(exp)[0];
 		}
-		return null;
+	 else return "";
 }
 
 
