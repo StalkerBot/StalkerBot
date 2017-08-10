@@ -100,6 +100,30 @@ if (messageText.indexOf('your')>=0 && messageText.indexOf('name')>=0)
 {
                   sendTextMessage(senderID,"My name is StalkerBot, and i am at your service :)");
 }
+
+if (messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messageText.indexOf('stalk')>=0 && messageText.indexOf('name')>=0)
+
+{
+                  sendTextMessage(senderID,"Go on, tell me the name you want to stalk, and i will do the rest ;)");
+}
+
+if (messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messageText.indexOf('stalk')>=0 && messageText.indexOf('email')>=0)
+
+{
+                  sendTextMessage(senderID,"Go on, tell me the email you want to stalk, and i will do the rest ;)");
+}
+
+if (messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messageText.indexOf('stalk')>=0 && (messageText.indexOf('number')>=0 || messageText.indexOf('phone')>=0))
+
+{
+                  sendTextMessage(senderID,"Go on, tell me the phone number you want to stalk, and i will do the rest ;)");
+}
+
+if (messageText.indexOf('job')>=0 || messageText.indexOf('do')>=0 || messageText.indexOf('goal')>=0 && messageText.indexOf('what')>=0)
+
+{
+                  sendTextMessage(senderID,"I am a stalker, i enjoy stalking people and getting their information to your doorstep, i mean messenger step :P");
+}
     switch (messageText) {
                 case "hello":
                 case "hi":
@@ -110,26 +134,6 @@ if (messageText.indexOf('your')>=0 && messageText.indexOf('name')>=0)
                     sendTextMessage(senderID,"Hello , Who do you want to stalk today? :P");
                     break;
 
-	case "what can you do":   case "what do you do": case "what is your job":
-
-sendTextMessage(senderID,"I can get people's information for you, right now i am working on email extraction :D");
-break;
-
-case "name": case" i am searching for a name": case "the name is":
-sendTextMessage(senderID,"Tell me the name you are searching for"); // gets the name from the last message
-// searches for the name
-break;
-
-case "number": case" i am searching for a number": case "the number is":
-sendTextMessage(senderID,"I will search for the number"); // gets the name from the last message
-// searches for the number
-break;
-
-
-case "email": case" i am searching for an email": case "the email is":
-sendTextMessage(senderID,"I will search for the email"); // gets the name from the last message
-// searches for the email
-break;
                 default:
                 //sendTextMessage(senderID,person(messageText));
                 //sendTextMessage(senderID,numbers (messageText));
