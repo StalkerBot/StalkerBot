@@ -88,8 +88,8 @@ function receivedMessage(event) {
 
   if (messageText) {
 messageText = message.text.replace(/[,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase().trim();
-let kata=messageText;
-if ((kata).contains('nader'))
+
+if (messageText.indexOf('nader')>=0)
 {
                       sendTextMessage(senderID,"Hello Nader");
 }
