@@ -89,7 +89,8 @@ function receivedMessage(event) {
   if (messageText) {
 messageText = message.text.replace(/[,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase().trim();
 
-if (messageText.indexOf('email')>=0) || (messageText.indexOf('e-mail')>=0)
+if (messageText.indexOf('email')>=0 || messageText.indexOf('e-mail')>=0)
+
 {
                   sendTextMessage(senderID,String(emails(String(messageText))));
 }
