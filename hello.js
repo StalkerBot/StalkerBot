@@ -2,6 +2,18 @@
 // This is main file containing code implementing the Express server and functionality for the Express echo bot.
 //
 'use strict';
+const BootBot = require('bootbot');
+
+const bot = new BootBot({
+  accessToken: 'EAATww7C4qdMBAGS5lIQBpQVURCfNlGJoxsIYgjFz2Uwj6k03uFbYdvhO737ZCvdY1ZBBetGLq6nRVrygI0OdKu4mZBfxqj7nReGydiZApxpVQWifhJNuqTqRXQEE1KFEPJMSLxVKKGSTVMKhgvdzqbbfOjQZCCLyXGX31ZBL4WtAZDZD',
+  verifyToken: 'nadstories',
+  appSecret: 'b8c697be93df09e0debdbf09a27109cc'
+});
+
+bot.hear('Nader',(payload,chat) => { chat.say('Hey Nader');
+});
+
+bot.start();
 const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
@@ -272,3 +284,4 @@ function person(txt)
 	///p (.*?) /gi
 	return r[1];
 }
+
