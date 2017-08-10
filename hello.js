@@ -103,7 +103,7 @@ var answers = [ "My name is StalkerBot, and i am at your service :)",
 "I...am...Stalkerbot...", "Come on, you don't know my name?"];
 
 var index = Math.floor(Math.random() * answers.length);
-                  sendTextMessage(senderID,"answers[index]");
+                  sendTextMessage(senderID,answers[index]);
 }
 
 if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messageText.indexOf('stalk')>=0) && messageText.indexOf('name')>=0)
