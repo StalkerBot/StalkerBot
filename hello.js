@@ -88,7 +88,11 @@ function receivedMessage(event) {
 
   if (messageText) {
 messageText = message.text.replace(/[,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase().trim();
-
+let kata=messageText;
+if ((kata).contains('nader'))
+{
+                      sendTextMessage(senderID,"Hello Nader");
+}
     switch (messageText) {
                 case "hello":
                 case "hi":
