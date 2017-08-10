@@ -140,7 +140,7 @@ if (messageText.indexOf('job')>=0 || messageText.indexOf('do')>=0 || messageText
 "ciao :D"];
 
 var index = Math.floor(Math.random() * answers.length);
-                    sendTextMessage(senderID,index);
+                    sendTextMessage(senderID,answers[index]);
                     break;
 
                 default:
