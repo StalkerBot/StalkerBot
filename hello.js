@@ -89,10 +89,10 @@ function receivedMessage(event) {
   if (messageText) {
 messageText = message.text.replace(/[,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase().trim();
 
-if (messageText.indexOf('emaill')>=0 || messageText.indexOf('e-mail')>=0)
+if (messageText.indexOf('bored')>=0 || messageText.indexOf('angry')>=0 || messageText.indexOf('feeling')>=0)
 
 {
-                  sendTextMessage(senderID,String(emails(String(messageText))));
+                  sendTextMessage(senderID,"Why are you feeling like this ?");
 }
     switch (messageText) {
                 case "hello":
