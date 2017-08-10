@@ -119,6 +119,10 @@ if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messa
                   sendTextMessage(senderID,"Go on, tell me the phone number you want to stalk, and i will do the rest ;)");
 }
 
+
+
+
+
 if (messageText.indexOf('job')>=0 || messageText.indexOf('do')>=0 || messageText.indexOf('goal')>=0 && messageText.indexOf('what')>=0)
 
 {
@@ -131,7 +135,12 @@ if (messageText.indexOf('job')>=0 || messageText.indexOf('do')>=0 || messageText
                 case "hey":
                 case "bonjour":
                 case "good morning":
-                    sendTextMessage(senderID,"Hello , Who do you want to stalk today? :P");
+                  var answers = [ "hiii",
+"hello :D",
+"ciao :D"];
+
+var index = Math.floor(Math.random() * answers.length);
+                    sendTextMessage(senderID,index);
                     break;
 
                 default:
