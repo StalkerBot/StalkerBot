@@ -98,7 +98,12 @@ if (messageText.indexOf('bored')>=0 || messageText.indexOf('angry')>=0 || messag
 if (messageText.indexOf('your')>=0 && messageText.indexOf('name')>=0)
 
 {
-                  sendTextMessage(senderID,"My name is StalkerBot, and i am at your service :)");
+var answers = [ "My name is StalkerBot, and i am at your service :)",
+"My name? Look at the top of your screen -.-",
+"I...am...Stalkerbot...", "Come on, you don't know my name?"];
+
+var index = Math.floor(Math.random() * answers.length);
+                  sendTextMessage(senderID,"answers[index]");
 }
 
 if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messageText.indexOf('stalk')>=0) && messageText.indexOf('name')>=0)
@@ -119,6 +124,21 @@ if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messa
                   sendTextMessage(senderID,"Go on, tell me the phone number you want to stalk, and i will do the rest ;)");
 }
 
+if ((messageText.indexOf('the')>=0 && messageText.indexOf('name')>=0 && messageText.indexOf('is')>=0))
+
+{
+                  sendTextMessage(senderID,"Searching...");
+
+//Activate search function
+}
+
+
+if ((messageText.indexOf('the')>=0 && messageText.indexOf('number')>=0 && messageText.indexOf('is')>=0))
+
+{
+                  sendTextMessage(senderID,"Searching...");
+}
+
 
 
 
@@ -135,9 +155,9 @@ if (messageText.indexOf('job')>=0 || messageText.indexOf('do')>=0 || messageText
                 case "hey":
                 case "bonjour":
                 case "good morning":
-                  var answers = [ "hiii",
-"hello :D",
-"ciao :D"];
+                  var answers = [ "Hello!",
+"Hey, hope everything is great!",
+"Ciao!", "Good day :)"];
 
 var index = Math.floor(Math.random() * answers.length);
                     sendTextMessage(senderID,answers[index]);
