@@ -154,7 +154,7 @@ if (messageText.indexOf('job')>=0 || messageText.indexOf('do')>=0 || messageText
 if ((messageText.indexOf('what')>=0 && messageText.indexOf('s')>=0 && messageText.indexOf('up')>=0) || (messageText.indexOf('how')>=0 && messageText.indexOf('are')>=0 && messageText.indexOf('you')>=0))
 
 {
-                  sendTextMessage(senderID,"I am a stalker, i enjoy stalking people and getting their information to your doorstep, i mean messenger step :P");
+                  sendTextMessage(senderID,"I am doing great :D");
 }
     switch (messageText) {
                 case "hello":
