@@ -3,9 +3,9 @@
 const BootBot = require('bootbot');
 
 const bot = new BootBot({
-  accessToken: 'FB_ACCESS_TOKEN',
-  verifyToken: 'FB_VERIFY_TOKEN',
-  appSecret: 'FB_APP_SECRET'
+  accessToken: 'EAATww7C4qdMBAGS5lIQBpQVURCfNlGJoxsIYgjFz2Uwj6k03uFbYdvhO737ZCvdY1ZBBetGLq6nRVrygI0OdKu4mZBfxqj7nReGydiZApxpVQWifhJNuqTqRXQEE1KFEPJMSLxVKKGSTVMKhgvdzqbbfOjQZCCLyXGX31ZBL4WtAZDZD',
+  verifyToken: 'nadstories',
+  appSecret: 'b8c697be93df09e0debdbf09a27109cc'
 });
 bot.start();
 
