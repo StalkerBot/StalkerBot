@@ -5,9 +5,9 @@
 const BootBot = require('bootbot');
 
 const bot = new BootBot({
-  accessToken: 'EAATww7C4qdMBAGS5lIQBpQVURCfNlGJoxsIYgjFz2Uwj6k03uFbYdvhO737ZCvdY1ZBBetGLq6nRVrygI0OdKu4mZBfxqj7nReGydiZApxpVQWifhJNuqTqRXQEE1KFEPJMSLxVKKGSTVMKhgvdzqbbfOjQZCCLyXGX31ZBL4WtAZDZD',
-  verifyToken: 'nadstories',
-  appSecret: 'b8c697be93df09e0debdbf09a27109cc'
+  accessToken: 'FB_ACCESS_TOKEN',
+  verifyToken: 'FB_VERIFY_TOKEN',
+  appSecret: 'FB_APP_SECRET'
 });
 bot.on('message', (payload, chat) => {
 	const text = payload.message.text;
@@ -50,6 +50,38 @@ bot.hear('image', (payload, chat) => {
 	});
 });
 
+
+const express = require('express');
+const bodyParser = require('body-parser');
+const request = require('request');
+const path = require('path');
+var nad=null;
+var messengerButton = "<html><head><title>Facebook Messenger Bot</title></head><body><h1>Facebook Messenger Bot</h1>This is a bot based on Messenger Platform QuickStart. For more details, see their <a href=\"https://developers.facebook.com/docs/messenger-platform/guides/quick-start\">docs</a>.<script src=\"https://button.glitch.me/button.js\" data-style=\"glitch\"></script><div class=\"glitchButton\" style=\"position:fixed;top:20px;right:20px;\"></div></body></html>";
+
+// The rest of the code implements the routes for our Express server.
+let app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
+// Webhook validation
+app.get('/webhook', function(req, res) {
+  if (req.query['hub.mode'] === 'subscribe' &&
+      req.query['hub.verify_token'] === process.env.VERIFY_TOKEN) {
+    console.log("Validating webhook");
+    res.status(200).send(req.query['hub.challenge']);
+  } else {
+    console.error("Failed validation. Make sure the validation tokens match.");
+    res.sendStatus(403);          
+  }
+});
+
+// Display the web page
+app.get('/', function(req, res) {
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  res.write(messengerButton);
+  res.end();
+});
 bot.start();
-
-
