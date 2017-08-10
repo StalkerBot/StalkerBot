@@ -101,19 +101,19 @@ if (messageText.indexOf('your')>=0 && messageText.indexOf('name')>=0)
                   sendTextMessage(senderID,"My name is StalkerBot, and i am at your service :)");
 }
 
-if (messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messageText.indexOf('stalk')>=0 && messageText.indexOf('name')>=0)
+if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messageText.indexOf('stalk')>=0) && messageText.indexOf('name')>=0)
 
 {
                   sendTextMessage(senderID,"Go on, tell me the name you want to stalk, and i will do the rest ;)");
 }
 
-if (messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messageText.indexOf('stalk')>=0 && messageText.indexOf('email')>=0)
+if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messageText.indexOf('stalk')>=0) && messageText.indexOf('email')>=0)
 
 {
                   sendTextMessage(senderID,"Go on, tell me the email you want to stalk, and i will do the rest ;)");
 }
 
-if (messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messageText.indexOf('stalk')>=0 && (messageText.indexOf('number')>=0 || messageText.indexOf('phone')>=0))
+if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messageText.indexOf('stalk')>=0) && (messageText.indexOf('number')>=0 || messageText.indexOf('phone')>=0))
 
 {
                   sendTextMessage(senderID,"Go on, tell me the phone number you want to stalk, and i will do the rest ;)");
