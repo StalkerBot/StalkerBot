@@ -94,6 +94,12 @@ if (messageText.indexOf('bored')>=0 || messageText.indexOf('angry')>=0 || messag
 {
                   sendTextMessage(senderID,"Why are you feeling like this ?");
 }
+
+if (messageText.indexOf('your')>=0 && messageText.indexOf('name')>=0 ||)
+
+{
+                  sendTextMessage(senderID,"My name is StalkerBot, and i am at your service :)");
+}
     switch (messageText) {
                 case "hello":
                 case "hi":
@@ -103,11 +109,6 @@ if (messageText.indexOf('bored')>=0 || messageText.indexOf('angry')>=0 || messag
                 case "good morning":
                     sendTextMessage(senderID,"Hello , Who do you want to stalk today? :P");
                     break;
-
-		case "what is your name": case "what is your name?": case "what is your name!":
-
-sendTextMessage(senderID,"My name is StalkerBot, and i am at your service :)");
-break;
 
 	case "what can you do":   case "what do you do": case "what is your job":
 
