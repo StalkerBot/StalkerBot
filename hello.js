@@ -51,7 +51,7 @@ bot.hear('image', (payload, chat) => {
 		url: 'http://example.com/image.png'
 	});
 });
-
+bot.start();
 app.get('/webhook', function(req, res) {
   if (req.query['hub.mode'] === 'subscribe' &&
       req.query['hub.verify_token'] === <VERIFY_TOKEN>) {
