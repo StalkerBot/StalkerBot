@@ -194,7 +194,8 @@ var index = Math.floor(Math.random() * answers.length);
                 sendTextMessage(senderID,String(emails(String(messageText))));
                 sendTextMessage(senderID, "That's the email you are searching for, give me a minute");
                 
-                
+                var pyshell = new PythonShell('my_script.py');
+
                 pyshell.on('message', function (message) {
   sendTextMessage(senderID, message);
   console.log(message);
