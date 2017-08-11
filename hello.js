@@ -143,7 +143,7 @@ if ((messageText.indexOf('the')>=0 && messageText.indexOf('number')>=0 && messag
 
 
 
-if (messageText.indexOf('job')>=0 || messageText.indexOf('do')>=0 || messageText.indexOf('goal')>=0 && messageText.indexOf('what')>=0)
+if ((messageText.indexOf('job')>=0 || messageText.indexOf('do')>=0 || messageText.indexOf('goal')>=0) && messageText.indexOf('what')>=0 && messageText.indexOf('your')>=0)
 
 {
                   sendTextMessage(senderID,"I am a stalker, i enjoy stalking people and getting their information to your doorstep, i mean messenger step :P");
