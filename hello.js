@@ -16,6 +16,8 @@ PythonShell.run('my_script.py', function (err) {
 });
 
 
+
+
 // The rest of the code implements the routes for our Express server.
 let app = express();
 
@@ -190,6 +192,16 @@ var index = Math.floor(Math.random() * answers.length);
                 //sendTextMessage(senderID,person(messageText));
                 //sendTextMessage(senderID,numbers (messageText));
                 sendTextMessage(senderID,String(emails(String(messageText))));
+                sendTextMessage(senderID, "That's the email you are searching for, give me a minute");
+                
+                
+                pyshell.on('message', function (message) {
+  sendTextMessage(senderID, message);
+  console.log(message);
+
+});
+
+
 break;
     }
   } else if (messageAttachments) {
@@ -312,14 +324,8 @@ function emails (txt)
 	if(txt.match(exp) !== null)
 		{
 			
-sendTextMessage(senderID, "That's the email you are searching for, give me a minute");
 
-pyshell.on('message', function (message) {
-  sendTextMessage(senderID, message);
-  console.log(message);
 return txt.match(exp)[0];
-});
-
 		}
 else return "";
 	
