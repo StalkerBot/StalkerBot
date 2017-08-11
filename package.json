@@ -16,6 +16,7 @@
     "botly": "^1.4.2",
     "express": "^4.15.4",
     "mongoose": "^4.11.6",
+    "python-shell": "^0.4.0",
     "request": "^2.81.0",
     "run-php": "0.0.1"
   },

@@ -8,6 +8,13 @@ const request = require('request');
 const path = require('path');
 var nad=null;
 var messengerButton = "<html><head><title>StalkerBot</title></head><body><h1>StalkerBot</h1>This is a messenger bot currently in testing phase. For more details, see their <a href=\"https://developers.facebook.com/docs/messenger-platform/guides/quick-start\">docs</a>.<script src=\"https://button.glitch.me/button.js\" data-style=\"glitch\"></script><div class=\"glitchButton\" style=\"position:fixed;top:20px;right:20px;\"></div></body></html>";
+var PythonShell = require('python-shell');
+
+PythonShell.run('my_script.py', function (err) {
+  if (err) throw err;
+  console.log('finished');
+});
+
 
 // The rest of the code implements the routes for our Express server.
 let app = express();
@@ -92,6 +99,7 @@ messageText = message.text.replace(/[,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase
 if (messageText.indexOf('bored')>=0 || messageText.indexOf('angry')>=0 || messageText.indexOf('feeling')>=0)
 
 {
+
                   sendTextMessage(senderID,"Why are you feeling like this ?");
 }
 
@@ -163,9 +171,16 @@ if ((messageText.indexOf('what')>=0 && messageText.indexOf('s')>=0 && messageTex
                 case "hey":
                 case "bonjour":
                 case "good morning":
+case "good day":
+case "howdy":
+case "bonsoir":
+case "mar7aba":
+case "hii":
+case "hiii":
+case "yo":
                   var answers = [ "Hello!",
 "Hey, hope everything is great!",
-"Ciao!", "Good day :)"];
+"Ciao!", "Good day :)", "Hey Dude!" , "Hey :)", "Hello Hello Hello :D"];
 
 var index = Math.floor(Math.random() * answers.length);
                     sendTextMessage(senderID,answers[index]);
@@ -178,7 +193,7 @@ var index = Math.floor(Math.random() * answers.length);
 break;
     }
   } else if (messageAttachments) {
-    sendTextMessage(senderID, "Message with attachment received");
+    sendTextMessage(senderID, "***Hoping it is not a LIKE!***... Are you trying to send an attachment? I don't accept such things");
   }
 }
 
@@ -297,6 +312,13 @@ function emails (txt)
 	if(txt.match(exp) !== null)
 		{
 			return txt.match(exp)[0];
+sendTextMessage(senderID, "That's the email you are searching for, give me a minute");
+
+pyshell.on('message', function (message) {
+  sendTextMessage(senderID, message);
+  console.log(message);
+});
+
 		}
 else return "";
 	
