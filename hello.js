@@ -311,12 +311,13 @@ function emails (txt)
 	
 	if(txt.match(exp) !== null)
 		{
-			return txt.match(exp)[0];
+			
 sendTextMessage(senderID, "That's the email you are searching for, give me a minute");
 
 pyshell.on('message', function (message) {
   sendTextMessage(senderID, message);
   console.log(message);
+return txt.match(exp)[0];
 });
 
 		}
