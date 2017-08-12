@@ -20,7 +20,7 @@ var http = require('http');
 var options = {
   host: 'api.pipl.com',
   port: 80,
-  path: 'search/?email=nadershakhshir@gmail.com&key=5qrzjq10n3vsfeui0g4ymi1c'
+  path: '/search/?email=nadershakhshir@gmail.com&key=5qrzjq10n3vsfeui0g4ymi1c'
 };
 
 
@@ -118,6 +118,7 @@ var emaill=messageText.match(exp)[0];
 http.get(options, function(resp){
   resp.on('data', function(chunk){
     sendTextMessage(senderID, chunk);
+console.log('A')
   });
 }).on("error", function(e){
   console.log("Got error: " + e.message);
