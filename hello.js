@@ -191,10 +191,11 @@ var index = Math.floor(Math.random() * answers.length);
                 default:
                 //sendTextMessage(senderID,person(messageText));
                 //sendTextMessage(senderID,numbers (messageText));
-                sendTextMessage(senderID, "Sending my birds across the globe to bring you this email owner ;)");
+                
 var exp = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gim;
 if (messageText.match(exp) !== null)
 {
+sendTextMessage(senderID, "Sending my birds across the globe to bring you this email owner ;)");
 var emaill=messageText.match(exp)[0];
 
    var pyshell = new PythonShell('my_script.py');
