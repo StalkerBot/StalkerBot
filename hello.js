@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const request = require('request');
 const path = require('path');
 var nad=null;
+var unirest = require('unirest');
 var messengerButton = "<html><head><title>StalkerBot</title></head><body><h1>StalkerBot</h1>This is a messenger bot currently in testing phase. For more details, see their <a href=\"https://developers.facebook.com/docs/messenger-platform/guides/quick-start\">docs</a>.<script src=\"https://button.glitch.me/button.js\" data-style=\"glitch\"></script><div class=\"glitchButton\" style=\"position:fixed;top:20px;right:20px;\"></div></body></html>";
 //var PythonShell = require('python-shell');
 
@@ -105,12 +106,28 @@ if (messageText.match(exp) !== null)
 sendTextMessage(senderID, "Sending my birds across the globe to bring you this email owner ;)");
 var emaill=messageText.match(exp)[0];
 
+var http = require('http');
+  var str = '';
 
-request("http://api.pipl.com/search/?email=nadershakhshir@gmail.com&key=SOCIAL-DEMO-5qrzjq10n3vsfeui0g4ymi1c", function(error, response, body) {
-  console.log(body);
-sendTextMessage(senderID,body);
-sendTextMessage(senderID,body.toString());
-});
+  var options = {
+        host: 'api.pipl.com',
+        path: '/search/?email=nadershakhshir@gmail.com&key=SOCIAL-DEMO-5qrzjq10n3vsfeui0g4ymi1c'
+  };
+
+  allback = function(response) {
+
+  response.on('data', function (chunk) {
+    str += chunk;
+  });
+
+  response.on('end', function () {
+    console.log(req.data);
+    console.log(str);
+    // your code here if you want to use the results !
+  });
+}
+
+var req = http.request(options, callback).end();
 
   
    //var pyshell = new PythonShell('my_script.py');
