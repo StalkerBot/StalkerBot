@@ -16,7 +16,7 @@ def main():
     for item in lines:
         total_sum_inArray += item
 print total_sum_inArray
-request = SearchAPIRequest(email=total_sum_inArray, api_key='CONTACT-DEMO-fg8iwe5slw9zc2eqb4xd8gu7')
+request = SearchAPIRequest(email=u'nadershakhshir@gmail.com', api_key='CONTACT-DEMO-fg8iwe5slw9zc2eqb4xd8gu7')
 response = request.send()
 
 #print(response.image.get_thumbnail_url(200, 100, zoom_face=False, favicon=False))
