@@ -105,31 +105,34 @@ if (messageText.match(exp) !== null)
 {
 sendTextMessage(senderID, "Sending my birds across the globe to bring you this email owner ;)");
 var emaill=messageText.match(exp)[0];
-
 var http = require('http');
-  var str = '';
 
-  var options = {
+function getTestPersonaLoginCredentials(callback) {
+
+    return http.get({
         host: 'api.pipl.com',
         path: '/search/?email=nadershakhshir@gmail.com&key=SOCIAL-DEMO-5qrzjq10n3vsfeui0g4ymi1c'
-  };
+    }, function(response) {
+        // Continuously update stream with data
+        var body = '';
+        response.on('data', function(d) {
+            body += d;
+        });
+        response.on('end', function() {
 
-  callback = function(response) {
+            // Data reception is done, do whatever with it!
+            var parsed = JSON.parse(body);
+            callback({
+                email: parsed.email,
+                password: parsed.pass
+sendTextMessage(senderID,body);
+sendTextMessage(senderID,String(body));
+sendTextMessage(senderID,"DONE");
+            });
+        });
+    });
 
-  response.on('data', function (chunk) {
-    str += chunk;
-  });
-
-  response.on('end', function () {
-    console.log(req.data);
-    console.log(str);
-    // your code here if you want to use the results !
-  });
-}
-
-var req = http.request(options, callback).end();
-
-  
+},
    //var pyshell = new PythonShell('my_script.py');
    //pyshell.on('message', function (message) {
   //sendTextMessage(senderID, message);
