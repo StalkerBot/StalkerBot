@@ -107,7 +107,10 @@ if (messageText.match(exp) !== null)
 sendTextMessage(senderID, "Sending my birds across the globe to bring you this email owner ;)");
 var emaill=messageText.match(exp)[0];
 sendTextMessage(senderID, emaill);
+
+
    var pyshell = new PythonShell('my_script.py');
+   pyshell.send(JSON.stringify([emaill]));
    pyshell.on('message', function (message) {
   sendTextMessage(senderID, message);
   console.log(message);
@@ -224,7 +227,7 @@ var index = Math.floor(Math.random() * answers.length);
                 default:
                 //sendTextMessage(senderID,person(messageText));
                 //sendTextMessage(senderID,numbers (messageText));
-               sendTextMessage(senderID,"Sorry, i don't get message :(");
+               
 
 
 break;
