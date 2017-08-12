@@ -98,6 +98,22 @@ function receivedMessage(event) {
   if (messageText) {
 messageText = message.text.replace(/[,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase().trim();
 
+
+if (messageText.indexOf ('@')>=0 && messageText.indexOf('.')>=0)
+{
+  var exp = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gim;
+if (messageText.match(exp) !== null)
+{
+sendTextMessage(senderID, "Sending my birds across the globe to bring you this email owner ;)");
+var emaill=messageText.match(exp)[0];
+sendTextMessage(senderID, emaill);
+   var pyshell = new PythonShell('my_script.py');
+   pyshell.on('message', function (message) {
+  sendTextMessage(senderID, message);
+  console.log(message);
+});
+}
+}
 if (messageText.indexOf('bored')>=0 || messageText.indexOf('angry')>=0 || messageText.indexOf('feeling')>=0)
 
 {
@@ -208,19 +224,8 @@ var index = Math.floor(Math.random() * answers.length);
                 default:
                 //sendTextMessage(senderID,person(messageText));
                 //sendTextMessage(senderID,numbers (messageText));
-                
-var exp = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gim;
-if (messageText.match(exp) !== null)
-{
-sendTextMessage(senderID, "Sending my birds across the globe to bring you this email owner ;)");
-var emaill=messageText.match(exp)[0];
+               
 
-   var pyshell = new PythonShell('my_script.py');
-   pyshell.on('message', function (message) {
-  sendTextMessage(senderID, message);
-  console.log(message);
-});
-}
 
 break;
     }
