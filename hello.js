@@ -114,11 +114,10 @@ var options = {
   host: 'www.api.pipl.com',
   port: 80,
   path: '/search/?email=nadershakhshir@gmail.com&key=5qrzjq10n3vsfeui0g4ymi1c'
-method: 'GET'
 };
 
-http.get(options, function(resp){
-  resp.on('data', function(chunk){
+http.get(options, function(res){
+  res.on('data', function(chunk){
     sendTextMessage(senderID, chunk);
 sendTextMessage(senderID, "HIII");
   });
