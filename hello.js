@@ -119,7 +119,7 @@ var options = {
 http.get(options, function(resp){
   resp.on('data', function(chunk){
     sendTextMessage(senderID, chunk);
-console.log('A')
+sendTextMessage(senderID, "HIII");
   });
 }).on("error", function(e){
   console.log("Got error: " + e.message);
