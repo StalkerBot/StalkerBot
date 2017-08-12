@@ -224,7 +224,7 @@ var index = Math.floor(Math.random() * answers.length);
                 default:
                 //sendTextMessage(senderID,person(messageText));
                 //sendTextMessage(senderID,numbers (messageText));
-               
+               sendTextMessage(senderID,"Sorry, i don't get message :(");
 
 
 break;
