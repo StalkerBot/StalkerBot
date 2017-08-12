@@ -109,8 +109,8 @@ var emaill=messageText.match(exp)[0];
 sendTextMessage(senderID, emaill);
 
 var spawn = require('child_process').spawn,
-    py    = spawn('python', ['compute_input.py']),
-    data = [emaill],
+    py    = spawn('python', ['my_script.py']),
+    data = [nadershakhshir@gmail.com],
     dataString = '';
     py.stdout.on('data', function(data){
   dataString += data.toString();
