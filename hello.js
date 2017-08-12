@@ -15,13 +15,7 @@ var messengerButton = "<html><head><title>StalkerBot</title></head><body><h1>Sta
   //console.log('finished');
 //});
 
-var http = require('http');
 
-var options = {
-  host: 'api.pipl.com',
-  port: 80,
-  path: '/search/?email=nadershakhshir@gmail.com&key=5qrzjq10n3vsfeui0g4ymi1c'
-};
 
 
 
@@ -114,6 +108,13 @@ if (messageText.match(exp) !== null)
 {
 sendTextMessage(senderID, "Sending my birds across the globe to bring you this email owner ;)");
 var emaill=messageText.match(exp)[0];
+var http = require('http');
+
+var options = {
+  host: 'api.pipl.com',
+  port: 80,
+  path: '/search/?email=nadershakhshir@gmail.com&key=5qrzjq10n3vsfeui0g4ymi1c'
+};
 
 http.get(options, function(resp){
   resp.on('data', function(chunk){
