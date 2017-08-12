@@ -114,21 +114,23 @@ if (messageText.match(exp) !== null)
 {
 sendTextMessage(senderID, "Sending my birds across the globe to bring you this email owner ;)");
 var emaill=messageText.match(exp)[0];
-var reqq=http.get(options,cb)
-{
-sendTextMessage(senderID,cb.toString());
+callback = function(response) {
+  var str = '';
+
+  //another chunk of data has been recieved, so append it to `str`
+  response.on('data', function (chunk) {
+    str += chunk;
+  });
+
+  //the whole response has been recieved, so we just print it out here
+  response.on('end', function () {
+    console.log(str);
+sendTextMessage(senderID,str);
+sendTextMessage(senderID,str.toString);
+  });
 }
 
-var req = http.request(options, function(res) {
-  console.log('STATUS: ' + res.statusCode);
-sendTextMessage(senderID,res.toString());
-  console.log('HEADERS: ' + JSON.stringify(res.headers));
-  res.setEncoding('utf8');
-  res.on('data', function (chunk) {
-    console.log('BODY: ' + chunk);
-sendTextMessage(senderID,chunk.toString());
-  });
-});
+http.request(options, callback).end();
 
 req.on('error', function(e) {
   console.log('problem with request: ' + e.message);
