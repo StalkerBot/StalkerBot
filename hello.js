@@ -8,12 +8,12 @@ const request = require('request');
 const path = require('path');
 var nad=null;
 var messengerButton = "<html><head><title>StalkerBot</title></head><body><h1>StalkerBot</h1>This is a messenger bot currently in testing phase. For more details, see their <a href=\"https://developers.facebook.com/docs/messenger-platform/guides/quick-start\">docs</a>.<script src=\"https://button.glitch.me/button.js\" data-style=\"glitch\"></script><div class=\"glitchButton\" style=\"position:fixed;top:20px;right:20px;\"></div></body></html>";
-var PythonShell = require('python-shell');
+//var PythonShell = require('python-shell');
 
-PythonShell.run('my_script.py', function (err) {
-  if (err) throw err;
-  console.log('finished');
-});
+//PythonShell.run('my_script.py', function (err) {
+  //if (err) throw err;
+  //console.log('finished');
+//});
 
 
 
@@ -167,22 +167,6 @@ if ((messageText.indexOf('the')>=0 && messageText.indexOf('number')>=0 && messag
 }
 
 
-if ((messageText.indexOf('sleep')>=0 || messageText.indexOf('sleepy')>=0 || messageText.indexOf('tired')>=0) && messageText.indexOf('i am')>=0)
-
-{
-                  sendTextMessage(senderID,"it's not a time for sleeping , stay awake and stalk");
-}
-if ((messageText.indexOf('study')>=0 || messageText.indexOf('read')>=0) && messageText.indexOf('i want')>=0)
-
-{
-                  sendTextMessage(senderID,"it's not a time for studying , stay home and stalk");
-}
-
-if ((messageText.indexOf('eat')>=0 || messageText.indexOf('hungry')>=0 || messageText.indexOf('food')>=0)&& (messageText.indexOf('i want')>=0 || messageText.indexOf('i am')>=0))
-
-{
-                  sendTextMessage(senderID,"i can order a pizza for you :P ");
-}
 
 
 
