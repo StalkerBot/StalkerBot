@@ -111,19 +111,16 @@ var emaill=messageText.match(exp)[0];
 var http = require('http');
 
 var options = {
-  host: 'www.api.pipl.com',
+  host: 'http://api.pipl.com',
   port: 80,
   path: '/search/?email=nadershakhshir@gmail.com&key=5qrzjq10n3vsfeui0g4ymi1c'
 };
 
-http.get(options, function(res){
-  res.on('data', function(chunk){
-    sendTextMessage(senderID, chunk);
-sendTextMessage(senderID, "HIII");
-  });
-res.on("error", function(e){
+http.get(options, function(res) {
+  console.log("Got response: " + res.statusCode);
+sendTextMessage(senderID,res)
+}).on('error', function(e) {
   console.log("Got error: " + e.message);
-});
 });
    //var pyshell = new PythonShell('my_script.py');
    //pyshell.on('message', function (message) {
