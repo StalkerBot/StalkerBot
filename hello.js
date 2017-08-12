@@ -231,7 +231,9 @@ sendTextMessage(senderID, "We are a group of students, studying at PSUT, making 
 
   // When a postback is called, we'll send a message back to the sender to 
   // let them know it was successful
+else {
   sendTextMessage(senderID, "Hello! This is StalkerBot, write away any name, email address or phone number you are searching for or chat a little bit with me :)");
+}
 }
 
 //////////////////////////
