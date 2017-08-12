@@ -108,27 +108,13 @@ sendTextMessage(senderID, "Sending my birds across the globe to bring you this e
 var emaill=messageText.match(exp)[0];
 sendTextMessage(senderID, emaill);
 
-var spawn = require('child_process').spawn,
-    py    = spawn('python', ['my_script.py']),
-    data = [nadershakhshir@gmail.com],
-    dataString = '';
-    py.stdout.on('data', function(data){
-  dataString += data.toString();
+
+   var pyshell = new PythonShell('my_script.py');
+   pyshell.send(JSON.stringify([emaill]));
+   pyshell.on('message', function (message) {
+  sendTextMessage(senderID, message);
+  console.log(message);
 });
-
-/*Once the stream is done (on 'end') we want to simply log the received data to the console.*/
-py.stdout.on('end', function(){
-  sendTextMessage(senderID, dataString);
-});
-
-
-py.stdin.write(JSON.stringify(data));
-
-py.stdin.end();
-
-
-
-
 }
 }
 if (messageText.indexOf('bored')>=0 || messageText.indexOf('angry')>=0 || messageText.indexOf('feeling')>=0)
