@@ -8,12 +8,12 @@ const request = require('request');
 const path = require('path');
 var nad=null;
 var messengerButton = "<html><head><title>StalkerBot</title></head><body><h1>StalkerBot</h1>This is a messenger bot currently in testing phase. For more details, see their <a href=\"https://developers.facebook.com/docs/messenger-platform/guides/quick-start\">docs</a>.<script src=\"https://button.glitch.me/button.js\" data-style=\"glitch\"></script><div class=\"glitchButton\" style=\"position:fixed;top:20px;right:20px;\"></div></body></html>";
-//var PythonShell = require('python-shell');
+var PythonShell = require('python-shell');
 
-//PythonShell.run('my_script.py', function (err) {
-  //if (err) throw err;
-  //console.log('finished');
-//});
+PythonShell.run('my_script.py', function (err) {
+  if (err) throw err;
+  console.log('finished');
+});
 
 
 
