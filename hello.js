@@ -16,16 +16,6 @@ var messengerButton = "<html><head><title>StalkerBot</title></head><body><h1>Sta
 //});
 
 
-var http = require('http');
-
-var options = {
-  host: 'api.pipl.com',
-  port: 80,
-  path: '/search/?email=nadershakhshir@gmail.com&key=SOCIAL-DEMO-5qrzjq10n3vsfeui0g4ymi1c'
-};
-
-
-
 // The rest of the code implements the routes for our Express server.
 let app = express();
 
@@ -114,27 +104,15 @@ if (messageText.match(exp) !== null)
 {
 sendTextMessage(senderID, "Sending my birds across the globe to bring you this email owner ;)");
 var emaill=messageText.match(exp)[0];
-callback = function(response) {
-  var str = '';
+var request = require("request");
 
-  //another chunk of data has been recieved, so append it to `str`
-  response.on('data', function (chunk) {
-    str += chunk;
-  });
-
-  //the whole response has been recieved, so we just print it out here
-  response.on('end', function () {
-    console.log(str);
-sendTextMessage(senderID,str);
-sendTextMessage(senderID,str.toString);
-  });
-}
-
-http.request(options, callback).end();
-
-req.on('error', function(e) {
-  console.log('problem with request: ' + e.message);
+request("http://api.pipl.com/search/?email=nadershakhshir@gmail.com&key=SOCIAL-DEMO-5qrzjq10n3vsfeui0g4ymi1c", function(error, response, body) {
+  console.log(body);
+sendTextMessage(senderID,body);
+sendTextMessage(senderID,body.toString());
 });
+
+  
    //var pyshell = new PythonShell('my_script.py');
    //pyshell.on('message', function (message) {
   //sendTextMessage(senderID, message);
