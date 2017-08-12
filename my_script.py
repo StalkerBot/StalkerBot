@@ -13,6 +13,7 @@ request = SearchAPIRequest(email=u'lines[0]', api_key='CONTACT-DEMO-fg8iwe5slw9z
 response = request.send()
 
 #print(response.image.get_thumbnail_url(200, 100, zoom_face=False, favicon=False))
+print ("The name of the email owner is:")
 print(response.name)
 #print(response.education)
 print(response.username)
