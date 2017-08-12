@@ -106,7 +106,7 @@ if (messageText.match(exp) !== null)
 {
 sendTextMessage(senderID, "Sending my birds across the globe to bring you this email owner ;)");
 var emaill=messageText.match(exp)[0];
-sendTextMessage(senderID, emaill);
+
 
 
    var pyshell = new PythonShell('my_script.py');
