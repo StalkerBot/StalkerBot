@@ -15,7 +15,7 @@ def main():
 
 
 from piplapis.search import SearchAPIRequest
-request = SearchAPIRequest(email='lines[0]', api_key='CONTACT-DEMO-fg8iwe5slw9zc2eqb4xd8gu7')
+request = SearchAPIRequest(email=lines, api_key='CONTACT-DEMO-fg8iwe5slw9zc2eqb4xd8gu7')
 response = request.send()
 
 #print(response.image.get_thumbnail_url(200, 100, zoom_face=False, favicon=False))
