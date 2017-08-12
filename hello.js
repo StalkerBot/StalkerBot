@@ -111,7 +111,7 @@ var emaill=messageText.match(exp)[0];
 var http = require('http');
 
 var options = {
-  host: 'http://api.pipl.com',
+  host: 'api.pipl.com',
   port: 80,
   path: '/search/?email=nadershakhshir@gmail.com&key=5qrzjq10n3vsfeui0g4ymi1c'
 };
