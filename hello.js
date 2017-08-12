@@ -148,7 +148,7 @@ if ((messageText.indexOf('study')>=0 || messageText.indexOf('read')>=0) && messa
 if ((messageText.indexOf('eat')>=0 || messageText.indexOf('hungry')>=0 || messageText.indexOf('food')>=0)&& (messageText.indexOf('i want')>=0 || messageText.indexOf('i am')>=0))
 
 {
-                  sendTextMessage(senderID,"i can order a pizza for you :P ");
+                  sendTextMessage(senderID,do you think i will order a pizza for you :P?");
 }
 
 if ((messageText.indexOf('the')>=0 && messageText.indexOf('name')>=0 && messageText.indexOf('is')>=0))
