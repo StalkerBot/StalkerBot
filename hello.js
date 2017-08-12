@@ -319,17 +319,6 @@ var server = app.listen(process.env.PORT || 3000, function () {
 });
 
 
-function emails (txt)
-{
-	
-	if(txt.match(exp) !== null)
-		{
-
-return txt.match(exp)[0];
-		}
-else return "";
-	
-}
 
 function numbers (txt)
 {
