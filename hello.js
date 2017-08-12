@@ -223,6 +223,11 @@ function receivedPostback(event) {
 
   console.log("Received postback for user %d and page %d with payload '%s' " + 
     "at %d", senderID, recipientID, payload, timeOfPostback);
+if (payload =="CONTACT_INFO_PAYLOAD")
+{
+sendTextMessage(senderID, "We are a group of students, studying at PSUT, making this bot for testing purposes, contact us here: fb.com/nadershakhshir.ns , fb.com/roaairshaid , fb.com/mohdbushnaq");
+}
+
 
   // When a postback is called, we'll send a message back to the sender to 
   // let them know it was successful
