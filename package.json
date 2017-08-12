@@ -18,7 +18,8 @@
     "mongoose": "^4.11.6",
     "python-shell": "^0.4.0",
     "request": "^2.81.0",
-    "run-php": "0.0.1"
+    "run-php": "0.0.1",
+    "speakeasy-nlp": "^0.2.12"
   },
   "devDependencies": {},
   "description": "nad"
