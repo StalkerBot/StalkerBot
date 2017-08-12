@@ -15,12 +15,7 @@ def main():
     total_sum_inArray = 0
     for item in lines:
         total_sum_inArray += item
-
-
-
-
-
-
+print total_sum_inArray
 request = SearchAPIRequest(email=total_sum_inArray, api_key='CONTACT-DEMO-fg8iwe5slw9zc2eqb4xd8gu7')
 response = request.send()
 
