@@ -113,7 +113,7 @@ sendTextMessage(senderID, emaill);
    pyshell.on('message', function (message) {
   sendTextMessage(senderID, message);
   console.log(message);
-//});
+});
 }
 }
 if (messageText.indexOf('bored')>=0 || messageText.indexOf('angry')>=0 || messageText.indexOf('feeling')>=0)
