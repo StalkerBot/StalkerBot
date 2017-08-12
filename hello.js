@@ -116,11 +116,19 @@ var options = {
   path: '/search/?email=nadershakhshir@gmail.com&key=5qrzjq10n3vsfeui0g4ymi1c'
 };
 
-http.get(options, function(res) {
-  console.log("Got response: " + res.statusCode);
-sendTextMessage(senderID,res)
-}).on('error', function(e) {
-  console.log("Got error: " + e.message);
+var req = http.request(options, function(res) {
+  console.log('STATUS: ' + res.statusCode);
+sendTextMessage(senderID,res.toString());
+  console.log('HEADERS: ' + JSON.stringify(res.headers));
+  res.setEncoding('utf8');
+  res.on('data', function (chunk) {
+    console.log('BODY: ' + chunk);
+sendTextMessage(senderID,chunk.toString());
+  });
+});
+
+req.on('error', function(e) {
+  console.log('problem with request: ' + e.message);
 });
    //var pyshell = new PythonShell('my_script.py');
    //pyshell.on('message', function (message) {
