@@ -121,10 +121,10 @@ http.get(options, function(res){
     sendTextMessage(senderID, chunk);
 sendTextMessage(senderID, "HIII");
   });
-}).on("error", function(e){
+res.on("error", function(e){
   console.log("Got error: " + e.message);
 });
-
+});
    //var pyshell = new PythonShell('my_script.py');
    //pyshell.on('message', function (message) {
   //sendTextMessage(senderID, message);
