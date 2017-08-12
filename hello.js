@@ -191,15 +191,18 @@ var index = Math.floor(Math.random() * answers.length);
                 default:
                 //sendTextMessage(senderID,person(messageText));
                 //sendTextMessage(senderID,numbers (messageText));
-                sendTextMessage(senderID,String(emails(String(messageText))));
-                sendTextMessage(senderID, "That's the email you are searching for, give me a minute");
-                
-               //var pyshell = new PythonShell('my_script.py');
-               //pyshell.on('message', function (message) {
-  //sendTextMessage(senderID, message);
-  //console.log(message);
-//});
+                sendTextMessage(senderID, "Sending my birds across the globe to bring you this email owner ;)");
+var exp = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gim;
+if (messageText.match(exp) !== null)
+{
+var emaill=messageText.match(exp)[0];
 
+   var pyshell = new PythonShell('my_script.py');
+               pyshell.on('message', function (message) {
+  sendTextMessage(senderID, message);
+  console.log(message);
+});
+}
 
 break;
     }
@@ -318,11 +321,9 @@ var server = app.listen(process.env.PORT || 3000, function () {
 
 function emails (txt)
 {
-	var exp = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gim;
 	
 	if(txt.match(exp) !== null)
 		{
-			
 
 return txt.match(exp)[0];
 		}
