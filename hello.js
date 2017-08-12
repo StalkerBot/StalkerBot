@@ -114,7 +114,7 @@ var http = require('http');
         path: '/search/?email=nadershakhshir@gmail.com&key=SOCIAL-DEMO-5qrzjq10n3vsfeui0g4ymi1c'
   };
 
-  allback = function(response) {
+  callback = function(response) {
 
   response.on('data', function (chunk) {
     str += chunk;
