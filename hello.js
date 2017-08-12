@@ -115,10 +115,7 @@ var options = {
   port: 80,
   path: '/search/?email=nadershakhshir@gmail.com&key=SOCIAL-DEMO-5qrzjq10n3vsfeui0g4ymi1c'
 };
-var reqq=http.resquest(options,cb)
-{
-sendTextMessage(senderID,cb.toString());
-}
+
 var req = http.request(options, function(res) {
   console.log('STATUS: ' + res.statusCode);
 sendTextMessage(senderID,res.toString());
