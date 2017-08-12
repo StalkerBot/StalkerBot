@@ -228,7 +228,10 @@ if (payload =="CONTACT_INFO_PAYLOAD")
 sendTextMessage(senderID, "We are a group of students, studying at PSUT, making this bot for testing purposes, contact us here: fb.com/nadershakhshir.ns , fb.com/roaa.irshaid , fb.com/mohdbushnaq");
 }
 
-
+if (payload =="ADVANCED_STALKING_PAYLOAD")
+{
+sendTextMessage(senderID, "Soon, you will be able to get more specific information about the people you want to stalk for a small amount of money");
+}
   // When a postback is called, we'll send a message back to the sender to 
   // let them know it was successful
 else {
