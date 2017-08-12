@@ -1,5 +1,5 @@
 from piplapis.search import SearchAPIRequest
-request = SearchAPIRequest(Name=u'nader shakhshir', api_key='CONTACT-DEMO-fg8iwe5slw9zc2eqb4xd8gu7')
+request = SearchAPIRequest(first=u'nader',last=u'shakhshir', api_key='CONTACT-DEMO-fg8iwe5slw9zc2eqb4xd8gu7')
 response = request.send()
 
 #print(response.image.get_thumbnail_url(200, 100, zoom_face=False, favicon=False))
