@@ -107,7 +107,6 @@ sendTextMessage(senderID, "Sending my birds across the globe to bring you this e
 var emaill=messageText.match(exp)[0];
 var http = require('http');
 
-function getTestPersonaLoginCredentials(callback) {
 
     return http.get({
         host: 'api.pipl.com',
@@ -122,17 +121,13 @@ function getTestPersonaLoginCredentials(callback) {
 
             // Data reception is done, do whatever with it!
             var parsed = JSON.parse(body);
-            callback({
-                email: parsed.email,
-                password: parsed.pass
+        
 sendTextMessage(senderID,body);
 sendTextMessage(senderID,String(body));
 sendTextMessage(senderID,"DONE");
-            });
+         });
         });
-    });
-
-},
+    
    //var pyshell = new PythonShell('my_script.py');
    //pyshell.on('message', function (message) {
   //sendTextMessage(senderID, message);
