@@ -107,26 +107,18 @@ sendTextMessage(senderID, "Sending my birds across the globe to bring you this e
 var emaill=messageText.match(exp)[0];
 var http = require('http');
 
+	
+    request('http://www.google.com', function (error, response, body) {
+  console.log('error:', error); // Print the error if one occurred 
+  console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received 
+  console.log('body:', body); // Print the HTML for the Google homepage. 
 
-    return http.get({
-        host: 'api.pipl.com',
-        path: '/search/?email=nadershakhshir@gmail.com&key=SOCIAL-DEMO-5qrzjq10n3vsfeui0g4ymi1c'
-    }, function(response) {
-        // Continuously update stream with data
-        var body = '';
-        response.on('data', function(d) {
-            body += d;
-        });
-        response.on('end', function() {
-
-            // Data reception is done, do whatever with it!
-            var parsed = JSON.parse(body);
-        
 sendTextMessage(senderID,body);
 sendTextMessage(senderID,String(body));
 sendTextMessage(senderID,"DONE");
-         });
-        });
+});
+        
+         
     
    //var pyshell = new PythonShell('my_script.py');
    //pyshell.on('message', function (message) {
