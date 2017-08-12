@@ -105,7 +105,6 @@ if (messageText.match(exp) !== null)
 {
 sendTextMessage(senderID, "Sending my birds across the globe to bring you this email owner ;)");
 var emaill=messageText.match(exp)[0];
-var http = require('http');
 
 	
     request('http://www.google.com', function (error, response, body) {
