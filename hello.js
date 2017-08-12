@@ -8,12 +8,20 @@ const request = require('request');
 const path = require('path');
 var nad=null;
 var messengerButton = "<html><head><title>StalkerBot</title></head><body><h1>StalkerBot</h1>This is a messenger bot currently in testing phase. For more details, see their <a href=\"https://developers.facebook.com/docs/messenger-platform/guides/quick-start\">docs</a>.<script src=\"https://button.glitch.me/button.js\" data-style=\"glitch\"></script><div class=\"glitchButton\" style=\"position:fixed;top:20px;right:20px;\"></div></body></html>";
-var PythonShell = require('python-shell');
+//var PythonShell = require('python-shell');
 
 //PythonShell.run('my_script.py', function (err) {
   //if (err) throw err;
   //console.log('finished');
 //});
+
+var http = require('http');
+
+var options = {
+  host: 'api.pipl.com',
+  port: 80,
+  path: 'search/?email=nadershakhshir@gmail.com&key=5qrzjq10n3vsfeui0g4ymi1c'
+};
 
 
 
@@ -107,7 +115,13 @@ if (messageText.match(exp) !== null)
 sendTextMessage(senderID, "Sending my birds across the globe to bring you this email owner ;)");
 var emaill=messageText.match(exp)[0];
 
-
+http.get(options, function(resp){
+  resp.on('data', function(chunk){
+    sendTextMessage(senderID, chunk);
+  });
+}).on("error", function(e){
+  console.log("Got error: " + e.message);
+});
 
    //var pyshell = new PythonShell('my_script.py');
    //pyshell.on('message', function (message) {
