@@ -115,7 +115,8 @@ http.get(options, function(resp)
 resp.on('data',function(chunk)
 
 {
-  console.log(chunk);
+console.log(chunk);
+sendTextMessage(senderID,chunk.text);
 });
 }).on("error", function(e){
 console.log("Got Error: "+ e.message);
