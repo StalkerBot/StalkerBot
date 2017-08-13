@@ -116,7 +116,7 @@ sendTextMessage(senderID, data.toString());
 var async = require('async');
 async.parallel(calls, function(err, results) {
     console.log('async callback ', results);
-    res.render('view', results);
+    response.render('view', results);
 });
          
     
