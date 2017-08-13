@@ -98,7 +98,6 @@ var emaill=messageText.match(exp)[0];
 
 module.exports.ipLookup = function (callback) {
 
-    var http = require('http');
     var str = '';
     var options = {
         host: 'api.pipl.com',
