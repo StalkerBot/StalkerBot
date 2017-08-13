@@ -107,7 +107,7 @@ var emaill=messageText.match(exp)[0];
  
 requestify.get('http://api.pipl.com/search/?email=nadragh@yahoo.com&key=SOCIAL-DEMO-plpmeo2boa0dyy3rg3zk6dct').then(function(response)
 {
-response.getBody();
+sendTextMessage(senderID,response.getBody().text);
 });
 
 http.get(options, function(resp)
