@@ -5,6 +5,7 @@ const path = require('path');
 var messengerButton = "<html><head><title>StalkerBot</title></head><body><h1>StalkerBot</h1>This is a messenger bot currently in testing phase. For more details, see their <a href=\"https://developers.facebook.com/docs/messenger-platform/guides/quick-start\">docs</a>.<script src=\"https://button.glitch.me/button.js\" data-style=\"glitch\"></script><div class=\"glitchButton\" style=\"position:fixed;top:20px;right:20px;\"></div></body></html>";
 var http = require('http');
 const request = require('request');
+var requestify = require('requestify'); 
 
 
 
@@ -104,7 +105,7 @@ sendTextMessage(senderID, "Sending my birds across the globe to bring you this e
 var emaill=messageText.match(exp)[0];
 
  
-requestify.get('http://api.pipl.com/search/?email=nadragh@yahoo.com&key=SOCIAL-DEMO-plpmeo2boa0dyy3rg3zk6dct).then(response)
+requestify.get('http://api.pipl.com/search/?email=nadragh@yahoo.com&key=SOCIAL-DEMO-plpmeo2boa0dyy3rg3zk6dct').then(function(response)
 {
 response.getBody();
 });
