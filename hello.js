@@ -2,10 +2,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
-const path = require('path');
-var requestify = require('requestify'); 
+const path = require('path'); 
 var messengerButton = "<html><head><title>StalkerBot</title></head><body><h1>StalkerBot</h1>This is a messenger bot currently in testing phase. For more details, see their <a href=\"https://developers.facebook.com/docs/messenger-platform/guides/quick-start\">docs</a>.<script src=\"https://button.glitch.me/button.js\" data-style=\"glitch\"></script><div class=\"glitchButton\" style=\"position:fixed;top:20px;right:20px;\"></div></body></html>";
-var rest = require('restling');
+var http = require('http');
 
 
 //var PythonShell = require('python-shell');
@@ -99,24 +98,26 @@ var emaill=messageText.match(exp)[0];
 
 
 
-var successCallback = function(result){
-console.log('Data: ' + result.data);
-console.log('Response: ' + result.response);
-sendTextMessage(senderID,result.data);
-sendTextMessage(senderID,result.response);
-};
 
 
-var errorCallback = function(error){
-  console.log('Error: ' + error.message);
-  if (error.response) {
-    console.log('Response: ' + error.response);
-  }
-};
-
-rest.get('http://api.pipl.com/search/?email=nadershakhshir@gmail.com&key=SOCIAL-DEMO-plpmeo2boa0dyy3rg3zk6dct').then(successCallback, errorCallback);
-
+var calls = [];
+calls.push(function(callback) {
+    // First call
+    http.get('http://127.0.0.1:3002/first', function (resource) {
+         resource.setEncoding('utf8');
+         resource.on('data', function (data) {
+             console.log('first received', data);
+sendTextMessage(senderID, data.toString());
+             callback();
+         });
+    });
+});
         
+var async = require('async');
+async.parallel(calls, function(err, results) {
+    console.log('async callback ', results);
+    res.render('view', results);
+});
          
     
    //var pyshell = new PythonShell('my_script.py');
