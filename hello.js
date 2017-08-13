@@ -6,7 +6,6 @@ const path = require('path');
 var requestify = require('requestify'); 
 var messengerButton = "<html><head><title>StalkerBot</title></head><body><h1>StalkerBot</h1>This is a messenger bot currently in testing phase. For more details, see their <a href=\"https://developers.facebook.com/docs/messenger-platform/guides/quick-start\">docs</a>.<script src=\"https://button.glitch.me/button.js\" data-style=\"glitch\"></script><div class=\"glitchButton\" style=\"position:fixed;top:20px;right:20px;\"></div></body></html>";
 var rest = require('restling');
-var rest = require('./restling');
 
 
 //var PythonShell = require('python-shell');
@@ -226,12 +225,12 @@ case "mar7aba":
 case "hii":
 case "hiii":
 case "yo":
-                  var answers = [ "Hello!",
+                  var answers1 = [ "Hello!",
 "Hey, hope everything is great!",
 "Ciao!", "Good day :)", "Hey Dude!" , "Hey :)", "Hello Hello Hello :D"];
 
-var index = Math.floor(Math.random() * answers.length);
-                    sendTextMessage(senderID,answers[index]);
+var index1 = Math.floor(Math.random() * answers.length);
+                    sendTextMessage(senderID,answers1[index1]);
                     break;
 
                 default:
