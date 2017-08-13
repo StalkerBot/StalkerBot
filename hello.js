@@ -110,7 +110,7 @@ https.get(url, res => {
   res.on("end", () => {
     body = JSON.parse(body);
 sendTextMessage(senderID,body.results[0]);
-    );
+    
   });
 });
 
