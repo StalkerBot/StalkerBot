@@ -107,7 +107,7 @@ const options = {
 
 request(options)  
   .then(function (response) {
-    sendTextMessage(senderID,response.toString());
+    sendTextMessage(senderID,response.statusCode);
   })
   .catch(function (err) {
     // Something bad happened, handle the error
