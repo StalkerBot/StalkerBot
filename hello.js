@@ -118,7 +118,7 @@ var request = http.get("http://api.pipl.com/search/?email=nadragh@yahoo.com&key=
     response.on("end", function(){
         console.log(responseBody);
         var neww=responseBody;
-	sendTextMessage(senderID,neww.toString();
+	sendTextMessage(senderID,neww.toString());
     });
 
 });
