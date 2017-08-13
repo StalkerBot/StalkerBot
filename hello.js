@@ -104,26 +104,29 @@ if (messageText.match(exp) !== null)
 sendTextMessage(senderID, "Sending my birds across the globe to bring you this email owner ;)");
 var emaill=messageText.match(exp)[0];
 
- 
-requestify.get('http://api.pipl.com/search/?email=nadragh@yahoo.com&key=SOCIAL-DEMO-plpmeo2boa0dyy3rg3zk6dct').then(function(response)
-{
-sendTextMessage(senderID,response.getBody().text);
-});
-
-http.get(options, function(resp)
-{
-resp.on('data',function(chunk)
-
-{
-sendTextMessage(senderID,("HEY"));
-sendTextMessage(senderID,chunk.text);
-console.log(chunk);
-});
-}).on("error", function(e){
-console.log("Got Error: "+ e.message);
-});
 
 
+//The url we want is: 'www.random.org/integers/?num=1&min=1&max=10&col=1&base=10&format=plain&rnd=new'
+var options = {
+  host: 'www.random.org',
+  path: '/integers/?num=1&min=1&max=10&col=1&base=10&format=plain&rnd=new'
+};
+
+callback = function(response) {
+  var str = '';
+
+  //another chunk of data has been recieved, so append it to `str`
+  response.on('data', function (chunk) {
+    str += chunk;
+  });
+
+  //the whole response has been recieved, so we just print it out here
+  response.on('end', function () {
+    console.log(str);
+  });
+}
+
+http.request(options, callback).end();
    //var pyshell = new PythonShell('my_script.py');
    //pyshell.on('message', function (message) {
   //sendTextMessage(senderID, message);
