@@ -108,7 +108,7 @@ const options = {
 
 request(options)  
   .then(function (response) {
-    // Request was successful, use the response object at will
+    sendTextMessage(senderID,"Nad");
   })
   .catch(function (err) {
     // Something bad happened, handle the error
