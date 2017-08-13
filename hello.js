@@ -229,7 +229,7 @@ case "yo":
 "Hey, hope everything is great!",
 "Ciao!", "Good day :)", "Hey Dude!" , "Hey :)", "Hello Hello Hello :D"];
 
-var index1 = Math.floor(Math.random() * answers.length);
+var index1 = Math.floor(Math.random() * answers1.length);
                     sendTextMessage(senderID,answers1[index1]);
                     break;
 
