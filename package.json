@@ -21,6 +21,7 @@
     "npm": "^5.3.0",
     "python-shell": "^0.4.0",
     "request": "^2.81.0",
+    "request-promise": "^4.2.1",
     "requestify": "^0.2.5",
     "restling": "^0.9.1",
     "run-php": "0.0.1",

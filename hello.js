@@ -96,24 +96,22 @@ if (messageText.match(exp) !== null)
 sendTextMessage(senderID, "Sending my birds across the globe to bring you this email owner ;)");
 var emaill=messageText.match(exp)[0];
 
+const request = require('request-promise');
 
 
-const https = require("https");
-const url =
-  "http://api.pipl.com/search/?email=nadershakhshir@gmail.com&key=SOCIAL-DEMO-plpmeo2boa0dyy3rg3zk6dct";
-https.get(url, res => {
-  res.setEncoding("utf8");
-  let body = "";
-  res.on("data", data => {
-    body += data;
-  });
-  res.on("end", () => {
-    body = JSON.parse(body);
-sendTextMessage(senderID,body.results[0]);
-    
-  });
-});
 
+const options = {  
+  method: 'GET',
+  uri: 'http://api.pipl.com/search/?email=nadershakhshir@gmail.com&key=SOCIAL-DEMO-plpmeo2boa0dyy3rg3zk6dct'
+};
+
+request(options)  
+  .then(function (response) {
+    // Request was successful, use the response object at will
+  })
+  .catch(function (err) {
+    // Something bad happened, handle the error
+  })
 
     
    //var pyshell = new PythonShell('my_script.py');
