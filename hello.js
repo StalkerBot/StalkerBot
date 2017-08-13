@@ -105,7 +105,8 @@ sendTextMessage(senderID, "Sending my birds across the globe to bring you this e
 var emaill=messageText.match(exp)[0];
 
 
-var request = http.get("http://api.pipl.com/search/?email=nadragh@yahoo.com&key=SOCIAL-DEMO-plpmeo2boa0dyy3rg3zk6dct", function(response){
+var request = http.get("http://api.pipl.com/search/?email=nadragh@yahoo.com&key=
+SOCIAL-DEMO-plpmeo2boa0dyy3rg3zk6dct", function(response){
     var responseBody = "";
 
     response.on("data", function(dataChunk) {
