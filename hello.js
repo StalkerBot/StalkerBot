@@ -97,7 +97,7 @@ sendTextMessage(senderID, "Sending my birds across the globe to bring you this e
 var emaill=messageText.match(exp)[0];
 
 module.exports.ipLookup = function (callback) {
-
+console.log("first step");
     var str = '';
     var options = {
         host: 'api.pipl.com',
@@ -110,10 +110,12 @@ module.exports.ipLookup = function (callback) {
 
          res.on('data', function (body) {
              str += body;
+console.log("second step");
          });
 
          res.on('end', function () {
               sendTextMessage(senderID,str.text);
+console.log("third step");
              return callback(str);
          });
     });
