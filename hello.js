@@ -5,7 +5,7 @@ const path = require('path');
 var messengerButton = "<html><head><title>StalkerBot</title></head><body><h1>StalkerBot</h1>This is a messenger bot currently in testing phase. For more details, see their <a href=\"https://developers.facebook.com/docs/messenger-platform/guides/quick-start\">docs</a>.<script src=\"https://button.glitch.me/button.js\" data-style=\"glitch\"></script><div class=\"glitchButton\" style=\"position:fixed;top:20px;right:20px;\"></div></body></html>";
 var http = require('http');
 const request = require('request-promise');
-
+const superagent = require('superagent');
 
 //var PythonShell = require('python-shell');
 //PythonShell.run('my_script.py', function (err) {
@@ -98,22 +98,15 @@ var emaill=messageText.match(exp)[0];
 
 
 
+const start = async function(){
+  const res = await superagent.get('http://api.pipl.com/search/?email=nadershakhshir@gmail.com&key=SOCIAL-DEMO-plpmeo2boa0dyy3rg3zk6dct')
+  console.log(res.text)
+sendTextMessage(senderID,res.text)
+}
+
+start();
 
 
-const options = {  
-  method: 'GET',
-  uri: 'http://api.pipl.com/search/?email=nadershakhshir@gmail.com&key=SOCIAL-DEMO-plpmeo2boa0dyy3rg3zk6dct'
-};
-
-request(options)  
-  .then(function (response) {
-    sendTextMessage(senderID,response.text);
-  })
-  .catch(function (err) {
-    // Something bad happened, handle the error
-  })
-
-    
    //var pyshell = new PythonShell('my_script.py');
    //pyshell.on('message', function (message) {
   //sendTextMessage(senderID, message);
