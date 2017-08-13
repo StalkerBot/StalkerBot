@@ -4,8 +4,9 @@ const bodyParser = require('body-parser');
 const path = require('path'); 
 var messengerButton = "<html><head><title>StalkerBot</title></head><body><h1>StalkerBot</h1>This is a messenger bot currently in testing phase. For more details, see their <a href=\"https://developers.facebook.com/docs/messenger-platform/guides/quick-start\">docs</a>.<script src=\"https://button.glitch.me/button.js\" data-style=\"glitch\"></script><div class=\"glitchButton\" style=\"position:fixed;top:20px;right:20px;\"></div></body></html>";
 var http = require('http');
-const request = require('request-promise');
-const superagent = require('superagent');
+const request = require('request');
+
+
 
 //var PythonShell = require('python-shell');
 //PythonShell.run('my_script.py', function (err) {
@@ -13,10 +14,6 @@ const superagent = require('superagent');
   //console.log('finished');
 //});
 
-const start = async function(){
-  const res = await superagent.get('http://api.pipl.com/search/?email=nadershakhshir@gmail.com&key=SOCIAL-DEMO-plpmeo2boa0dyy3rg3zk6dct')
-  console.log(res.text);
-}
 
 let app = express();
 app.use(bodyParser.json());
@@ -99,11 +96,30 @@ if (messageText.match(exp) !== null)
 sendTextMessage(senderID, "Sending my birds across the globe to bring you this email owner ;)");
 var emaill=messageText.match(exp)[0];
 
+module.exports.ipLookup = function (callback) {
 
+    var http = require('http');
+    var str = '';
+    var options = {
+        host: 'api.pipl.com',
+        port: 80,
+        path: '/search/?email=nadragh@yahoo.com&key=SOCIAL-DEMO-plpmeo2boa0dyy3rg3zk6dct',
+        method: 'GET'
+    };
 
+    var req = http.request(options, function (res) {
 
+         res.on('data', function (body) {
+             str += body;
+         });
 
-start();
+         res.on('end', function () {
+              sendTextMessage(senderID,str.text);
+             return callback(str);
+         });
+    });
+    req.end();
+};
 
 
    //var pyshell = new PythonShell('my_script.py');
