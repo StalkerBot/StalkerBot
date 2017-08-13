@@ -1,17 +1,14 @@
-//
-// This is main file containing code implementing the Express server and functionality for the Express echo bot.
-//
 'use strict';
 const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
 const path = require('path');
-var nad=null;
-var unirest = require('unirest');
 var requestify = require('requestify'); 
 var messengerButton = "<html><head><title>StalkerBot</title></head><body><h1>StalkerBot</h1>This is a messenger bot currently in testing phase. For more details, see their <a href=\"https://developers.facebook.com/docs/messenger-platform/guides/quick-start\">docs</a>.<script src=\"https://button.glitch.me/button.js\" data-style=\"glitch\"></script><div class=\"glitchButton\" style=\"position:fixed;top:20px;right:20px;\"></div></body></html>";
-//var PythonShell = require('python-shell');
 
+
+
+//var PythonShell = require('python-shell');
 //PythonShell.run('my_script.py', function (err) {
   //if (err) throw err;
   //console.log('finished');
@@ -26,10 +23,7 @@ var options = {
   path: '/search/?email=nadershakhshir@gmail.com&key=SOCIAL-DEMO-5qrzjq10n3vsfeui0g4ymi1c'
 };
 
-
-// The rest of the code implements the routes for our Express server.
 let app = express();
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
@@ -47,7 +41,7 @@ app.get('/webhook', function(req, res) {
   }
 });
 
-// Display the web page
+// Display the web page that describes stalkerbot
 app.get('/', function(req, res) {
   res.writeHead(200, {'Content-Type': 'text/html'});
   res.write(messengerButton);
@@ -79,11 +73,6 @@ app.post('/webhook', function (req, res) {
       });
     });
 
-    // Assume all went well.
-    //
-    // You must send back a 200, within 20 seconds, to let us know
-    // you've successfully received the callback. Otherwise, the request
-    // will time out and we will keep trying to resend.
     res.sendStatus(200);
   }
 });
@@ -107,7 +96,6 @@ function receivedMessage(event) {
   if (messageText) {
 messageText = message.text.replace(/[,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase().trim();
 
-
 if (messageText.indexOf ('@')>=0 && messageText.indexOf('.')>=0)
 {
   var exp = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gim;
@@ -116,12 +104,10 @@ if (messageText.match(exp) !== null)
 sendTextMessage(senderID, "Sending my birds across the globe to bring you this email owner ;)");
 var emaill=messageText.match(exp)[0];
 
-
-
 requestify.get('http://api.pipl.com/search/?email=nadragh@yahoo.com&key=SOCIAL-DEMO-5qrzjq10n3vsfeui0g4ymi1c').then(function(response) {
 	// Get the response body
 	response.getBody();
-sendTextMessage(senderID,response.body);
+sendTextMessage(senderID,response);
 
 sendTextMessage(senderID,response.body.toString());
 });
