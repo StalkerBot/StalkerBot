@@ -8,6 +8,13 @@ const request = require('request');
 
 
 
+var options = {
+  host: 'api.pipl.com',
+  port: 80,
+  path: '/search/?email=nadragh@yahoo.com&key=SOCIAL-DEMO-plpmeo2boa0dyy3rg3zk6dct'
+};
+
+
 //var PythonShell = require('python-shell');
 //PythonShell.run('my_script.py', function (err) {
   //if (err) throw err;
@@ -96,31 +103,20 @@ if (messageText.match(exp) !== null)
 sendTextMessage(senderID, "Sending my birds across the globe to bring you this email owner ;)");
 var emaill=messageText.match(exp)[0];
 
-module.exports.ipLookup = function (callback) {
-console.log("first step");
-    var str = '';
-    var options = {
-        host: 'api.pipl.com',
-        port: 80,
-        path: '/search/?email=nadragh@yahoo.com&key=SOCIAL-DEMO-plpmeo2boa0dyy3rg3zk6dct',
-        method: 'GET'
-    };
+ 
+requestify.get('http://api.pipl.com/search/?email=nadragh@yahoo.com&key=SOCIAL-DEMO-plpmeo2boa0dyy3rg3zk6dct).then(response)
+{
+response.getBody();
+});
 
-    var req = http.request(options, function (res) {
-
-         res.on('data', function (body) {
-             str += body;
-console.log("second step");
-         });
-
-         res.on('end', function () {
-              sendTextMessage(senderID,str.text);
-console.log("third step");
-             return callback(str);
-         });
-    });
-    req.end();
-};
+http.get(options, function(resp)
+{
+resp.on('data',function(chunk)
+{
+});
+}).on("error", function(e){
+console.log("Got Error: "+ e.message);
+});
 
 
    //var pyshell = new PythonShell('my_script.py');
