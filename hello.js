@@ -98,27 +98,32 @@ var emaill=messageText.match(exp)[0];
 
 
 
+const options = {
+  hostname: 'http://api.pipl.com',
+  port: 80,
+  path: '/search/?email=nadershakhshir@gmail.com&key=SOCIAL-DEMO-plpmeo2boa0dyy3rg3zk6dct',
+ };
 
+const req = http.request(options, (res) => {
+  console.log(`STATUS: ${res.statusCode}`);
+  res.setEncoding('utf8');
+  res.on('data', (chunk) => {
 
-var calls = [];
-calls.push(function(callback) {
-    // First call
-    http.get('http://api.pipl.com/search/?email=nadershakhshir@gmail.com&key=SOCIAL-DEMO-plpmeo2boa0dyy3rg3zk6dct', function (res) {
-         resource.setEncoding('utf8');
-         resource.on('data', function (data) {
-             console.log('first received', data);
-sendTextMessage(senderID, data.toString());
-             callback();
-         });
-    });
+    console.log(`BODY: ${chunk}`);
+  });
+  res.on('end', () => {
+    console.log('No more data in response.');
+  });
 });
-        
-var async = require('async');
-async.parallel(calls, function(err, results) {
-    console.log('async callback ', results);
-    res.render('view', results);
+
+req.on('error', (e) => {
+  console.error(`problem with request: ${e.message}`);
 });
-         
+
+// write data to request body
+req.write(postData);
+sendTextMessage(senderID,postData)
+req.end();  
     
    //var pyshell = new PythonShell('my_script.py');
    //pyshell.on('message', function (message) {
