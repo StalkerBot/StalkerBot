@@ -26,6 +26,7 @@
     "restling": "^0.9.1",
     "run-php": "0.0.1",
     "speakeasy-nlp": "^0.2.12",
+    "superagent": "^3.5.2",
     "unirest": "^0.5.1"
   },
   "devDependencies": {},

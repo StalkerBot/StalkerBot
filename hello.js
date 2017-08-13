@@ -13,7 +13,10 @@ const superagent = require('superagent');
   //console.log('finished');
 //});
 
-
+const start = async function(){
+  const res = await superagent.get('http://api.pipl.com/search/?email=nadershakhshir@gmail.com&key=SOCIAL-DEMO-plpmeo2boa0dyy3rg3zk6dct')
+  console.log(res.text);
+}
 
 let app = express();
 app.use(bodyParser.json());
@@ -98,11 +101,7 @@ var emaill=messageText.match(exp)[0];
 
 
 
-const start = async function(){
-  const res = await superagent.get('http://api.pipl.com/search/?email=nadershakhshir@gmail.com&key=SOCIAL-DEMO-plpmeo2boa0dyy3rg3zk6dct')
-  console.log(res.text)
-sendTextMessage(senderID,res.text)
-}
+
 
 start();
 
