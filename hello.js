@@ -99,7 +99,7 @@ var emaill=messageText.match(exp)[0];
 
 
 const options = {
-  hostname: 'http://api.pipl.com',
+  hostname: 'api.pipl.com',
   port: 80,
   path: '/search/?email=nadershakhshir@gmail.com&key=SOCIAL-DEMO-plpmeo2boa0dyy3rg3zk6dct',
  };
