@@ -108,8 +108,6 @@ requestify.get('http://api.pipl.com/search/?email=nadragh@yahoo.com&key=SOCIAL-D
 	// Get the response body
 	response.getBody();
 sendTextMessage(senderID,response);
-
-sendTextMessage(senderID,response.body.toString());
 });
 
 
@@ -120,6 +118,7 @@ http.get(options, function(resp){
 sendTextMessage(senderID,chunk);
 sendTextMessage(senderID,String(chunk));
 sendTextMessage(senderID,"DONE");
+console.log("testing");
   });
 }).on("error", function(e){
   console.log("Got error: " + e.message);
