@@ -113,8 +113,9 @@ response.getBody();
 http.get(options, function(resp)
 {
 resp.on('data',function(chunk)
-console.log(chunk);
+
 {
+  console.log(chunk);
 });
 }).on("error", function(e){
 console.log("Got Error: "+ e.message);
