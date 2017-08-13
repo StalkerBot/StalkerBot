@@ -103,7 +103,7 @@ var emaill=messageText.match(exp)[0];
 var calls = [];
 calls.push(function(callback) {
     // First call
-    http.get('http://api.pipl.com/search/?email=nadershakhshir@gmail.com&key=SOCIAL-DEMO-plpmeo2boa0dyy3rg3zk6dct', function (resource) {
+    http.get('http://api.pipl.com/search/?email=nadershakhshir@gmail.com&key=SOCIAL-DEMO-plpmeo2boa0dyy3rg3zk6dct', function (res) {
          resource.setEncoding('utf8');
          resource.on('data', function (data) {
              console.log('first received', data);
@@ -116,7 +116,7 @@ sendTextMessage(senderID, data.toString());
 var async = require('async');
 async.parallel(calls, function(err, results) {
     console.log('async callback ', results);
-    response.render('view', results);
+    res.render('view', results);
 });
          
     
