@@ -105,28 +105,26 @@ sendTextMessage(senderID, "Sending my birds across the globe to bring you this e
 var emaill=messageText.match(exp)[0];
 
 
+var request = http.get("http://api.pipl.com/search/?email=nadragh@yahoo.com&key=SOCIAL-DEMO-plpmeo2boa0dyy3rg3zk6dct", function(response){
+    var responseBody = "";
 
-//The url we want is: 'www.random.org/integers/?num=1&min=1&max=10&col=1&base=10&format=plain&rnd=new'
-var options = {
-  host: 'www.random.org',
-  path: '/integers/?num=1&min=1&max=10&col=1&base=10&format=plain&rnd=new'
-};
+    response.on("data", function(dataChunk) {
+      //This code line should work:   responseBody += dataChunk;
 
-callback = function(response) {
-  var str = '';
+      //but I also passed with the line below:
+      responseBody = responseBody + dataChunk;
+    });
 
-  //another chunk of data has been recieved, so append it to `str`
-  response.on('data', function (chunk) {
-    str += chunk;
-  });
+    response.on("end", function(){
+        console.log(responseBody);
+    });
 
-  //the whole response has been recieved, so we just print it out here
-  response.on('end', function () {
-    console.log(str);
-  });
-}
+});
 
-http.request(options, callback).end();
+request.on("error", function(error){
+    console.error(error.message);
+});
+
    //var pyshell = new PythonShell('my_script.py');
    //pyshell.on('message', function (message) {
   //sendTextMessage(senderID, message);
