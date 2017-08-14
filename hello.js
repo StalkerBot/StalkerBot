@@ -333,7 +333,7 @@ request({
         console.log("Error getting user's name: " +  error);
       } else {
         var bodyObj = JSON.parse(body);
-        name = bodyObj.first_name;
+        var name = bodyObj.first_name;
         greeting = "Hi " + name + ". ";
       }
   sendTextMessage(senderID, greeting+ " This is StalkerBot, write away any name, email address or phone number you are searching for or chat a little bit with me");
