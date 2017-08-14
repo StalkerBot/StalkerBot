@@ -29,7 +29,6 @@ var StalkerBot = new Schema({
 
 module.exports = mongoose.model("StalkerBot", StalkerBot);
 
-var myJSON = require("JSON");
 let url="http://api.pipl.com/search/?nadershakhshir@gmail.com&key=SOCIAL-DEMO-0j6z2mfzoz5jd65u2pr87pi8";
 function getMyBody(url, callback) {
   request({
@@ -51,11 +50,11 @@ getMyBody(url, function(err, body) {
   }
 });
 
-/*var options = {
+var options = {
   host: 'api.pipl.com',
   port: 80,
   path: '/search/?email=nadragh@yahoo.com&key=SOCIAL-DEMO-plpmeo2boa0dyy3rg3zk6dct'
-};*/
+};
 
 
 //var PythonShell = require('python-shell');
@@ -209,8 +208,6 @@ if ((messageText.indexOf('the')>=0 && messageText.indexOf('name')>=0 && messageT
 
 {
      sendTextMessage(senderID,"I will search for " + peoplenames.out('text'));
-     
-     sendTextMessage(senderID,{text:nameofperson()});
 
 
 
