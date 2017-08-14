@@ -6,6 +6,7 @@ var messengerButton = "<html><head><title>StalkerBot</title></head><body><h1>Sta
 var http = require('http');
 const request = require('request');
 var requestify = require('requestify'); 
+var nlp = require('compromise')
 
 
 
@@ -118,7 +119,7 @@ var request = http.get("http://api.pipl.com/search/?email=nadragh@yahoo.com&key=
     response.on("end", function(){
         console.log(responseBody);
         var neww=responseBody.email;
-	sendTextMessage(senderID,neww);
+	sendTextMessage(senderID,neww('text'));
     });
 
 });
