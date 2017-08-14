@@ -97,6 +97,9 @@ function receivedMessage(event) {
   if (messageText) {
 messageText = message.text.replace(/[,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase().trim();
 
+
+
+
 if (messageText.indexOf ('@')>=0 && messageText.indexOf('.')>=0)
 {
   var exp = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gim;
@@ -246,8 +249,10 @@ var index1 = Math.floor(Math.random() * answers1.length);
                 //sendTextMessage(senderID,person(messageText));
                 //sendTextMessage(senderID,numbers (messageText));
                
-
-
+var r = nlp(messageText);
+var p=r.people();
+p.normalize();
+sendTextMessage(senderID,"the people in your text are" + p.out('text'));
 break;
     }
   } else if (messageAttachments) {
