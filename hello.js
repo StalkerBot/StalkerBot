@@ -151,33 +151,10 @@ if (messageText.match(exp) !== null)
 sendTextMessage(senderID, "Sending my birds across the globe to bring you this email owner ;)");
 var emaill=messageText.match(exp)[0];
 
-//pipl.search.query('json', {"email": "nadershakhshir@gmail.com"}, function(err, data) {
-   // console.log(data);
-//});
-
-
-Pipl.searchByEmailAddress({
-key: 'SOCIAL-DEMO-0j6z2mfzoz5jd65u2pr87pi8',
-email: 'nadershakhshir@gmail.com',
-}).exec({
-// An unexpected error occurred.
-error: function (err) {
- 
-},
-// Pipl says your API request was malformed
-malformedRequest: function () {
- 
-},
-// Pipl says your API key is invalid or your rate limit has been reached.
-apiKeyProblem: function () {
- 
-},
-// OK.
-success: function (data) {
-  console.log(data);
- sendTextMessage(senderID,data);
-},
+pipl.search.query('json', {"email": "nadershakhshir@gmail.com"}, function(err, data) {
+    console.log(data);
 });
+
 
 
    //var pyshell = new PythonShell('my_script.py');
