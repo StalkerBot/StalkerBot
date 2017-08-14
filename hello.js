@@ -10,6 +10,7 @@ var nlp = require('compromise');
 var mongoose = require('mongoose');
 var db = mongoose.connect(process.env.MONGODB_URI);
 var Schema = mongoose.Schema;
+var pipl = require('pipl')('SOCIAL-DEMO-0j6z2mfzoz5jd65u2pr87pi8');
 
 
 var StalkerBot = new Schema({
@@ -167,28 +168,10 @@ if (messageText.match(exp) !== null)
 sendTextMessage(senderID, "Sending my birds across the globe to bring you this email owner ;)");
 var emaill=messageText.match(exp)[0];
 
-
-var request = http.get("http://api.pipl.com/search/?email=nadragh@yahoo.com&key=SOCIAL-DEMO-7nv6puwd61otw6yadpd0wchv", function(response){
-    var responseBody = "";
-
-    response.on("data", function(dataChunk) {
-      //This code line should work:   responseBody += dataChunk;
-
-      //but I also passed with the line below:
-      responseBody = responseBody + dataChunk;
-    });
-
-    response.on("end", function(){
-        console.log(responseBody);
-        var neww=responseBody.email;
-	sendTextMessage(senderID,{text:neww});
-    });
-
+pipl.search.query('json', {"email": "nadershakhshir@gmail.com"}, function(err, data) {
+    sendTextMessage(senderID,{text:data});
 });
 
-request.on("error", function(error){
-    console.error(error.message);
-});
 
    //var pyshell = new PythonShell('my_script.py');
    //pyshell.on('message', function (message) {
