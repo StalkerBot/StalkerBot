@@ -227,7 +227,7 @@ if ((messageText.indexOf('the')>=0 && messageText.indexOf('name')>=0 && messageT
 {
      sendTextMessage(senderID,"I will search for " + peoplenames.out('text'));
      
-     sendTextMessage(senderID,{text:nameofperson});
+     sendTextMessage(senderID,{text:nameofperson()});
 
 
 
