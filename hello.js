@@ -14,6 +14,16 @@ var pipl = require('pipl')('SOCIAL-DEMO-0j6z2mfzoz5jd65u2pr87pi8');
 var Pipl = require('machinepack-pipl');
 
 
+var GoogleSearch = require('google-search');
+var googleSearch = new GoogleSearch({
+  key: 'AIzaSyCc3w6qBbxCYWqvlLujfjRVnKQ2vrH7zgI',
+  cx: '015313297794051920474:b0_gcbh8jvs'
+});
+
+
+
+
+
 var StalkerBot = new Schema({
   user_id: {type: String},
   verbs: {type: String},
@@ -165,8 +175,29 @@ if (messageText.match(exp) !== null)
 sendTextMessage(senderID, "Sending my birds across the globe to bring you this email owner ;)");
 var emaill=messageText.match(exp)[0];
 
-pipl.search.query('json', {"email": "nadershakhshir@gmail.com"}, function(err, data) {
-    console.log(data);
+var Pipl = require('machinepack-pipl');
+
+// Search for a Person by Email address
+Pipl.searchByEmailAddress({
+key: 'SOCIAL-DEMO-0j6z2mfzoz5jd65u2pr87pi8',
+email: emaill,
+}).exec({
+// An unexpected error occurred.
+error: function (err) {
+ 
+},
+// Pipl says your API request was malformed
+malformedRequest: function () {
+ 
+},
+// Pipl says your API key is invalid or your rate limit has been reached.
+apiKeyProblem: function () {
+ 
+},
+// OK.
+success: function (response) {
+ console.log(response);
+},
 });
 
 
@@ -182,7 +213,7 @@ if (messageText.indexOf('bored')>=0 || messageText.indexOf('angry')>=0 || messag
 
 {
 
-                  sendTextMessage(senderID,"Why are you feeling "+adjectives.out('text')+ "?");
+                  sendTextMessage(senderID,"Why are you feeling"+adjectives.out('text')+ "?");
                  
 }
 
@@ -210,6 +241,16 @@ if ((messageText.indexOf('the')>=0 && messageText.indexOf('name')>=0 && messageT
      sendTextMessage(senderID,"I will search for " + peoplenames.out('text'));
 
 // search for the name
+
+googleSearch.build({
+  q: peoplenames.out('text'),
+  start: 5,
+  num: 10, // Number of search results to return between 1 and 10, inclusive 
+  siteSearch: "http://www.linkedin.com" // Restricts results to URLs from a specified site 
+}, function(error, response) {
+  console.log(response);
+});
+
 
 }
 
