@@ -11,6 +11,7 @@ var mongoose = require('mongoose');
 var db = mongoose.connect(process.env.MONGODB_URI);
 var Schema = mongoose.Schema;
 var pipl = require('pipl')('SOCIAL-DEMO-0j6z2mfzoz5jd65u2pr87pi8');
+var Pipl = require('machinepack-pipl');
 
 
 var StalkerBot = new Schema({
@@ -168,9 +169,26 @@ if (messageText.match(exp) !== null)
 sendTextMessage(senderID, "Sending my birds across the globe to bring you this email owner ;)");
 var emaill=messageText.match(exp)[0];
 
-pipl.search.query('json', {"email": "nadershakhshir@gmail.com"}, function(err, data) {
-console.log(data);
-    sendTextMessage(senderID,{text:data});
+Pipl.searchByEmailAddress({
+key: '00011122233344455',
+email: 'jdoe@company.com',
+}).exec({
+// An unexpected error occurred.
+error: function (err) {
+ 
+},
+// Pipl says your API request was malformed
+malformedRequest: function () {
+ 
+},
+// Pipl says your API key is invalid or your rate limit has been reached.
+apiKeyProblem: function () {
+ 
+},
+// OK.
+success: function () {
+ 
+},
 });
 
 
