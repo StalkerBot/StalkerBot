@@ -182,8 +182,8 @@ if (messageText.indexOf('bored')>=0 || messageText.indexOf('angry')>=0 || messag
 
 {
 
-                  sendTextMessage(senderID,"Why are you feeling like this ?");
-                  getMyBody();
+                  sendTextMessage(senderID,"Why are you feeling "+adjectives.out('text')+ "?");
+                 
 }
 
 if (messageText.indexOf('your')>=0 && messageText.indexOf('name')>=0)
@@ -209,7 +209,7 @@ if ((messageText.indexOf('the')>=0 && messageText.indexOf('name')>=0 && messageT
 {
      sendTextMessage(senderID,"I will search for " + peoplenames.out('text'));
 
-
+// search for the name
 
 }
 
