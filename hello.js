@@ -127,7 +127,6 @@ var adverbs=r.adverbs();
 var questions=r.questions();
 var verbs=r.verbs();
 
-sendTextMessage(senderID,"the people in your text are" + peoplenames.out('text'));
 
 
 
@@ -196,10 +195,22 @@ var index = Math.floor(Math.random() * answers.length);
 if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messageText.indexOf('stalk')>=0) && messageText.indexOf('name')>=0)
 
 {
-                  sendTextMessage(senderID,"Go on, tell me the name you want to stalk, and i will do the rest ;)");
+                  sendTextMessage(senderID,"Go on, tell me the name you want to stalk by writing, begin with: the name is, and i will do the rest ;)   ");
 
-// here we have to wait for the name and then send the user the name and search for them.
+
 }
+if ((messageText.indexOf('the')>=0 && messageText.indexOf('name')>=0 && messageText.indexOf('is')>=0))
+
+{
+     sendTextMessage(senderID,"I will search for " + peoplenames.out('text'));          
+}
+
+if ((messageText.indexOf('the')>=0 && messageText.indexOf('number')>=0 && messageText.indexOf('is')>=0))
+
+{
+     sendTextMessage(senderID,"I will search for " + phonenumbers.out('text'));          
+}
+
 
 if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messageText.indexOf('stalk')>=0) && messageText.indexOf('email')>=0)
 
@@ -210,7 +221,7 @@ if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messa
 if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messageText.indexOf('stalk')>=0) && (messageText.indexOf('number')>=0 || messageText.indexOf('phone')>=0))
 
 {
-                  sendTextMessage(senderID,"Go on, tell me the phone number you want to stalk, and i will do the rest ;)");
+                  sendTextMessage(senderID,"Go on, tell me the phone number you want to stalk, begin with: the name is, and i will do the rest ;)");
 }
 
 if ((messageText.indexOf('sleep')>=0 || messageText.indexOf('sleepy')>=0 || messageText.indexOf('tired')>=0) && messageText.indexOf('i am')>=0)
@@ -405,4 +416,63 @@ function person(txt)
 	var r = txt.match(exp);
 	///p (.*?) /gi
 	return r[1];
+
+
+}
+
+function findperson(userId, messageText) {
+    request("http://api.pipl.com...." + messageText, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            var personObj = JSON.parse(body);
+            if (personObj.Response === "True") {
+                var query = {user_id: userId};
+                var update = {
+                    user_id: userId,
+                    First_name: personObj.First_name,
+                    Last_name: personObj.Last_name,
+                    Location: personObj.Location,
+                    Age: personObj.Age,
+                    Image: personObj.Image,
+                    PhoneNumber: personObj.PhoneNumber,
+                    Email: personObj.Email,
+                    Social_Profiles:personObj.Social_Profiles
+                };
+                var options = {upsert: true};
+                StalkerBot.findOneAndUpdate(query, update, options, function(err, mov) {
+                    if (err) {
+                        console.log("Database error: " + err);
+                    } else {
+                        messageText = {
+                            attachment: {
+                                type: "template",
+                                payload: {
+                                    template_type: "generic",
+                                    elements: [{
+                                        title: personObj.Title,
+                                        subtitle: "Is this the person you are looking for?",
+                                        image_url: personObj.Image === "N/A" ? "http://placehold.it/350x150" : personObj.Image,
+                                        buttons: [{
+                                            type: "postback",
+                                            title: "Yes",
+                                            payload: "Correct"
+                                        }, {
+                                            type: "postback",
+                                            title: "No",
+                                            payload: "Incorrect"
+                                        }]
+                                    }]
+                                }
+                            }
+                        };
+                        sendTextMessage(userId, messageText);
+                    }
+                });
+            } else {
+                console.log(personObj.Error);
+                sendTextMessage(userId, {text: personObj.Error});
+            }
+        } else {
+            sendTextMessage(userId, {text: "Something went wrong. Try again."});
+        }
+    });
 }
