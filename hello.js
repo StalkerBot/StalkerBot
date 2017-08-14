@@ -29,12 +29,27 @@ var StalkerBot = new Schema({
 
 module.exports = mongoose.model("StalkerBot", StalkerBot);
 
-function nameofperson()
-{
-
-
-
+var myJSON = require("JSON");
+let url="http://api.pipl.com/search/?nadershakhshir@gmail.com&key=SOCIAL-DEMO-0j6z2mfzoz5jd65u2pr87pi8";
+function getMyBody(url, callback) {
+  request({
+    url: url,
+    json: true
+  }, function (error, response, body) {
+    if (error || response.statusCode !== 200) {
+      return callback(error || {statusCode: response.statusCode});
+    }
+    callback(null, JSON.parse(body));  
+  });
 }
+
+getMyBody(url, function(err, body) {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log(body); 
+  }
+});
 
 /*var options = {
   host: 'api.pipl.com',
@@ -169,6 +184,7 @@ if (messageText.indexOf('bored')>=0 || messageText.indexOf('angry')>=0 || messag
 {
 
                   sendTextMessage(senderID,"Why are you feeling like this ?");
+                  getMyBody();
 }
 
 if (messageText.indexOf('your')>=0 && messageText.indexOf('name')>=0)
