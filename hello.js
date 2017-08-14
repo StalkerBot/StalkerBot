@@ -169,6 +169,7 @@ sendTextMessage(senderID, "Sending my birds across the globe to bring you this e
 var emaill=messageText.match(exp)[0];
 
 pipl.search.query('json', {"email": "nadershakhshir@gmail.com"}, function(err, data) {
+console.log(data);
     sendTextMessage(senderID,{text:data});
 });
 
