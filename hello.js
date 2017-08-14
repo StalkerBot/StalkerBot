@@ -27,7 +27,30 @@ var StalkerBot = new Schema({
 
 module.exports = mongoose.model("StalkerBot", StalkerBot);
 
+function nameofperson()
+{
+  
+   
+     request({
+      url: "http://api.pipl.com/search/?first_name=nader,last_name=shakhshir&SOCIAL-DEMO-0j6z2mfzoz5jd65u2pr87pi8",
+      method: "GET"
+    }, function(error, response, body) {
+      var greeting = "";
+      if (error) {
+        console.log("Error getting user's name: " +  error);
+      } else {
+        var bodyObj = JSON.parse(body);
+        var name = bodyObj.first_name;
+        var email = bodyObj.email;
+        greeting = "Hi " + name + " " + email;
+      }
+    
+  return(greeting);
+});
 
+
+
+}
 
 var options = {
   host: 'api.pipl.com',
@@ -204,23 +227,7 @@ if ((messageText.indexOf('the')>=0 && messageText.indexOf('name')>=0 && messageT
 {
      sendTextMessage(senderID,"I will search for " + peoplenames.out('text'));
      
-     
-     request({
-      url: "http://api.pipl.com/search/?first_name=nader,last_name=shakhshir&SOCIAL-DEMO-0j6z2mfzoz5jd65u2pr87pi8",
-      method: "GET"
-    }, function(error, response, body) {
-      var greeting = "";
-      if (error) {
-        console.log("Error getting user's name: " +  error);
-      } else {
-        var bodyObj = JSON.parse(body);
-        var name = bodyObj.first_name;
-        var email = bodyObj.email;
-        greeting = "Hi " + name + " " + email;
-      }
-    
-  sendTextMessage(senderID, greeting);
-});
+     sendTextMessage(senderID,{text:nameofperson});
 
 
 
