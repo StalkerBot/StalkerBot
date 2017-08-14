@@ -8,7 +8,7 @@ const request = require('request');
 var requestify = require('requestify'); 
 var nlp = require('compromise');
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
+//mongoose.connect('mongodb://localhost/test');
 var Schema = mongoose.Schema;
 
 
@@ -159,7 +159,7 @@ var request = http.get("http://api.pipl.com/search/?email=nadragh@yahoo.com&key=
     response.on("end", function(){
         console.log(responseBody);
         var neww=responseBody.email;
-	sendTextMessage(senderID,neww('text'));
+	sendTextMessage(senderID,{text:neww});
     });
 
 });
