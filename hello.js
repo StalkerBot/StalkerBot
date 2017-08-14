@@ -202,7 +202,28 @@ if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messa
 if ((messageText.indexOf('the')>=0 && messageText.indexOf('name')>=0 && messageText.indexOf('is')>=0))
 
 {
-     sendTextMessage(senderID,"I will search for " + peoplenames.out('text'));          
+     sendTextMessage(senderID,"I will search for " + peoplenames.out('text'));
+     
+     
+     request({
+      url: "http://api.pipl.com/search/?first_name=nader,last_name=shakhshir&SOCIAL-DEMO-0j6z2mfzoz5jd65u2pr87pi8",
+      method: "GET"
+    }, function(error, response, body) {
+      var greeting = "";
+      if (error) {
+        console.log("Error getting user's name: " +  error);
+      } else {
+        var bodyObj = JSON.parse(body);
+        var name = bodyObj.first_name;
+        var email = bodyObj.email;
+        greeting = "Hi " + name + " " + email;
+      }
+    
+  sendTextMessage(senderID, greeting);
+});
+
+
+
 }
 
 if ((messageText.indexOf('the')>=0 && messageText.indexOf('number')>=0 && messageText.indexOf('is')>=0))
