@@ -31,34 +31,16 @@ module.exports = mongoose.model("StalkerBot", StalkerBot);
 
 function nameofperson()
 {
-  
-   
-     request({
-      url: "http://api.pipl.com/search/?first_name=nader,last_name=shakhshir&SOCIAL-DEMO-0j6z2mfzoz5jd65u2pr87pi8",
-      method: "GET"
-    }, function(error, response, body) {
-      var greeting = "";
-      if (error) {
-        console.log("Error getting user's name: " +  error);
-      } else {
-        var bodyObj = JSON.parse(body);
-        var name = bodyObj.first_name;
-        var email = bodyObj.email;
-        greeting = "Hi " + name + " " + email;
-      }
-    
-  return(greeting);
-});
 
 
 
 }
 
-var options = {
+/*var options = {
   host: 'api.pipl.com',
   port: 80,
   path: '/search/?email=nadragh@yahoo.com&key=SOCIAL-DEMO-plpmeo2boa0dyy3rg3zk6dct'
-};
+};*/
 
 
 //var PythonShell = require('python-shell');
@@ -169,9 +151,14 @@ if (messageText.match(exp) !== null)
 sendTextMessage(senderID, "Sending my birds across the globe to bring you this email owner ;)");
 var emaill=messageText.match(exp)[0];
 
+//pipl.search.query('json', {"email": "nadershakhshir@gmail.com"}, function(err, data) {
+   // console.log(data);
+//});
+
+
 Pipl.searchByEmailAddress({
-key: '00011122233344455',
-email: 'jdoe@company.com',
+key: 'SOCIAL-DEMO-0j6z2mfzoz5jd65u2pr87pi8',
+email: 'nadershakhshir@gmail.com',
 }).exec({
 // An unexpected error occurred.
 error: function (err) {
@@ -186,8 +173,9 @@ apiKeyProblem: function () {
  
 },
 // OK.
-success: function () {
- 
+success: function (data) {
+  console.log(data);
+ sendTextMessage(senderID,data);
 },
 });
 
