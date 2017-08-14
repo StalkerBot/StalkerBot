@@ -6,7 +6,26 @@ var messengerButton = "<html><head><title>StalkerBot</title></head><body><h1>Sta
 var http = require('http');
 const request = require('request');
 var requestify = require('requestify'); 
-var nlp = require('compromise')
+var nlp = require('compromise');
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/test');
+var Schema = mongoose.Schema;
+
+
+var StalkerBot = new Schema({
+  user_id: {type: String},
+  verbs: {type: String},
+  nouns: {type: String},
+  names: {type: String},
+  places: {type: String},
+  adverbs: {type: String},
+  peoplenames: {type: String},
+  phonenumbers: {type: String},
+  questions: {type: String}
+});
+
+
+module.exports = mongoose.model("StalkerBot", StalkerBot);
 
 
 
@@ -97,9 +116,21 @@ function receivedMessage(event) {
   if (messageText) {
 
 var r = nlp(messageText);
-var p=r.people();
-p.normalize();
-sendTextMessage(senderID,"the people in your text are" + p.out('text'));
+var peoplenames=r.people();
+var places = r.places();
+var nouns = r.nouns();
+var adjectives =r.adjectives();
+var hashtag =r.hashtags();
+var phonenumbers= r.phoneNumbers();
+var infinitive=r.verbs().toInfinitive();
+var adverbs=r.adverbs();
+var questions=r.questions();
+var verbs=r.verbs();
+
+sendTextMessage(senderID,"the people in your text are" + peoplenames.out('text'));
+
+
+
 
 messageText = message.text.replace(/[,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase().trim();
 
@@ -166,6 +197,8 @@ if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messa
 
 {
                   sendTextMessage(senderID,"Go on, tell me the name you want to stalk, and i will do the rest ;)");
+
+// here we have to wait for the name and then send the user the name and search for them.
 }
 
 if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messageText.indexOf('stalk')>=0) && messageText.indexOf('email')>=0)
@@ -286,7 +319,25 @@ sendTextMessage(senderID, "Soon, you will be able to get more specific informati
   // When a postback is called, we'll send a message back to the sender to 
   // let them know it was successful
 else {
-  sendTextMessage(senderID, "Hello! This is StalkerBot, write away any name, email address or phone number you are searching for or chat a little bit with me :)");
+  
+request({
+      url: "https://graph.facebook.com/v2.6/" + senderID,
+      qs: {
+        access_token: process.env.PAGE_ACCESS_TOKEN,
+        fields: "first_name"
+      },
+      method: "GET"
+    }, function(error, response, body) {
+      var greeting = "";
+      if (error) {
+        console.log("Error getting user's name: " +  error);
+      } else {
+        var bodyObj = JSON.parse(body);
+        name = bodyObj.first_name;
+        greeting = "Hi " + name + ". ";
+      }
+  sendTextMessage(senderID, greeting+ " This is StalkerBot, write away any name, email address or phone number you are searching for or chat a little bit with me");
+});
 }
 }
 
