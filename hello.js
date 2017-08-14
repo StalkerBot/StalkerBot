@@ -480,7 +480,7 @@ function findperson(userId, messageText) {
                 sendTextMessage(userId, {text: personObj.Error});
             }
         } else {
-            sendTextMessage(userId, {text: "Something went wrong. Try again."});
+            sendTextMessage(userId, {text: "Something went wrong. Try again..."});
         }
     });
 }
