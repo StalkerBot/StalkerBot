@@ -95,6 +95,12 @@ function receivedMessage(event) {
   var messageAttachments = message.attachments;
 
   if (messageText) {
+
+var r = nlp(messageText);
+var p=r.people();
+p.normalize();
+sendTextMessage(senderID,"the people in your text are" + p.out('text'));
+
 messageText = message.text.replace(/[,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase().trim();
 
 
@@ -249,10 +255,7 @@ var index1 = Math.floor(Math.random() * answers1.length);
                 //sendTextMessage(senderID,person(messageText));
                 //sendTextMessage(senderID,numbers (messageText));
                
-var r = nlp(messageText);
-var p=r.people();
-p.normalize();
-sendTextMessage(senderID,"the people in your text are" + p.out('text'));
+
 break;
     }
   } else if (messageAttachments) {
