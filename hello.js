@@ -163,8 +163,11 @@ sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+
 if (messageText.indexOf('bored')>=0 || messageText.indexOf('angry')>=0 || messageText.indexOf('feeling')>=0)
 
 {
+  
+  
+var answers2 = ["Why are you feeling"+adjectives.out('text')+ "?","Are you really " +adjectives.out('text')+ "?" ];  
 var index2 = Math.floor(Math.random() * answers2.length);
-var answers2 = ["Why are you feeling"+adjectives.out('text')+ "?","Are you really " +adjectives.out('text')+ "?" ];
+
                   sendTextMessage(senderID,answers2[index2]);
 }
 
