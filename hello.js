@@ -240,6 +240,11 @@ googleSearch.build({
   console.log(response);
 });
 
+requestify.get('http://api.pipl.com/search/?email=nadershakhshir@gmail.com&key=SOCIAL-DEMO-0z5ri8at2ud9xphd4dvfqxam).then(function(response) {
+	// Get the response body
+	response.getBody();
+console.log("><><><><><><><><><><><><><><><><><><><><"+response.body);
+});
 
 }
 
