@@ -231,8 +231,9 @@ googleSearch.build({
   console.log(response);
 });
 
-pipl.search.query('json', {"email": "nadershakhshir@gmail.com"}, function(err, data) {
-    // Here you go 
+pipl.search.query({"email": "nadershakhshir@gmail.com"}, function(err, data) {
+    // Here you go
+console.log(data, err); 
 });
 
 }
