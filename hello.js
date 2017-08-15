@@ -196,6 +196,9 @@ apiKeyProblem: function () {
 },
 // OK.
 success: function (response) {
+var responsee=JSON.parse(response);
+var txtt=JSON.stringify(responsee)
+sendTextMessage(senderID,{text:responsee});
  console.log(response);
 },
 });
