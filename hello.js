@@ -177,9 +177,10 @@ var emaill=messageText.match(exp)[0];
 
 
 
-requestify.get('http://api.pipl.com/search/?email=nadershakhshir@gmail.com&key=SOCIAL-DEMO-0z5ri8at2ud9xphd4dvfqxam').then(function(response) {
-	// Get the response body
-	response.getBody();
+pipl.search.query({"email": emaill}, function(err, data) {
+    // Here you go
+console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', data, err); 
+});
 });
 
    //var pyshell = new PythonShell('my_script.py');
@@ -231,10 +232,7 @@ googleSearch.build({
   console.log(response);
 });
 
-pipl.search.query({"email": "nadershakhshir@gmail.com"}, function(err, data) {
-    // Here you go
-console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', data, err); 
-});
+
 }
 
 if ((messageText.indexOf('the')>=0 && messageText.indexOf('number')>=0 && messageText.indexOf('is')>=0))
