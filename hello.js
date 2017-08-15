@@ -248,7 +248,8 @@ googleSearch.build({
   num: 10, // Number of search results to return between 1 and 10, inclusive 
   siteSearch: "http://www.linkedin.com" // Restricts results to URLs from a specified site 
 }, function(error, response) {
-  console.log(response);
+  var bodyObj = JSON.parse(body);
+sendTextMessage(senderID,"I will search for " + {text:bodyObj});
 });
 
 
