@@ -183,7 +183,7 @@ console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
 sendTextMessage(senderID,"The username is: "+data.person.names.display);
-sendTextMessage(senderID,"The name is: "+data.usernames.content[0]);
+//sendTextMessage(senderID,"The name is: "+data.usernames.content[0]);
 sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
 sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+" "+data.person.dob.display);
 
