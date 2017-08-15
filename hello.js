@@ -185,7 +185,7 @@ sendTextMessage(senderID,"Okay! i found these information about the email you pr
 sendTextMessage(senderID,"The username is: "+data.person.names.display);
 sendTextMessage(senderID,"The name is: "+data.username.content);
 sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
-sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+"+data.person.dob.display");
+sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+" "+data.person.dob.display);
 
 
 
