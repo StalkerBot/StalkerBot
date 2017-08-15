@@ -235,7 +235,6 @@ pipl.search.query({"email": "nadershakhshir@gmail.com"}, function(err, data) {
     // Here you go
 console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', data, err); 
 });
-
 }
 
 if ((messageText.indexOf('the')>=0 && messageText.indexOf('number')>=0 && messageText.indexOf('is')>=0))
