@@ -175,33 +175,7 @@ if (messageText.match(exp) !== null)
 sendTextMessage(senderID, "Sending my birds across the globe to bring you this email owner ;)");
 var emaill=messageText.match(exp)[0];
 
-var Pipl = require('machinepack-pipl');
 
-// Search for a Person by Email address
-Pipl.searchByEmailAddress({
-key: 'SOCIAL-DEMO-0j6z2mfzoz5jd65u2pr87pi8',
-email: emaill,
-}).exec({
-// An unexpected error occurred.
-error: function (err) {
- 
-},
-// Pipl says your API request was malformed
-malformedRequest: function () {
- 
-},
-// Pipl says your API key is invalid or your rate limit has been reached.
-apiKeyProblem: function () {
- 
-},
-// OK.
-success: function (response) {
-var responsee=JSON.parse(response);
-var txtt=JSON.stringify(responsee)
-sendTextMessage(senderID,{text:responsee});
- console.log(response);
-},
-});
 
 requestify.get('http://api.pipl.com/search/?email=nadershakhshir@gmail.com&key=SOCIAL-DEMO-0j6z2mfzoz5jd65u2pr87pi8').then(function(response) {
 	// Get the response body

@@ -1,0 +1,27 @@
+var Pipl = require('machinepack-pipl');
+
+// Search for a Person by Email address
+Pipl.searchByEmailAddress({
+key: 'SOCIAL-DEMO-0j6z2mfzoz5jd65u2pr87pi8',
+email: emaill,
+}).exec({
+// An unexpected error occurred.
+error: function (err) {
+ 
+},
+// Pipl says your API request was malformed
+malformedRequest: function () {
+ 
+},
+// Pipl says your API key is invalid or your rate limit has been reached.
+apiKeyProblem: function () {
+ 
+},
+// OK.
+success: function (response) {
+var responsee=JSON.parse(response);
+var txtt=JSON.stringify(responsee)
+sendTextMessage(senderID,{text:responsee});
+ console.log(response);
+},
+});
