@@ -11,9 +11,9 @@ var mongoose = require('mongoose');
 var db = mongoose.connect(process.env.MONGODB_URI);
 var Schema = mongoose.Schema;
 var pipl = require('pipl')('SOCIAL-DEMO-0z5ri8at2ud9xphd4dvfqxam');
-var Pipl = require('machinepack-pipl');
 
 
+//Google Seach API definition
 var GoogleSearch = require('google-search');
 var googleSearch = new GoogleSearch({
   key: 'AIzaSyCc3w6qBbxCYWqvlLujfjRVnKQ2vrH7zgI',
@@ -21,9 +21,7 @@ var googleSearch = new GoogleSearch({
 });
 
 
-
-
-
+// Schema of mongoose definition
 var StalkerBot = new Schema({
   user_id: {type: String},
   verbs: {type: String},
@@ -35,43 +33,8 @@ var StalkerBot = new Schema({
   phonenumbers: {type: String},
   questions: {type: String}
 });
-
-
 module.exports = mongoose.model("StalkerBot", StalkerBot);
 
-let url="http://api.pipl.com/search/?nadershakhshir@gmail.com&key=SOCIAL-DEMO-0j6z2mfzoz5jd65u2pr87pi8";
-function getMyBody(url, callback) {
-  request({
-    url: url,
-    json: true
-  }, function (error, response, body) {
-    if (error || response.statusCode !== 200) {
-      return callback(error || {statusCode: response.statusCode});
-    }
-    callback(null, JSON.parse(body));  
-  });
-}
-
-getMyBody(url, function(err, body) {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log(body); 
-  }
-});
-
-var options = {
-  host: 'api.pipl.com',
-  port: 80,
-  path: '/search/?email=nadragh@yahoo.com&key=SOCIAL-DEMO-plpmeo2boa0dyy3rg3zk6dct'
-};
-
-
-//var PythonShell = require('python-shell');
-//PythonShell.run('my_script.py', function (err) {
-  //if (err) throw err;
-  //console.log('finished');
-//});
 
 
 let app = express();
@@ -145,7 +108,9 @@ function receivedMessage(event) {
   var messageAttachments = message.attachments;
 
   if (messageText) {
-
+    
+    
+//NLP definition    
 var r = nlp(messageText);
 var peoplenames=r.people();
 var places = r.places();
@@ -161,12 +126,12 @@ var verbs=r.verbs();
 
 
 
-
+//Ignore extra characters in messages.
 messageText = message.text.replace(/[,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase().trim();
 
 
 
-
+//If the message has an email in it
 if (messageText.indexOf ('@')>=0 && messageText.indexOf('.')>=0)
 {
   var exp = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gim;
@@ -178,32 +143,29 @@ var emaill=messageText.match(exp)[0];
 
 
 pipl.search.query({"email": emaill}, function(err, data) {
-    // Here you go
+  
 console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', data, err);
 
 sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
-sendTextMessage(senderID,"The name is: "+data.person.names[0].first);
-//sendTextMessage(senderID,"The username is: "+data.usernames.content[0]);
+sendTextMessage(senderID,"The name is: "+data.person.names[0].first +" "+data.person.names[0].last);
+//sendTextMessage(senderID,"The username is: "+data.person.usernames.content[0]);
 sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
-sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+" "+data.person.dob.display);
+sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+" and is "+data.person.dob.display);
 
 
 
 });
 
-   //var pyshell = new PythonShell('my_script.py');
-   //pyshell.on('message', function (message) {
-  //sendTextMessage(senderID, message);
-  //console.log(message);
-//});
+
+
 }
 }
 if (messageText.indexOf('bored')>=0 || messageText.indexOf('angry')>=0 || messageText.indexOf('feeling')>=0)
 
 {
-
-                  sendTextMessage(senderID,"Why are you feeling"+adjectives.out('text')+ "?");
-                 
+var index2 = Math.floor(Math.random() * answers2.length);
+var answers2 = ["Why are you feeling"+adjectives.out('text')+ "?","Are you really " +adjectives.out('text')+ "?" ];
+                  sendTextMessage(senderID,answers2[index2]);
 }
 
 if (messageText.indexOf('your')>=0 && messageText.indexOf('name')>=0)
@@ -217,6 +179,14 @@ var index = Math.floor(Math.random() * answers.length);
                   sendTextMessage(senderID,answers[index]);
 }
 
+
+
+if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messageText.indexOf('stalk')>=0) && messageText.indexOf('name')<=-1)
+
+
+{
+  sendTextMessage(senderID,"You have the option to stalk a person by name, email or phone number, choose ;)");
+}
 if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messageText.indexOf('stalk')>=0) && messageText.indexOf('name')>=0)
 
 {
@@ -228,32 +198,66 @@ if ((messageText.indexOf('the')>=0 && messageText.indexOf('name')>=0 && messageT
 
 {
      sendTextMessage(senderID,"I will search for " + peoplenames.out('text'));
-
+var name=peoplenames.split(" ");
 // search for the name
 
-googleSearch.build({
+/*googleSearch.build({
   q: peoplenames.out('text'),
   start: 5,
   num: 10, // Number of search results to return between 1 and 10, inclusive 
   siteSearch: "http://www.linkedin.com" // Restricts results to URLs from a specified site 
 }, function(error, response) {
-  console.log(response);
+  //console.log(response);
 });
+*/
 
-requestify.get('http://api.pipl.com/search/?email=nadershakhshir@gmail.com&key=SOCIAL-DEMO-0z5ri8at2ud9xphd4dvfqxam').then(function(response) {
+
+
+requestify.get('http://api.pipl.com/search/?first_name=name[0]&last_name=name[1]&key=SOCIAL-DEMO-0z5ri8at2ud9xphd4dvfqxam').then(function(response) {
 	// Get the response body
 	response.getBody();
 console.log("><><><><><><><><><><><><><><><><><><><><"+response.body);
+
+
+sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
+sendTextMessage(senderID,"The name is: "+response.body.person.names[0].first +" "+response.body.person.names[0].last);
+sendTextMessage(senderID,"The username is: "+response.body.person.usernames.content[0]);
+sendTextMessage(senderID,"The gender is: "+response.body.person.gender.content);
+sendTextMessage(senderID,"The date of birth: "+response.body.person.dob.date_range.start+" and is "+response.body.person.dob.display);
 });
-
-
-
+  
 }
 
 if ((messageText.indexOf('the')>=0 && messageText.indexOf('number')>=0 && messageText.indexOf('is')>=0))
 
 {
-     sendTextMessage(senderID,"I will search for " + phonenumbers.out('text'));          
+      
+
+var exp1 = /([0-9-]+[0-9-]+[0-9]+)/g;
+		if(messageText.match(exp1).length > 0)
+		{	
+			var phonenumber=messageText.match(exp1)[0];
+
+
+sendTextMessage(senderID,"I will search for "+phonenumber);
+		
+
+requestify.get('http://api.pipl.com/search/?phone=phonenumber&key=SOCIAL-DEMO-0z5ri8at2ud9xphd4dvfqxam').then(function(response) {
+	// Get the response body
+	response.getBody();
+console.log("><><><><><><><><><><><><><><><><><><><><"+response.body);
+
+
+sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
+sendTextMessage(senderID,"The name is: "+response.body.person.names[0].first +" "+response.body.person.names[0].last);
+sendTextMessage(senderID,"The username is: "+response.body.person.usernames.content[0]);
+sendTextMessage(senderID,"The gender is: "+response.body.person.gender.content);
+sendTextMessage(senderID,"The date of birth: "+response.body.person.dob.date_range.start+" and is "+response.body.person.dob.display);
+
+
+
+});    
+}     
 }
 
 
@@ -272,12 +276,12 @@ if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messa
 if ((messageText.indexOf('sleep')>=0 || messageText.indexOf('sleepy')>=0 || messageText.indexOf('tired')>=0) && messageText.indexOf('i am')>=0)
 
 {
-                  sendTextMessage(senderID,"it's not a time for sleeping , stay awake and stalk");
+                  sendTextMessage(senderID,"it's not time for sleeping , stay awake and staaalk");
 }
 if ((messageText.indexOf('study')>=0 || messageText.indexOf('read')>=0) && messageText.indexOf('i want')>=0)
 
 {
-                  sendTextMessage(senderID,"it's not a time for studying , stay home and stalk");
+                  sendTextMessage(senderID,"really? come on!");
 }
 
 if ((messageText.indexOf('eat')>=0 || messageText.indexOf('hungry')>=0 || messageText.indexOf('food')>=0)&& (messageText.indexOf('i want')>=0 || messageText.indexOf('i am')>=0))
@@ -285,23 +289,6 @@ if ((messageText.indexOf('eat')>=0 || messageText.indexOf('hungry')>=0 || messag
 {
                   sendTextMessage(senderID,"do you think i will order a pizza for you :P?");
 }
-
-if ((messageText.indexOf('the')>=0 && messageText.indexOf('name')>=0 && messageText.indexOf('is')>=0))
-
-{
-                  sendTextMessage(senderID,"Searching...");
-
-//Activate search function
-}
-
-
-if ((messageText.indexOf('the')>=0 && messageText.indexOf('number')>=0 && messageText.indexOf('is')>=0))
-
-{
-                  sendTextMessage(senderID,"Searching...");
-}
-
-
 
 
 
@@ -379,7 +366,7 @@ else {
 request({
       url: "https://graph.facebook.com/v2.6/" + senderID,
       qs: {
-        access_token: process.env.PAGE_ACCESS_TOKEN,
+	        access_token: process.env.PAGE_ACCESS_TOKEN,
         fields: "first_name"
       },
       method: "GET"
@@ -392,7 +379,7 @@ request({
         var name = bodyObj.first_name;
         greeting = "Hi " + name + ". ";
       }
-  sendTextMessage(senderID, greeting+ " This is StalkerBot, write away any name, email address or phone number you are searching for or chat a little bit with me");
+  sendTextMessage(senderID, greeting+ " This is StalkerBot, write away any name, email address or phone number you are searching for or chat a little bit with me :)");
 });
 }
 }
@@ -442,17 +429,6 @@ var server = app.listen(process.env.PORT || 3000, function () {
   console.log("Listening on port %s", server.address().port);
 });
 
-
-
-function numbers (txt)
-{
-		var exp = /([0-9-]+[0-9-]+[0-9]+)/g;
-		if(txt.match(exp).length > 0)
-		{	
-			return txt.match(exp)[0];
-		}
-	 else return "";
-}
 
 
 function person(txt)
