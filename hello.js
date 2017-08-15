@@ -180,9 +180,15 @@ var emaill=messageText.match(exp)[0];
 pipl.search.query({"email": emaill}, function(err, data) {
     // Here you go
 console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', data, err);
-sendTextMessage(senderID,data.person.gender.content);
-//sendTextMessage(senderID,data.person.gender);
-//sendTextMessage(senderID,data.person);
+
+sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
+sendTextMessage(senderID,"The username is: "+data.person.names.display);
+sendTextMessage(senderID,"The name is: "+data.username.content);
+sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
+sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+"+data.person.dob.display");
+
+
+
 });
 
    //var pyshell = new PythonShell('my_script.py');
