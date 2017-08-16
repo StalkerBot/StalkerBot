@@ -150,7 +150,8 @@ console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
    sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
 sendTextMessage(senderID,"The name is: "+data.person.names[0].first +" "+data.person.names[0].last);
-sendTextMessage(senderID,"The username is: "+data.person.usernames.content[0]);
+if(typeof data.user.usernames.content != "undefined")
+    alert(sendTextMessage(senderID,"The username is: "+data.person.usernames.content[1]);
 sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
 sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+" and is "+data.person.dob.display);
 });
