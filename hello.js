@@ -10,7 +10,7 @@ var nlp = require('compromise');
 var mongoose = require('mongoose');
 var db = mongoose.connect(process.env.MONGODB_URI);
 var Schema = mongoose.Schema;
-var pipl = require('pipl')('SOCIAL-DEMO-jrox1l3nmfs4m71gdr9uc7t8');
+var pipl = require('pipl')('CONTACT-DEMO-faz2ggq56c54sfhk5dazy5os');
 var Pipl = require('machinepack-pipl');
 
 //Google Seach API definition
@@ -39,16 +39,6 @@ var StalkerBot = new Schema({
 
 
 module.exports = mongoose.model("StalkerBot", StalkerBot);
-
-
-var options = {
-  host: 'api.pipl.com',
-  port: 80,
-  path: '/search/?email=nadragh@yahoo.com&key=SOCIAL-DEMO-plpmeo2boa0dyy3rg3zk6dct'
-};
-
-
-
 
 let app = express();
 app.use(bodyParser.json());
