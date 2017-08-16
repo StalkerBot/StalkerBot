@@ -10,7 +10,7 @@ var nlp = require('compromise');
 //var mongoose = require('mongoose');
 //var db = mongoose.connect(process.env.MONGODB_URI);
 //var Schema = mongoose.Schema;
-var pipl = require('pipl')('SOCIAL-DEMO-f02pngocs1l5jcg8lzfejuwn');
+var pipl = require('pipl')('SOCIAL-DEMO-jrox1l3nmfs4m71gdr9uc7t8');
 
 
 //Google Seach API definition
@@ -148,7 +148,7 @@ console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
 sendTextMessage(senderID,"The name is: "+data.person.names[0].first +" "+data.person.names[0].last);
-//sendTextMessage(senderID,"The username is: "+data.person.usernames.content[0]);
+sendTextMessage(senderID,"The username is: "+data.person.usernames.content[0]);
 sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
 sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+" and is "+data.person.dob.display);
 
@@ -219,15 +219,14 @@ var name1=peoplenames.toString().split(" ");
 pipl.search.query({"first_name": name1[0],"last_name": name1[1]}, function(err, data) {
 console.log("><><><><><><><><><><><><><><><><><><><><"+data);
 
-
-sendTextMessage(senderID,"Okay! i found these information about the name you provided <3");
-//sendTextMessage(senderID,"The name is: " +data.person.names[0].display);
-//sendTextMessage(senderID,"The username is: "+data.person.usernames.content[0]);
+sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
+sendTextMessage(senderID,"The name is: "+data.person.names[0].first +" "+data.person.names[0].last);
+sendTextMessage(senderID,"The username is: "+data.person.usernames.content[0]);
 sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
 sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+" and is "+data.person.dob.display);
 });
-  
-}
+}  
+
 
 if ((messageText.indexOf('the')>=0 && messageText.indexOf('number')>=0 && messageText.indexOf('is')>=0))
 
@@ -249,10 +248,9 @@ pipl.search.query({"phone": phonenumber}, function(err, data) {
 
 console.log("><><><><><><><><><><><><><><><><><><><><"+data);
 
-
-sendTextMessage(senderID,"Okay! i found these information about the phone number you provided <3");
-//sendTextMessage(senderID,"The name is: "+data.person.names[0].display);
-//sendTextMessage(senderID,"The username is: "+data.person.usernames[0].content);
+sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
+sendTextMessage(senderID,"The name is: "+data.person.names[0].first +" "+data.person.names[0].last);
+sendTextMessage(senderID,"The username is: "+data.person.usernames.content[0]);
 sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
 sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+" and is "+data.person.dob.display);
 });
