@@ -184,7 +184,7 @@ var index = Math.floor(Math.random() * answers.length);
 
 
 
-if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messageText.indexOf('stalk')>=0) && messageText.indexOf('name')<=-1)
+if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messageText.indexOf('stalk')>=0) && ((messageText.indexOf('name')<=-1) || ( messageText.indexOf('phone')<=-1 ) || ( messageText.indexOf('number')<=-1 ) || ( messageText.indexOf('email')<=-1 )))
 
 
 {
@@ -220,7 +220,7 @@ pipl.search.query({"first_name": name1[0],"last_name": name1[1]}, function(err, 
 console.log("><><><><><><><><><><><><><><><><><><><><"+data);
 
 
-sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
+sendTextMessage(senderID,"Okay! i found these information about the name you provided <3");
 sendTextMessage(senderID,"The name is: "+data.person.names[0].first +" "+data.person.names[0].last);
 sendTextMessage(senderID,"The username is: "+data.person.usernames.content[0]);
 sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
@@ -250,7 +250,7 @@ pipl.search.query({"phone": phonenumber}, function(err, data) {
 console.log("><><><><><><><><><><><><><><><><><><><><"+data);
 
 
-sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
+sendTextMessage(senderID,"Okay! i found these information about the phone number you provided <3");
 sendTextMessage(senderID,"The name is: "+data.person.names[0].first +" "+data.person.names[0].last);
 sendTextMessage(senderID,"The username is: "+data.person.usernames[0].content);
 sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
