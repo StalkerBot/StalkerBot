@@ -147,11 +147,11 @@ pipl.search.query({"email": emaill}, function(err, data) {
   
 console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', data, err);
 
-sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
-sendTextMessage(senderID,"The name is: "+data.person.names[0].first +" "+data.person.names[0].last);
-sendTextMessage(senderID,"The username is: "+data.person.usernames.content[0]);
-sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
-sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+" and is "+data.person.dob.display);
+//sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
+//sendTextMessage(senderID,"The name is: "+data.person.names[0].first +" "+data.person.names[0].last);
+//sendTextMessage(senderID,"The username is: "+data.person.usernames.content[0]);
+//sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
+//sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+" and is "+data.person.dob.display);
 
 
 
@@ -220,11 +220,11 @@ var name1=peoplenames.toString().split(" ");
 pipl.search.query({"first_name": name1[0],"last_name": name1[1]}, function(err, data) {
 console.log("><><><><><><><><><><><><><><><><><><><><"+data);
 
-sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
-sendTextMessage(senderID,"The name is: "+data.person.names[0].first +" "+data.person.names[0].last);
-sendTextMessage(senderID,"The username is: "+data.person.usernames.content[0]);
-sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
-sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+" and is "+data.person.dob.display);
+//sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
+//sendTextMessage(senderID,"The name is: "+data.person.names[0].first +" "+data.person.names[0].last);
+//sendTextMessage(senderID,"The username is: "+data.person.usernames.content[0]);
+//sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
+//sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+" and is "+data.person.dob.display);
 });
 }  
 
@@ -249,11 +249,11 @@ pipl.search.query({"phone": phonenumber}, function(err, data) {
 
 console.log("><><><><><><><><><><><><><><><><><><><><"+data);
 
-sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
-sendTextMessage(senderID,"The name is: "+data.person.names[0].first +" "+data.person.names[0].last);
-sendTextMessage(senderID,"The username is: "+data.person.usernames.content[0]);
-sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
-sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+" and is "+data.person.dob.display);
+//sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
+//sendTextMessage(senderID,"The name is: "+data.person.names[0].first +" "+data.person.names[0].last);
+//sendTextMessage(senderID,"The username is: "+data.person.usernames.content[0]);
+//sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
+//sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+" and is "+data.person.dob.display);
 });
 }     
 }
