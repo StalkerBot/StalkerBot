@@ -10,10 +10,10 @@ var nlp = require('compromise');
 var mongoose = require('mongoose');
 var db = mongoose.connect(process.env.MONGODB_URI);
 var Schema = mongoose.Schema;
-var pipl = require('pipl')('SOCIAL-DEMO-0z5ri8at2ud9xphd4dvfqxam');
+var pipl = require('pipl')('SOCIAL-DEMO-jrox1l3nmfs4m71gdr9uc7t8');
 var Pipl = require('machinepack-pipl');
 
-
+//Google Seach API definition
 var GoogleSearch = require('google-search');
 var googleSearch = new GoogleSearch({
   key: 'AIzaSyCc3w6qBbxCYWqvlLujfjRVnKQ2vrH7zgI',
@@ -24,6 +24,7 @@ var googleSearch = new GoogleSearch({
 
 
 
+// Schema of mongoose definition
 var StalkerBot = new Schema({
   user_id: {type: String},
   verbs: {type: String},
@@ -39,26 +40,6 @@ var StalkerBot = new Schema({
 
 module.exports = mongoose.model("StalkerBot", StalkerBot);
 
-let url="http://api.pipl.com/search/?nadershakhshir@gmail.com&key=SOCIAL-DEMO-0j6z2mfzoz5jd65u2pr87pi8";
-function getMyBody(url, callback) {
-  request({
-    url: url,
-    json: true
-  }, function (error, response, body) {
-    if (error || response.statusCode !== 200) {
-      return callback(error || {statusCode: response.statusCode});
-    }
-    callback(null, JSON.parse(body));  
-  });
-}
-
-getMyBody(url, function(err, body) {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log(body); 
-  }
-});
 
 var options = {
   host: 'api.pipl.com',
@@ -67,11 +48,6 @@ var options = {
 };
 
 
-//var PythonShell = require('python-shell');
-//PythonShell.run('my_script.py', function (err) {
-  //if (err) throw err;
-  //console.log('finished');
-//});
 
 
 let app = express();
@@ -180,15 +156,19 @@ var emaill=messageText.match(exp)[0];
 pipl.search.query({"email": emaill}, function(err, data) {
     // Here you go
 console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', data, err); 
-});
 
-   //var pyshell = new PythonShell('my_script.py');
-   //pyshell.on('message', function (message) {
-  //sendTextMessage(senderID, message);
-  //console.log(message);
-//});
+
+   sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
+sendTextMessage(senderID,"The name is: "+data.person.names[0].first +" "+data.person.names[0].last);
+sendTextMessage(senderID,"The username is: "+data.person.usernames.content[0]);
+sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
+sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+" and is "+data.person.dob.display);
+});
+  
 }
+
 }
+
 if (messageText.indexOf('bored')>=0 || messageText.indexOf('angry')>=0 || messageText.indexOf('feeling')>=0)
 
 {
@@ -219,6 +199,7 @@ if ((messageText.indexOf('the')>=0 && messageText.indexOf('name')>=0 && messageT
 
 {
      sendTextMessage(senderID,"I will search for " + peoplenames.out('text'));
+     var name1=peoplenames.toString().split(" ");
 
 // search for the name
 
@@ -232,13 +213,36 @@ googleSearch.build({
 });
 
 
+pipl.search.query({"first_name": name1[0],"last_name": name1[1]}, function(err, data) {
+console.log("><><><><><><><><><><><><><><><><><><><><"+data);
+
+ sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
+sendTextMessage(senderID,"The name is: "+data.person.names[0].first +" "+data.person.names[0].last);
+sendTextMessage(senderID,"The username is: "+data.person.usernames.content[0]);
+sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
+sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+" and is "+data.person.dob.display);
+});
 }
 
 if ((messageText.indexOf('the')>=0 && messageText.indexOf('number')>=0 && messageText.indexOf('is')>=0))
 
 {
-     sendTextMessage(senderID,"I will search for " + phonenumbers.out('text'));          
-}
+  
+  
+  pipl.search.query({"phone": phonenumber}, function(err, data) {
+
+
+console.log("><><><><><><><><><><><><><><><><><><><><"+data);
+     sendTextMessage(senderID,"I will search for " + phonenumbers.out('text')); 
+     
+      sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
+sendTextMessage(senderID,"The name is: "+data.person.names[0].first +" "+data.person.names[0].last);
+sendTextMessage(senderID,"The username is: "+data.person.usernames.content[0]);
+sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
+sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+" and is "+data.person.dob.display);
+
+  });
+  }
 
 
 if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messageText.indexOf('stalk')>=0) && messageText.indexOf('email')>=0)
