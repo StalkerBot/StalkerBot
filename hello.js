@@ -126,6 +126,7 @@ var verbs=r.verbs();
 
 
 
+
 //Ignore extra characters in messages.
 messageText = message.text.replace(/[,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase().trim();
 
