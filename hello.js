@@ -7,9 +7,9 @@ var http = require('http');
 const request = require('request');
 var requestify = require('requestify'); 
 var nlp = require('compromise');
-var mongoose = require('mongoose');
-var db = mongoose.connect(process.env.MONGODB_URI);
-var Schema = mongoose.Schema;
+//var mongoose = require('mongoose');
+//var db = mongoose.connect(process.env.MONGODB_URI);
+//var Schema = mongoose.Schema;
 var pipl = require('pipl')('SOCIAL-DEMO-f02pngocs1l5jcg8lzfejuwn');
 
 
@@ -22,7 +22,7 @@ var googleSearch = new GoogleSearch({
 
 
 // Schema of mongoose definition
-var StalkerBot = new Schema({
+/*var StalkerBot = new Schema({
   user_id: {type: String},
   verbs: {type: String},
   nouns: {type: String},
@@ -32,8 +32,8 @@ var StalkerBot = new Schema({
   peoplenames: {type: String},
   phonenumbers: {type: String},
   questions: {type: String}
-});
-module.exports = mongoose.model("StalkerBot", StalkerBot);
+});*/
+//module.exports = mongoose.model("StalkerBot", StalkerBot);
 
 
 
