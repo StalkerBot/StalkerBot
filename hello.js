@@ -222,7 +222,7 @@ console.log("><><><><><><><><><><><><><><><><><><><><"+data);
 
 sendTextMessage(senderID,"Okay! i found these information about the name you provided <3");
 //sendTextMessage(senderID,"The name is: " +data.person.names[0].display);
-sendTextMessage(senderID,"The username is: "+data.person.usernames.content[0]);
+//sendTextMessage(senderID,"The username is: "+data.person.usernames.content[0]);
 sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
 sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+" and is "+data.person.dob.display);
 });
@@ -252,7 +252,7 @@ console.log("><><><><><><><><><><><><><><><><><><><><"+data);
 
 sendTextMessage(senderID,"Okay! i found these information about the phone number you provided <3");
 //sendTextMessage(senderID,"The name is: "+data.person.names[0].display);
-sendTextMessage(senderID,"The username is: "+data.person.usernames[0].content);
+//sendTextMessage(senderID,"The username is: "+data.person.usernames[0].content);
 sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
 sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+" and is "+data.person.dob.display);
 });
