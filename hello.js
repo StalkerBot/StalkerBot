@@ -227,11 +227,17 @@ sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+
 if ((messageText.indexOf('the')>=0 && messageText.indexOf('number')>=0 && messageText.indexOf('is')>=0))
 
 {
-  
+ var exp1 = /([0-9-]+[0-9-]+[0-9]+)/g;
+		if(messageText.match(exp1).length > 0)
+		{	
+			var phonenumber= messageText.match(exp1)[0]; 
   
   pipl.search.query({"phone": phonenumber}, function(err, data) {
 
 
+
+
+		
 console.log("><><><><><><><><><><><><><><><><><><><><"+data);
      sendTextMessage(senderID,"I will search for " + phonenumbers.out('text')); 
      
@@ -242,7 +248,9 @@ sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
 sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+" and is "+data.person.dob.display);
 
   });
-  }
+		}
+  
+}
 
 
 if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messageText.indexOf('stalk')>=0) && messageText.indexOf('email')>=0)
@@ -433,15 +441,7 @@ var server = app.listen(process.env.PORT || 3000, function () {
 
 
 
-function numbers (txt)
-{
-		var exp = /([0-9-]+[0-9-]+[0-9]+)/g;
-		if(txt.match(exp).length > 0)
-		{	
-			return txt.match(exp)[0];
-		}
-	 else return "";
-}
+
 
 
 function person(txt)
