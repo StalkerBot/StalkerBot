@@ -149,9 +149,16 @@ pipl.search.query({"email": emaill.toString()}, function(err, data) {
 wait(5000);
 console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', data, err); 
    sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
-//sendTextMessage(senderID,"The name is: "data.person.names[0].first +" "data.person.names[0].last);
-//sendTextMessage(senderID,"The username is: "+data.person.usernames.content[1]);
+
+if ((typeof data.person.names[0].first !== "undefined") && (typeof data.person.names[0].last !== "undefined"))
+sendTextMessage(senderID,"The name is: "+data.person.names[0].first+" "+data.person.names[0].last);
+
+if (typeof data.person.usernames.content[1] !== "undefined")
+sendTextMessage(senderID,"The username is: "+data.person.usernames.content[1]);
+
+if (typeof data.person.gender.content !== "undefined")
 sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
+if ((typeof data.person.dob.date_range.start !== "undefined") && (typeof data.person.dob.display !== "undefined"))
 sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+" and is "+data.person.dob.display);
 
 
