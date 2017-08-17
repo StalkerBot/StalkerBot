@@ -156,7 +156,7 @@ sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+
 
 
 
-for (i=0;i<data.person.length;i++)
+for (var i=0;i<data.person.length;i++)
 {
 sendTextMessage(senderID,JSON.stringify(data.person, null, 4));
 }
