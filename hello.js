@@ -154,7 +154,7 @@ if (typeof data.person.names[0] !== "undefined")
 sendTextMessage(senderID,"The name is: "+data.person.names[0].first+" "+data.person.names[0].last);
 
 if (typeof data.person.usernames !== "undefined")
-sendTextMessage(senderID,"The username is: "+data.person.usernames[1].content);
+sendTextMessage(senderID,"The username is: "+data.person.usernames[0].content);
 
 if (typeof data.person.gender !== "undefined")
 sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
@@ -237,7 +237,7 @@ wait(5000);
 sendTextMessage(senderID,"The name is: "+data.person.names[0].first+" "+data.person.names[0].last);
 
 if (typeof data.person.usernames !== "undefined")
-sendTextMessage(senderID,"The username is: "+data.person.usernames[1].content);
+sendTextMessage(senderID,"The username is: "+data.person.usernames[0].content);
 
 if (typeof data.person.gender !== "undefined")
 sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
@@ -267,7 +267,7 @@ if (typeof data.person.names[0] !== "undefined")
 sendTextMessage(senderID,"The name is: "+data.person.names[0].first+" "+data.person.names[0].last);
 
 if (typeof data.person.usernames !== "undefined")
-sendTextMessage(senderID,"The username is: "+data.person.usernames[1].content);
+sendTextMessage(senderID,"The username is: "+data.person.usernames[0].content);
 
 if (typeof data.person.gender !== "undefined")
 sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
