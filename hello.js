@@ -158,7 +158,7 @@ sendTextMessage(senderID,"The username is: "+data.person.usernames.content[1]);
 
 if (typeof data.person.gender !== "undefined")
 sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
-if (typeof data.person.dob.date_range !== "undefined")
+if (typeof data.person.dob !== "undefined")
 sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+" and is "+data.person.dob.display);
 
 
