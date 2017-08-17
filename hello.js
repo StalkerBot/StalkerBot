@@ -232,7 +232,7 @@ console.log("><><><><><><><><><><><><><><><><><><><><"+data);
 sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
 
 
-  
+wait(5000);  
  if (typeof data.person.names !== "undefined")
 sendTextMessage(senderID,"The name is: "+data.person.names[0].first+" "+data.person.names[0].last);
 
@@ -262,7 +262,7 @@ if ((messageText.indexOf('the')>=0 && messageText.indexOf('number')>=0 && messag
 		
 console.log("><><><><><><><><><><><><><><><><><><><><"+data);
      sendTextMessage(senderID,"I will search for " + phonenumbers.out('text')); 
-     
+wait(5000);     
       sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
 if (typeof data.person.names[0] !== "undefined")
 sendTextMessage(senderID,"The name is: "+data.person.names[0].first+" "+data.person.names[0].last);
