@@ -148,8 +148,6 @@ pipl.search.query({"email": "nadragh@yahoo.com"}, function(err, data) {
     // Here you go
 console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', data, err); 
 var str = JSON.stringify(data);
- sendTextMessage(senderID,str.);
-
    sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
 //sendTextMessage(senderID,"The name is: "+str.person.names[0].first +" "+str.person.names[0].last);
 //sendTextMessage(senderID,"The username is: "+str.person.usernames.content[1]);
