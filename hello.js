@@ -145,13 +145,14 @@ var emaill=messageText.match(exp)[0];
 
 pipl.search.query({"email": emaill.toString()}, function(err, data) {
     // Here you go
+
+wait(5000);
 console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', data, err); 
-var str = JSON.stringify(data);
    sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
-//sendTextMessage(senderID,"The name is: "+str.person.names[0].first +" "+str.person.names[0].last);
-//sendTextMessage(senderID,"The username is: "+str.person.usernames.content[1]);
-sendTextMessage(senderID,"The gender is: "+str.person.gender.content);
-sendTextMessage(senderID,"The date of birth: "+str.person.dob.date_range.start+" and is "+str.person.dob.display);
+//sendTextMessage(senderID,"The name is: "data.person.names[0].first +" "data.person.names[0].last);
+//sendTextMessage(senderID,"The username is: "+data.person.usernames.content[1]);
+sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
+sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+" and is "+data.person.dob.display);
 
 });
   
@@ -437,3 +438,12 @@ function callSendAPI(messageData) {
 var server = app.listen(process.env.PORT || 3000, function () {
   console.log("Listening on port %s", server.address().port);
 });
+
+
+function wait(ms){
+   var start = new Date().getTime();
+   var end = start;
+   while(end < start + ms) {
+     end = new Date().getTime();
+  }
+}
