@@ -258,7 +258,6 @@ if ((messageText.indexOf('the')>=0 && messageText.indexOf('number')>=0 && messag
 
 
 
-
 		
 console.log("><><><><><><><><><><><><><><><><><><><><"+data);
      sendTextMessage(senderID,"I will search for " + phonenumbers.out('text')); 
