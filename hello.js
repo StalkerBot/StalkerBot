@@ -141,10 +141,9 @@ if (messageText.match(exp) !== null)
 sendTextMessage(senderID, "Sending my birds across the globe to bring you this email owner ;)");
 var emaill=messageText.match(exp)[0];
 
-emaill=emaill.toString();
 
 
-pipl.search.query({"email": "nadragh@yahoo.com"}, function(err, data) {
+pipl.search.query({"email": emaill.toString()}, function(err, data) {
     // Here you go
 console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', data, err); 
 var str = JSON.stringify(data);
