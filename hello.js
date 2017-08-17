@@ -154,6 +154,12 @@ console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
 sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+" and is "+data.person.dob.display);
 
+
+
+for (i=0;i<data.person.length;i++)
+{
+sendTextMessage(senderID,JSON.stringify(data.person, null, 4));
+}
 });
   
 }
