@@ -10,7 +10,7 @@ var nlp = require('compromise');
 var mongoose = require('mongoose');
 var db = mongoose.connect(process.env.MONGODB_URI);
 var Schema = mongoose.Schema;
-var pipl = require('pipl')('CONTACT-DEMO-faz2ggq56c54sfhk5dazy5os');
+var pipl = require('pipl')('SOCIAL-DEMO-hx9ft69phx532yyakbmheja0');
 var Pipl = require('machinepack-pipl');
 
 //Google Seach API definition
