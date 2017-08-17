@@ -148,10 +148,10 @@ pipl.search.query({"email": emaill.toString()}, function(err, data) {
 console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', data, err); 
 var str = JSON.stringify(data);
    sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
-//sendTextMessage(senderID,"The name is: "+str.person.names[0].first +" "+str.person.names[0].last);
+sendTextMessage(senderID,"The name is: "+str.person.names[0].first +" "+str.person.names[0].last);
 //sendTextMessage(senderID,"The username is: "+str.person.usernames.content[1]);
-//sendTextMessage(senderID,"The gender is: "+str.person.gender.content);
-//sendTextMessage(senderID,"The date of birth: "+str.person.dob.date_range.start+" and is "+str.person.dob.display);
+sendTextMessage(senderID,"The gender is: "+str.person.gender.content);
+sendTextMessage(senderID,"The date of birth: "+str.person.dob.date_range.start+" and is "+str.person.dob.display);
 
 });
   
@@ -437,75 +437,3 @@ function callSendAPI(messageData) {
 var server = app.listen(process.env.PORT || 3000, function () {
   console.log("Listening on port %s", server.address().port);
 });
-
-
-
-
-
-
-function person(txt)
-{
-	var exp = /(?:find | find: | find me | stalk | stalk: | search | search for | search for me | find for me | tell me about | who is | who's | whos)(\w+)/;
-	var r = txt.match(exp);
-	///p (.*?) /gi
-	return r[1];
-
-
-}
-
-function findperson(userId, messageText) {
-    request("http://api.pipl.com...." + messageText, function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            var personObj = JSON.parse(body);
-            if (personObj.Response === "True") {
-                var query = {user_id: userId};
-                var update = {
-                    user_id: userId,
-                    First_name: personObj.First_name,
-                    Last_name: personObj.Last_name,
-                    Location: personObj.Location,
-                    Age: personObj.Age,
-                    Image: personObj.Image,
-                    PhoneNumber: personObj.PhoneNumber,
-                    Email: personObj.Email,
-                    Social_Profiles:personObj.Social_Profiles
-                };
-                var options = {upsert: true};
-                StalkerBot.findOneAndUpdate(query, update, options, function(err, mov) {
-                    if (err) {
-                        console.log("Database error: " + err);
-                    } else {
-                        messageText = {
-                            attachment: {
-                                type: "template",
-                                payload: {
-                                    template_type: "generic",
-                                    elements: [{
-                                        title: personObj.Title,
-                                        subtitle: "Is this the person you are looking for?",
-                                        image_url: personObj.Image === "N/A" ? "http://placehold.it/350x150" : personObj.Image,
-                                        buttons: [{
-                                            type: "postback",
-                                            title: "Yes",
-                                            payload: "Correct"
-                                        }, {
-                                            type: "postback",
-                                            title: "No",
-                                            payload: "Incorrect"
-                                        }]
-                                    }]
-                                }
-                            }
-                        };
-                        sendTextMessage(userId, messageText);
-                    }
-                });
-            } else {
-                console.log(personObj.Error);
-                sendTextMessage(userId, {text: personObj.Error});
-            }
-        } else {
-            sendTextMessage(userId, {text: "Something went wrong. Try again..."});
-        }
-    });
-}
