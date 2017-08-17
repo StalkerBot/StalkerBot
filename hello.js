@@ -153,7 +153,7 @@ console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 if ((typeof data.person.names[0].first !== "undefined") && (typeof data.person.names[0].last !== "undefined"))
 sendTextMessage(senderID,"The name is: "+data.person.names[0].first+" "+data.person.names[0].last);
 
-if (typeof data.person.usernames.content[1] !== "undefined")
+if (typeof data.person.usernames !== "undefined")
 sendTextMessage(senderID,"The username is: "+data.person.usernames.content[1]);
 
 if (typeof data.person.gender.content !== "undefined")
