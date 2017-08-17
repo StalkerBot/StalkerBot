@@ -158,7 +158,7 @@ var str = JSON.stringify(data);
   
 }
 }
-}
+
 
 
 
@@ -171,8 +171,9 @@ if (messageText.indexOf('bored')>=0 || messageText.indexOf('angry')>=0 || messag
 }
 
 if (messageText.indexOf('like')>=0 && messageText.indexOf('you')>=0 && messageText.indexOf('do')>=0)
-
 {
+  sendTextMessage(senderID,"sometimes i like "+adjectives.out('text')+ "and sometimes i don't");
+}
 
 
 
