@@ -232,8 +232,8 @@ console.log("><><><><><><><><><><><><><><><><><><><><"+data);
 sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
 
 
-
- if (typeof data.person.names[0] !== "undefined")
+  
+ if (typeof data.person.names !== "undefined")
 sendTextMessage(senderID,"The name is: "+data.person.names[0].first+" "+data.person.names[0].last);
 
 if (typeof data.person.usernames !== "undefined")
