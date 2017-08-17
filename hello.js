@@ -147,7 +147,7 @@ emaill=emaill.toString();
 pipl.search.query({"email": "nadragh@yahoo.com"}, function(err, data) {
     // Here you go
 console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', data, err); 
-str = JSON.stringify(data)
+var str = JSON.stringify(data);
  sendTextMessage(senderID,str);
 
    sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
@@ -159,8 +159,10 @@ str = JSON.stringify(data)
 });
   
 }
-
 }
+}
+
+
 
 if (messageText.indexOf('bored')>=0 || messageText.indexOf('angry')>=0 || messageText.indexOf('feeling')>=0)
 
@@ -334,6 +336,7 @@ var index1 = Math.floor(Math.random() * answers1.length);
 
 break;
     }
+    
   } else if (messageAttachments) {
     sendTextMessage(senderID, "***Hoping it is not a LIKE!***... Are you trying to send an attachment? I don't accept such things");
   }
