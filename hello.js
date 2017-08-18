@@ -183,7 +183,7 @@ sendMessage(senderID, message);
 if (data.person.urls)
 {
 for (var i = 0, len = data.person.urls.length; i < len; i++) {
-sendTextMessage(senderID,"You can find the user on the following URLs" + data.person.urls[i].url);
+sendTextMessage(senderID,"You can find the user on the following URLs " + data.person.urls[i].url);
 }
 }
 }
@@ -276,7 +276,7 @@ sendMessage(senderID, message);
 if (data.person.urls)
 {
 for (var i = 0, len = data.person.urls.length; i < len; i++) {
-sendTextMessage(senderID,"You can find the user on the following URLs" + data.person.urls[i].url);
+sendTextMessage(senderID,"You can find the user on the following URLs " + data.person.urls[i].url);
 }
 }
 }
@@ -357,7 +357,7 @@ sendMessage(senderID, message);
 if (data.person.urls)
 {
 for (var i = 0, len = data.person.urls.length; i < len; i++) {
-sendTextMessage(senderID,"You can find the user on the following URLs" + data.person.urls[i].url);
+sendTextMessage(senderID,"You can find the user on the following URLs " + data.person.urls[i].url);
 }
 }
 }
