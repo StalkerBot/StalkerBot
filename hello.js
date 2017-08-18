@@ -212,7 +212,7 @@ var Z = X.slice(X.indexOf(Y) + Y.length);
 pipl.search.query({"first_name": ZZ[0],"last_name": ZZ[1]}, function(err, data) {
 wait(5000);
 console.log(data);
-if(data.person || data.possible_persons)
+if(data.person)
 {
 wait(5000);
 console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', data, err); 
@@ -226,13 +226,7 @@ sendTextMessage(senderID,"The name is: "+data.person.names[i].first+" "+data.per
 }
 }
 
-if (data.possible_persons.names){
-for (var i = 0, len = data.possible_persons.names.length; i < len; i++) {
 
-sendTextMessage(senderID,"The name is: "+data.possible_persons.names[i].first+" "+data.possible_persons.names[i].last);
-
-}
-}
 wait(1000);
 if (data.person.usernames){
 for (var i = 0, len = data.person.usernames.length; i < len; i++) {
@@ -240,23 +234,21 @@ sendTextMessage(senderID,"The username is: "+data.person.usernames[i].content);
 }
 }
 
-if (data.possible_persons.usernames){
-for (var i = 0, len = data.possible_persons.usernames.length; i < len; i++) {
-sendTextMessage(senderID,"The username is: "+data.possible_persons.usernames[i].content);
-}
-}
+
+
+
+
+
 
 
 wait(1000);
 if (data.person.gender)
 sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
-if (data.possible_persons.gender)
-sendTextMessage(senderID,"The gender is: "+data.possible_persons.gender.content);
+
 wait(1000);
 if (data.person.dob)
 sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+" and is "+data.person.dob.display);
-if(data.possible_persons.dob)
-sendTextMessage(senderID,"The date of birth: "+data.possible_persons.dob.date_range.start+" and is "+data.possible_persons.dob.display);
+
 wait(1000);
 if (data.person.images && data.person.names)
 {
@@ -286,6 +278,54 @@ sendMessage(senderID, message);
 }
 
 
+
+
+if (data.person.urls)
+{
+for (var i = 0, len = data.person.urls.length; i < len; i++) {
+sendTextMessage(senderID,"You can find the user on the following URLs " + data.person.urls[i].url);
+}
+}
+
+
+
+}
+
+
+
+else
+{
+  sendTextMessage(senderID,"I'm sorry but it looks like this person has no information around :(");
+}
+
+
+if (data.possible_persons)
+{
+  
+  if (data.possible_persons.names){
+for (var i = 0, len = data.possible_persons.names.length; i < len; i++) {
+
+sendTextMessage(senderID,"The name is: "+data.possible_persons.names[i].first+" "+data.possible_persons.names[i].last);
+
+}
+}
+
+
+
+if (data.possible_persons.usernames){
+for (var i = 0, len = data.possible_persons.usernames.length; i < len; i++) {
+sendTextMessage(senderID,"The username is: "+data.possible_persons.usernames[i].content);
+}
+}
+if (data.possible_persons.gender)
+sendTextMessage(senderID,"The gender is: "+data.possible_persons.gender.content);
+
+
+if(data.possible_persons.dob)
+sendTextMessage(senderID,"The date of birth: "+data.possible_persons.dob.date_range.start+" and is "+data.possible_persons.dob.display);
+
+
+
 if (data.possible_persons.images && data.possible_persons.names)
 {
 for (var i = 0, len = data.possible_persons.images.length; i < len; i++) {
@@ -313,13 +353,6 @@ sendMessage(senderID, message);
 }
 }
 
-if (data.person.urls)
-{
-for (var i = 0, len = data.person.urls.length; i < len; i++) {
-sendTextMessage(senderID,"You can find the user on the following URLs " + data.person.urls[i].url);
-}
-}
-
 
 if (data.possible_persons.urls)
 {
@@ -327,14 +360,11 @@ for (var i = 0, len = data.possible_persons.urls.length; i < len; i++) {
 sendTextMessage(senderID,"You can find the user on the following URLs " + data.possible_persons.urls[i].url);
 }
 }
+else{
+sendTextMessage(senderID,"Sorry no people with the specified name found :(");
+}
 }
 
-
-
-else
-{
-  sendTextMessage(senderID,"I'm sorry but it looks like this person has no information around :(");
-}
 });
 }
 else if ((messageText.indexOf('help')>=0) || messageText.indexOf('i want to stalk')>=0)
