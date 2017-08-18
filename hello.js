@@ -125,7 +125,11 @@ var questions=r.questions();
 var verbs=r.verbs();
 
 
+if ((messageText.indexOf(':)')>=0 || messageText.indexOf(':D')>=0 || messageText.indexOf(':P'))>=0) 
 
+{
+                  sendTextMessage(senderID,"hope you are always happy :D!");
+}
 
 
 messageText = message.text.replace(/[,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase().trim();
@@ -171,18 +175,6 @@ else
 }
 }
 
-
-
-
-
-else if ((messageText.indexOf(':)')>=0 || messageText.indexOf(':D')>=0 || messageText.indexOf(':P'))>=0) 
-
-{
-                  sendTextMessage(senderID,"hope you are always happy :D!");
-}
-
-
-
 else if ((messageText.indexOf('the')>=0 && messageText.indexOf('name')>=0 && messageText.indexOf('is')>=0))
 
 {
@@ -227,8 +219,6 @@ else
 }
 });
 }
-
-
 
 else if ((messageText.indexOf('the')>=0 && messageText.indexOf('number')>=0 && messageText.indexOf('is')>=0))
 
@@ -336,17 +326,11 @@ else if ((messageText.indexOf('eat')>=0 || messageText.indexOf('hungry')>=0 || m
                   sendTextMessage(senderID,"do you think i will order a pizza for you :P?");
 }
 
-
-
-
-
 else if ((messageText.indexOf('job')>=0 || messageText.indexOf('do')>=0 || messageText.indexOf('goal')>=0) && messageText.indexOf('what')>=0 && messageText.indexOf('your')>=0)
 
 {
                   sendTextMessage(senderID,"I am a stalker, i enjoy stalking people and getting their information to your doorstep, i mean messenger step :P");
 }
-
-
 
 else if ((messageText.indexOf('what')>=0 && messageText.indexOf('s')>=0 && messageText.indexOf('up')>=0) || (messageText.indexOf('how')>=0 && messageText.indexOf('are')>=0 && messageText.indexOf('you')>=0))
 
@@ -358,6 +342,11 @@ var answers2 = [ "And you?","What about you?","Are you doing great?" , "Hope eve
 
 var index2 = Math.floor(Math.random() * answers2.length);
 sendTextMessage(senderID,answers2[index2]);
+}
+
+else if(messageText.indexOf('good')>=1 || messageText.indexOf('great') >=1)
+{
+  sendTextMessage(senderID,"Awesome!");
 }
 
 else {
