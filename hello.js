@@ -294,7 +294,7 @@ else
 }
 else if ((messageText.indexOf('help')>=0) || messageText.indexOf('i want to stalk')>=0)
 {
-  sendTextMessage(senderID,"You can search for a name, a phone number of an email. /n If you want to search for a name, write: the name is and then write the name you are searching for /n If you want to search for an email, just write the email directly. /nif you want to search for a phone number, write: the number is and then the number you are searching for");
+  sendTextMessage(senderID,"You can search for a name, a phone number of an email. \n If you want to search for a name, write: the name is and then write the name you are searching for \n If you want to search for an email, just write the email directly. \n if you want to search for a phone number, write: the number is and then the number you are searching for");
 }
 // If the use wants to find a phone number
 else if ((messageText.indexOf('the')>=0 && messageText.indexOf('number')>=0 && messageText.indexOf('is')>=0))
