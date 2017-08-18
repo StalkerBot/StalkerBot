@@ -203,25 +203,13 @@ else
 else if ((messageText.indexOf('the')>=0 && messageText.indexOf('name')>=0 && messageText.indexOf('is')>=0))
 
 {
-   var Y="is";
+   var Y="is ";
   var X=messageText;
 var Z = X.slice(X.indexOf(Y) + Y.length);
      sendTextMessage(senderID,"I will search for " + Z);
-     Z=Z.toString().split(" ");
+     var ZZ=Z.toString().split(" ");
 
-// search for the name
-
-googleSearch.build({
-  q: peoplenames.out('text'),
-  start: 5,
-  num: 10, // Number of search results to return between 1 and 10, inclusive 
-  siteSearch: "http://www.linkedin.com" // Restricts results to URLs from a specified site 
-}, function(error, response) {
-  console.log(response);
-});
-
-
-pipl.search.query({"first_name": Z[0],"last_name": Z[1]}, function(err, data) {
+pipl.search.query({"first_name": ZZ[0],"last_name": ZZ[1]}, function(err, data) {
 wait(5000);
 if(data.person)
 {
