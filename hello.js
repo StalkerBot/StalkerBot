@@ -336,7 +336,7 @@ else if ((messageText.indexOf('what')>=0 && messageText.indexOf('s')>=0 && messa
 
 {
                   sendTextMessage(senderID,"I am doing great :D");
-                  
+                  wait(1000);
                   
 var answers2 = [ "And you?","What about you?","Are you doing great?" , "Hope everything is awesome with you"];
 
