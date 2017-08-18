@@ -221,7 +221,7 @@ googleSearch.build({
 });
 
 
-pipl.search.query({"first_name": Z[0],"last_name": Z[0]}, function(err, data) {
+pipl.search.query({"first_name": Z[0],"last_name": Z[1]}, function(err, data) {
 wait(5000);
 if(data.person)
 {
