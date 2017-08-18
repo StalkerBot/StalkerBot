@@ -171,6 +171,18 @@ else
 }
 }
 
+
+
+
+
+if ((messageText.indexOf(':)')>=0 || messageText.indexOf(':D')>=0 || messageText.indexOf(':P'))>=0) 
+
+{
+                  sendTextMessage(senderID,"hope you are always happy :D!");
+}
+
+
+
 if ((messageText.indexOf('the')>=0 && messageText.indexOf('name')>=0 && messageText.indexOf('is')>=0))
 
 {
