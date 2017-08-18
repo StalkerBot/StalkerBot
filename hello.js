@@ -322,7 +322,7 @@ var Z = X.slice(X.indexOf(Y) + Y.length);
                   sendTextMessage(senderID,"it's not time to "+Z+" come on, let's stalk");
 
 }
-else if ((messageText.indexOf('eat')>=0 || messageText.indexOf('hungry')>=0 || messageText.indexOf('food')>=0) && ((messageText.indexOf('i want')>=0) || (messageText.indexOf('i am')>=0)))
+else if (messageText.indexOf('i am hungry')>=1 || messageText.indexOf('i want food')>=1)
 {
                   sendTextMessage(senderID,"do you think i will order a pizza for you :P?");
 }
@@ -383,7 +383,7 @@ sendTextMessage(senderID,answers1[index1]);
                     break;
 
                 default: 
-if (messageText != ":d" &&  messageText != ":)" && messageText != ":P")
+if (messageText != ":d" &&  messageText != ":)" && messageText != ":p")
         sendTextMessage(senderID,"I'm sorry, i don't get what you mean by "+ messageText + " :/");
 
 break;
