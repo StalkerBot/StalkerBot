@@ -192,7 +192,6 @@ sendTextMessage(senderID,"You can find the user on the following URLs " + data.p
 
 else
 {
-  sendTextMessage(senderID,"I'm sorry but it looks like this person has no information around :(");
 }
 });
   
@@ -295,7 +294,7 @@ sendTextMessage(senderID,"You can find the user on the following URLs " + data.p
 
 else
 {
-  sendTextMessage(senderID,"I'm sorry but it looks like this person has no information around :(");
+sendTextMessage(senderID,"No exact people found, searching for possible people");
 }
 
 
@@ -362,7 +361,7 @@ sendTextMessage(senderID,"You can find the user on the following URLs " + data.p
 }
 }
 else{
-sendTextMessage(senderID,"Sorry no people with the specified name found :(");
+sendTextMessage(senderID,"I'm sorry but it looks like this person has no information around :(");
 }
 
 
