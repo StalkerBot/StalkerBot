@@ -312,31 +312,16 @@ if ((messageText.indexOf('sleep')>=0 || messageText.indexOf('sleepy')>=0 || mess
 {
                   sendTextMessage(senderID,"it's not a time for sleeping , stay awake and stalk");
 }
-if ((messageText.indexOf('study')>=0 || messageText.indexOf('read')>=0) && messageText.indexOf('i want')>=0)
-
+if ((messageText.indexOf('i want')>=0 && messageText.indexOf('to')>=0) && ((messageText.indexOf('stalk')<=-1) || messageText.indexOf('search')<=-1) || (messageText.indexOf('find')<=-1))
 {
-                  sendTextMessage(senderID,"it's not a time for studying , stay home and stalk");
+  
+                  sendTextMessage(senderID,"it's not a time to "+verbs+ "come on, let's stalk");
 }
 
 if ((messageText.indexOf('eat')>=0 || messageText.indexOf('hungry')>=0 || messageText.indexOf('food')>=0)&& (messageText.indexOf('i want')>=0 || messageText.indexOf('i am')>=0))
 
 {
                   sendTextMessage(senderID,"do you think i will order a pizza for you :P?");
-}
-
-if ((messageText.indexOf('the')>=0 && messageText.indexOf('name')>=0 && messageText.indexOf('is')>=0))
-
-{
-                  sendTextMessage(senderID,"Searching...");
-
-//Activate search function
-}
-
-
-if ((messageText.indexOf('the')>=0 && messageText.indexOf('number')>=0 && messageText.indexOf('is')>=0))
-
-{
-                  sendTextMessage(senderID,"Searching...");
 }
 
 
@@ -355,14 +340,20 @@ if ((messageText.indexOf('what')>=0 && messageText.indexOf('s')>=0 && messageTex
 
 {
                   sendTextMessage(senderID,"I am doing great :D");
+                  
+                  
+var answers2 = [ "And you?","What about you?","Are you doing great?" , "Hope everything is awesome with you"];
+
+var index2 = Math.floor(Math.random() * answers2.length);
+sendTextMessage(senderID,answers2[index2]);
 }
     switch (messageText) {
-                case "hello":
-                case "hi":
-                case "ciao":
-                case "hey":
-                case "bonjour":
-                case "good morning":
+case "hello":
+case "hi":
+case "ciao":
+case "hey":
+case "bonjour":
+case "good morning":
 case "good day":
 case "howdy":
 case "bonsoir":
@@ -370,16 +361,15 @@ case "mar7aba":
 case "hii":
 case "hiii":
 case "yo":
-                  var answers1 = [ "Hello!",
-"Hey, hope everything is great!",
-"Ciao!", "Good day :)", "Hey Dude!" , "Hey :)", "Hello Hello Hello :D"];
+                  
+var answers1 = [ "Hello!","Hey, hope everything is great!","Ciao!", "Good day :D", "Hey Dude!" , "Hey :D", "Hello Hello :P"];
 
 var index1 = Math.floor(Math.random() * answers1.length);
-                    sendTextMessage(senderID,answers1[index1]);
+sendTextMessage(senderID,answers1[index1]);
                     break;
 
                 default:
-                //sendTextMessage(senderID,person(messageText));
+                sendTextMessage(senderID,"I'm sorry, i don't get what you mean by "+ messageText + " :/");
                 //sendTextMessage(senderID,numbers (messageText));
                
 
