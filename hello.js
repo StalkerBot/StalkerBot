@@ -314,10 +314,10 @@ else if ((messageText.indexOf('sleep')>=0 || messageText.indexOf('sleepy')>=0 ||
 {
                   sendTextMessage(senderID,"it's not a time for sleeping , stay awake and stalk");
 }
-else if (((messageText.indexOf('i want')>=0) && (messageText.indexOf('to')>=0)) && ((messageText.indexOf('stalk')<=-1) || (messageText.indexOf('search')<=-1) || (messageText.indexOf('find')<=-1)))
+else if (((messageText.indexOf('i want')>=0) && (messageText.indexOf('to')>=0)) && ((messageText.indexOf('stalk')==-1) && (messageText.indexOf('search')==-1) && (messageText.indexOf('find')==-1)))
 {
-  
-                  sendTextMessage(senderID,"it's not a time to "+verbs.toPresentTense().out('text')+ "come on, let's stalk");
+  var arr=r.verbs().out('array');
+                  sendTextMessage(senderID,"it's not a time to "+arr[1]+ "come on, let's stalk");
 }
 
 else if ((messageText.indexOf('eat')>=0 || messageText.indexOf('hungry')>=0 || messageText.indexOf('food')>=0)&& (messageText.indexOf('i want')>=0 || messageText.indexOf('i am')>=0))
@@ -344,7 +344,7 @@ var index2 = Math.floor(Math.random() * answers2.length);
 sendTextMessage(senderID,answers2[index2]);
 }
 
-else if(messageText.indexOf('good')>=1 || messageText.indexOf('great') >=1)
+else if(messageText.indexOf('good')>=1 || messageText.indexOf('great') >=1 || messageText.indexOf('fine') >=1 || messageText.indexOf('awesome') >=1)
 {
   sendTextMessage(senderID,"Awesome!");
 }
