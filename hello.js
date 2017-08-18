@@ -298,37 +298,37 @@ sendTextMessage(senderID,"No exact people found, searching for possible people")
 }
 
 
-if (data.possible_persons)
+if (data.possible_persons[0])
 {
   
-  if (data.possible_persons.names){
-for (var i = 0, len = data.possible_persons.names.length; i < len; i++) {
+  if (data.possible_persons[0].names){
+for (var i = 0, len = data.possible_persons[0].names.length; i < len; i++) {
 
-sendTextMessage(senderID,"The name is: "+data.possible_persons.names[i].first+" "+data.possible_persons.names[i].last);
+sendTextMessage(senderID,"The name is: "+data.possible_persons[0].names[i].first+" "+data.possible_persons[0].names[i].last);
 
 }
 }
 
 
 
-if (data.possible_persons.usernames){
-for (var i = 0, len = data.possible_persons.usernames.length; i < len; i++) {
-sendTextMessage(senderID,"The username is: "+data.possible_persons.usernames[i].content);
+if (data.possible_persons[0].usernames){
+for (var i = 0, len = data.possible_persons[0].usernames.length; i < len; i++) {
+sendTextMessage(senderID,"The username is: "+data.possible_persons[0].usernames[i].content);
 }
 }
 if (data.possible_persons.gender)
-sendTextMessage(senderID,"The gender is: "+data.possible_persons.gender.content);
+sendTextMessage(senderID,"The gender is: "+data.possible_persons[0].gender.content);
 
 
 if(data.possible_persons.dob)
-sendTextMessage(senderID,"The date of birth: "+data.possible_persons.dob.date_range.start+" and is "+data.possible_persons.dob.display);
+sendTextMessage(senderID,"The date of birth: "+data.possible_persons[0].dob.date_range.start+" and is "+data.possible_persons[0].dob.display);
 
 
 
-if (data.possible_persons.images && data.possible_persons.names)
+if (data.possible_persons[0].images && data.possible_persons[0].names)
 {
-for (var i = 0, len = data.possible_persons.images.length; i < len; i++) {
-var thename=data.possible_persons.names[0].first+" "+data.possible_persons.names[0].last;
+for (var i = 0, len = data.possible_persons[0].images.length; i < len; i++) {
+var thename=data.possible_persons[0].names[0].first+" "+data.possible_persons[0].names[0].last;
 message = {
     
                             attachment: {
@@ -338,7 +338,7 @@ message = {
                                     elements: [{
                                         title: thename,
                                         subtitle: "Is this the person you are looking for?",
-                                        image_url: data.possible_persons.images[i].url,
+                                        image_url: data.possible_persons[0].images[i].url,
                                         
                                     }]
                                 }
@@ -353,10 +353,10 @@ sendMessage(senderID, message);
 }
 
 
-if (data.possible_persons.urls)
+if (data.possible_persons[0].urls)
 {
-for (var i = 0, len = data.possible_persons.urls.length; i < len; i++) {
-sendTextMessage(senderID,"You can find the user on the following URLs " + data.possible_persons.urls[i].url);
+for (var i = 0, len = data.possible_persons[0].urls.length; i < len; i++) {
+sendTextMessage(senderID,"You can find the user on the following URLs " + data.possible_persons[0].urls[i].url);
 }
 }
 }
