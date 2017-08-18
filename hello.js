@@ -322,7 +322,7 @@ var Z = X.slice(X.indexOf(Y) + Y.length);
                   sendTextMessage(senderID,"it's not time to "+Z+" come on, let's stalk");
 
 }
-else if (messageText.indexOf('i am hungry')>=1 || messageText.indexOf('i want food')>=1)
+else if (messageText.indexOf('hungry')>=1 || messageText.indexOf('food')>=1)
 {
                   sendTextMessage(senderID,"do you think i will order a pizza for you :P?");
 }
