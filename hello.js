@@ -7,7 +7,7 @@ var http = require('http');
 const request = require('request');
 var requestify = require('requestify'); 
 var nlp = require('compromise');
-var pipl = require('pipl')('SOCIAL-DEMO-4ajiwlu5vq8qcr4xtanufdxy');
+var pipl = require('pipl')('SOCIAL-DEMO-yhnfhrmsvuzusi1odm3o0mbn');
 
 //Google Seach API definition
 var GoogleSearch = require('google-search');
