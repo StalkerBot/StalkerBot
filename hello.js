@@ -319,7 +319,7 @@ else if (((messageText.indexOf('i want')>=0) && (messageText.indexOf('to')>=0)) 
   var Y="to";
   var X=messageText;
 var Z = X.slice(X.indexOf(Y) + Y.length);
-                  sendTextMessage(senderID,"it's not a time to "+Z+" come on, let's stalk");
+                  sendTextMessage(senderID,"it's not time to "+Z+" come on, let's stalk");
 
 }
 
