@@ -211,6 +211,7 @@ var Z = X.slice(X.indexOf(Y) + Y.length);
 
 pipl.search.query({"first_name": ZZ[0],"last_name": ZZ[1]}, function(err, data) {
 wait(5000);
+console.log(data);
 if(data.person)
 {
 wait(5000);
