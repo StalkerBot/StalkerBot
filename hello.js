@@ -162,14 +162,62 @@ for (var i = 0, len = data.person.names.length; i < len; i++) {
 sendTextMessage(senderID,"The name is: "+data.person.names[i].first+" "+data.person.names[i].last);
 }
 }
-if (data.person.usernames)
-sendTextMessage(senderID,"The username is: "+data.person.usernames[0].content);
-
+if (data.person.usernames){
+for (var i = 0, len = data.person.usernames.length; i < len; i++) {
+sendTextMessage(senderID,"The username is: "+data.person.usernames[i].content);
+}
+}
 if (data.person.gender)
 sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
 if (data.person.dob)
 sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+" and is "+data.person.dob.display);
 }
+
+if (data.person.images)
+{
+for (var i = 0, len = data.person.user_ids.length; i < len; i++) {
+  
+  
+  message = {
+                            attachment: {
+                                type: "template",
+                                payload: {
+                                    template_type: "generic",
+                                    elements: [{
+                                        title: "Search Result",
+                                        subtitle: "Is this the person you are looking for?",
+                                        image_url: data.person.user_ids.url[i],
+                                        buttons: [{
+                                            type: "postback",
+                                            title: "Yes",
+                                            payload: "Correct"
+                                        }, {
+                                            type: "postback",
+                                            title: "No",
+                                            payload: "Incorrect"
+                                        }]
+                                    }]
+                                }
+                            }
+                        };
+                        
+                        
+                        
+sendMessage(senderID, message);
+  
+}
+}
+
+if (data.person.urls)
+{
+for (var i = 0, len = data.person.urls.length; i < len; i++) {
+sendTextMessage(senderID,"You can find the user on the following URLs" + data.person.urls[i].url);
+}
+}
+
+
+
+
 else
 {
   sendTextMessage(senderID,"I'm sorry but it looks like this person has no information around :(");
@@ -420,10 +468,20 @@ if (payload =="CONTACT_INFO_PAYLOAD")
 sendTextMessage(senderID, "We are a group of students, studying at PSUT, making this bot for testing purposes, contact us here: fb.com/nadershakhshir.ns , fb.com/roaa.irshaid , fb.com/mohdbushnaq");
 }
 
-if (payload =="ADVANCED_STALKING_PAYLOAD")
+else if (payload =="ADVANCED_STALKING_PAYLOAD")
 {
 sendTextMessage(senderID, "Soon, you will be able to get more specific information about the people you want to stalk for a small amount of money");
 }
+
+
+else if (payload === "Correct") {
+        sendMessage(senderID, {text: "Awesome! I am glad i found your person!"});
+    } else if (payload === "Incorrect") {
+        sendMessage(senderID, {text: "Oops! Sorry about that. Try using different information"});
+    }
+    
+    
+    
   // When a postback is called, we'll send a message back to the sender to 
   // let them know it was successful
 else {
@@ -467,6 +525,7 @@ function sendTextMessage(recipientId, messageText) {
 
 
 
+
 function callSendAPI(messageData) {
   request({
     uri: 'https://graph.facebook.com/v2.6/me/messages',
@@ -501,4 +560,24 @@ function wait(ms){
    while(end < start + ms) {
      end = new Date().getTime();
   }
-}	
+}
+
+
+
+
+
+function sendMessage(recipientId, message) {
+    request({
+        url: "https://graph.facebook.com/v2.6/me/messages",
+        qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+        method: "POST",
+        json: {
+            recipient: {id: recipientId},
+            message: message,
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log("Error sending message: " + response.error);
+        }
+    });
+}
