@@ -175,7 +175,7 @@ sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+
 
 if (data.person.images)
 {
-for (var i = 0, len = data.person.user_ids.length; i < len; i++) {
+for (var i = 0, len = data.person.images.length; i < len; i++) {
   
   
   message = {
@@ -250,7 +250,7 @@ wait(5000);
 console.log("><><><><><><><><><><><><><><><><><><><><"+data);
 if(data.person)
 {
-sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
+sendTextMessage(senderID,"Okay! i found these information about the name you provided <3");
 
 
 wait(5000);  
@@ -291,7 +291,7 @@ if(data.person)
 console.log("><><><><><><><><><><><><><><><><><><><><"+data);
      sendTextMessage(senderID,"I will search for " + phonenumbers.out('text')); 
 wait(5000);     
-      sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
+      sendTextMessage(senderID,"Okay! i found these information about the phone you provided <3");
 if (data.person.names[0])
 sendTextMessage(senderID,"The name is: "+data.person.names[0].first+" "+data.person.names[0].last);
 
