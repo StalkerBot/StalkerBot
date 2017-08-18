@@ -312,10 +312,10 @@ if ((messageText.indexOf('sleep')>=0 || messageText.indexOf('sleepy')>=0 || mess
 {
                   sendTextMessage(senderID,"it's not a time for sleeping , stay awake and stalk");
 }
-if ((messageText.indexOf('i want')>=0 && messageText.indexOf('to')>=0) && ((messageText.indexOf('stalk')<=-1) || messageText.indexOf('search')<=-1) || (messageText.indexOf('find')<=-1))
+if (((messageText.indexOf('i want')>=0) && (messageText.indexOf('to')>=0)) && ((messageText.indexOf('stalk')<=-1) || (messageText.indexOf('search')<=-1) || (messageText.indexOf('find')<=-1)))
 {
   
-                  sendTextMessage(senderID,"it's not a time to "+verbs+ "come on, let's stalk");
+                  sendTextMessage(senderID,"it's not a time to "+.verbs().toPresentTense().out()+ "come on, let's stalk");
 }
 
 if ((messageText.indexOf('eat')>=0 || messageText.indexOf('hungry')>=0 || messageText.indexOf('food')>=0)&& (messageText.indexOf('i want')>=0 || messageText.indexOf('i am')>=0))
@@ -347,6 +347,10 @@ var answers2 = [ "And you?","What about you?","Are you doing great?" , "Hope eve
 var index2 = Math.floor(Math.random() * answers2.length);
 sendTextMessage(senderID,answers2[index2]);
 }
+
+else {
+sendTextMessage(senderID,"I'm sorry, i don't get what you mean by "+ messageText + " :/");
+}
     switch (messageText) {
 case "hello":
 case "hi":
@@ -368,10 +372,7 @@ var index1 = Math.floor(Math.random() * answers1.length);
 sendTextMessage(senderID,answers1[index1]);
                     break;
 
-                default:
-                sendTextMessage(senderID,"I'm sorry, i don't get what you mean by "+ messageText + " :/");
-                //sendTextMessage(senderID,numbers (messageText));
-               
+                default:   
 
 break;
     }
