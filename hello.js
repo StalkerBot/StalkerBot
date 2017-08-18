@@ -7,11 +7,7 @@ var http = require('http');
 const request = require('request');
 var requestify = require('requestify'); 
 var nlp = require('compromise');
-var mongoose = require('mongoose');
-var db = mongoose.connect(process.env.MONGODB_URI);
-var Schema = mongoose.Schema;
 var pipl = require('pipl')('SOCIAL-DEMO-dn4s9k3l9s5to9mi43kgj2kh');
-var Pipl = require('machinepack-pipl');
 
 //Google Seach API definition
 var GoogleSearch = require('google-search');
@@ -20,26 +16,7 @@ var googleSearch = new GoogleSearch({
   cx: '015313297794051920474:b0_gcbh8jvs'
 });
 
-
-
-
-
-// Schema of mongoose definition
-var StalkerBot = new Schema({
-  user_id: {type: String},
-  verbs: {type: String},
-  nouns: {type: String},
-  names: {type: String},
-  places: {type: String},
-  adverbs: {type: String},
-  peoplenames: {type: String},
-  phonenumbers: {type: String},
-  questions: {type: String}
-});
-
-
-module.exports = mongoose.model("StalkerBot", StalkerBot);
-
+//Parsing the body
 let app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -124,19 +101,19 @@ var adverbs=r.adverbs();
 var questions=r.questions();
 var verbs=r.verbs();
 
-
+// In case of a smiley face sent
 if ((messageText.indexOf(':)')>=0 || messageText.indexOf(':D')>=0 || messageText.indexOf(':P'))>=0) 
 
 {
                   sendTextMessage(senderID,"hope you are always happy :D!");
 }
 
-
+//Edit the text to be simple and readable by the function
 messageText = message.text.replace(/[,\/#!$%\^&\*;{}=\-_`~()]/g,"").toLowerCase().trim();
 
 
 
-
+// If the use wants to find an email
 if (messageText.indexOf ('@')>=0 && messageText.indexOf('.')>=0)
 {
   var exp = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gim;
@@ -160,42 +137,37 @@ if (data.person.names){
 for (var i = 0, len = data.person.names.length; i < len; i++) {
 
 sendTextMessage(senderID,"The name is: "+data.person.names[i].first+" "+data.person.names[i].last);
+
 }
 }
+wait(1000);
 if (data.person.usernames){
 for (var i = 0, len = data.person.usernames.length; i < len; i++) {
 sendTextMessage(senderID,"The username is: "+data.person.usernames[i].content);
 }
 }
+wait(1000);
 if (data.person.gender)
 sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
+wait(1000);
 if (data.person.dob)
 sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+" and is "+data.person.dob.display);
-}
-
-if (data.person.images)
+wait(1000);
+if (data.person.images && data.person.names)
 {
 for (var i = 0, len = data.person.images.length; i < len; i++) {
-  
-  
-  message = {
+var thename=data.person.names[0].first+" "+data.person.names[0].last;
+message = {
+    
                             attachment: {
                                 type: "template",
                                 payload: {
-                                    template_type: "generic",
+                                    template_type:"generic",
                                     elements: [{
-                                        title: "Search Result",
+                                        title: thename,
                                         subtitle: "Is this the person you are looking for?",
                                         image_url: data.person.images[i].url,
-                                        buttons: [{
-                                            type: "postback",
-                                            title: "Yes",
-                                            payload: "Correct"
-                                        }, {
-                                            type: "postback",
-                                            title: "No",
-                                            payload: "Incorrect"
-                                        }]
+                                        
                                     }]
                                 }
                             }
@@ -214,7 +186,7 @@ for (var i = 0, len = data.person.urls.length; i < len; i++) {
 sendTextMessage(senderID,"You can find the user on the following URLs" + data.person.urls[i].url);
 }
 }
-
+}
 
 
 
@@ -227,6 +199,7 @@ else
 }
 }
 
+// If the use wants to find a name
 else if ((messageText.indexOf('the')>=0 && messageText.indexOf('name')>=0 && messageText.indexOf('is')>=0))
 
 {
@@ -247,33 +220,77 @@ googleSearch.build({
 
 pipl.search.query({"first_name": name1[0],"last_name": name1[1]}, function(err, data) {
 wait(5000);
-console.log("><><><><><><><><><><><><><><><><><><><><"+data);
 if(data.person)
 {
-sendTextMessage(senderID,"Okay! i found these information about the name you provided <3");
+wait(5000);
+console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', data, err); 
+   sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
 
+if (data.person.names){
+for (var i = 0, len = data.person.names.length; i < len; i++) {
 
-wait(5000);  
-if (data.person.names[0])
-sendTextMessage(senderID,"The name is: "+data.person.names[0].first+" "+data.person.names[0].last);
+sendTextMessage(senderID,"The name is: "+data.person.names[i].first+" "+data.person.names[i].last);
 
-if (data.person.usernames)
-sendTextMessage(senderID,"The username is: "+data.person.usernames[0].content);
-
+}
+}
+wait(1000);
+if (data.person.usernames){
+for (var i = 0, len = data.person.usernames.length; i < len; i++) {
+sendTextMessage(senderID,"The username is: "+data.person.usernames[i].content);
+}
+}
+wait(1000);
 if (data.person.gender)
 sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
+wait(1000);
 if (data.person.dob)
 sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+" and is "+data.person.dob.display);
+wait(1000);
+if (data.person.images && data.person.names)
+{
+for (var i = 0, len = data.person.images.length; i < len; i++) {
+var thename=data.person.names[0].first+" "+data.person.names[0].last;
+message = {
+    
+                            attachment: {
+                                type: "template",
+                                payload: {
+                                    template_type:"generic",
+                                    elements: [{
+                                        title: thename,
+                                        subtitle: "Is this the person you are looking for?",
+                                        image_url: data.person.images[i].url,
+                                        
+                                    }]
+                                }
+                            }
+                        };
+                        
+                        
+                        
+sendMessage(senderID, message);
+  
 }
+}
+
+if (data.person.urls)
+{
+for (var i = 0, len = data.person.urls.length; i < len; i++) {
+sendTextMessage(senderID,"You can find the user on the following URLs" + data.person.urls[i].url);
+}
+}
+}
+
+
 
 else
 {
   sendTextMessage(senderID,"I'm sorry but it looks like this person has no information around :(");
-
 }
 });
 }
 
+// If the use wants to find a phone number
 else if ((messageText.indexOf('the')>=0 && messageText.indexOf('number')>=0 && messageText.indexOf('is')>=0))
 
 {
@@ -284,33 +301,74 @@ else if ((messageText.indexOf('the')>=0 && messageText.indexOf('number')>=0 && m
   
   pipl.search.query({"phone": phonenumber}, function(err, data) {
 wait(5000);
-
-
 if(data.person)
-{		
-console.log("><><><><><><><><><><><><><><><><><><><><"+data);
-     sendTextMessage(senderID,"I will search for " + phonenumbers.out('text')); 
-wait(5000);     
-      sendTextMessage(senderID,"Okay! i found these information about the phone you provided <3");
-if (data.person.names[0])
-sendTextMessage(senderID,"The name is: "+data.person.names[0].first+" "+data.person.names[0].last);
+{
+wait(5000);
+console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', data, err); 
+   sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
 
-if (data.person.usernames)
-sendTextMessage(senderID,"The username is: "+data.person.usernames[0].content);
+if (data.person.names){
+for (var i = 0, len = data.person.names.length; i < len; i++) {
 
+sendTextMessage(senderID,"The name is: "+data.person.names[i].first+" "+data.person.names[i].last);
+
+}
+}
+wait(1000);
+if (data.person.usernames){
+for (var i = 0, len = data.person.usernames.length; i < len; i++) {
+sendTextMessage(senderID,"The username is: "+data.person.usernames[i].content);
+}
+}
+wait(1000);
 if (data.person.gender)
 sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
+wait(1000);
 if (data.person.dob)
 sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+" and is "+data.person.dob.display);
+wait(1000);
+if (data.person.images && data.person.names)
+{
+for (var i = 0, len = data.person.images.length; i < len; i++) {
+var thename=data.person.names[0].first+" "+data.person.names[0].last;
+message = {
+    
+                            attachment: {
+                                type: "template",
+                                payload: {
+                                    template_type:"generic",
+                                    elements: [{
+                                        title: thename,
+                                        subtitle: "Is this the person you are looking for?",
+                                        image_url: data.person.images[i].url,
+                                        
+                                    }]
+                                }
+                            }
+                        };
+                        
+                        
+                        
+sendMessage(senderID, message);
+  
 }
+}
+
+if (data.person.urls)
+{
+for (var i = 0, len = data.person.urls.length; i < len; i++) {
+sendTextMessage(senderID,"You can find the user on the following URLs" + data.person.urls[i].url);
+}
+}
+}
+
+
 
 else
 {
   sendTextMessage(senderID,"I'm sorry but it looks like this person has no information around :(");
-
 }
-
-  });
+});
 		}
   
 }
