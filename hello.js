@@ -207,7 +207,7 @@ else if ((messageText.indexOf('the')>=0 && messageText.indexOf('name')>=0 && mes
   var X=messageText;
 var Z = X.slice(X.indexOf(Y) + Y.length);
      sendTextMessage(senderID,"I will search for " + Z);
-     Z=peoplenames.toString().split(" ");
+     Z=Z.toString().split(" ");
 
 // search for the name
 
@@ -221,7 +221,7 @@ googleSearch.build({
 });
 
 
-pipl.search.query({"first_name": Z[0],"last_name": Z[1]}, function(err, data) {
+pipl.search.query({"first_name": Z[0],"last_name": Z[0]}, function(err, data) {
 wait(5000);
 if(data.person)
 {
@@ -425,7 +425,7 @@ else if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || 
 else if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messageText.indexOf('i want to stalk a number')>=0) && (messageText.indexOf('number')>=0 || messageText.indexOf('phone')>=0))
 
 {
-                  sendTextMessage(senderID,"Go on, tell me the phone number you want to stalk, begin with: the name is, and i will do the rest ;)");
+                  sendTextMessage(senderID,"Go on, tell me the phone number you want to stalk, begin with: the number is, and i will do the rest ;)");
 }
 
 else if ((messageText.indexOf('sleep')>=0 || messageText.indexOf('sleepy')>=0 || messageText.indexOf('tired')>=0) && messageText.indexOf('i am')>=0)
