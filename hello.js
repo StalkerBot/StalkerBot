@@ -186,7 +186,7 @@ for (var i = 0, len = data.person.images.length; i < len; i++) {
                                     elements: [{
                                         title: "Search Result",
                                         subtitle: "Is this the person you are looking for?",
-                                        image_url: data.person.user_ids.url[i],
+                                        image_url: data.person.images.url[i],
                                         buttons: [{
                                             type: "postback",
                                             title: "Yes",
