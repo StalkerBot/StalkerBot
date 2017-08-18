@@ -132,7 +132,7 @@ if ((messageText.indexOf(':)')>=0 || messageText.indexOf(':D')>=0 || messageText
 }
 
 
-messageText = message.text.replace(/[,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase().trim();
+messageText = message.text.replace(/[,\/#!$%\^&\*{}=\-_`~()]/g,"").toLowerCase().trim();
 
 
 
@@ -482,4 +482,4 @@ function wait(ms){
    while(end < start + ms) {
      end = new Date().getTime();
   }
-}
+}	
