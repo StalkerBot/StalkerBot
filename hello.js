@@ -212,7 +212,7 @@ var Z = X.slice(X.indexOf(Y) + Y.length);
 pipl.search.query({"first_name": ZZ[0],"last_name": ZZ[1]}, function(err, data) {
 wait(5000);
 console.log(data);
-if(data.person)
+if(data.person || data.possible_persons)
 {
 wait(5000);
 console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', data, err); 
@@ -225,18 +225,38 @@ sendTextMessage(senderID,"The name is: "+data.person.names[i].first+" "+data.per
 
 }
 }
+
+if (data.possible_persons.names){
+for (var i = 0, len = data.possible_persons.names.length; i < len; i++) {
+
+sendTextMessage(senderID,"The name is: "+data.possible_persons.names[i].first+" "+data.possible_persons.names[i].last);
+
+}
+}
 wait(1000);
 if (data.person.usernames){
 for (var i = 0, len = data.person.usernames.length; i < len; i++) {
 sendTextMessage(senderID,"The username is: "+data.person.usernames[i].content);
 }
 }
+
+if (data.possible_persons.usernames){
+for (var i = 0, len = data.possible_persons.usernames.length; i < len; i++) {
+sendTextMessage(senderID,"The username is: "+data.possible_persons.usernames[i].content);
+}
+}
+
+
 wait(1000);
 if (data.person.gender)
 sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
+if (data.possible_persons.gender)
+sendTextMessage(senderID,"The gender is: "+data.possible_persons.gender.content);
 wait(1000);
 if (data.person.dob)
 sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+" and is "+data.person.dob.display);
+if(data.possible_persons.dob)
+sendTextMessage(senderID,"The date of birth: "+data.possible_persons.dob.date_range.start+" and is "+data.possible_persons.dob.display);
 wait(1000);
 if (data.person.images && data.person.names)
 {
@@ -265,10 +285,46 @@ sendMessage(senderID, message);
 }
 }
 
+
+if (data.possible_persons.images && data.possible_persons.names)
+{
+for (var i = 0, len = data.possible_persons.images.length; i < len; i++) {
+var thename=data.possible_persons.names[0].first+" "+data.possible_persons.names[0].last;
+message = {
+    
+                            attachment: {
+                                type: "template",
+                                payload: {
+                                    template_type:"generic",
+                                    elements: [{
+                                        title: thename,
+                                        subtitle: "Is this the person you are looking for?",
+                                        image_url: data.possible_persons.images[i].url,
+                                        
+                                    }]
+                                }
+                            }
+                        };
+                        
+                        
+                        
+sendMessage(senderID, message);
+  
+}
+}
+
 if (data.person.urls)
 {
 for (var i = 0, len = data.person.urls.length; i < len; i++) {
 sendTextMessage(senderID,"You can find the user on the following URLs " + data.person.urls[i].url);
+}
+}
+
+
+if (data.possible_persons.urls)
+{
+for (var i = 0, len = data.possible_persons.urls.length; i < len; i++) {
+sendTextMessage(senderID,"You can find the user on the following URLs " + data.possible_persons.urls[i].url);
 }
 }
 }
