@@ -360,10 +360,11 @@ for (var i = 0, len = data.possible_persons.urls.length; i < len; i++) {
 sendTextMessage(senderID,"You can find the user on the following URLs " + data.possible_persons.urls[i].url);
 }
 }
+}
 else{
 sendTextMessage(senderID,"Sorry no people with the specified name found :(");
 }
-}
+
 
 });
 }
