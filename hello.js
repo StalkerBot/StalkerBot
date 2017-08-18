@@ -153,7 +153,7 @@ pipl.search.query({"email": emaill.toString()}, function(err, data) {
 wait(5000);
 console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', data, err); 
    sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
-
+if (data.person){
 if (data.person.names[0])
 sendTextMessage(senderID,"The name is: "+data.person.names[0].first+" "+data.person.names[0].last);
 
@@ -169,6 +169,7 @@ else
 {
   sendTextMessage(senderID,"I'm sorry but it looks like this person has no information around :(");
 
+}
 }
 });
   
