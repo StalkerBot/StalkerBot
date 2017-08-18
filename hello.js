@@ -203,8 +203,11 @@ else
 else if ((messageText.indexOf('the')>=0 && messageText.indexOf('name')>=0 && messageText.indexOf('is')>=0))
 
 {
-     sendTextMessage(senderID,"I will search for " + peoplenames.out('text'));
-     var name1=peoplenames.toString().split(" ");
+   var Y="is";
+  var X=messageText;
+var Z = X.slice(X.indexOf(Y) + Y.length);
+     sendTextMessage(senderID,"I will search for " + Z);
+     Z=peoplenames.toString().split(" ");
 
 // search for the name
 
@@ -218,7 +221,7 @@ googleSearch.build({
 });
 
 
-pipl.search.query({"first_name": name1[0],"last_name": name1[1]}, function(err, data) {
+pipl.search.query({"first_name": Z[0],"last_name": Z[1]}, function(err, data) {
 wait(5000);
 if(data.person)
 {
@@ -289,7 +292,10 @@ else
 }
 });
 }
-
+else if ((messageText.indexOf('help')>=0) || messageText.indexOf('i want to stalk')>=0)
+{
+  sendTextMessage(senderID,"You can search for a name, a phone number of an email. /n If you want to search for a name, write: the name is and then write the name you are searching for /n If you want to search for an email, just write the email directly. /nif you want to search for a phone number, write: the number is and then the number you are searching for");
+}
 // If the use wants to find a phone number
 else if ((messageText.indexOf('the')>=0 && messageText.indexOf('number')>=0 && messageText.indexOf('is')>=0))
 
@@ -400,7 +406,7 @@ var index = Math.floor(Math.random() * answers.length);
                   sendTextMessage(senderID,answers[index]);
 }
 
-else if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messageText.indexOf('stalk')>=0) && messageText.indexOf('name')>=0)
+else if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messageText.indexOf('i want to stalk a name')>=0) && messageText.indexOf('name')>=0)
 
 {
                   sendTextMessage(senderID,"Go on, tell me the name you want to stalk by writing, begin with: the name is, and i will do the rest ;)   ");
@@ -410,13 +416,13 @@ else if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || 
 
 
 
-else if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messageText.indexOf('stalk')>=0) && messageText.indexOf('email')>=0)
+else if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messageText.indexOf('i want to stalk an email')>=0) && messageText.indexOf('email')>=0)
 
 {
                   sendTextMessage(senderID,"Go on, tell me the email you want to stalk, and i will do the rest ;)");
 }
 
-else if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messageText.indexOf('stalk')>=0) && (messageText.indexOf('number')>=0 || messageText.indexOf('phone')>=0))
+else if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messageText.indexOf('i want to stalk a number')>=0) && (messageText.indexOf('number')>=0 || messageText.indexOf('phone')>=0))
 
 {
                   sendTextMessage(senderID,"Go on, tell me the phone number you want to stalk, begin with: the name is, and i will do the rest ;)");
