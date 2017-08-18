@@ -323,7 +323,7 @@ var Z = X.slice(X.indexOf(Y) + Y.length);
 
 }
 
-else if ((messageText.indexOf('eat')>=0 || messageText.indexOf('hungry')>=0 || messageText.indexOf('food')>=0)&& ((messageText.indexOf('i want')>=0 || messageText.indexOf('i am')>=0)))
+else if ((messageText.indexOf('eat')>=0 || messageText.indexOf('hungry')>=0 || messageText.indexOf('food')>=0) && ((messageText.indexOf('i want')>=0) || (messageText.indexOf('i am')>=0)))
 
 {
                   sendTextMessage(senderID,"do you think i will order a pizza for you :P?");
