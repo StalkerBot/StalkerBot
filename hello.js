@@ -350,9 +350,7 @@ else if(messageText.indexOf('good')>=1 || messageText.indexOf('great') >=1)
 }
 
 else {
-sendTextMessage(senderID,"I'm sorry, i don't get what you mean by "+ messageText + " :/");
-}
-    switch (messageText) {
+  switch (messageText) {
 case "hello":
 case "hi":
 case "ciao":
@@ -374,9 +372,13 @@ sendTextMessage(senderID,answers1[index1]);
                     break;
 
                 default:   
+        sendTextMessage(senderID,"I'm sorry, i don't get what you mean by "+ messageText + " :/");
 
 break;
     }
+
+}
+    
     
   } else if (messageAttachments) {
     sendTextMessage(senderID, "***Hoping it is not a LIKE!***... Are you trying to send an attachment? I don't accept such things");
