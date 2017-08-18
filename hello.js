@@ -150,10 +150,12 @@ var emaill=messageText.match(exp)[0];
 pipl.search.query({"email": emaill.toString()}, function(err, data) {
     // Here you go
 
+if(data.person)
+{
 wait(5000);
 console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', data, err); 
    sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
-if (data.person){
+
 if (data.person.names[0])
 sendTextMessage(senderID,"The name is: "+data.person.names[0].first+" "+data.person.names[0].last);
 
@@ -164,12 +166,10 @@ if (data.person.gender)
 sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
 if (data.person.dob)
 sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+" and is "+data.person.dob.display);
-
+}
 else
 {
   sendTextMessage(senderID,"I'm sorry but it looks like this person has no information around :(");
-
-}
 }
 });
   
@@ -196,7 +196,8 @@ googleSearch.build({
 
 pipl.search.query({"first_name": name1[0],"last_name": name1[1]}, function(err, data) {
 console.log("><><><><><><><><><><><><><><><><><><><><"+data);
-
+if(data.person)
+{
 sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
 
 
@@ -211,7 +212,7 @@ if (data.person.gender)
 sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
 if (data.person.dob)
 sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+" and is "+data.person.dob.display);
-
+}
 
 else
 {
@@ -233,7 +234,8 @@ else if ((messageText.indexOf('the')>=0 && messageText.indexOf('number')>=0 && m
 
 
 
-		
+if(data.person)
+{		
 console.log("><><><><><><><><><><><><><><><><><><><><"+data);
      sendTextMessage(senderID,"I will search for " + phonenumbers.out('text')); 
 wait(5000);     
@@ -248,7 +250,7 @@ if (data.person.gender)
 sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
 if (data.person.dob)
 sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+" and is "+data.person.dob.display);
-
+}
 
 else
 {
