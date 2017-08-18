@@ -154,15 +154,15 @@ wait(5000);
 console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', data, err); 
    sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
 
-if (typeof data.person.names[0] !== "undefined")
+if (data.person.names[0])
 sendTextMessage(senderID,"The name is: "+data.person.names[0].first+" "+data.person.names[0].last);
 
-if (typeof data.person.usernames !== "undefined")
+if (data.person.usernames)
 sendTextMessage(senderID,"The username is: "+data.person.usernames[0].content);
 
-if (typeof data.person.gender !== "undefined")
+if (data.person.gender)
 sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
-if (typeof data.person.dob !== "undefined")
+if (data.person.dob)
 sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+" and is "+data.person.dob.display);
 
 else
@@ -200,15 +200,15 @@ sendTextMessage(senderID,"Okay! i found these information about the email you pr
 
 
 wait(5000);  
- if (typeof data.person.names !== "undefined")
+if (data.person.names[0])
 sendTextMessage(senderID,"The name is: "+data.person.names[0].first+" "+data.person.names[0].last);
 
-if (typeof data.person.usernames !== "undefined")
+if (data.person.usernames)
 sendTextMessage(senderID,"The username is: "+data.person.usernames[0].content);
 
-if (typeof data.person.gender !== "undefined")
+if (data.person.gender)
 sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
-if (typeof data.person.dob.date_range !== "undefined")
+if (data.person.dob)
 sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+" and is "+data.person.dob.display);
 
 
@@ -237,15 +237,15 @@ console.log("><><><><><><><><><><><><><><><><><><><><"+data);
      sendTextMessage(senderID,"I will search for " + phonenumbers.out('text')); 
 wait(5000);     
       sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
-if (typeof data.person.names[0] !== "undefined")
+if (data.person.names[0])
 sendTextMessage(senderID,"The name is: "+data.person.names[0].first+" "+data.person.names[0].last);
 
-if (typeof data.person.usernames !== "undefined")
+if (data.person.usernames)
 sendTextMessage(senderID,"The username is: "+data.person.usernames[0].content);
 
-if (typeof data.person.gender !== "undefined")
+if (data.person.gender)
 sendTextMessage(senderID,"The gender is: "+data.person.gender.content);
-if (typeof data.person.dob.date_range !== "undefined")
+if (data.person.dob)
 sendTextMessage(senderID,"The date of birth: "+data.person.dob.date_range.start+" and is "+data.person.dob.display);
 
 
@@ -322,7 +322,7 @@ var Z = X.slice(X.indexOf(Y) + Y.length);
                   sendTextMessage(senderID,"it's not time to "+Z+" come on, let's stalk");
 
 }
-else if (messageText.indexOf('hungry')>=1 || messageText.indexOf('food')>=1)
+else if (messageText.indexOf('i am hungry')>=1 || messageText.indexOf('i want food')>=1)
 {
                   sendTextMessage(senderID,"do you think i will order a pizza for you :P?");
 }
