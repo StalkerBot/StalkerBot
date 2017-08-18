@@ -316,15 +316,14 @@ else if ((messageText.indexOf('sleep')>=0 || messageText.indexOf('sleepy')>=0 ||
 }
 else if (((messageText.indexOf('i want')>=0) && (messageText.indexOf('to')>=0)) && ((messageText.indexOf('stalk')==-1) && (messageText.indexOf('search')==-1) && (messageText.indexOf('find')==-1)))
 {
-  var arr =[];
-  arr=r.verbs().out('array');
-for (var i=0;i<arr.length;i++){
-if(arr[i]!="want")
-                  sendTextMessage(senderID,"it's not a time to "+arr[i]+" come on, let's stalk");
-}
+  var Y="to";
+  var X=messageText;
+var Z = X.slice(X.indexOf(Y) + Y.length);
+                  sendTextMessage(senderID,"it's not a time to "+Z+" come on, let's stalk");
+
 }
 
-else if ((messageText.indexOf('eat')>=0 || messageText.indexOf('hungry')>=0 || messageText.indexOf('food')>=0)&& (messageText.indexOf('i want')>=0 || messageText.indexOf('i am')>=0))
+else if ((messageText.indexOf('eat')>=0 || messageText.indexOf('hungry')>=0 || messageText.indexOf('food')>=0)&& ((messageText.indexOf('i want')>=0 || messageText.indexOf('i am')>=0)))
 
 {
                   sendTextMessage(senderID,"do you think i will order a pizza for you :P?");
