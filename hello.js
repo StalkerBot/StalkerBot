@@ -301,7 +301,7 @@ sendTextMessage(senderID,"No exact people found, searching for possible people")
 if (data.possible_persons)
 {
   
-  if (data.possible_persons.names){
+  if (data.possible_persons[0].names){
 for (var i = 0, len = data.possible_persons[0].names.length; i < len; i++) {
 
 sendTextMessage(senderID,"The name is: "+data.possible_persons[0].names[i].first+" "+data.possible_persons[0].names[i].last);
@@ -311,21 +311,21 @@ sendTextMessage(senderID,"The name is: "+data.possible_persons[0].names[i].first
 
 
 
-if (data.possible_persons.usernames){
+if (data.possible_persons[0].usernames){
 for (var i = 0, len = data.possible_persons[0].usernames.length; i < len; i++) {
 sendTextMessage(senderID,"The username is: "+data.possible_persons[0].usernames[i].content);
 }
 }
-if (data.possible_persons.gender)
+if (data.possible_persons[0].gender)
 sendTextMessage(senderID,"The gender is: "+data.possible_persons[0].gender.content);
 
 
-if(data.possible_persons.dob)
+if(data.possible_persons[0].dob)
 sendTextMessage(senderID,"The date of birth: "+data.possible_persons[0].dob.date_range.start+" and is "+data.possible_persons[0].dob.display);
 
 
 
-if (data.possible_persons.images && data.possible_persons.names)
+if (data.possible_persons[0].images && data.possible_persons[0].names)
 {
 for (var i = 0, len = data.possible_persons[0].images.length; i < len; i++) {
 var thename=data.possible_persons[0].names[0].first+" "+data.possible_persons[0].names[0].last;
