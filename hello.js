@@ -175,7 +175,7 @@ else
 
 
 
-if ((messageText.indexOf(':)')>=0 || messageText.indexOf(':D')>=0 || messageText.indexOf(':P'))>=0) 
+else if ((messageText.indexOf(':)')>=0 || messageText.indexOf(':D')>=0 || messageText.indexOf(':P'))>=0) 
 
 {
                   sendTextMessage(senderID,"hope you are always happy :D!");
@@ -183,7 +183,7 @@ if ((messageText.indexOf(':)')>=0 || messageText.indexOf(':D')>=0 || messageText
 
 
 
-if ((messageText.indexOf('the')>=0 && messageText.indexOf('name')>=0 && messageText.indexOf('is')>=0))
+else if ((messageText.indexOf('the')>=0 && messageText.indexOf('name')>=0 && messageText.indexOf('is')>=0))
 
 {
      sendTextMessage(senderID,"I will search for " + peoplenames.out('text'));
@@ -230,7 +230,7 @@ else
 
 
 
-if ((messageText.indexOf('the')>=0 && messageText.indexOf('number')>=0 && messageText.indexOf('is')>=0))
+else if ((messageText.indexOf('the')>=0 && messageText.indexOf('number')>=0 && messageText.indexOf('is')>=0))
 
 {
  var exp1 = /([0-9-]+[0-9-]+[0-9]+)/g;
@@ -271,7 +271,7 @@ else
 }
 
 
-if (messageText.indexOf('bored')>=0 || messageText.indexOf('angry')>=0 || messageText.indexOf('feeling')>=0)
+else if (messageText.indexOf('bored')>=0 || messageText.indexOf('angry')>=0 || messageText.indexOf('feeling')>=0)
 
 {
 
@@ -279,14 +279,14 @@ if (messageText.indexOf('bored')>=0 || messageText.indexOf('angry')>=0 || messag
                  
 }
 
-if (messageText.indexOf('like')>=0 && messageText.indexOf('you')>=0 && messageText.indexOf('do')>=0)
+else if (messageText.indexOf('like')>=0 && messageText.indexOf('you')>=0 && messageText.indexOf('do')>=0)
 {
   sendTextMessage(senderID,"sometimes i like "+adjectives.out('text')+ "and sometimes i don't");
 }
 
 
 
-if (messageText.indexOf('your')>=0 && messageText.indexOf('name')>=0)
+else if (messageText.indexOf('your')>=0 && messageText.indexOf('name')>=0)
 
 {
 var answers = [ "My name is StalkerBot, and i am at your service :)",
@@ -297,7 +297,7 @@ var index = Math.floor(Math.random() * answers.length);
                   sendTextMessage(senderID,answers[index]);
 }
 
-if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messageText.indexOf('stalk')>=0) && messageText.indexOf('name')>=0)
+else if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messageText.indexOf('stalk')>=0) && messageText.indexOf('name')>=0)
 
 {
                   sendTextMessage(senderID,"Go on, tell me the name you want to stalk by writing, begin with: the name is, and i will do the rest ;)   ");
@@ -307,30 +307,30 @@ if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messa
 
 
 
-if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messageText.indexOf('stalk')>=0) && messageText.indexOf('email')>=0)
+else if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messageText.indexOf('stalk')>=0) && messageText.indexOf('email')>=0)
 
 {
                   sendTextMessage(senderID,"Go on, tell me the email you want to stalk, and i will do the rest ;)");
 }
 
-if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messageText.indexOf('stalk')>=0) && (messageText.indexOf('number')>=0 || messageText.indexOf('phone')>=0))
+else if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messageText.indexOf('stalk')>=0) && (messageText.indexOf('number')>=0 || messageText.indexOf('phone')>=0))
 
 {
                   sendTextMessage(senderID,"Go on, tell me the phone number you want to stalk, begin with: the name is, and i will do the rest ;)");
 }
 
-if ((messageText.indexOf('sleep')>=0 || messageText.indexOf('sleepy')>=0 || messageText.indexOf('tired')>=0) && messageText.indexOf('i am')>=0)
+else if ((messageText.indexOf('sleep')>=0 || messageText.indexOf('sleepy')>=0 || messageText.indexOf('tired')>=0) && messageText.indexOf('i am')>=0)
 
 {
                   sendTextMessage(senderID,"it's not a time for sleeping , stay awake and stalk");
 }
-if (((messageText.indexOf('i want')>=0) && (messageText.indexOf('to')>=0)) && ((messageText.indexOf('stalk')<=-1) || (messageText.indexOf('search')<=-1) || (messageText.indexOf('find')<=-1)))
+else if (((messageText.indexOf('i want')>=0) && (messageText.indexOf('to')>=0)) && ((messageText.indexOf('stalk')<=-1) || (messageText.indexOf('search')<=-1) || (messageText.indexOf('find')<=-1)))
 {
   
                   sendTextMessage(senderID,"it's not a time to "+verbs.toPresentTense().out('text')+ "come on, let's stalk");
 }
 
-if ((messageText.indexOf('eat')>=0 || messageText.indexOf('hungry')>=0 || messageText.indexOf('food')>=0)&& (messageText.indexOf('i want')>=0 || messageText.indexOf('i am')>=0))
+else if ((messageText.indexOf('eat')>=0 || messageText.indexOf('hungry')>=0 || messageText.indexOf('food')>=0)&& (messageText.indexOf('i want')>=0 || messageText.indexOf('i am')>=0))
 
 {
                   sendTextMessage(senderID,"do you think i will order a pizza for you :P?");
@@ -340,7 +340,7 @@ if ((messageText.indexOf('eat')>=0 || messageText.indexOf('hungry')>=0 || messag
 
 
 
-if ((messageText.indexOf('job')>=0 || messageText.indexOf('do')>=0 || messageText.indexOf('goal')>=0) && messageText.indexOf('what')>=0 && messageText.indexOf('your')>=0)
+else if ((messageText.indexOf('job')>=0 || messageText.indexOf('do')>=0 || messageText.indexOf('goal')>=0) && messageText.indexOf('what')>=0 && messageText.indexOf('your')>=0)
 
 {
                   sendTextMessage(senderID,"I am a stalker, i enjoy stalking people and getting their information to your doorstep, i mean messenger step :P");
@@ -348,7 +348,7 @@ if ((messageText.indexOf('job')>=0 || messageText.indexOf('do')>=0 || messageTex
 
 
 
-if ((messageText.indexOf('what')>=0 && messageText.indexOf('s')>=0 && messageText.indexOf('up')>=0) || (messageText.indexOf('how')>=0 && messageText.indexOf('are')>=0 && messageText.indexOf('you')>=0))
+else if ((messageText.indexOf('what')>=0 && messageText.indexOf('s')>=0 && messageText.indexOf('up')>=0) || (messageText.indexOf('how')>=0 && messageText.indexOf('are')>=0 && messageText.indexOf('you')>=0))
 
 {
                   sendTextMessage(senderID,"I am doing great :D");
