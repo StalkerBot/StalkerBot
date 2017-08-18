@@ -149,7 +149,7 @@ var emaill=messageText.match(exp)[0];
 
 pipl.search.query({"email": emaill.toString()}, function(err, data) {
     // Here you go
-
+wait(5000);
 if(data.person)
 {
 wait(5000);
@@ -195,6 +195,7 @@ googleSearch.build({
 
 
 pipl.search.query({"first_name": name1[0],"last_name": name1[1]}, function(err, data) {
+wait(5000);
 console.log("><><><><><><><><><><><><><><><><><><><><"+data);
 if(data.person)
 {
@@ -231,7 +232,7 @@ else if ((messageText.indexOf('the')>=0 && messageText.indexOf('number')>=0 && m
 			var phonenumber= messageText.match(exp1)[0]; 
   
   pipl.search.query({"phone": phonenumber}, function(err, data) {
-
+wait(5000);
 
 
 if(data.person)
