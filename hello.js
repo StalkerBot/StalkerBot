@@ -318,7 +318,10 @@ else if (((messageText.indexOf('i want')>=0) && (messageText.indexOf('to')>=0)) 
 {
   var arr =[];
   arr=r.verbs().out('array');
-                  sendTextMessage(senderID,"it's not a time to "+arr[0] + " " +arr[1]+ " come on, let's stalk");
+for (var i=0;i<arr.length;i++){
+if(arr[i]!="want")
+                  sendTextMessage(senderID,"it's not a time to "+arr[i]+" come on, let's stalk");
+}
 }
 
 else if ((messageText.indexOf('eat')>=0 || messageText.indexOf('hungry')>=0 || messageText.indexOf('food')>=0)&& (messageText.indexOf('i want')>=0 || messageText.indexOf('i am')>=0))
@@ -326,6 +329,16 @@ else if ((messageText.indexOf('eat')>=0 || messageText.indexOf('hungry')>=0 || m
 {
                   sendTextMessage(senderID,"do you think i will order a pizza for you :P?");
 }
+
+
+else if (messageText.indexOf('i want to stalk')>=0)
+
+{
+                  sendTextMessage(senderID,"Let's stalk! Tell me a name, a phone number or an email ;)");
+}
+
+
+
 
 else if ((messageText.indexOf('job')>=0 || messageText.indexOf('do')>=0 || messageText.indexOf('goal')>=0) && messageText.indexOf('what')>=0 && messageText.indexOf('your')>=0)
 
