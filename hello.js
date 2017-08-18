@@ -382,7 +382,8 @@ var index1 = Math.floor(Math.random() * answers1.length);
 sendTextMessage(senderID,answers1[index1]);
                     break;
 
-                default:   
+                default: 
+if (messageText != ":d" &&  messageText != ":)" && messageText != ":P")
         sendTextMessage(senderID,"I'm sorry, i don't get what you mean by "+ messageText + " :/");
 
 break;
