@@ -156,10 +156,11 @@ wait(5000);
 console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', data, err); 
    sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
 
-if (data.person.names)
+if (data.person.names){
 for (var i = 0, len = data.person.names.length; i < len; i++) {
 
 sendTextMessage(senderID,"The name is: "+data.person.names[i].first+" "+data.person.names[i].last);
+}
 }
 if (data.person.usernames)
 sendTextMessage(senderID,"The username is: "+data.person.usernames[0].content);
