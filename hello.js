@@ -481,6 +481,7 @@ else if (messageText.indexOf('the')>=0 && messageText.indexOf('twitter')>=0 && m
   var X=messageText;
 var Z = X.slice(X.indexOf(Y) + Y.length);
      sendTextMessage(senderID,"I will get you tweets by " + Z);
+q: Z,
 googleSearch.build({
   start: 5,
   num: 10, // Number of search results to return between 1 and 10, inclusive 
@@ -567,10 +568,8 @@ else if ((messageText.indexOf('job')>=0 || messageText.indexOf('do')>=0 || messa
 else if ((messageText.indexOf('what')>=0 && messageText.indexOf('s')>=0 && messageText.indexOf('up')>=0) || (messageText.indexOf('how')>=0 && messageText.indexOf('are')>=0 && messageText.indexOf('you')>=0))
 
 {
-                  sendTextMessage(senderID,"I am doing great :D");
-                  wait(1000);
-                  
-var answers2 = [ "And you?","What about you?","Are you doing great?" , "Hope everything is awesome with you"];
+      
+var answers2 = [ "I am doing great :D and you?","I am doing great. What about you?","I am doing great, are you doing great?" , "I am doing great. Hope everything is awesome with you"];
 
 var index2 = Math.floor(Math.random() * answers2.length);
 sendTextMessage(senderID,answers2[index2]);
