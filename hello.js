@@ -8,7 +8,7 @@ const request = require('request');
 var requestify = require('requestify'); 
 var nlp = require('compromise');
 var pipl = require('pipl')('SOCIAL-DEMO-yhnfhrmsvuzusi1odm3o0mbn');
-var translator = require('american-british-english-translato');
+var translator = require('american-british-english-translator');
 
 //Google Seach API definition
 var GoogleSearch = require('google-search');
