@@ -476,7 +476,9 @@ else if(messageText.indexOf('translate')>=0)
  var Y="translate ";
   var X=messageText;
 var Z = X.slice(X.indexOf(Y) + Y.length);
-sendTextMessage(senderID,(JSON.stringify(translator.translate(Z)));
+sendTextMessage(senderID,(JSON.stringify(translator.translate(Z))));
+}
+
 else if (messageText.indexOf('the')>=0 && messageText.indexOf('twitter')>=0 && messageText.indexOf('handle')>=0 && messageText.indexOf('is')>=0)
 
 {
