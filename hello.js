@@ -485,7 +485,7 @@ q: Z,
 googleSearch.build({
   start: 5,
   num: 10, // Number of search results to return between 1 and 10, inclusive 
-  siteSearch: "http://twitter.com" // Restricts results to URLs from a specified site 
+  siteSearch: "https://twitter.com" // Restricts results to URLs from a specified site 
 }, function(error, response) {
   console.log(response);
 });
