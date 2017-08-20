@@ -495,7 +495,7 @@ var Y="like ";
   var X=messageText;
 var Z = X.slice(X.indexOf(Y) + Y.length);
 var likes=nlp(Z);
-  sendTextMessage(senderID,"sometimes i like "+likes.verbs().toPresentTense().out('text')+ "and sometimes i don't");
+  sendTextMessage(senderID,"sometimes StalkerBot "+likes.verbs().toPresentTense().out('text')+ " and sometimes he doesn't");
 }
 
 
