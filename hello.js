@@ -481,6 +481,7 @@ var options = {
  var Y="translate ";
   var X=messageText;
 var Z = X.slice(X.indexOf(Y) + Y.length);
+console.log(JSON.stringify(translator.translate(Z, options)));
 sendTextMessage(senderID,(JSON.stringify(translator.translate(Z,options))));
 }
 
