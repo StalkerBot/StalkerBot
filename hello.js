@@ -12,8 +12,8 @@ var pipl = require('pipl')('SOCIAL-DEMO-yhnfhrmsvuzusi1odm3o0mbn');
 //Google Seach API definition
 var GoogleSearch = require('google-search');
 var googleSearch = new GoogleSearch({
-  key: 'AIzaSyCc3w6qBbxCYWqvlLujfjRVnKQ2vrH7zgI',
-  cx: '015313297794051920474:b0_gcbh8jvs'
+  key: 'AIzaSyCzCKDafzxcMZPHZo_AFNcohCBS0vDApUw',
+  cx: '015313297794051920474:imcpkx0glxk'
 });
 
 //Parsing the body
@@ -163,12 +163,23 @@ message = {
                                 type: "template",
                                 payload: {
                                     template_type:"generic",
+                                    image_aspect_ratio:"square",
                                     elements: [{
-                                        title: thename,
-                                        subtitle: "Is this the person you are looking for?",
-                                        image_url: data.person.images[i].url,
-                                        
-                                    }]
+                                      title:thename,
+                                      image_url: data.person.images[i].url,
+                                      
+                                  
+                                      
+                                      
+                                    }],
+                                    default_action:[
+  {
+    "type":"web_url",
+    "url":data.person.images[i].url,
+    "webview_height_ratio": "full",
+    "messenger_extensions": false,  
+    }
+]
                                 }
                             }
                         };
@@ -463,6 +474,22 @@ else if (messageText.indexOf('bored')>=0 || messageText.indexOf('angry')>=0 || m
                  
 }
 
+else if (messageText.indexOf('the')>=0 && messageText.indexOf('twitter')>=0 && messageText.indexOf('handle')>=0 && messageText.indexOf('is')>=0)
+
+{
+   var Y="is ";
+  var X=messageText;
+var Z = X.slice(X.indexOf(Y) + Y.length);
+     sendTextMessage(senderID,"I will get you tweets by " + Z);
+googleSearch.build({
+  start: 5,
+  num: 10, // Number of search results to return between 1 and 10, inclusive 
+  siteSearch: "http://twitter.com" // Restricts results to URLs from a specified site 
+}, function(error, response) {
+  console.log(response);
+});
+  
+}
 else if (messageText.indexOf('like')>=0 && messageText.indexOf('you')>=0 && messageText.indexOf('do')>=0)
 {
   sendTextMessage(senderID,"sometimes i like "+adjectives.out('text')+ "and sometimes i don't");
