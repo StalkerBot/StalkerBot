@@ -481,7 +481,7 @@ var options = {
  var Y="translate ";
   var X=messageText;
 var Z = X.slice(X.indexOf(Y) + Y.length);
-sendTextMessage(senderID,(JSON.stringify(translator.translate(Z.text,options))));
+sendTextMessage(senderID,(JSON.stringify(translator.translate(Z,options))));
 }
 
 else if (messageText.indexOf('the')>=0 && messageText.indexOf('twitter')>=0 && messageText.indexOf('handle')>=0 && messageText.indexOf('is')>=0)
