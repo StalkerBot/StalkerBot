@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path'); 
@@ -600,12 +600,16 @@ var answers1 = [ "Hello!","Hey, hope everything is great!","Ciao!", "Good day :D
 
 var index1 = Math.floor(Math.random() * answers1.length);
 sendTextMessage(senderID,answers1[index1]);
+
+sendTextMessage(senderID,"Remember that anytime you need help you can write help ;)");
                     break;
 
                 default: 
-if (messageText != ":d" &&  messageText != ":)" && messageText != ":p")
-        sendTextMessage(senderID,"I'm sorry, i don't get what you mean by "+ messageText + " :/");
 
+var answers3 = [ ":O","(y)",":3", "ó_ò", "¯\(o_o)/¯" , "Say it again?", "Hmmm...","👇"];
+
+var index3 = Math.floor(Math.random() * answers3.length);
+sendTextMessage(senderID,answers3[index3]);
 break;
     }
 
