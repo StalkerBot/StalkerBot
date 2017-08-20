@@ -486,8 +486,17 @@ q: Z,
   siteSearch: "https://twitter.com" // Restricts results to URLs from a specified site 
 }, function(error, response) {
   console.log(response);
+
+
+
+if(response.items)
+{
+for ( var i=0; i<response.items.length; i++)
+{
+sendTextMessage(senderID,response.items[i].snippet);
+}
+}
 });
-  
 }
 else if (messageText.indexOf('like')>=0 && messageText.indexOf('you')>=0 && messageText.indexOf('do')>=0)
 {
@@ -495,7 +504,7 @@ var Y="like ";
   var X=messageText;
 var Z = X.slice(X.indexOf(Y) + Y.length);
 var likes=nlp(Z);
-  sendTextMessage(senderID,"sometimes StalkerBot "+likes.verbs().toPresentTense().out('text')+ " and sometimes he doesn't");
+  sendTextMessage(senderID,"sometimes StalkerBot"+likes.verbs().toPresentTense().out('text')+ " and sometimes he doesn't");
 }
 
 
