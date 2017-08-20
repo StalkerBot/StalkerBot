@@ -170,7 +170,7 @@ message = {
                                       image_url: data.person.images[i].url,
                                       "default_action": {
               "type": "web_url",
-              "url": data.person.images[i].url,
+              "url": data.person.images[i].url,tra
               "webview_height_ratio": "full",
             }
                                   
@@ -473,10 +473,16 @@ else if (messageText.indexOf('bored')>=0 || messageText.indexOf('angry')>=0 || m
 }
 else if(messageText.indexOf('translate')>=0)
 {
+var options = {
+  british: true
+};
+
+
+
  var Y="translate ";
   var X=messageText;
 var Z = X.slice(X.indexOf(Y) + Y.length);
-sendTextMessage(senderID,(JSON.stringify(translator.translate(Z))));
+sendTextMessage(senderID,(JSON.stringify(translator.translate(Z.text,options))));
 }
 
 else if (messageText.indexOf('the')>=0 && messageText.indexOf('twitter')>=0 && messageText.indexOf('handle')>=0 && messageText.indexOf('is')>=0)
