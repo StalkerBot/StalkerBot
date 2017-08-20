@@ -84,7 +84,6 @@ function receivedMessage(event) {
   console.log(JSON.stringify(message));
 
   var messageId = message.mid;
-
   var messageText = message.text;
   var messageAttachments = message.attachments;
 
@@ -170,7 +169,7 @@ message = {
                                       image_url: data.person.images[i].url,
                                       "default_action": {
               "type": "web_url",
-              "url": data.person.images[i].url,tra
+              "url": data.person.images[i].url,
               "webview_height_ratio": "full",
             }
                                   
