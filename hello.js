@@ -8,6 +8,7 @@ const request = require('request');
 var requestify = require('requestify'); 
 var nlp = require('compromise');
 var pipl = require('pipl')('SOCIAL-DEMO-yhnfhrmsvuzusi1odm3o0mbn');
+var translator = require('american-british-english-translator');
 
 //Google Seach API definition
 var GoogleSearch = require('google-search');
@@ -377,7 +378,7 @@ sendTextMessage(senderID,"I'm sorry but it looks like this person has no informa
 }
 else if ((messageText.indexOf('help')>=0) || messageText.indexOf('i want to stalk')>=0)
 {
-  sendTextMessage(senderID,"You can search for 1- A Name \n 2- A Phone Number \n 3- An Email. \n If you want to search for a name, write: |the name is| and then write the name you are searching for. \n If you want to search for an email, just write the email directly. \n If you want to search for a phone number, write |the number is| and then the number you are searching for");
+  sendTextMessage(senderID,"You can search for \n 1- A Name \n 2- A Phone Number \n 3- An Email. \n \n If you want to search for a name, write: |the name is| and then write the name you are searching for. \n \n If you want to search for an email, just write the email directly. \n \n If you want to search for a phone number, write |the number is| and then the number you are searching for");
 }
 // If the use wants to find a phone number
 else if ((messageText.indexOf('the')>=0 && messageText.indexOf('number')>=0 && messageText.indexOf('is')>=0))
@@ -470,7 +471,12 @@ else if (messageText.indexOf('bored')>=0 || messageText.indexOf('angry')>=0 || m
                   sendTextMessage(senderID,"Why are you feeling"+adjectives.out('text')+ "?");
                  
 }
-
+else if(messageText.indexOf('translate')>=0)
+{
+ var Y="translate ";
+  var X=messageText;
+var Z = X.slice(X.indexOf(Y) + Y.length);
+sendTextMessage(senderID,(JSON.stringify(translator.translate(Z)));
 else if (messageText.indexOf('the')>=0 && messageText.indexOf('twitter')>=0 && messageText.indexOf('handle')>=0 && messageText.indexOf('is')>=0)
 
 {
