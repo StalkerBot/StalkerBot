@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "american-british-english-translator": "^0.1.1",
     "apiai": "^4.0.3",
     "body-parser": "^1.17.2",
     "bootbot": "^1.0.12",
