@@ -167,19 +167,16 @@ message = {
                                     elements: [{
                                       title:thename,
                                       image_url: data.person.images[i].url,
-                                      
+                                      "default_action": {
+              "type": "web_url",
+              "url": data.person.images[i].url,
+              "webview_height_ratio": "full",
+            }
                                   
                                       
                                       
                                     }],
-                                    default_action:[
-  {
-    "type":"web_url",
-    "url":data.person.images[i].url,
-    "webview_height_ratio": "full",
-    "messenger_extensions": false,  
-    }
-]
+                                    
                                 }
                             }
                         };
@@ -481,8 +478,9 @@ else if (messageText.indexOf('the')>=0 && messageText.indexOf('twitter')>=0 && m
   var X=messageText;
 var Z = X.slice(X.indexOf(Y) + Y.length);
      sendTextMessage(senderID,"I will get you tweets by " + Z);
-q: Z,
+
 googleSearch.build({
+q: Z,
   start: 5,
   num: 10, // Number of search results to return between 1 and 10, inclusive 
   siteSearch: "https://twitter.com" // Restricts results to URLs from a specified site 
@@ -493,7 +491,7 @@ googleSearch.build({
 }
 else if (messageText.indexOf('like')>=0 && messageText.indexOf('you')>=0 && messageText.indexOf('do')>=0)
 {
-  sendTextMessage(senderID,"sometimes i like "+adjectives.out('text')+ "and sometimes i don't");
+  sendTextMessage(senderID,"sometimes i like "+verbs.present.out('text')+ "and sometimes i don't");
 }
 
 
@@ -666,7 +664,7 @@ request({
         var name = bodyObj.first_name;
         greeting = "Hi " + name + ". ";
       }
-  sendTextMessage(senderID, greeting+ " This is StalkerBot, write away any name, email address or phone number you are searching for or chat a little bit with me");
+  sendTextMessage(senderID, greeting+ " This is StalkerBot 👾, write away any name, email address or phone number you are searching for or chat a little bit with me");
 });
 }
 }
