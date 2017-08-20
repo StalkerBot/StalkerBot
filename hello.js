@@ -109,7 +109,7 @@ if ((messageText.indexOf(':)')>=0 || messageText.indexOf(':D')>=0 || messageText
 }
 
 //Edit the text to be simple and readable by the function
-messageText = message.text.replace(/[,\/#!$%\^&\*;{}=\-_`~()]/g,"").toLowerCase().trim();
+messageText = message.text.replace(/[,\/#!$%\^&\*;{}=\_`~()]/g,"").toLowerCase().trim();
 
 
 
@@ -131,7 +131,7 @@ if(data.person)
 {
 wait(5000);
 console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', data, err); 
-   sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
+   sendTextMessage(senderID,"Okay! i found these information about the email you provided 😎");
 
 if (data.person.names){
 for (var i = 0, len = data.person.names.length; i < len; i++) {
@@ -226,7 +226,7 @@ if(data.person)
 {
 wait(5000);
 console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', data, err); 
-   sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
+   sendTextMessage(senderID,"Okay! i found these information about the email you provided 😎");
 
 if (data.person.names){
 for (var i = 0, len = data.person.names.length; i < len; i++) {
@@ -272,7 +272,7 @@ message = {
                                     template_type:"generic",
                                     elements: [{
                                         title: thename,
-                                        subtitle: "Is this the person you are looking for?",
+                                        subtitle: "",
                                         image_url: data.person.images[i].url,
                                         
                                     }]
@@ -305,7 +305,7 @@ sendTextMessage(senderID,"You can find the user on the following URLs " + data.p
 
 else
 {
-sendTextMessage(senderID,"No exact people found, searching for possible people");
+sendTextMessage(senderID,"No exact people found, searching for possible people 😱");
 }
 
 
@@ -380,7 +380,7 @@ sendTextMessage(senderID,"I'm sorry but it looks like this person has no informa
 }
 else if ((messageText.indexOf('help')>=0) || messageText.indexOf('i want to stalk')>=0)
 {
-  sendTextMessage(senderID,"You can search for a name, a phone number of an email. \n If you want to search for a name, write: the name is and then write the name you are searching for \n If you want to search for an email, just write the email directly. \n if you want to search for a phone number, write: the number is and then the number you are searching for");
+  sendTextMessage(senderID,"You can search for 1- A Name \n 2- A Phone Number \n 3- An Email. \n If you want to search for a name, write: |the name is| and then write the name you are searching for. \n If you want to search for an email, just write the email directly. \n If you want to search for a phone number, write |the number is| and then the number you are searching for");
 }
 // If the use wants to find a phone number
 else if ((messageText.indexOf('the')>=0 && messageText.indexOf('number')>=0 && messageText.indexOf('is')>=0))
@@ -397,7 +397,7 @@ if(data.person)
 {
 wait(5000);
 console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', data, err); 
-   sendTextMessage(senderID,"Okay! i found these information about the email you provided <3");
+   sendTextMessage(senderID,"Okay! i found these information about the phone number you provided 📠");
 
 if (data.person.names){
 for (var i = 0, len = data.person.names.length; i < len; i++) {
@@ -501,9 +501,9 @@ else if (messageText.indexOf('like')>=0 && messageText.indexOf('you')>=0 && mess
 else if (messageText.indexOf('your')>=0 && messageText.indexOf('name')>=0)
 
 {
-var answers = [ "My name is StalkerBot, and i am at your service :)",
+var answers = [ "My name is StalkerBot 👾, and i am at your service 🎩",
 "My name? Look at the top of your screen -.-",
-"I...am...Stalkerbot...", "Come on, you don't know my name?"];
+"I...am...Stalkerbot...🙈", "Come on, you don't know my name?"];
 
 var index = Math.floor(Math.random() * answers.length);
                   sendTextMessage(senderID,answers[index]);
@@ -531,22 +531,17 @@ else if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || 
                   sendTextMessage(senderID,"Go on, tell me the phone number you want to stalk, begin with: the number is, and i will do the rest ;)");
 }
 
-else if ((messageText.indexOf('sleep')>=0 || messageText.indexOf('sleepy')>=0 || messageText.indexOf('tired')>=0) && messageText.indexOf('i am')>=0)
-
-{
-                  sendTextMessage(senderID,"it's not a time for sleeping , stay awake and stalk");
-}
 else if (((messageText.indexOf('i want')>=0) && (messageText.indexOf('to')>=0)) && ((messageText.indexOf('stalk')==-1) && (messageText.indexOf('search')==-1) && (messageText.indexOf('find')==-1)))
 {
   var Y="to";
   var X=messageText;
 var Z = X.slice(X.indexOf(Y) + Y.length);
-                  sendTextMessage(senderID,"it's not time to "+Z+" come on, let's stalk");
+                  sendTextMessage(senderID,"it's not time to "+Z+" 😐 come on, let's stalk 😁");
 
 }
 else if (messageText.indexOf('i am hungry')>=1 || messageText.indexOf('i want food')>=1)
 {
-                  sendTextMessage(senderID,"do you think i will order a pizza for you :P?");
+                  sendTextMessage(senderID,"do you think i will order a pizza for you 🍕:P?");
 }
 
 
@@ -596,7 +591,7 @@ case "hii":
 case "hiii":
 case "yo":
                   
-var answers1 = [ "Hello!","Hey, hope everything is great!","Ciao!", "Good day :D", "Hey Dude!" , "Hey :D", "Hello Hello :P"];
+var answers1 = [ "Hello! ✋","Hey 👋, hope everything is great!","Ciao!", "Good day 😍", "Hey Dude! 👻👻👻" , "Hey :D", "Hello Hello :P"];
 
 var index1 = Math.floor(Math.random() * answers1.length);
 sendTextMessage(senderID,answers1[index1]);
@@ -606,7 +601,7 @@ sendTextMessage(senderID,"Remember that anytime you need help you can write help
 
                 default: 
 
-var answers3 = [ ":O","(y)",":3", "ó_ò", "¯\(o_o)/¯" , "Say it again?", "Hmmm...","👇"];
+var answers3 = [ ":O","(y)","😲", "😮", "¯\(o_o)/¯" , "Say it again?", "Hmmm...","🙄"];
 
 var index3 = Math.floor(Math.random() * answers3.length);
 sendTextMessage(senderID,answers3[index3]);
