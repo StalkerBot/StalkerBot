@@ -491,7 +491,11 @@ q: Z,
 }
 else if (messageText.indexOf('like')>=0 && messageText.indexOf('you')>=0 && messageText.indexOf('do')>=0)
 {
-  sendTextMessage(senderID,"sometimes i like "+verbs.toPresentTense().out('text')+ "and sometimes i don't");
+var Y="like ";
+  var X=messageText;
+var Z = X.slice(X.indexOf(Y) + Y.length);
+var likes=nlp(Z);
+  sendTextMessage(senderID,"sometimes i like "+likes.toPresentTense().out('text')+ "and sometimes i don't");
 }
 
 
