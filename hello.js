@@ -622,14 +622,14 @@ else if (messageText.indexOf('i am hungry')>=1 || messageText.indexOf('i want fo
 else if (messageText.indexOf('i want to stalk')>=0  || messageText.indexOf('help')>=0)
 
 {
-  message = {
+  var message = {
     
                             attachment: {
                                 type: "template",
                                 payload: {
                                     template_type:"generic",
                                     elements: [{
-                                        title: thename,
+                                        title: "Help",
                                         subtitle: "What do you want to stalk?",
                                                                                
                                     }
@@ -796,8 +796,44 @@ request({
         greeting = "Hi " + name + ". ";
       }
   sendTextMessage(senderID, greeting+ " This is StalkerBot 👾, write away any name, email address or phone number you are searching for or chat a little bit with me");
-sendTextMessge(senderID,"You can search for \n 1- A Name \n 2- A Phone Number \n 3- An Email. \n \n If you want to search for a name, write: |the name is| and then write the name you are searching for. \n \n If you want to search for an email, just write the email directly. \n \n If you want to search for a phone number, write |the number is| and then the number you are searching for");
-});
+ var message = {
+    
+                            attachment: {
+                                type: "template",
+                                payload: {
+                                    template_type:"generic",
+                                    elements: [{
+                                        title: "Help",
+                                        subtitle: "What do you want to stalk?",
+                                                                               
+                                    }
+                                    ,{"buttons":[
+              {
+                "type":"postback",
+                "title":"Name",
+                "payload":"NAME_PAYLOAD"
+              },{
+                "type":"postback",
+                "title":"Number",
+                "payload":"NUMBER_PAYLOAD"
+              },
+              {
+              "type":"postback",
+                "title":"Email",
+                "payload":"EMAIL_PAYLOAD"
+              }
+              
+              
+            ]}      ]
+                                }
+                            }
+                        };
+                        
+                        
+                        
+sendMessage(senderID, message);
+      
+    });
 }
 }
 
