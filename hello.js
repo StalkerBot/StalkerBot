@@ -170,16 +170,7 @@ message = {
                             attachment: {
                                 type: "template",
                                 payload: {
-                                    template_type:"generic","buttons":[{
-                "type":"postback",
-                "title":"Yes",
-                "payload":"Correct"
-              },{
-                "type":"postback",
-                "title":"No",
-                "payload":"Incorrect"
-              }
-        ],
+                                    template_type:"generic",
                                     elements: [{
                                         title: thename,
                                         subtitle: "",
@@ -189,7 +180,16 @@ message = {
               "url": data.person.images[i].url,
               "webview_height_ratio": "full",
             }
-                                    }]
+                                    ,"buttons":[{
+                "type":"postback",
+                "title":"Yes",
+                "payload":"Correct"
+              },{
+                "type":"postback",
+                "title":"No",
+                "payload":"Incorrect"
+              }
+        ]}]
                                 }
                             }
                         };
@@ -279,16 +279,7 @@ message = {
                             attachment: {
                                 type: "template",
                                 payload: {
-                                    template_type:"generic","buttons":[{
-                "type":"postback",
-                "title":"Yes",
-                "payload":"Correct"
-              },{
-                "type":"postback",
-                "title":"No",
-                "payload":"Incorrect"
-              }
-        ],
+                                    template_type:"generic",
                                     elements: [{
                                         title: thename,
                                         subtitle: "",
@@ -298,7 +289,16 @@ message = {
               "url": data.person.images[i].url,
               "webview_height_ratio": "full",
             }
-                                    }]
+                                    ,"buttons":[{
+                "type":"postback",
+                "title":"Yes",
+                "payload":"Correct"
+              },{
+                "type":"postback",
+                "title":"No",
+                "payload":"Incorrect"
+              }
+        ]}]
                                 }
                             }
                         };
@@ -370,16 +370,7 @@ var thename=data.possible_persons[0].names[0].first+" "+data.possible_persons[0]
                             attachment: {
                                 type: "template",
                                 payload: {
-                                    template_type:"generic","buttons":[{
-                "type":"postback",
-                "title":"Yes",
-                "payload":"Correct"
-              },{
-                "type":"postback",
-                "title":"No",
-                "payload":"Incorrect"
-              }
-        ],
+                                    template_type:"generic",
                                     elements: [{
                                         title: thename,
                                         subtitle: "",
@@ -389,7 +380,16 @@ var thename=data.possible_persons[0].names[0].first+" "+data.possible_persons[0]
               "url": data.person.images[i].url,
               "webview_height_ratio": "full",
             }
-                                    }]
+                                    ,"buttons":[{
+                "type":"postback",
+                "title":"Yes",
+                "payload":"Correct"
+              },{
+                "type":"postback",
+                "title":"No",
+                "payload":"Incorrect"
+              }
+        ]}]
                                 }
                             }
                         };
@@ -463,16 +463,7 @@ message = {
                             attachment: {
                                 type: "template",
                                 payload: {
-                                    template_type:"generic","buttons":[{
-                "type":"postback",
-                "title":"Yes",
-                "payload":"Correct"
-              },{
-                "type":"postback",
-                "title":"No",
-                "payload":"Incorrect"
-              }
-        ],
+                                    template_type:"generic",
                                     elements: [{
                                         title: thename,
                                         subtitle: "",
@@ -482,7 +473,16 @@ message = {
               "url": data.person.images[i].url,
               "webview_height_ratio": "full",
             }
-                                    }]
+                                    ,"buttons":[{
+                "type":"postback",
+                "title":"Yes",
+                "payload":"Correct"
+              },{
+                "type":"postback",
+                "title":"No",
+                "payload":"Incorrect"
+              }
+        ]}]
                                 }
                             }
                         };
