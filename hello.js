@@ -508,7 +508,7 @@ sendTextMessage(senderID,(JSON.stringify(translator.translate(Z,options))));
 }
 
 
-else if(messageText.indexOf('tell me a joke')>=0 || messageText.indexOf('one more')>=0 || messageText.indexOf('another one)>=0 )
+else if(messageText.indexOf('tell me a joke')>=0 || messageText.indexOf('one more')>=0 || messageText.indexOf('another one')>=0 )
 {
 var getRandomJoke = oneLinerJoke.getRandomJoke();
 sendTextMessage(senderID,getRandomJoke.body);
