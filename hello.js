@@ -622,7 +622,7 @@ else if (messageText.indexOf('i am hungry')>=1 || messageText.indexOf('i want fo
 else if (messageText.indexOf('i want to stalk')>=0  || messageText.indexOf('help')>=0)
 
 {
-  var message = {
+message = {
     
                             attachment: {
                                 type: "template",
@@ -797,7 +797,6 @@ request({
       }
   sendTextMessage(senderID, greeting+ " This is StalkerBot 👾, write away any name, email address or phone number you are searching for or chat a little bit with me");
  var message = {
-    
                             attachment: {
                                 type: "template",
                                 payload: {
