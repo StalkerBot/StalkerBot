@@ -117,7 +117,7 @@ if ((messageText.indexOf('😉')>=0 || messageText.indexOf(':D')>=0 || messageTe
 }
 
 //Edit the text to be simple and readable by the function
-messageText = message.text.replace(/[,\/#!$%\^&\*;{}=\_`~()]/g,"").toLowerCase().trim();
+messageText = message.text.replace(/[,\/!$%\^&\*;{}=\_`~()]/g,"").toLowerCase().trim();
 
 
 
