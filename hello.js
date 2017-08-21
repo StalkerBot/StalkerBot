@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({
 app.get('/webhook', function(req, res) {
   if (req.query['hub.mode'] === 'subscribe' &&
       req.query['hub.verify_token'] === process.env.VERIFY_TOKEN) {
-    console.log("Validating webhook");
+    //console.log("Validating webhook");
     res.status(200).send(req.query['hub.challenge']);
   } else {
     console.error("Failed validation. Make sure the validation tokens match.");
@@ -45,7 +45,7 @@ app.get('/', function(req, res) {
 
 // Message processing
 app.post('/webhook', function (req, res) {
-  console.log(req.body);
+  //console.log(req.body);
   var data = req.body;
 
   // Make sure this is a page subscription
@@ -63,7 +63,7 @@ app.post('/webhook', function (req, res) {
         } else if (event.postback) {
           receivedPostback(event);   
         } else {
-          console.log("Webhook received unknown event: ", event);
+          //console.log("Webhook received unknown event: ", event);
         }
       });
     });
@@ -79,8 +79,8 @@ function receivedMessage(event) {
   var timeOfMessage = event.timestamp;
   var message = event.message;
 
-  console.log("Received message for user %d and page %d at %d with message:", 
-    senderID, recipientID, timeOfMessage);
+  //console.log("Received message for user %d and page %d at %d with message:", 
+    //senderID, recipientID, timeOfMessage);
   console.log(JSON.stringify(message));
 
   var messageId = message.mid;
@@ -271,7 +271,11 @@ message = {
                                         title: thename,
                                         subtitle: "",
                                         image_url: data.person.images[i].url,
-                                        
+                                        "default_action": {
+              "type": "web_url",
+              "url": data.person.images[i].url,
+              "webview_height_ratio": "full",
+            }
                                     }]
                                 }
                             }
@@ -347,7 +351,11 @@ message = {
                                         title: thename,
                                         subtitle: "Is this the person you are looking for?",
                                         image_url: data.possible_persons[0].images[i].url,
-                                        
+                                        "default_action": {
+              "type": "web_url",
+              "url": data.possible_persons.images[i].url,
+              "webview_height_ratio": "full",
+            }
                                     }]
                                 }
                             }
@@ -430,7 +438,11 @@ message = {
                                         title: thename,
                                         subtitle: "Is this the person you are looking for?",
                                         image_url: data.person.images[i].url,
-                                        
+                                        "default_action": {
+              "type": "web_url",
+              "url": data.person.images[i].url,
+              "webview_height_ratio": "full",
+            }
                                     }]
                                 }
                             }
@@ -497,7 +509,7 @@ googleSearch.build({
 q: Z,
   start: 5,
   num: 10, // Number of search results to return between 1 and 10, inclusive 
-  siteSearch: "https://twitter.com" // Restricts results to URLs from a specified site 
+  //siteSearch: "https://twitter.com" // Restricts results to URLs from a specified site 
 }, function(error, response) {
   console.log(response);
 
@@ -650,7 +662,7 @@ function receivedPostback(event) {
   // button for Structured Messages. 
   var payload = event.postback.payload;
 
-  console.log("Received postback for user %d and page %d with payload '%s' " + 
+  //console.log("Received postback for user %d and page %d with payload '%s' " + 
     "at %d", senderID, recipientID, payload, timeOfPostback);
 if (payload =="CONTACT_INFO_PAYLOAD")
 {
@@ -685,7 +697,7 @@ request({
     }, function(error, response, body) {
       var greeting = "";
       if (error) {
-        console.log("Error getting user's name: " +  error);
+        //console.log("Error getting user's name: " +  error);
       } else {
         var bodyObj = JSON.parse(body);
         var name = bodyObj.first_name;
@@ -739,7 +751,7 @@ function callSendAPI(messageData) {
 
 // Set Express to listen out for HTTP requests
 var server = app.listen(process.env.PORT || 3000, function () {
-  console.log("Listening on port %s", server.address().port);
+  //console.log("Listening on port %s", server.address().port);
 });
 
 
@@ -766,7 +778,7 @@ function sendMessage(recipientId, message) {
         }
     }, function(error, response, body) {
         if (error) {
-            console.log("Error sending message: " + response.error);
+            //console.log("Error sending message: " + response.error);
         }
     });
 }
