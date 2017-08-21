@@ -497,11 +497,7 @@ var options = {
   british: true
 };
 
-else if(messageText.indexOf('tell me a joke')>=0 || messageText.indexOf('one more')>=0)
-{
-var getRandomJoke = oneLinerJoke.getRandomJoke();
-sendTextMessage(senderID,getRandomJoke.body);
-};
+
 
 
  var Y="translate ";
@@ -509,6 +505,13 @@ sendTextMessage(senderID,getRandomJoke.body);
 var Z = X.slice(X.indexOf(Y) + Y.length);
 console.log(JSON.stringify(translator.translate(Z, options)));
 sendTextMessage(senderID,(JSON.stringify(translator.translate(Z,options))));
+}
+
+
+else if(messageText.indexOf('tell me a joke')>=0 || messageText.indexOf('one more')>=0)
+{
+var getRandomJoke = oneLinerJoke.getRandomJoke();
+sendTextMessage(senderID,getRandomJoke.body);
 }
 
 else if(messageText.indexOf('the')>=0 && messageText.indexOf('facebook')>=0 && messageText.indexOf('query')>=0 && messageText.indexOf('is')>=0)
