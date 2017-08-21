@@ -17,6 +17,13 @@ var googleSearch = new GoogleSearch({
   cx: '015313297794051920474:imcpkx0glxk'
 });
 
+var googleSearch1 = new GoogleSearch({
+  key: 'AIzaSyDZUbxgohhMRSxwOCsNKj3Rx4lppJYLqDo',
+  cx: '015313297794051920474:4zz7mh7oj6k'
+});
+
+
+
 //Parsing the body
 let app = express();
 app.use(bodyParser.json());
@@ -496,6 +503,24 @@ var Z = X.slice(X.indexOf(Y) + Y.length);
 console.log(JSON.stringify(translator.translate(Z, options)));
 sendTextMessage(senderID,(JSON.stringify(translator.translate(Z,options))));
 }
+
+else if(messageText.indexOf('the')>=0 && messageText.indexOf('facebook')>=0 && messageText.indexOf('query')>=0 && messageText.indexOf('is')>=0)
+{
+  var Y="is ";
+  var X=messageText;
+var Z = X.slice(X.indexOf(Y) + Y.length);
+     sendTextMessage(senderID,"I will search facebook with the query: " + Z);
+
+googleSearch.build({
+q: Z,
+  start: 5,
+  num: 10, // Number of search results to return between 1 and 10, inclusive 
+  //siteSearch: "https://twitter.com" // Restricts results to URLs from a specified site 
+}, function(error, response) {
+  console.log(response);
+});
+}
+
 
 else if (messageText.indexOf('the')>=0 && messageText.indexOf('twitter')>=0 && messageText.indexOf('handle')>=0 && messageText.indexOf('is')>=0)
 
