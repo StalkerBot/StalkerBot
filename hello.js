@@ -9,6 +9,7 @@ var requestify = require('requestify');
 var nlp = require('compromise');
 var pipl = require('pipl')('SOCIAL-DEMO-yhnfhrmsvuzusi1odm3o0mbn');
 var translator = require('american-british-english-translator');
+var oneLinerJoke = require('one-liner-joke');
 
 //Google Seach API definition
 var GoogleSearch = require('google-search');
@@ -496,6 +497,11 @@ var options = {
   british: true
 };
 
+else if(messageText.indexOf('tell me a joke')>=0 || messageText.indexOf('one more')>=0)
+{
+var getRandomJoke = oneLinerJoke.getRandomJoke();
+sendTextMessage(senderID,getRandomJoke.body);
+};
 
 
  var Y="translate ";
