@@ -676,7 +676,10 @@ sendTextMessage(senderID,answers1[index1]);
 
 sendTextMessage(senderID,"Remember that anytime you need help you can write help ;)");
                     break;
-
+case "haha":
+case "hahaha":
+sendTextMessage(senderID,"😂");
+break;
                 default: 
 
 var answers3 = [ ":O","(y)","😲", "😮", "¯\(o_o)/¯" , "Say it again?", "Hmmm...","🙄"];
