@@ -31,7 +31,7 @@ app.get('/webhook', function(req, res) {
     //console.log("Validating webhook");
     res.status(200).send(req.query['hub.challenge']);
   } else {
-    console.error("Failed validation. Make sure the validation tokens match.");
+    //console.error("Failed validation. Make sure the validation tokens match.");
     res.sendStatus(403);          
   }
 });
@@ -81,7 +81,7 @@ function receivedMessage(event) {
 
   //console.log("Received message for user %d and page %d at %d with message:", 
     //senderID, recipientID, timeOfMessage);
-  console.log(JSON.stringify(message));
+  //console.log(JSON.stringify(message));
 
   var messageId = message.mid;
   var messageText = message.text;
@@ -607,7 +607,7 @@ var index2 = Math.floor(Math.random() * answers2.length);
 sendTextMessage(senderID,answers2[index2]);
 }
 
-else if(messageText.indexOf('good')>=1 || messageText.indexOf('great') >=1 || messageText.indexOf('fine') >=1 || messageText.indexOf('awesome') >=1)
+else if(messageText.indexOf('good')>=0 || messageText.indexOf('great') >=0 || messageText.indexOf('fine') >=0 || messageText.indexOf('awesome') >=0)
 {
   sendTextMessage(senderID,"Awesome!");
 }
@@ -704,6 +704,7 @@ request({
         greeting = "Hi " + name + ". ";
       }
   sendTextMessage(senderID, greeting+ " This is StalkerBot 👾, write away any name, email address or phone number you are searching for or chat a little bit with me");
+sendTextMessge(senderID,"You can search for \n 1- A Name \n 2- A Phone Number \n 3- An Email. \n \n If you want to search for a name, write: |the name is| and then write the name you are searching for. \n \n If you want to search for an email, just write the email directly. \n \n If you want to search for a phone number, write |the number is| and then the number you are searching for");
 });
 }
 }
@@ -742,8 +743,8 @@ function callSendAPI(messageData) {
       console.log("Successfully sent generic message with id %s to recipient %s", 
         messageId, recipientId);
     } else {
-      console.error("Unable to send message.");
-      console.error(response);
+      //console.error("Unable to send message.");
+      //console.error(response);
       console.error(error);
     }	
   });  
