@@ -183,7 +183,17 @@ message = {
                                   
                                       
                                       
-                                    }],
+                                    }],"buttons":[
+          {
+                "type":"postback",
+                "title":"Yes",
+                "payload":"Correct"
+              },{
+                "type":"postback",
+                "title":"No",
+                "payload":"Incorrect"
+              }
+        ]
                                     
                                 }
                             }
@@ -284,7 +294,17 @@ message = {
               "url": data.person.images[i].url,
               "webview_height_ratio": "full",
             }
-                                    }]
+                                    }],"buttons":[
+          {
+                "type":"postback",
+                "title":"Yes",
+                "payload":"Correct"
+              },{
+                "type":"postback",
+                "title":"No",
+                "payload":"Incorrect"
+              }
+        ]
                                 }
                             }
                         };
@@ -364,7 +384,17 @@ message = {
               "url": data.possible_persons[0].images[i].url,
               "webview_height_ratio": "full",
             }
-                                    }]
+                                    }],"buttons":[
+          {
+                "type":"postback",
+                "title":"Yes",
+                "payload":"Correct"
+              },{
+                "type":"postback",
+                "title":"No",
+                "payload":"Incorrect"
+              }
+        ]
                                 }
                             }
                         };
@@ -448,7 +478,17 @@ message = {
               "url": data.person.images[i].url,
               "webview_height_ratio": "full",
             }
-                                    }]
+                                    }],"buttons":[
+          {
+                "type":"postback",
+                "title":"Yes",
+                "payload":"Correct"
+              },{
+                "type":"postback",
+                "title":"No",
+                "payload":"Incorrect"
+              }
+        ]
                                 }
                             }
                         };
