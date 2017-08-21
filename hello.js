@@ -391,7 +391,7 @@ sendTextMessage(senderID,"I'm sorry but it looks like this person has no informa
 
 });
 }
-else if ((messageText.indexOf('help')>=0) || messageText.indexOf('i want to stalk')>=0)
+else if (messageText.indexOf('help')>=0)
 {
   sendTextMessage(senderID,"You can search for \n 1- A Name \n 2- A Phone Number \n 3- An Email. \n \n If you want to search for a name, write: |the name is| and then write the name you are searching for. \n \n If you want to search for an email, just write the email directly. \n \n If you want to search for a phone number, write |the number is| and then the number you are searching for");
 sendTextMessage(senderID,"Psssstttt 🙊.... you can also search twitter and facebook feeds for a specific query \n To search facebook write |The facebook query is| and your search query \n To search twitter write |The twitter query is| and then write your query");
@@ -590,7 +590,7 @@ var index = Math.floor(Math.random() * answers.length);
 else if ((messageText.indexOf('search')>=0 || messageText.indexOf('find')>=0 || messageText.indexOf('i want to stalk a name')>=0) && messageText.indexOf('name')>=0)
 
 {
-                  sendTextMessage(senderID,"Go on, tell me the name you want to stalk by writing, begin with: the name is, and i will do the rest ;)   ");
+                  sendTextMessage(senderID,"Go on, tell me the name you want to stalk. Begin with: the name is, and i will do the rest ;)   ");
 
 
 }
