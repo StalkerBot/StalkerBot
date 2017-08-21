@@ -391,11 +391,7 @@ sendTextMessage(senderID,"I'm sorry but it looks like this person has no informa
 
 });
 }
-else if (messageText.indexOf('help')>=0)
-{
-  sendTextMessage(senderID,"You can search for \n 1- A Name \n 2- A Phone Number \n 3- An Email. \n \n If you want to search for a name, write: |the name is| and then write the name you are searching for. \n \n If you want to search for an email, just write the email directly. \n \n If you want to search for a phone number, write |the number is| and then the number you are searching for");
-sendTextMessage(senderID,"Psssstttt 🙊.... you can also search twitter and facebook feeds for a specific query \n To search facebook write |The facebook query is| and your search query \n To search twitter write |The twitter query is| and then write your query");
-}
+
 // If the use wants to find a phone number
 else if ((messageText.indexOf('the')>=0 && messageText.indexOf('number')>=0 && messageText.indexOf('is')>=0))
 
@@ -623,10 +619,48 @@ else if (messageText.indexOf('i am hungry')>=1 || messageText.indexOf('i want fo
 }
 
 
-else if (messageText.indexOf('i want to stalk')>=0)
+else if (messageText.indexOf('i want to stalk')>=0  || messageText.indexOf('help')>=0)
 
 {
-                  sendTextMessage(senderID,"Let's stalk! Tell me a name, a phone number or an email ;)");
+  message = {
+    
+                            attachment: {
+                                type: "template",
+                                payload: {
+                                    template_type:"generic",
+                                    elements: [{
+                                        title: thename,
+                                        subtitle: "What do you want to stalk?",
+                                                                               
+                                    }
+                                    ,{"buttons":[
+              {
+                "type":"postback",
+                "title":"Name",
+                "payload":"NAME_PAYLOAD"
+              },{
+                "type":"postback",
+                "title":"Number",
+                "payload":"NUMBER_PAYLOAD"
+              },
+              {
+              "type":"postback",
+                "title":"Email",
+                "payload":"EMAIL_PAYLOAD"
+              }
+              
+              
+            ]}      ]
+                                }
+                            }
+                        };
+                        
+                        
+                        
+sendMessage(senderID, message);
+wait(3000);
+sendTextMessage(senderID,"Psssstttt 🙊.... you can also search twitter and facebook feeds for a specific query \n To search facebook write |The facebook query is| and your search query \n To search twitter write |The twitter query is| and then write your query");
+
 }
 
 
@@ -635,7 +669,7 @@ else if (messageText.indexOf('i want to stalk')>=0)
 else if ((messageText.indexOf('job')>=0 || messageText.indexOf('do')>=0 || messageText.indexOf('goal')>=0) && (messageText.indexOf('what')>=0 || messageText.indexOf('your')>=0))
 
 {
-                  sendTextMessage(senderID,"I am a stalker, i enjoy stalking people and getting their information to your doorstep, i mean messenger step :P");
+                  sendTextMessage(senderID,"I am a stalker 🔥, i enjoy stalking people and getting their information to your doorstep, i mean to your messenger step :P");
 }
 
 else if ((messageText.indexOf('what')>=0 && messageText.indexOf('s')>=0 && messageText.indexOf('up')>=0) || (messageText.indexOf('how')>=0 && messageText.indexOf('are')>=0 && messageText.indexOf('you')>=0))
@@ -723,6 +757,20 @@ else if (payload === "Correct") {
         sendMessage(senderID, {text: "Awesome! I am glad i found your person!"});
     } else if (payload === "Incorrect") {
         sendMessage(senderID, {text: "Oops! Sorry about that. Try using different information"});
+    }
+    
+    else if(payload ==="NAME_PAYLOAD")
+    {
+      sendMessage(senderID, {text: "You guys search for weird names, so write | the name is | and then the name 👀"});
+    }
+    
+    else if(payload ==="NUMBER_PAYLOAD")
+    {
+      sendMessage(senderID, {text: "I am an international stalker 🌍, use the country code and start with | the number is |"});
+    }
+    
+    else if (payload ==="EMAIL_PAYLOAD")
+    {sendMessage(senderID, "Just tell me the email, that's the easy part :P");
     }
     
     
