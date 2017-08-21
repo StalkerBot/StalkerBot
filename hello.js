@@ -622,19 +622,16 @@ else if (messageText.indexOf('i am hungry')>=1 || messageText.indexOf('i want fo
 else if (messageText.indexOf('i want to stalk')>=0  || messageText.indexOf('help')>=0)
 
 {
-message = {
+
     
-                            attachment: {
-                                type: "template",
-                                payload: {
-                                    template_type:"generic",
-                                    elements: [{
-                                        title: "Help",
-                                        subtitle: "What do you want to stalk?",
-                                                                               
-                                    }
-                                    ,{"buttons":[
-              {
+                              message={
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"button",
+        "text":"What do you want to stalk?",
+        "buttons":[
+          {
                 "type":"postback",
                 "title":"Name",
                 "payload":"NAME_PAYLOAD"
@@ -648,15 +645,11 @@ message = {
                 "title":"Email",
                 "payload":"EMAIL_PAYLOAD"
               }
-              
-              
-            ]}      ]
-                                }
-                            }
-                        };
-                        
-                        
-                        
+        ]
+      }
+    }
+  };
+
 sendMessage(senderID, message);
 wait(3000);
 sendTextMessage(senderID,"Psssstttt 🙊.... you can also search twitter and facebook feeds for a specific query \n To search facebook write |The facebook query is| and your search query \n To search twitter write |The twitter query is| and then write your query");
@@ -796,18 +789,14 @@ request({
         greeting = "Hi " + name + ". ";
       }
   sendTextMessage(senderID, greeting+ " This is StalkerBot 👾, write away any name, email address or phone number you are searching for or chat a little bit with me");
- var message = {
-                            attachment: {
-                                type: "template",
-                                payload: {
-                                    template_type:"generic",
-                                    elements: [{
-                                        title: "Help",
-                                        subtitle: "What do you want to stalk?",
-                                                                               
-                                    }
-                                    ,{"buttons":[
-              {
+  var message={
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"button",
+        "text":"What do you want to stalk?",
+        "buttons":[
+          {
                 "type":"postback",
                 "title":"Name",
                 "payload":"NAME_PAYLOAD"
@@ -821,13 +810,12 @@ request({
                 "title":"Email",
                 "payload":"EMAIL_PAYLOAD"
               }
-              
-              
-            ]}      ]
-                                }
-                            }
-                        };
-                        
+        ]
+      }
+    }
+  };
+                    
+
                         
                         
 sendMessage(senderID, message);
