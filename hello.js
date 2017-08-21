@@ -101,7 +101,7 @@ var peoplenames=r.people();
 var places = r.places();
 var nouns = r.nouns();
 var adjectives =r.adjectives();
-//var hashtag =r.hashtags();
+var hashtag =r.hashTags();
 var phonenumbers= r.phoneNumbers();
 var infinitive=r.verbs().toInfinitive();
 var adverbs=r.adverbs();
@@ -109,7 +109,7 @@ var questions=r.questions();
 var verbs=r.verbs();
 
 // In case of a smiley face sent
-if ((messageText.indexOf(':)')>=0 || messageText.indexOf(':D')>=0 || messageText.indexOf(':P'))>=0) 
+if ((messageText.indexOf('😉')>=0 || messageText.indexOf(':D')>=0 || messageText.indexOf(':P'))>=0) 
 
 {
                   sendTextMessage(senderID,"hope you are always happy :D!");
