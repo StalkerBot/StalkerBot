@@ -170,21 +170,7 @@ message = {
                             attachment: {
                                 type: "template",
                                 payload: {
-                                    template_type:"generic",
-                                    image_aspect_ratio:"square",
-                                    elements: [{
-                                      title:thename,
-                                      image_url: data.person.images[i].url,
-                                      "default_action": {
-              "type": "web_url",
-              "url": data.person.images[i].url,
-              "webview_height_ratio": "full",
-            }
-                                  
-                                      
-                                      
-                                    }],"buttons":[
-          {
+                                    template_type:"generic","buttons":[{
                 "type":"postback",
                 "title":"Yes",
                 "payload":"Correct"
@@ -193,8 +179,17 @@ message = {
                 "title":"No",
                 "payload":"Incorrect"
               }
-        ]
-                                    
+        ],
+                                    elements: [{
+                                        title: thename,
+                                        subtitle: "",
+                                        image_url: data.person.images[i].url,
+                                        "default_action": {
+              "type": "web_url",
+              "url": data.person.images[i].url,
+              "webview_height_ratio": "full",
+            }
+                                    }]
                                 }
                             }
                         };
@@ -284,7 +279,16 @@ message = {
                             attachment: {
                                 type: "template",
                                 payload: {
-                                    template_type:"generic",
+                                    template_type:"generic","buttons":[{
+                "type":"postback",
+                "title":"Yes",
+                "payload":"Correct"
+              },{
+                "type":"postback",
+                "title":"No",
+                "payload":"Incorrect"
+              }
+        ],
                                     elements: [{
                                         title: thename,
                                         subtitle: "",
@@ -294,17 +298,7 @@ message = {
               "url": data.person.images[i].url,
               "webview_height_ratio": "full",
             }
-                                    }],"buttons":[
-          {
-                "type":"postback",
-                "title":"Yes",
-                "payload":"Correct"
-              },{
-                "type":"postback",
-                "title":"No",
-                "payload":"Incorrect"
-              }
-        ]
+                                    }]
                                 }
                             }
                         };
@@ -369,23 +363,14 @@ if (data.possible_persons[0].images && data.possible_persons[0].names)
 {
 for (var i = 0, len = data.possible_persons[0].images.length; i < len; i++) {
 var thename=data.possible_persons[0].names[0].first+" "+data.possible_persons[0].names[0].last;
-message = {
+
+    
+                            message = {
     
                             attachment: {
                                 type: "template",
                                 payload: {
-                                    template_type:"generic",
-                                    elements: [{
-                                        title: thename,
-                                        subtitle: "Is this the person you are looking for?",
-                                        image_url: data.possible_persons[0].images[i].url,
-                                        "default_action": {
-              "type": "web_url",
-              "url": data.possible_persons[0].images[i].url,
-              "webview_height_ratio": "full",
-            }
-                                    }],"buttons":[
-          {
+                                    template_type:"generic","buttons":[{
                 "type":"postback",
                 "title":"Yes",
                 "payload":"Correct"
@@ -394,7 +379,17 @@ message = {
                 "title":"No",
                 "payload":"Incorrect"
               }
-        ]
+        ],
+                                    elements: [{
+                                        title: thename,
+                                        subtitle: "",
+                                        image_url: data.person.images[i].url,
+                                        "default_action": {
+              "type": "web_url",
+              "url": data.person.images[i].url,
+              "webview_height_ratio": "full",
+            }
+                                    }]
                                 }
                             }
                         };
@@ -468,18 +463,7 @@ message = {
                             attachment: {
                                 type: "template",
                                 payload: {
-                                    template_type:"generic",
-                                    elements: [{
-                                        title: thename,
-                                        subtitle: "Is this the person you are looking for?",
-                                        image_url: data.person.images[i].url,
-                                        "default_action": {
-              "type": "web_url",
-              "url": data.person.images[i].url,
-              "webview_height_ratio": "full",
-            }
-                                    }],"buttons":[
-          {
+                                    template_type:"generic","buttons":[{
                 "type":"postback",
                 "title":"Yes",
                 "payload":"Correct"
@@ -488,7 +472,17 @@ message = {
                 "title":"No",
                 "payload":"Incorrect"
               }
-        ]
+        ],
+                                    elements: [{
+                                        title: thename,
+                                        subtitle: "",
+                                        image_url: data.person.images[i].url,
+                                        "default_action": {
+              "type": "web_url",
+              "url": data.person.images[i].url,
+              "webview_height_ratio": "full",
+            }
+                                    }]
                                 }
                             }
                         };
