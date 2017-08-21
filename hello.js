@@ -361,7 +361,7 @@ message = {
                                         image_url: data.possible_persons[0].images[i].url,
                                         "default_action": {
               "type": "web_url",
-              "url": data.possible_persons.images[i].url,
+              "url": data.possible_persons[0].images[i].url,
               "webview_height_ratio": "full",
             }
                                     }]
@@ -496,7 +496,7 @@ var options = {
 
 
 
- var Y="translate ";
+ var Y="translate ";  
   var X=messageText;
 var Z = X.slice(X.indexOf(Y) + Y.length);
 console.log(JSON.stringify(translator.translate(Z, options)));
