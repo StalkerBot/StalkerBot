@@ -511,7 +511,7 @@ else if(messageText.indexOf('the')>=0 && messageText.indexOf('facebook')>=0 && m
 var Z = X.slice(X.indexOf(Y) + Y.length);
      sendTextMessage(senderID,"I will search facebook with the query: " + Z);
 
-googleSearch.build({
+googleSearch1.build({
 q: Z,
   start: 5,
   num: 10, // Number of search results to return between 1 and 10, inclusive 
