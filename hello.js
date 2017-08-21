@@ -623,7 +623,7 @@ else if (messageText.indexOf('i want to stalk')>=0)
 
 
 
-else if ((messageText.indexOf('job')>=0 || messageText.indexOf('do')>=0 || messageText.indexOf('goal')>=0) && messageText.indexOf('what')>=0 && messageText.indexOf('your')>=0)
+else if ((messageText.indexOf('job')>=0 || messageText.indexOf('do')>=0 || messageText.indexOf('goal')>=0) && (messageText.indexOf('what')>=0 || messageText.indexOf('your')>=0))
 
 {
                   sendTextMessage(senderID,"I am a stalker, i enjoy stalking people and getting their information to your doorstep, i mean messenger step :P");
