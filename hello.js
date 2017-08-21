@@ -393,6 +393,7 @@ sendTextMessage(senderID,"I'm sorry but it looks like this person has no informa
 else if ((messageText.indexOf('help')>=0) || messageText.indexOf('i want to stalk')>=0)
 {
   sendTextMessage(senderID,"You can search for \n 1- A Name \n 2- A Phone Number \n 3- An Email. \n \n If you want to search for a name, write: |the name is| and then write the name you are searching for. \n \n If you want to search for an email, just write the email directly. \n \n If you want to search for a phone number, write |the number is| and then the number you are searching for");
+sendTextMessage(senderID,"Psssstttt.... you can also search twitter and facebook feeds for a specific query \n To search facebook write |The facebook query is| and your search query \n To search twitter write |The twitter query is| and then write your query");
 }
 // If the use wants to find a phone number
 else if ((messageText.indexOf('the')>=0 && messageText.indexOf('number')>=0 && messageText.indexOf('is')>=0))
@@ -514,8 +515,7 @@ var Z = X.slice(X.indexOf(Y) + Y.length);
 googleSearch1.build({
 q: Z,
   start: 5,
-  num: 10, // Number of search results to return between 1 and 10, inclusive 
-  //siteSearch: "https://twitter.com" // Restricts results to URLs from a specified site 
+  num: 10, // Number of search results to return between 1 and 10, inclusive
 }, function(error, response) {
   console.log(response);
 if(response.items)
@@ -529,7 +529,7 @@ sendTextMessage(senderID,response.items[i].snippet + response.items[i].link);
 }
 
 
-else if (messageText.indexOf('the')>=0 && messageText.indexOf('twitter')>=0 && messageText.indexOf('handle')>=0 && messageText.indexOf('is')>=0)
+else if (messageText.indexOf('the')>=0 && messageText.indexOf('twitter')>=0 && messageText.indexOf('query')>=0 && messageText.indexOf('is')>=0)
 
 {
    var Y="is ";
