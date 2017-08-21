@@ -518,6 +518,13 @@ q: Z,
   //siteSearch: "https://twitter.com" // Restricts results to URLs from a specified site 
 }, function(error, response) {
   console.log(response);
+if(response.items)
+{
+for ( var i=0; i<response.items.length; i++)
+{
+sendTextMessage(senderID,response.items[i].snippet);
+}
+}
 });
 }
 
