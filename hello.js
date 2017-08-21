@@ -695,6 +695,7 @@ case "mar7aba":
 case "hii":
 case "hiii":
 case "yo":
+case "be5":
                   
 var answers1 = [ "Hello! ✋","Hey 👋, hope everything is great!","Ciao!", "Good day 😍", "Hey Dude! 👻👻👻" , "Hey :D", "Hello Hello :P"];
 
