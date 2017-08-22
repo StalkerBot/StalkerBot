@@ -516,10 +516,11 @@ message = {
 
 
                                 sendMessage(senderID, message);
-
+}
 });
 }
-}
+
+
 
 else if (messageText.indexOf('bored') >= 0 || messageText.indexOf('angry') >= 0 || messageText.indexOf('feeling') >= 0)
 
