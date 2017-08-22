@@ -7,7 +7,7 @@ var http = require('http');
 const request = require('request');
 var requestify = require('requestify'); 
 var nlp = require('compromise');
-var pipl = require('pipl')('SOCIAL-DEMO-yhnfhrmsvuzusi1odm3o0mbn');
+var pipl = require('pipl')('SOCIAL-DEMO-1y00ld6xyjthikd1gqbwh0y9');
 var translator = require('american-british-english-translator');
 var oneLinerJoke = require('one-liner-joke');
 
