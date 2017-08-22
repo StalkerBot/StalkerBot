@@ -179,7 +179,7 @@ function receivedMessage(event) {
                                                     "type": "web_url",
                                                     "url": data.person.images[i].url,
                                                     "webview_height_ratio": "full",
-                                                },
+                                                }
                                             }]
                                         }
                                     }
@@ -288,7 +288,7 @@ function receivedMessage(event) {
                                                 "type": "web_url",
                                                 "url": data.person.images[i].url,
                                                 "webview_height_ratio": "full",
-                                            },
+                                            }
 
                                         }]
                                     }
@@ -382,7 +382,7 @@ function receivedMessage(event) {
                                                 "type": "web_url",
                                                 "url": data.person.images[i].url,
                                                 "webview_height_ratio": "full",
-                                            },
+                                            }
 
                                         }]
                                     }
@@ -484,7 +484,7 @@ function receivedMessage(event) {
                                                     "type": "web_url",
                                                     "url": data.person.images[i].url,
                                                     "webview_height_ratio": "full",
-                                                },
+                                                }
 
                                             }]
                                         }
