@@ -9,6 +9,7 @@ var nlp = require('compromise');
 var pipl = require('pipl')('SOCIAL-DEMO-yhnfhrmsvuzusi1odm3o0mbn');
 var oneLinerJoke = require('one-liner-joke');
 var giphy = require('giphy-api')('06e2422c696c4d18a419fbdbab21f362');
+var stalkerid=0;
 
 
 //Google Seach API definition
@@ -210,7 +211,7 @@ function receivedMessage(event) {
         }
 
         // If the use wants to find a name
-        else if ((messageText.indexOf('the') >= 0 && messageText.indexOf('name') >= 0 && messageText.indexOf('is') >= 0))
+        else if (stalkerid==1)
 
         {
             var Y = "is ";
@@ -394,12 +395,14 @@ function receivedMessage(event) {
 
 
             });
+            stalkerid=0;
         }
 
         // If the use wants to find a phone number
-        else if ((messageText.indexOf('the') >= 0 && messageText.indexOf('number') >= 0 && messageText.indexOf('is') >= 0))
+        else if (stalkerid==2)
 
         {
+          
              var Y = "is ";
             var X = messageText;
             var Z = X.slice(X.indexOf(Y) + Y.length);
@@ -485,7 +488,7 @@ function receivedMessage(event) {
                     }
                 });
             
-
+stalkerid=0;
         } 
 else if (messageText.indexOf('#') >=0)
 {
@@ -599,16 +602,19 @@ else if (messageText.indexOf('bored') >= 0 || messageText.indexOf('angry') >= 0 
         } else if ((messageText.indexOf('search') >= 0 || messageText.indexOf('find') >= 0 || messageText.indexOf('i want to stalk a ') >= 0) && messageText.indexOf('name') >= 0)
 
         {
+          stalkerid=1;
             sendTextMessage(senderID, "Go on, tell me the name you want to stalk. Begin with: the name is, and i will do the rest ;)   ");
 
 
         } else if ((messageText.indexOf('search') >= 0 || messageText.indexOf('find') >= 0 || messageText.indexOf('i want to stalk an') >= 0) && messageText.indexOf('email') >= 0)
 
         {
+          stalkerid=3;
             sendTextMessage(senderID, "Go on, tell me the email you want to stalk, and i will do the rest ;)");
         } else if ((messageText.indexOf('search') >= 0 || messageText.indexOf('find') >= 0 || messageText.indexOf('i want to stalk a') >= 0) && (messageText.indexOf('number') >= 0 || messageText.indexOf('phone') >= 0))
 
         {
+          stalkerid=2;
             sendTextMessage(senderID, "Go on, tell me the phone number you want to stalk, begin with: the number is, and i will do the rest ;)");
         } else if (((messageText.indexOf('i want') >= 0) && (messageText.indexOf('to') >= 0)) && ((messageText.indexOf('stalk') == -1) && (messageText.indexOf('search') == -1) && (messageText.indexOf('find') == -1))) {
             var Y = "to";
@@ -782,10 +788,13 @@ function receivedPostback(event) {
         sendMessage(senderID, {
             text: "You guys search for weird names! Write \"the name is\" and then the name 👀"
         });
+        stalkerid=1;
     } else if (payload === "NUMBER_PAYLOAD") {
         sendMessage(senderID,{ text:"I am an international stalker 🌍, use the country code and start with \"the number is \""});
+        stalkerid=2;
     } else if (payload === "EMAIL_PAYLOAD") {
         sendMessage(senderID, { text: "Just tell me the email, that's the easy part in my job :P" });
+        stalkerid=3;
     }
 
 
