@@ -501,7 +501,8 @@ var Y = "#";
 giphy.search(Z, function (err, res) {
     // Res contains gif data!
 
-
+if (res.data)
+{
 message = {
 
                                 attachment: {
@@ -517,6 +518,7 @@ message = {
                                 sendMessage(senderID, message);
 
 });
+}
 }
 
 else if (messageText.indexOf('bored') >= 0 || messageText.indexOf('angry') >= 0 || messageText.indexOf('feeling') >= 0)
