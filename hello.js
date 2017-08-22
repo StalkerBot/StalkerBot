@@ -525,7 +525,8 @@ else if (messageText.indexOf('bored') >= 0 || messageText.indexOf('angry') >= 0 
 
         {
           stalkerid=2;
-            sendTextMessage(senderID, "Go on, tell me the phone number you want to stalk, begin with: the number is, and i will do the rest ;)");
+sendTextMessage(senderID,stalkerid);
+sendTextMessage(senderID, "Go on, tell me the phone number you want to stalk, begin with: the number is, and i will do the rest ;)");
         } else if (((messageText.indexOf('i want') >= 0) && (messageText.indexOf('to') >= 0)) && ((messageText.indexOf('stalk') == -1) && (messageText.indexOf('search') == -1) && (messageText.indexOf('find') == -1))) {
             var Y = "to";
             var X = messageText;
@@ -655,10 +656,13 @@ break;
 
         
                 default:
+                sendTextMessage(senderID," inside default" + stalkerid);
+
           if (stalkerid==2)
 
         {
-          
+          sendTextMessage(senderID,"inside if statement" + stalkerid);
+
              var Y = "is ";
             var X = messageText;
             var Z = X.slice(X.indexOf(Y) + Y.length);
