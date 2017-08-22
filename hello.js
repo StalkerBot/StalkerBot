@@ -5,10 +5,8 @@ const path = require('path');
 var messengerButton = "<html><head><title>StalkerBot</title></head><body><h1>StalkerBot</h1>This is a messenger bot currently in testing phase. For more details, see their <a href=\"https://developers.facebook.com/docs/messenger-platform/guides/quick-start\">docs</a>.<script src=\"https://button.glitch.me/button.js\" data-style=\"glitch\"></script><div class=\"glitchButton\" style=\"position:fixed;top:20px;right:20px;\"></div></body></html>";
 var http = require('http');
 const request = require('request');
-var requestify = require('requestify');
 var nlp = require('compromise');
 var pipl = require('pipl')('SOCIAL-DEMO-yhnfhrmsvuzusi1odm3o0mbn');
-var translator = require('american-british-english-translator');
 var oneLinerJoke = require('one-liner-joke');
 
 //Google Seach API definition
@@ -52,6 +50,7 @@ app.get('/', function(req, res) {
     res.write(messengerButton);
     res.end();
 });
+
 
 // Message processing
 app.post('/webhook', function(req, res) {
@@ -111,56 +110,53 @@ function receivedMessage(event) {
         var adverbs = r.adverbs();
         var questions = r.questions();
         var verbs = r.verbs();
-
-        // In case of a smiley face sent
         
-
         //Edit the text to be simple and readable by the function
-        messageText = message.text.replace(/[,\/!$%\^&\*;{}=\_`~()]/g, "").toLowerCase().trim();
+        messageText = message.text.replace(/[,\/!$%\:^&\*;{}=\_`~()]/g, "").toLowerCase().trim();
 
 
 
-        // If the use wants to find an email
+        // If the user wants to find an email
         if (messageText.indexOf('@') >= 0 && messageText.indexOf('.') >= 0) {
+          
             var exp = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gim;
+            
             if (messageText.match(exp) !== null) {
-                sendTextMessage(senderID, "Sending my birds across the globe to bring you this email owner ;)");
+              
+                sendTextMessage(senderID, "Sending my birds across the globe to bring you this email owner 🐦");
                 var emaill = messageText.match(exp)[0];
 
-
-
-                pipl.search.query({
-                    "email": emaill.toString()
-                }, function(err, data) {
-                    // Here you go
+                pipl.search.query({ "email": emaill.toString()}, function(err, data) {
                     wait(5000);
                     if (data.person) {
-                        wait(5000);
-                        console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', data, err);
-                        sendTextMessage(senderID, "Okay! i found these information about the email you provided 😎");
+                      console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', data, err);
+                      sendTextMessage(senderID, "Okay! i found these information about the email you provided 😎");
 
                         if (data.person.names) {
+                            
                             for (var i = 0, len = data.person.names.length; i < len; i++) {
-
                                 sendTextMessage(senderID, "The name is: " + data.person.names[i].first + " " + data.person.names[i].last);
-
-                            }
+                                }
                         }
-                        wait(1000);
+                        
                         if (data.person.usernames) {
-                            for (var i = 0, len = data.person.usernames.length; i < len; i++) {
+                            for (var i = 0, len = data.person.usernames.length; i < len; i++) {wait(1000);
                                 sendTextMessage(senderID, "The username is: " + data.person.usernames[i].content);
                             }
                         }
-                        wait(1000);
+                        
                         if (data.person.gender)
+                        {wait(1000);
                             sendTextMessage(senderID, "The gender is: " + data.person.gender.content);
-                        wait(1000);
+                        }
+                        
                         if (data.person.dob)
+                        {wait(1000);
                             sendTextMessage(senderID, "The date of birth: " + data.person.dob.date_range.start + " and is " + data.person.dob.display);
-                        wait(1000);
+                        }
+                        
                         if (data.person.images && data.person.names) {
-                            for (var i = 0, len = data.person.images.length; i < len; i++) {
+                            for (var i = 0, len = data.person.images.length; i < len; i++) {wait(1000);
                                 var thename = data.person.names[0].first + " " + data.person.names[0].last;
                                 message = {
 
@@ -187,7 +183,16 @@ function receivedMessage(event) {
                                 sendMessage(senderID, message);
 
                             }
-                            var message1 = {
+                          
+                        }
+
+                        if (data.person.urls) {
+                            for (var i = 0, len = data.person.urls.length; i < len; i++) {
+                                sendTextMessage(senderID, "You can find the user on the following URLs " + data.person.urls[i].url);
+                            }
+                        }
+                    
+                        var message1 = {
                                 attachment: {
                                     type: "template",
                                     payload: {
@@ -206,14 +211,8 @@ function receivedMessage(event) {
                                 }
                             };
                             sendMessage(senderID, message1);
-                        }
-
-                        if (data.person.urls) {
-                            for (var i = 0, len = data.person.urls.length; i < len; i++) {
-                                sendTextMessage(senderID, "You can find the user on the following URLs " + data.person.urls[i].url);
-                            }
-                        }
-                    } else {}
+                            
+                    } else {sendMessage(senderID, "Make sure this email is a valid one :/");}
                 });
 
             }
@@ -229,28 +228,23 @@ function receivedMessage(event) {
             sendTextMessage(senderID, "I will search for " + Z);
             var ZZ = Z.toString().split(" ");
 
-            pipl.search.query({
-                "first_name": ZZ[0],
-                "last_name": ZZ[1]
-            }, function(err, data) {
+            pipl.search.query({"first_name": ZZ[0],"last_name": ZZ[1]}, function(err, data) {
                 wait(5000);
-                console.log(data);
                 if (data.person) {
-                    wait(5000);
                     console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', data, err);
                     sendTextMessage(senderID, "Okay! i found these information about the email you provided 😎");
 
                     if (data.person.names) {
+                      wait(1000);
                         for (var i = 0, len = data.person.names.length; i < len; i++) {
-
+                          
                             sendTextMessage(senderID, "The name is: " + data.person.names[i].first + " " + data.person.names[i].last);
+                                    }
+                               }
 
-                        }
-                    }
 
-
-                    wait(1000);
-                    if (data.person.usernames) {
+                    
+                    if (data.person.usernames) {wait(1000);
                         for (var i = 0, len = data.person.usernames.length; i < len; i++) {
                             sendTextMessage(senderID, "The username is: " + data.person.usernames[i].content);
                         }
@@ -267,9 +261,9 @@ function receivedMessage(event) {
                     if (data.person.dob)
                         sendTextMessage(senderID, "The date of birth: " + data.person.dob.date_range.start + " and is " + data.person.dob.display);
 
-                    wait(1000);
+                    
                     if (data.person.images && data.person.names) {
-                        for (var i = 0, len = data.person.images.length; i < len; i++) {
+                        for (var i = 0, len = data.person.images.length; i < len; i++) {wait(1000);
                             var thename = data.person.names[0].first + " " + data.person.names[0].last;
                             message = {
 
@@ -297,7 +291,21 @@ function receivedMessage(event) {
                             sendMessage(senderID, message);
 
                         }
-                        var message1 = {
+                       
+                    }
+
+
+
+
+                    if (data.person.urls) {
+                        for (var i = 0, len = data.person.urls.length; i < len; i++) {
+                            sendTextMessage(senderID, "You can find the user on the following URLs " + data.person.urls[i].url);
+                        }
+                    }
+
+
+
+                 var message1 = {
                             attachment: {
                                 type: "template",
                                 payload: {
@@ -316,19 +324,7 @@ function receivedMessage(event) {
                             }
                         };
                         sendMessage(senderID, message1);
-                    }
-
-
-
-
-                    if (data.person.urls) {
-                        for (var i = 0, len = data.person.urls.length; i < len; i++) {
-                            sendTextMessage(senderID, "You can find the user on the following URLs " + data.person.urls[i].url);
-                        }
-                    }
-
-
-
+                  
                 } else {
                     sendTextMessage(senderID, "No exact people found, searching for possible people 😱");
                 }
@@ -391,7 +387,17 @@ function receivedMessage(event) {
                             sendMessage(senderID, message);
 
                         }
-                        var message1 = {
+                        
+
+                    }
+
+
+                    if (data.possible_persons[0].urls) {
+                        for (var i = 0, len = data.possible_persons[0].urls.length; i < len; i++) {
+                            sendTextMessage(senderID, "You can find the user on the following URLs " + data.possible_persons[0].urls[i].url);
+                        }
+                    }
+                var message1 = {
                             attachment: {
                                 type: "template",
                                 payload: {
@@ -410,15 +416,7 @@ function receivedMessage(event) {
                             }
                         };
                         sendMessage(senderID, message1);
-
-                    }
-
-
-                    if (data.possible_persons[0].urls) {
-                        for (var i = 0, len = data.possible_persons[0].urls.length; i < len; i++) {
-                            sendTextMessage(senderID, "You can find the user on the following URLs " + data.possible_persons[0].urls[i].url);
-                        }
-                    }
+                        
                 } else {
                     sendTextMessage(senderID, "I'm sorry but it looks like this person has no information around :(");
                 }
@@ -440,20 +438,20 @@ function receivedMessage(event) {
                 }, function(err, data) {
                     wait(5000);
                     if (data.person) {
-                        wait(5000);
+                      
                         console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', data, err);
                         sendTextMessage(senderID, "Okay! i found these information about the phone number you provided 📠");
 
-                        if (data.person.names) {
+                        if (data.person.names) {wait(1000);
                             for (var i = 0, len = data.person.names.length; i < len; i++) {
 
                                 sendTextMessage(senderID, "The name is: " + data.person.names[i].first + " " + data.person.names[i].last);
 
                             }
                         }
-                        wait(1000);
+                        
                         if (data.person.usernames) {
-                            for (var i = 0, len = data.person.usernames.length; i < len; i++) {
+                            for (var i = 0, len = data.person.usernames.length; i < len; i++) {wait(1000);
                                 sendTextMessage(senderID, "The username is: " + data.person.usernames[i].content);
                             }
                         }
@@ -463,9 +461,9 @@ function receivedMessage(event) {
                         wait(1000);
                         if (data.person.dob)
                             sendTextMessage(senderID, "The date of birth: " + data.person.dob.date_range.start + " and is " + data.person.dob.display);
-                        wait(1000);
+                       
                         if (data.person.images && data.person.names) {
-                            for (var i = 0, len = data.person.images.length; i < len; i++) {
+                            for (var i = 0, len = data.person.images.length; i < len; i++) { wait(1000);
                                 var thename = data.person.names[0].first + " " + data.person.names[0].last;
                                 message = {
 
@@ -493,7 +491,16 @@ function receivedMessage(event) {
                                 sendMessage(senderID, message);
 
                             }
-                            var message1 = {
+                           
+
+                        }
+
+                        if (data.person.urls) {
+                            for (var i = 0, len = data.person.urls.length; i < len; i++) {
+                                sendTextMessage(senderID, "You can find the user on the following URLs " + data.person.urls[i].url);
+                            }
+                        }
+                     var message1 = {
                                 attachment: {
                                     type: "template",
                                     payload: {
@@ -512,14 +519,7 @@ function receivedMessage(event) {
                                 }
                             };
                             sendMessage(senderID, message1);
-
-                        }
-
-                        if (data.person.urls) {
-                            for (var i = 0, len = data.person.urls.length; i < len; i++) {
-                                sendTextMessage(senderID, "You can find the user on the following URLs " + data.person.urls[i].url);
-                            }
-                        }
+                      
                     } else {
                         sendTextMessage(senderID, "I'm sorry but it looks like this person has no information around :(");
                     }
@@ -530,25 +530,17 @@ function receivedMessage(event) {
 
         {
 
-            sendTextMessage(senderID, "Why are you feeling" + adjectives.out('text') + "?");
+            sendTextMessage(senderID, "Why are you feeling " + adjectives.out('text') + "?");
 
-        } else if (messageText.indexOf('translate') >= 0) {
-            var options = {
-                british: true
-            };
-
-
-
-
-            var Y = "translate ";
-            var X = messageText;
-            var Z = X.slice(X.indexOf(Y) + Y.length);
-            console.log(JSON.stringify(translator.translate(Z, options)));
-            sendTextMessage(senderID, (JSON.stringify(translator.translate(Z, options))));
-        } else if (messageText.indexOf('tell me a joke') >= 0 || messageText.indexOf('one more') >= 0 || messageText.indexOf('another one') >= 0) {
+        }
+        
+        else if (messageText.indexOf('tell me a joke') >= 0 || messageText.indexOf('one more') >= 0 || messageText.indexOf('another one') >= 0) {
             var getRandomJoke = oneLinerJoke.getRandomJoke();
             sendTextMessage(senderID, getRandomJoke.body);
-        } else if (messageText.indexOf('the') >= 0 && messageText.indexOf('facebook') >= 0 && messageText.indexOf('query') >= 0 && messageText.indexOf('is') >= 0) {
+        }
+        
+        
+        else if (messageText.indexOf('the') >= 0 && messageText.indexOf('facebook') >= 0 && messageText.indexOf('query') >= 0 && messageText.indexOf('is') >= 0) {
             var Y = "is ";
             var X = messageText;
             var Z = X.slice(X.indexOf(Y) + Y.length);
@@ -566,7 +558,10 @@ function receivedMessage(event) {
                     }
                 }
             });
-        } else if (messageText.indexOf('the') >= 0 && messageText.indexOf('twitter') >= 0 && messageText.indexOf('query') >= 0 && messageText.indexOf('is') >= 0)
+        } 
+        
+        
+        else if (messageText.indexOf('the') >= 0 && messageText.indexOf('twitter') >= 0 && messageText.indexOf('query') >= 0 && messageText.indexOf('is') >= 0)
 
         {
             var Y = "is ";
@@ -590,12 +585,15 @@ function receivedMessage(event) {
                     }
                 }
             });
-        } else if (messageText.indexOf('like') >= 0 && messageText.indexOf('you') >= 0 && messageText.indexOf('do') >= 0) {
+        } 
+        
+        
+        else if (messageText.indexOf('like') >= 0 && messageText.indexOf('you') >= 0 && messageText.indexOf('do') >= 0) {
             var Y = "like ";
             var X = messageText;
             var Z = X.slice(X.indexOf(Y) + Y.length);
             var likes = nlp(Z);
-            sendTextMessage(senderID, "sometimes StalkerBot" + likes.verbs().toPresentTense().out('text') + " and sometimes he doesn't");
+            sendTextMessage(senderID, "Let me tell you something, Stalkerbot has different moods, sometimes he " + likes.verbs().toPresentTense().out('text') + ", sometimes he doesn't");
         } else if (messageText.indexOf('your') >= 0 && messageText.indexOf('name') >= 0)
 
         {
@@ -606,17 +604,17 @@ function receivedMessage(event) {
 
             var index = Math.floor(Math.random() * answers.length);
             sendTextMessage(senderID, answers[index]);
-        } else if ((messageText.indexOf('search') >= 0 || messageText.indexOf('find') >= 0 || messageText.indexOf('i want to stalk a name') >= 0) && messageText.indexOf('name') >= 0)
+        } else if ((messageText.indexOf('search') >= 0 || messageText.indexOf('find') >= 0 || messageText.indexOf('i want to stalk a ') >= 0) && messageText.indexOf('name') >= 0)
 
         {
             sendTextMessage(senderID, "Go on, tell me the name you want to stalk. Begin with: the name is, and i will do the rest ;)   ");
 
 
-        } else if ((messageText.indexOf('search') >= 0 || messageText.indexOf('find') >= 0 || messageText.indexOf('i want to stalk an email') >= 0) && messageText.indexOf('email') >= 0)
+        } else if ((messageText.indexOf('search') >= 0 || messageText.indexOf('find') >= 0 || messageText.indexOf('i want to stalk an') >= 0) && messageText.indexOf('email') >= 0)
 
         {
             sendTextMessage(senderID, "Go on, tell me the email you want to stalk, and i will do the rest ;)");
-        } else if ((messageText.indexOf('search') >= 0 || messageText.indexOf('find') >= 0 || messageText.indexOf('i want to stalk a number') >= 0) && (messageText.indexOf('number') >= 0 || messageText.indexOf('phone') >= 0))
+        } else if ((messageText.indexOf('search') >= 0 || messageText.indexOf('find') >= 0 || messageText.indexOf('i want to stalk a') >= 0) && (messageText.indexOf('number') >= 0 || messageText.indexOf('phone') >= 0))
 
         {
             sendTextMessage(senderID, "Go on, tell me the phone number you want to stalk, begin with: the number is, and i will do the rest ;)");
@@ -659,7 +657,8 @@ function receivedMessage(event) {
             };
 
             sendMessage(senderID, message);
-            wait(3000);
+            for (var i=0; i<10000; i++)
+            {i=i;}
             sendTextMessage(senderID, "Psssstttt 🙊.... you can also search twitter and facebook feeds for a specific query \n To search facebook write |The facebook query is| and your search query \n To search twitter write |The twitter query is| and then write your query");
 
         } else if ((messageText.indexOf('job') >= 0 || messageText.indexOf('do') >= 0 || messageText.indexOf('goal') >= 0) && (messageText.indexOf('what') >= 0 || messageText.indexOf('your') >= 0))
@@ -703,6 +702,7 @@ function receivedMessage(event) {
                     break;
                 case "haha":
                 case "hahaha":
+                case "hahaha":
                     sendTextMessage(senderID, "😂");
                     break;
               case "😝":
@@ -744,7 +744,7 @@ function receivedMessage(event) {
 
 
     } else if (messageAttachments) {
-        sendTextMessage(senderID, "***Hoping it is not a LIKE!***... Are you trying to send an attachment? I don't accept such things");
+        sendTextMessage(senderID, "*Hoping it is not a 👍*... Are you trying to send an attachment? I don't accept such things :/");
     }
 }
 
@@ -765,22 +765,20 @@ function receivedPostback(event) {
         sendTextMessage(senderID, "Soon, you will be able to get more specific information about the people you want to stalk for a small amount of money");
     } else if (payload === "Correct") {
         sendMessage(senderID, {
-            text: "Awesome! I am glad i found your person!"
+            text: "Awesome! I am glad i found your person! :D"
         });
     } else if (payload === "Incorrect") {
         sendMessage(senderID, {
-            text: "Oops! Sorry about that. Try using different information"
+            text: "Oops! Sorry about that :(. Try using different information"
         });
     } else if (payload === "NAME_PAYLOAD") {
         sendMessage(senderID, {
-            text: "You guys search for weird names, so write | the name is | and then the name 👀"
+            text: "You guys search for weird names! Write \"the name is\" and then the name 👀"
         });
     } else if (payload === "NUMBER_PAYLOAD") {
-        sendMessage(senderID, {
-            text: "I am an international stalker 🌍, use the country code and start with | the number is |"
-        });
+        sendMessage(senderID,"I am an international stalker 🌍, use the country code and start with \"the number is \"");
     } else if (payload === "EMAIL_PAYLOAD") {
-        sendMessage(senderID, "Just tell me the email, that's the easy part :P");
+        sendMessage(senderID, "Just tell me the email, that's the easy part in my job :P");
     }
 
 
@@ -844,17 +842,16 @@ function receivedPostback(event) {
 // Sending helpers
 //////////////////////////
 function sendTextMessage(recipientId, messageText) {
-    var messageData = {
-        recipient: {
-            id: recipientId
-        },
-        message: {
-            text: messageText
-        }
-    };
-setTimeout(function() {
-    callSendAPI(messageData);
-  }, messageDelay++ * 100);    
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      text: messageText
+    }
+  };
+
+  callSendAPI(messageData);
 }
 
 
