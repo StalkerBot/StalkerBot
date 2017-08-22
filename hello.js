@@ -501,7 +501,7 @@ var Y = "#";
 giphy.search(Z, function (err, res) {
     // Res contains gif data!
 
-if (res.data)
+if (res)
 {
 message = {
 
