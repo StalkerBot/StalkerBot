@@ -408,7 +408,7 @@ function receivedMessage(event) {
             var Z = X.slice(X.indexOf(Y) + Y.length);
 
                 pipl.search.query({
-                    "phone": Z
+                    "phone": X
                 }, function(err, data) {
                     wait(5000);
                     if (data.person) {
