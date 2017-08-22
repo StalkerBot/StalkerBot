@@ -657,15 +657,15 @@ function receivedMessage(event) {
             };
 
             sendMessage(senderID, message);
-            for (var i=0; i<10000; i++)
-            {i=i;}
-            sendTextMessage(senderID, "Psssstttt 🙊.... you can also search twitter and facebook feeds for a specific query \n To search facebook write |The facebook query is| and your search query \n To search twitter write |The twitter query is| and then write your query");
 
+            
         } else if ((messageText.indexOf('job') >= 0 || messageText.indexOf('do') >= 0 || messageText.indexOf('goal') >= 0) && (messageText.indexOf('what') >= 0 || messageText.indexOf('your') >= 0))
 
         {
             sendTextMessage(senderID, "I am a stalker 🔥, i enjoy stalking people and getting their information to your doorstep, i mean to your messenger step :P");
-        } else if ((messageText.indexOf('what') >= 0 && messageText.indexOf('s') >= 0 && messageText.indexOf('up') >= 0) || (messageText.indexOf('how') >= 0 && messageText.indexOf('are') >= 0 && messageText.indexOf('you') >= 0))
+	    sendTextMessage(senderID, "Psssstttt 🙊.... you can also search twitter and facebook feeds for a specific query \n To search facebook write \"the facebook query is\" and then your search query \n To search twitter write \"the twitter query is\" and then write your query");
+        
+} else if ((messageText.indexOf('what') >= 0 && messageText.indexOf('s') >= 0 && messageText.indexOf('up') >= 0) || (messageText.indexOf('how') >= 0 && messageText.indexOf('are') >= 0 && messageText.indexOf('you') >= 0))
 
         {
 
