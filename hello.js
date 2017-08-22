@@ -9,7 +9,7 @@ var nlp = require('compromise');
 var pipl = require('pipl')('SOCIAL-DEMO-yhnfhrmsvuzusi1odm3o0mbn');
 var oneLinerJoke = require('one-liner-joke');
 var giphy = require('giphy-api')('06e2422c696c4d18a419fbdbab21f362');
-var stalkerid=0;
+var stalkerid;
 
 
 //Google Seach API definition
