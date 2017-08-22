@@ -650,7 +650,7 @@ function receivedMessage(event) {
                 case "hiii":
                 case "yo":
                 case "be5":
-		case "hola"
+		case "hola":
 
                     var answers1 = ["Hello! ✋", "Hey 👋, hope everything is great!", "Ciao!", "Good day 😍", "Hey Dude! 👻👻👻", "Hey :D", "Hello Hello :P"];
 
