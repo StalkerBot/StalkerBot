@@ -497,7 +497,7 @@ var Y = "#";
 
 
 
-giphy.search('Z', function (err, res) {
+giphy.search(Z, function (err, res) {
     // Res contains gif data!
 
 
