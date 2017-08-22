@@ -651,7 +651,7 @@ else if (messageText.indexOf('bored') >= 0 || messageText.indexOf('angry') >= 0 
             sendMessage(senderID, message);
             for (var i=0; i<10000; i++)
             {i=i;}
-            sendTextMessage(senderID, "Psssstttt 🙊.... you can also search twitter and facebook feeds for a specific query \n To search facebook write |The facebook query is| and your search query \n To search twitter write |The twitter query is| and then write your query");
+            sendTextMessage(senderID, "Psssstttt 🙊.... you can also search twitter and facebook feeds for a specific query \n To search facebook write |The facebook query is| and your search query \n To search twitter write |The twitter query is| and then write your query \n \n \n What about some GIFS ? use # then any tag you want ;)");
 
         } else if ((messageText.indexOf('job') >= 0 || messageText.indexOf('do') >= 0 || messageText.indexOf('goal') >= 0) && (messageText.indexOf('what') >= 0 || messageText.indexOf('your') >= 0))
 

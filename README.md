@@ -10,6 +10,8 @@ The program used:
 3- Google Custom Search API to extract feed queries
 4- PIPL API to extract people information such as names, emails, ages, social media accounts and photos.
 5- One Line Joker to add some fun to the bot where it can tell jokes.
+6- Giphy can send you GIFs when you use the #
+
 
 You can do the following things with the bot:
 
