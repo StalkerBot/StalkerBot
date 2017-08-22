@@ -776,9 +776,9 @@ function receivedPostback(event) {
             text: "You guys search for weird names! Write \"the name is\" and then the name 👀"
         });
     } else if (payload === "NUMBER_PAYLOAD") {
-        sendMessage(senderID,"I am an international stalker 🌍, use the country code and start with \"the number is \"");
+        sendMessage(senderID,{ text: "I am an international stalker 🌍, use the country code and start with \"the number is \""});
     } else if (payload === "EMAIL_PAYLOAD") {
-        sendMessage(senderID, "Just tell me the email, that's the easy part in my job :P");
+        sendMessage(senderID, {text: "Just tell me the email, that's the easy part in my job :P"});
     }
 
 
