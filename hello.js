@@ -113,11 +113,7 @@ function receivedMessage(event) {
         var verbs = r.verbs();
 
         // In case of a smiley face sent
-        if ((messageText.indexOf('😉') >= 0 || messageText.indexOf(':D' || ':E'  || 'XD')>= 0 || messageText.indexOf(':P')) >= 0)
-
-        {
-            sendTextMessage(senderID, "hope you are always happy :D!");
-        }
+        
 
         //Edit the text to be simple and readable by the function
         messageText = message.text.replace(/[,\/!$%\^&\*;{}=\_`~()]/g, "").toLowerCase().trim();
@@ -709,6 +705,11 @@ function receivedMessage(event) {
                 case "hahaha":
                     sendTextMessage(senderID, "😂");
                     break;
+               case "😝":
+
+      
+            sendTextMessage(senderID, "hope you are always happy :D!");
+        break;
                 default:
 
                     var answers3 = [":O", "(y)", "😲", "😮", "¯\(o_o)/¯", "Say it again?", "Hmmm...", "🙄"];
