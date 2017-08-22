@@ -695,6 +695,9 @@ else if (messageText.indexOf('bored') >= 0 || messageText.indexOf('angry') >= 0 
                 case "haha":
                 case "hahaha":
                 case "hahaha":
+		case "lol":
+		case "lool":
+		case "loool":
                     sendTextMessage(senderID, "😂");
                     break;
               case "😝":
@@ -722,6 +725,18 @@ else if (messageText.indexOf('bored') >= 0 || messageText.indexOf('angry') >= 0 
       
             sendTextMessage(senderID, "I hope you are always happy :D!");
         break;
+
+case "bye":
+case "gotta go":
+case "i have to go":
+case "goodbye":
+case "got to go":
+case "gtg":
+
+sendTextMessage(senderID, "Goodbye, it was nice stalking with you :D");
+
+break;
+
         
                 default:
 
