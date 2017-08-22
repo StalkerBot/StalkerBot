@@ -158,26 +158,15 @@ function receivedMessage(event) {
                         if (data.person.images && data.person.names) {
                             for (var i = 0, len = data.person.images.length; i < len; i++) {wait(1000);
                                 var thename = data.person.names[0].first + " " + data.person.names[0].last;
-                                message = {
+                                 message = {
 
-                                    attachment: {
-                                        type: "template",
-                                        payload: {
-                                            template_type: "generic",
-                                            elements: [{
-                                                title: thename,
-                                                subtitle: "",
-                                                image_url: data.person.images[i].url,
-                                                "default_action": {
-                                                    "type": "web_url",
-                                                    "url": data.person.images[i].url,
-                                                    "webview_height_ratio": "full",
-                                                }
-                                            }]
-                                        }
+                                attachment: {
+                                    "type":"image",
+                                    payload: {
+                                      "url":data.person.images[i].url,
                                     }
-                                };
-
+                                }
+                            };
 
 
                                 sendMessage(senderID, message);
@@ -265,23 +254,14 @@ function receivedMessage(event) {
                     if (data.person.images && data.person.names) {
                         for (var i = 0, len = data.person.images.length; i < len; i++) {wait(1000);
                             var thename = data.person.names[0].first + " " + data.person.names[0].last;
-                            message = {
+                         
+
+                                message = {
 
                                 attachment: {
-                                    type: "template",
+                                    "type":"image",
                                     payload: {
-                                        template_type: "generic",
-                                        elements: [{
-                                            title: thename,
-                                            subtitle: "",
-                                            image_url: data.person.images[i].url,
-                                            "default_action": {
-                                                "type": "web_url",
-                                                "url": data.person.images[i].url,
-                                                "webview_height_ratio": "full",
-                                            }
-
-                                        }]
+                                      "url":data.person.images[i].url,
                                     }
                                 }
                             };
@@ -364,20 +344,9 @@ function receivedMessage(event) {
                             message = {
 
                                 attachment: {
-                                    type: "template",
+                                    "type":"image",
                                     payload: {
-                                        template_type: "generic",
-                                        elements: [{
-                                            title: thename,
-                                            subtitle: "",
-                                            image_url: data.person.images[i].url,
-                                            "default_action": {
-                                                "type": "web_url",
-                                                "url": data.person.images[i].url,
-                                                "webview_height_ratio": "full",
-                                            }
-
-                                        }]
+                                      "url":data.person.images[i].url,
                                     }
                                 }
                             };
@@ -465,26 +434,15 @@ function receivedMessage(event) {
                         if (data.person.images && data.person.names) {
                             for (var i = 0, len = data.person.images.length; i < len; i++) { wait(1000);
                                 var thename = data.person.names[0].first + " " + data.person.names[0].last;
-                                message = {
+                                 message = {
 
-                                    attachment: {
-                                        type: "template",
-                                        payload: {
-                                            template_type: "generic",
-                                            elements: [{
-                                                title: thename,
-                                                subtitle: "",
-                                                image_url: data.person.images[i].url,
-                                                "default_action": {
-                                                    "type": "web_url",
-                                                    "url": data.person.images[i].url,
-                                                    "webview_height_ratio": "full",
-                                                }
-
-                                            }]
-                                        }
+                                attachment: {
+                                    "type":"image",
+                                    payload: {
+                                      "url":data.person.images[i].url,
                                     }
-                                };
+                                }
+                            };
 
 
 
@@ -657,15 +615,15 @@ function receivedMessage(event) {
             };
 
             sendMessage(senderID, message);
+            for (var i=0; i<10000; i++)
+            {i=i;}
+            sendTextMessage(senderID, "Psssstttt 🙊.... you can also search twitter and facebook feeds for a specific query \n To search facebook write |The facebook query is| and your search query \n To search twitter write |The twitter query is| and then write your query");
 
-            
         } else if ((messageText.indexOf('job') >= 0 || messageText.indexOf('do') >= 0 || messageText.indexOf('goal') >= 0) && (messageText.indexOf('what') >= 0 || messageText.indexOf('your') >= 0))
 
         {
             sendTextMessage(senderID, "I am a stalker 🔥, i enjoy stalking people and getting their information to your doorstep, i mean to your messenger step :P");
-	    sendTextMessage(senderID, "Psssstttt 🙊.... you can also search twitter and facebook feeds for a specific query \n To search facebook write \"the facebook query is\" and then your search query \n To search twitter write \"the twitter query is\" and then write your query");
-        
-} else if ((messageText.indexOf('what') >= 0 && messageText.indexOf('s') >= 0 && messageText.indexOf('up') >= 0) || (messageText.indexOf('how') >= 0 && messageText.indexOf('are') >= 0 && messageText.indexOf('you') >= 0))
+        } else if ((messageText.indexOf('what') >= 0 && messageText.indexOf('s') >= 0 && messageText.indexOf('up') >= 0) || (messageText.indexOf('how') >= 0 && messageText.indexOf('are') >= 0 && messageText.indexOf('you') >= 0))
 
         {
 
@@ -678,7 +636,7 @@ function receivedMessage(event) {
         } else {
             switch (messageText) {
                 case "hello":
-                case "hi": 
+                case "hi":
                 case "ciao":
                 case "hey":
                 case "bonjour":
@@ -776,9 +734,9 @@ function receivedPostback(event) {
             text: "You guys search for weird names! Write \"the name is\" and then the name 👀"
         });
     } else if (payload === "NUMBER_PAYLOAD") {
-        sendMessage(senderID,  { text: "I am an international stalker 🌍, use the country code and start with \"the number is \""});
+        sendMessage(senderID,"I am an international stalker 🌍, use the country code and start with \"the number is \"");
     } else if (payload === "EMAIL_PAYLOAD") {
-        sendMessage(senderID, { text: "Just write away your email, i will understand it, hopefully :P"});
+        sendMessage(senderID, "Just tell me the email, that's the easy part in my job :P");
     }
 
 
