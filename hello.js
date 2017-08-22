@@ -597,17 +597,17 @@ else if (messageText.indexOf('bored') >= 0 || messageText.indexOf('angry') >= 0 
 
             var index = Math.floor(Math.random() * answers.length);
             sendTextMessage(senderID, answers[index]);
-        } else if ((messageText.indexOf('search') >= 0 || messageText.indexOf('find') >= 0 || messageText.indexOf('i want to stalk a ') >= 0) && messageText.indexOf('name') >= 0)
+        } else if ((messageText.indexOf('search') >= 0 || messageText.indexOf('find') >= 0 || messageText.indexOf('stalk a ') >= 0) && messageText.indexOf('name') >= 0)
 
         {
             sendTextMessage(senderID, "Go on, tell me the name you want to stalk. Begin with: the name is, and i will do the rest ;)   ");
 
 
-        } else if ((messageText.indexOf('search') >= 0 || messageText.indexOf('find') >= 0 || messageText.indexOf('i want to stalk an') >= 0) && messageText.indexOf('email') >= 0)
+        } else if ((messageText.indexOf('search') >= 0 || messageText.indexOf('find') >= 0 || messageText.indexOf('stalk an') >= 0) && messageText.indexOf('email') >= 0)
 
         {
             sendTextMessage(senderID, "Go on, tell me the email you want to stalk, and i will do the rest ;)");
-        } else if ((messageText.indexOf('search') >= 0 || messageText.indexOf('find') >= 0 || messageText.indexOf('i want to stalk a') >= 0) && (messageText.indexOf('number') >= 0 || messageText.indexOf('phone') >= 0))
+        } else if ((messageText.indexOf('search') >= 0 || messageText.indexOf('find') >= 0 || messageText.indexOf('stalk a') >= 0) && (messageText.indexOf('number') >= 0 || messageText.indexOf('phone') >= 0))
 
         {
             sendTextMessage(senderID, "Go on, tell me the phone number you want to stalk, begin with: the number is, and i will do the rest ;)");
@@ -737,6 +737,11 @@ case "gtg":
 sendTextMessage(senderID, "Goodbye, it was nice stalking with you :D");
 
 break;
+
+case "stalk":
+sendTextMessage(senderID, "What do you want to stalk? Type help for more info");
+break;
+
 
         
                 default:
