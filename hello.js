@@ -8,6 +8,8 @@ const request = require('request');
 var nlp = require('compromise');
 var pipl = require('pipl')('SOCIAL-DEMO-yhnfhrmsvuzusi1odm3o0mbn');
 var oneLinerJoke = require('one-liner-joke');
+var giphy = require('giphy-api')('06e2422c696c4d18a419fbdbab21f362');
+
 
 //Google Seach API definition
 var GoogleSearch = require('google-search');
@@ -484,7 +486,39 @@ function receivedMessage(event) {
                 });
             
 
-        } else if (messageText.indexOf('bored') >= 0 || messageText.indexOf('angry') >= 0 || messageText.indexOf('feeling') >= 0)
+        } 
+else if (messageText.indexOf('#') >=0)
+{
+
+
+var Y = "#";
+            var X = messageText;
+            var Z = X.slice(X.indexOf(Y) + Y.length);
+
+
+
+giphy.search('Z', function (err, res) {
+    // Res contains gif data!
+
+
+message = {
+
+                                attachment: {
+                                    "type":"image",
+                                    payload: {
+                                      "url":data[0].images.original.url,
+                                    }
+                                }
+                            };
+
+
+
+                                sendMessage(senderID, message);
+
+});
+}
+
+else if (messageText.indexOf('bored') >= 0 || messageText.indexOf('angry') >= 0 || messageText.indexOf('feeling') >= 0)
 
         {
 
