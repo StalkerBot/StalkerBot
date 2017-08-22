@@ -705,14 +705,35 @@ function receivedMessage(event) {
                 case "hahaha":
                     sendTextMessage(senderID, "😂");
                     break;
-               case "😝":
+              case "😝":
+              case "😊":
+              case "😀":
+              case "😇":
+              case "😍":
+              case "😄":
+              case "😃":
+              case "😆":
+              case "😸":
+              case "😀":
+              case "😛":
+              case "😋":
+              case "😍":
+              case "😋":
+              case "😜":
+              case "😸":
+              case "😊":
+              case "😉":
+              case "😌":
+              case "😺":
+              case "😃":  
 
       
-            sendTextMessage(senderID, "hope you are always happy :D!");
+            sendTextMessage(senderID, "I hope you are always happy :D!");
         break;
+        
                 default:
 
-                    var answers3 = [":O", "(y)", "😲", "😮", "¯\(o_o)/¯", "Say it again?", "Hmmm...", "🙄"];
+                    var answers3 = ["😕","😱","😶","😧",":O", "(y)", "😲", "😮", "¯\(o_o)/¯", "Say it again?", "Hmmm...", "🙄"];
 
                     var index3 = Math.floor(Math.random() * answers3.length);
                     sendTextMessage(senderID, answers3[index3]);
