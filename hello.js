@@ -506,7 +506,7 @@ message = {
                                 attachment: {
                                     "type":"image",
                                     payload: {
-                                      "url":data[0].images.original.url,
+                                      "url":res.data[0].images.original.url,
                                     }
                                 }
                             };
