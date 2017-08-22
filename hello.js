@@ -81,9 +81,10 @@ app.post('/webhook', function(req, res) {
         res.sendStatus(200);
     }
 });
-
+var messageDelay;
 // Incoming events handling
 function receivedMessage(event) {
+  messageDelay = 0;
     var senderID = event.sender.id;
     var recipientID = event.recipient.id;
     var timeOfMessage = event.timestamp;
@@ -829,8 +830,9 @@ function sendTextMessage(recipientId, messageText) {
             text: messageText
         }
     };
-
+setTimeout(function() {
     callSendAPI(messageData);
+  }, messageDelay++ * 100);    
 }
 
 
