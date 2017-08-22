@@ -776,7 +776,7 @@ function receivedPostback(event) {
             text: "You guys search for weird names! Write \"the name is\" and then the name 👀"
         });
     } else if (payload === "NUMBER_PAYLOAD") {
-        sendMessage(senderID,  { text: "I am an international stalker 🌍, use the country code and start with \"the number is \"});
+        sendMessage(senderID,  { text: "I am an international stalker 🌍, use the country code and start with \"the number is \""});
     } else if (payload === "EMAIL_PAYLOAD") {
         sendMessage(senderID, { text: "Just write away your email, i will understand it, hopefully :P"});
     }
