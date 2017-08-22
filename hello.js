@@ -743,13 +743,15 @@ break;
                             };
                             sendMessage(senderID, message1);
                       
-                    } else {
-                        sendTextMessage(senderID, "I'm sorry but it looks like this person has no information around :(");
-                    }
+                    } 
                 });
+                
             
 stalkerid=0;
         }
+        else {
+                        sendTextMessage(senderID, "I'm sorry but it looks like this person has no information around :(");
+                    }
 
                     var answers3 = ["😕","😱","😶","😧",":O", "(y)", "😲", "😮", "¯\(o_o)/¯", "Say it again?", "Hmmm...", "🙄"];
 
