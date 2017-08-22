@@ -434,12 +434,12 @@ function receivedMessage(event) {
         else if ((messageText.indexOf('the') >= 0 && messageText.indexOf('number') >= 0 && messageText.indexOf('is') >= 0))
 
         {
-            var exp1 = /([0-9-]+[0-9-]+[0-9]+)/g;
-            if (messageText.match(exp1).length > 0) {
-                var phonenumber = messageText.match(exp1)[0];
+             var Y = "is ";
+            var X = messageText;
+            var Z = X.slice(X.indexOf(Y) + Y.length);
 
                 pipl.search.query({
-                    "phone": phonenumber
+                    "phone": Z
                 }, function(err, data) {
                     wait(5000);
                     if (data.person) {
@@ -527,7 +527,7 @@ function receivedMessage(event) {
                         sendTextMessage(senderID, "I'm sorry but it looks like this person has no information around :(");
                     }
                 });
-            }
+            
 
         } else if (messageText.indexOf('bored') >= 0 || messageText.indexOf('angry') >= 0 || messageText.indexOf('feeling') >= 0)
 
