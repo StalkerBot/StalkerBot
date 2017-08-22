@@ -683,7 +683,7 @@ else if (messageText.indexOf('bored') >= 0 || messageText.indexOf('angry') >= 0 
                 case "hii":
                 case "hiii":
                 case "yo":
-                case "be5":
+                case "heyy":
                 case "hola":
 
                     var answers1 = ["Hello! ✋", "Hey 👋, hope everything is great!", "Ciao!", "Good day 😍", "Hey Dude! 👻👻👻", "Hey :D", "Hello Hello :P"];
