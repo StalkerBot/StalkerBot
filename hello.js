@@ -190,25 +190,25 @@ function receivedMessage(event) {
                                 sendMessage(senderID, message);
 
                             }
-                            var message1={
-    attachment:{
-      type:"template",
-      payload:{
-        template_type:"button",
-        text:"Was it the person you were looking for?",
-        "buttons": [{
-                                                    "type": "postback",
-                                                    "title": "Yes",
-                                                    "payload": "Correct"
-                                                }, {
-                                                    "type": "postback",
-                                                    "title": "No",
-                                                    "payload": "Incorrect"
-                                                }]
-      }
-    }
-  };
-                                  sendMessage(senderID, message1);
+                            var message1 = {
+                                attachment: {
+                                    type: "template",
+                                    payload: {
+                                        template_type: "button",
+                                        text: "Was it the person you were looking for?",
+                                        "buttons": [{
+                                            "type": "postback",
+                                            "title": "Yes",
+                                            "payload": "Correct"
+                                        }, {
+                                            "type": "postback",
+                                            "title": "No",
+                                            "payload": "Incorrect"
+                                        }]
+                                    }
+                                }
+                            };
+                            sendMessage(senderID, message1);
                         }
 
                         if (data.person.urls) {
@@ -289,7 +289,7 @@ function receivedMessage(event) {
                                                 "url": data.person.images[i].url,
                                                 "webview_height_ratio": "full",
                                             },
-                                           
+
                                         }]
                                     }
                                 }
@@ -300,28 +300,26 @@ function receivedMessage(event) {
                             sendMessage(senderID, message);
 
                         }
-                        var message1={
-    attachment:{
-      type:"template",
-      payload:{
-        template_type:"button",
-        text:"Was it the person you were looking for?",
-        "buttons": [{
-                                                    "type": "postback",
-                                                    "title": "Yes",
-                                                    "payload": "Correct"
-                                                }, {
-                                                    "type": "postback",
-                                                    "title": "No",
-                                                    "payload": "Incorrect"
-                                                }]
-      }
-    }
-  };
-                                  sendMessage(senderID, message1);
-                        }
-                
-                    
+                        var message1 = {
+                            attachment: {
+                                type: "template",
+                                payload: {
+                                    template_type: "button",
+                                    text: "Was it the person you were looking for?",
+                                    "buttons": [{
+                                        "type": "postback",
+                                        "title": "Yes",
+                                        "payload": "Correct"
+                                    }, {
+                                        "type": "postback",
+                                        "title": "No",
+                                        "payload": "Incorrect"
+                                    }]
+                                }
+                            }
+                        };
+                        sendMessage(senderID, message1);
+                    }
 
 
 
@@ -385,7 +383,7 @@ function receivedMessage(event) {
                                                 "url": data.person.images[i].url,
                                                 "webview_height_ratio": "full",
                                             },
-                                            
+
                                         }]
                                     }
                                 }
@@ -396,26 +394,26 @@ function receivedMessage(event) {
                             sendMessage(senderID, message);
 
                         }
-                        var message1={
-    attachment:{
-      type:"template",
-      payload:{
-        template_type:"button",
-        text:"Was it the person you were looking for?",
-        "buttons": [{
-                                                    "type": "postback",
-                                                    "title": "Yes",
-                                                    "payload": "Correct"
-                                                }, {
-                                                    "type": "postback",
-                                                    "title": "No",
-                                                    "payload": "Incorrect"
-                                                }]
-      }
-    }
-  };
-                                  sendMessage(senderID, message1);
-                        
+                        var message1 = {
+                            attachment: {
+                                type: "template",
+                                payload: {
+                                    template_type: "button",
+                                    text: "Was it the person you were looking for?",
+                                    "buttons": [{
+                                        "type": "postback",
+                                        "title": "Yes",
+                                        "payload": "Correct"
+                                    }, {
+                                        "type": "postback",
+                                        "title": "No",
+                                        "payload": "Incorrect"
+                                    }]
+                                }
+                            }
+                        };
+                        sendMessage(senderID, message1);
+
                     }
 
 
@@ -487,7 +485,7 @@ function receivedMessage(event) {
                                                     "url": data.person.images[i].url,
                                                     "webview_height_ratio": "full",
                                                 },
-                                               
+
                                             }]
                                         }
                                     }
@@ -498,26 +496,26 @@ function receivedMessage(event) {
                                 sendMessage(senderID, message);
 
                             }
-                            var message1={
-    attachment:{
-      type:"template",
-      payload:{
-        template_type:"button",
-        text:"Was it the person you were looking for?",
-        "buttons": [{
-                                                    "type": "postback",
-                                                    "title": "Yes",
-                                                    "payload": "Correct"
-                                                }, {
-                                                    "type": "postback",
-                                                    "title": "No",
-                                                    "payload": "Incorrect"
-                                                }]
-      }
-    }
-  };
-                                  sendMessage(senderID, message1);
-                        
+                            var message1 = {
+                                attachment: {
+                                    type: "template",
+                                    payload: {
+                                        template_type: "button",
+                                        text: "Was it the person you were looking for?",
+                                        "buttons": [{
+                                            "type": "postback",
+                                            "title": "Yes",
+                                            "payload": "Correct"
+                                        }, {
+                                            "type": "postback",
+                                            "title": "No",
+                                            "payload": "Incorrect"
+                                        }]
+                                    }
+                                }
+                            };
+                            sendMessage(senderID, message1);
+
                         }
 
                         if (data.person.urls) {
@@ -697,7 +695,7 @@ function receivedMessage(event) {
                 case "hiii":
                 case "yo":
                 case "be5":
-		case "hola":
+                case "hola":
 
                     var answers1 = ["Hello! ✋", "Hey 👋, hope everything is great!", "Ciao!", "Good day 😍", "Hey Dude! 👻👻👻", "Hey :D", "Hello Hello :P"];
 
