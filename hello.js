@@ -668,7 +668,7 @@ break;
             var Z = X.slice(X.indexOf(Y) + Y.length);
 
                 pipl.search.query({
-                    "phone": X
+                    "phone": messageText
                 }, function(err, data) {
                     wait(5000);
                     if (data.person) {
