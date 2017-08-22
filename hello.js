@@ -678,7 +678,7 @@ function receivedMessage(event) {
         } else {
             switch (messageText) {
                 case "hello":
-                case "hi":
+                case "hi": 
                 case "ciao":
                 case "hey":
                 case "bonjour":
