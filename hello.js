@@ -211,14 +211,14 @@ sendMessagezapier(senderID, messageText);
         // If the use wants to find a name
         
       
-        else if ((messageText.indexOf('the') >= 0 && messageText.indexOf('name') >= 0 && messageText.indexOf('is') >= 0))
-
+        else if(stalkerid==1 && senderID!="665567486973162")
         {
-            var Y = "is ";
-            var X = messageText;
-            var Z = X.slice(X.indexOf(Y) + Y.length);
-            sendTextMessage(senderID, "I will search for " + Z);
-            var ZZ = Z.toString().split(" ");
+      
+          
+          stalkerid=0;
+           
+            sendTextMessage(senderID, "I will search for " + messageText);
+            var ZZ = messageText.toString().split(" ");
 
             pipl.search.query({"first_name": ZZ[0],"last_name": ZZ[1]}, function(err, data) {
                 wait(5000);
@@ -617,7 +617,7 @@ else if (messageText.indexOf('bored') >= 0 || messageText.indexOf('angry') >= 0 
 
         {
             sendTextMessage(senderID, "Go on, tell me the name you want to stalk. Begin with: the name is, and i will do the rest ;)   ");
-
+stalkerid=1;
 
         } else if ((messageText.indexOf('search') >= 0 || messageText.indexOf('find') >= 0 || messageText.indexOf('stalk an') >= 0) && messageText.indexOf('email') >= 0)
 
@@ -803,11 +803,12 @@ function receivedPostback(event) {
         });
     } else if (payload === "NAME_PAYLOAD") {
         sendMessage(senderID, {
-            text: "You guys search for weird names! Write \"the name is\" and then the name 👀"
+            text: "You guys search for weird names! go on and tell me the name 👀"
         });
+        stalkerid=1;
     } else if (payload === "NUMBER_PAYLOAD") {
       
-        sendMessage(senderID,{ text:"I am an international stalker 🌍, use the country code and start with \"the number is \""});
+        sendMessage(senderID,{ text:"I am an international stalker 🌍, use the country code first!"});
         stalkerid=2;
     } else if (payload === "EMAIL_PAYLOAD") {
         sendMessage(senderID, { text: "Just tell me the email, that's the easy part in my job :P" });
