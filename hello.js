@@ -120,6 +120,8 @@ if (stalkerid==2)
 {
   console.log(stalkerid + " this is stalker id inside the if statement");
   sendTextMessage(senderID,stalkerid + " this is stalker id inside the if statement");
+
+stalkerid=0;
 }
 
 
