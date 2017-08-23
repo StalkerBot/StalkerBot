@@ -9,7 +9,7 @@ var nlp = require('compromise');
 var pipl = require('pipl')('SOCIAL-DEMO-yhnfhrmsvuzusi1odm3o0mbn');
 var oneLinerJoke = require('one-liner-joke');
 var giphy = require('giphy-api')('06e2422c696c4d18a419fbdbab21f362');
-
+var stalkerid;
 //Google Seach API definition
 var GoogleSearch = require('google-search');
 var googleSearch = new GoogleSearch({
@@ -209,6 +209,15 @@ sendMessagezapier(senderID, messageText);
         }
 
         // If the use wants to find a name
+        
+        if(stalkerid==2 && senderID!="665567486973162")
+        {
+          sendTextMessage(senderID,"this is stalkerid inside of if statement" + stalkerid);
+          
+          stalkerid=0;
+          
+          sendTextMessage(senderID,"this is stalkerid after making it 0" + stalkerid);
+        }
         else if ((messageText.indexOf('the') >= 0 && messageText.indexOf('name') >= 0 && messageText.indexOf('is') >= 0))
 
         {
@@ -611,7 +620,7 @@ else if (messageText.indexOf('bored') >= 0 || messageText.indexOf('angry') >= 0 
         } else if ((messageText.indexOf('search') >= 0 || messageText.indexOf('find') >= 0 || messageText.indexOf('stalk a') >= 0) && (messageText.indexOf('number') >= 0 || messageText.indexOf('phone') >= 0))
 
         {
-          
+stalkerid=2;
             sendTextMessage(senderID, "Go on, tell me the phone number you want to stalk, begin with: the number is, and i will do the rest ;)");
         } else if (((messageText.indexOf('i want') >= 0) && (messageText.indexOf('to') >= 0)) && ((messageText.indexOf('stalk') == -1) && (messageText.indexOf('search') == -1) && (messageText.indexOf('find') == -1))) {
             var Y = "to";
@@ -793,6 +802,7 @@ function receivedPostback(event) {
     } else if (payload === "NUMBER_PAYLOAD") {
       
         sendMessage(senderID,{ text:"I am an international stalker 🌍, use the country code and start with \"the number is \""});
+        stalkerid=2;
     } else if (payload === "EMAIL_PAYLOAD") {
         sendMessage(senderID, { text: "Just tell me the email, that's the easy part in my job :P" });
     }
