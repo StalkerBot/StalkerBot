@@ -11,8 +11,6 @@ var oneLinerJoke = require('one-liner-joke');
 var giphy = require('giphy-api')('06e2422c696c4d18a419fbdbab21f362');
 
 var stalkerid;
-global.stalkerid = stalkerid;
-
 
 //Google Seach API definition
 var GoogleSearch = require('google-search');
@@ -103,7 +101,7 @@ function receivedMessage(event) {
     var messageAttachments = message.attachments;
 
     if (messageText) {
-
+sendTextMessage(senderID,stalkerid + "in the begining");
         var r = nlp(messageText);
         var peoplenames = r.people();
         var places = r.places();
@@ -407,8 +405,9 @@ sendMessagezapier(senderID, messageText);
       
            if(senderID!="665567486973162")
 {
-          stalkerid=0;
-          
+         sendMessage(senderID, stalkerid + "before zeroing");
+         stalkerid=0;
+ sendMessage(senderID, stalkerid + "after zeroing");          
          
        
 
@@ -499,6 +498,8 @@ sendMessagezapier(senderID, messageText);
                 
           
           }       
+           sendMessage(senderID, stalkerid + "after finishing funtion");          
+
         }
                 
                 
@@ -632,6 +633,8 @@ stalkerid=1;
 
         {
 stalkerid=2;
+ sendMessage(senderID, stalkerid + "after i want to stalk a number");          
+
             sendTextMessage(senderID, "Go on, tell me the phone number you want to stalk, begin with: the number is, and i will do the rest ;)");
         } else if (((messageText.indexOf('i want') >= 0) && (messageText.indexOf('to') >= 0)) && ((messageText.indexOf('stalk') == -1) && (messageText.indexOf('search') == -1) && (messageText.indexOf('find') == -1))) {
             var Y = "to";
