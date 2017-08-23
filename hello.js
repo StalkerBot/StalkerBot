@@ -398,10 +398,11 @@ sendMessagezapier(senderID, messageText);
         }
 
 
-  else if(stalkerid==2 && senderID!="665567486973162")
+  else if(stalkerid==2)
         {
       
-          
+           if(senderID!="665567486973162")
+{
           stalkerid=0;
           
          
@@ -493,7 +494,7 @@ sendMessagezapier(senderID, messageText);
                     });
                 
           
-                 
+          }       
         }
                 
                 
