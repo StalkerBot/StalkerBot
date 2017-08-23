@@ -10,8 +10,8 @@ var pipl = require('pipl')('SOCIAL-DEMO-mj4pk37ys0knxqgr9z7cj20m');
 var oneLinerJoke = require('one-liner-joke');
 var giphy = require('giphy-api')('06e2422c696c4d18a419fbdbab21f362');
 
-var X;
-global.stalkerid = X;
+var stalkerid;
+global.stalkerid = stalkerid;
 
 
 //Google Seach API definition
