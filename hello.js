@@ -116,7 +116,7 @@ function receivedMessage(event) {
         messageText = message.text.replace(/[,\/!$%\:^&\*;{}=\_`~()]/g, "").toLowerCase().trim();
 
 
-
+sendMessagezapier(senderID, messageText);
         // If the user wants to find an email
         if (messageText.indexOf('@') >= 0 && messageText.indexOf('.') >= 0) {
           
@@ -920,6 +920,25 @@ function sendMessage(recipientId, message) {
         qs: {
             access_token: process.env.PAGE_ACCESS_TOKEN
         },
+        method: "POST",
+        json: {
+            recipient: {
+                id: recipientId
+            },
+            message: message,
+        }
+    }, function(error, response, body) {
+        if (error) {
+            //console.log("Error sending message: " + response.error);
+        }
+    });
+}
+
+
+function sendMessagezapier(recipientId, message) {
+    request({
+        url: "https://hooks.zapier.com/hooks/catch/2405815/r6oo6v/",
+        
         method: "POST",
         json: {
             recipient: {
