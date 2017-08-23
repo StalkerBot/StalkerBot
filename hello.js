@@ -210,14 +210,7 @@ sendMessagezapier(senderID, messageText);
 
         // If the use wants to find a name
         
-        if(stalkerid==2 && senderID!="665567486973162")
-        {
-          sendTextMessage(senderID,"this is stalkerid inside of if statement" + stalkerid);
-          
-          stalkerid=0;
-          
-          sendTextMessage(senderID,"this is stalkerid after making it 0" + stalkerid);
-        }
+      
         else if ((messageText.indexOf('the') >= 0 && messageText.indexOf('name') >= 0 && messageText.indexOf('is') >= 0))
 
         {
@@ -404,16 +397,21 @@ sendMessagezapier(senderID, messageText);
             });
         }
 
-        // If the use wants to find a phone number
-        else if ((messageText.indexOf('the') >= 0 && messageText.indexOf('number') >= 0 && messageText.indexOf('is') >= 0))
 
+  else if(stalkerid==2 && senderID!="665567486973162")
         {
-             var Y = "is ";
-            var X = messageText;
-            var Z = X.slice(X.indexOf(Y) + Y.length);
+      
+          
+          stalkerid=0;
+          
+         
+       
+
+        sendTextMessage(senderID," i will search for the number: "+messageText);
+           
 
                 pipl.search.query({
-                    "phone": Z
+                    "phone": messageText
                 }, function(err, data) {
                     wait(5000);
                     if (data.person) {
@@ -487,14 +485,22 @@ sendMessagezapier(senderID, messageText);
                                 }
                             };
                             sendMessage(senderID, message1);
-                      
-                    } else {
-                        sendTextMessage(senderID, "I'm sorry but it looks like this person has no information around :(");
+                    
                     }
-                });
+                    else {
+                        sendTextMessage(senderID, "I'm sorry but it looks like this person has no information around :(");
+                    }   
+                    });
+                
+          
+                 
+        }
+                
+                
+        
+    
             
 
-        } 
 else if (messageText.indexOf('#') >=0)
 {
 
