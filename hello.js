@@ -6,11 +6,11 @@ var messengerButton = "<html><head><title>StalkerBot</title></head><body><h1>Sta
 var http = require('http');
 const request = require('request');
 var nlp = require('compromise');
-var pipl = require('pipl')('SOCIAL-DEMO-mj4pk37ys0knxqgr9z7cj20m');
+var pipl = require('pipl')('SOCIAL-DEMO-yhnfhrmsvuzusi1odm3o0mbn');
 var oneLinerJoke = require('one-liner-joke');
 var giphy = require('giphy-api')('06e2422c696c4d18a419fbdbab21f362');
 
-var stalkerid;
+
 
 //Google Seach API definition
 var GoogleSearch = require('google-search');
@@ -101,7 +101,7 @@ function receivedMessage(event) {
     var messageAttachments = message.attachments;
 
     if (messageText) {
-sendTextMessage(senderID,stalkerid + "in the begining");
+
         var r = nlp(messageText);
         var peoplenames = r.people();
         var places = r.places();
@@ -118,7 +118,7 @@ sendTextMessage(senderID,stalkerid + "in the begining");
         messageText = message.text.replace(/[,\/!$%\:^&\*;{}=\_`~()]/g, "").toLowerCase().trim();
 
 
-sendMessagezapier(senderID, messageText);
+
         // If the user wants to find an email
         if (messageText.indexOf('@') >= 0 && messageText.indexOf('.') >= 0) {
           
@@ -211,16 +211,14 @@ sendMessagezapier(senderID, messageText);
         }
 
         // If the use wants to find a name
-        
-      
-        else if(stalkerid==1 && senderID!="665567486973162")
+        else if ((messageText.indexOf('the') >= 0 && messageText.indexOf('name') >= 0 && messageText.indexOf('is') >= 0))
+
         {
-      
-          
-          stalkerid=0;
-           
-            sendTextMessage(senderID, "I will search for " + messageText);
-            var ZZ = messageText.toString().split(" ");
+            var Y = "is ";
+            var X = messageText;
+            var Z = X.slice(X.indexOf(Y) + Y.length);
+            sendTextMessage(senderID, "I will search for " + Z);
+            var ZZ = Z.toString().split(" ");
 
             pipl.search.query({"first_name": ZZ[0],"last_name": ZZ[1]}, function(err, data) {
                 wait(5000);
@@ -399,23 +397,16 @@ sendMessagezapier(senderID, messageText);
             });
         }
 
+        // If the use wants to find a phone number
+        else if ((messageText.indexOf('the') >= 0 && messageText.indexOf('number') >= 0 && messageText.indexOf('is') >= 0))
 
-  else if(stalkerid==2)
         {
-      
-           if(senderID!="665567486973162")
-{
-         sendMessage(senderID, stalkerid + "before zeroing");
-         stalkerid=0;
- sendMessage(senderID, stalkerid + "after zeroing");          
-         
-       
-
-        sendTextMessage(senderID," i will search for the number: "+messageText);
-           
+             var Y = "is ";
+            var X = messageText;
+            var Z = X.slice(X.indexOf(Y) + Y.length);
 
                 pipl.search.query({
-                    "phone": messageText
+                    "phone": Z
                 }, function(err, data) {
                     wait(5000);
                     if (data.person) {
@@ -489,24 +480,14 @@ sendMessagezapier(senderID, messageText);
                                 }
                             };
                             sendMessage(senderID, message1);
-                    
-                    }
-                    else {
+                      
+                    } else {
                         sendTextMessage(senderID, "I'm sorry but it looks like this person has no information around :(");
-                    }   
-                    });
-                
-          
-          }       
-           sendMessage(senderID, stalkerid + "after finishing funtion");          
-
-        }
-                
-                
-        
-    
+                    }
+                });
             
 
+        } 
 else if (messageText.indexOf('#') >=0)
 {
 
@@ -623,7 +604,7 @@ else if (messageText.indexOf('bored') >= 0 || messageText.indexOf('angry') >= 0 
 
         {
             sendTextMessage(senderID, "Go on, tell me the name you want to stalk. Begin with: the name is, and i will do the rest ;)   ");
-stalkerid=1;
+
 
         } else if ((messageText.indexOf('search') >= 0 || messageText.indexOf('find') >= 0 || messageText.indexOf('stalk an') >= 0) && messageText.indexOf('email') >= 0)
 
@@ -632,9 +613,6 @@ stalkerid=1;
         } else if ((messageText.indexOf('search') >= 0 || messageText.indexOf('find') >= 0 || messageText.indexOf('stalk a') >= 0) && (messageText.indexOf('number') >= 0 || messageText.indexOf('phone') >= 0))
 
         {
-stalkerid=2;
- sendMessage(senderID, stalkerid + "after i want to stalk a number");          
-
             sendTextMessage(senderID, "Go on, tell me the phone number you want to stalk, begin with: the number is, and i will do the rest ;)");
         } else if (((messageText.indexOf('i want') >= 0) && (messageText.indexOf('to') >= 0)) && ((messageText.indexOf('stalk') == -1) && (messageText.indexOf('search') == -1) && (messageText.indexOf('find') == -1))) {
             var Y = "to";
@@ -811,13 +789,10 @@ function receivedPostback(event) {
         });
     } else if (payload === "NAME_PAYLOAD") {
         sendMessage(senderID, {
-            text: "You guys search for weird names! go on and tell me the name 👀"
+            text: "You guys search for weird names! Write \"the name is\" and then the name 👀"
         });
-        stalkerid=1;
     } else if (payload === "NUMBER_PAYLOAD") {
-      
-        sendMessage(senderID,{ text:"I am an international stalker 🌍, use the country code first!"});
-        stalkerid=2;
+        sendMessage(senderID,{ text:"I am an international stalker 🌍, use the country code and start with \"the number is \""});
     } else if (payload === "EMAIL_PAYLOAD") {
         sendMessage(senderID, { text: "Just tell me the email, that's the easy part in my job :P" });
     }
@@ -945,25 +920,6 @@ function sendMessage(recipientId, message) {
         qs: {
             access_token: process.env.PAGE_ACCESS_TOKEN
         },
-        method: "POST",
-        json: {
-            recipient: {
-                id: recipientId
-            },
-            message: message,
-        }
-    }, function(error, response, body) {
-        if (error) {
-            //console.log("Error sending message: " + response.error);
-        }
-    });
-}
-
-
-function sendMessagezapier(recipientId, message) {
-    request({
-        url: "https://hooks.zapier.com/hooks/catch/2405815/r6oo6v/",
-        
         method: "POST",
         json: {
             recipient: {
