@@ -212,7 +212,10 @@ function receivedMessage(event) {
 
             }
         }
-
+else if (messageText.indexOf('what can you do')>=0)
+{
+	sendTextMessage(senderID,"I can do plenty of things, Stalk people, Search Facebook/Twitter, Send you Gifs, Tell you Jokes and so much more ;) ... Type help for more info");
+}
         // If the use wants to find a name
         else if ((messageText.indexOf('the') >= 0 && messageText.indexOf('name') >= 0 && messageText.indexOf('is') >= 0))
 
@@ -743,6 +746,14 @@ case "gtg":
 sendTextMessage(senderID, "Goodbye, it was nice stalking with you :D");
 
 break;
+
+case "cool":
+case "nice":
+case "interesting":
+case "aha":
+case "wow":
+
+sendTextMessage(senderID,"Indeed ;)");
 
 case "stalk":
 sendTextMessage(senderID, "What do you want to stalk? Type help for more info");
