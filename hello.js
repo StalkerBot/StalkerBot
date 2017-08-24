@@ -9,8 +9,7 @@ var nlp = require('compromise');
 var pipl = require('pipl')('SOCIAL-DEMO-mj4pk37ys0knxqgr9z7cj20m');
 var oneLinerJoke = require('one-liner-joke');
 var giphy = require('giphy-api')('06e2422c696c4d18a419fbdbab21f362');
-var apiai = require('apiai'); // Added on 24-8 for testing
-var app = apiai("fe8a1399f67d45b5bb39d76ab3233d01"); // Added on 24/8 for testing
+
 
 
 
@@ -115,22 +114,7 @@ function receivedMessage(event) {
         var adverbs = r.adverbs();
         var questions = r.questions();
         var verbs = r.verbs();
-        
-var request = app.textRequest(messageText, {
-    sessionId: senderID
-});
-
-
-request.on('response', function(response) {
-console.log(response);
-    sendTextMessage(senderID, response.body);
-});
-
-request.on('error', function(error) {
-    console.log(error);
-});
-
-request.end();
+       
 
 
         //Edit the text to be simple and readable by the function
