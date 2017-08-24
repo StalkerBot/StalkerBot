@@ -763,10 +763,10 @@ break;
         
                 default:
 
-                    //var answers3 = ["😕","😱","😶","😧",":O", "(y)", "😲", "😮", "¯\(o_o)/¯", "Say it again?", "Hmmm...", "🙄"];
+                    var answers3 = ["😕","😱","😶","😧",":O", "(y)", "😲", "😮", "¯\(o_o)/¯", "Say it again?", "Hmmm...", "🙄"];
 
-                    //var index3 = Math.floor(Math.random() * answers3.length);
-                    //sendTextMessage(senderID, answers3[index3]);
+                    var index3 = Math.floor(Math.random() * answers3.length);
+                    sendTextMessage(senderID, answers3[index3]);
                     break;
             }
 
