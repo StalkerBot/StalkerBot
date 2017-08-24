@@ -5,13 +5,13 @@ StalkerBot
 Welcome to StalkerBot
 
 The program used:
-1- Regular Expressions to recognize numbers and emails
-2- Used Compromise.cool NLP API to extract verbs, nouns, adverbs, hashtags, places and so on...
-3- Google Custom Search API to extract feed queries
-4- PIPL API to extract people information such as names, emails, ages, social media accounts and photos.
-5- One Line Joker to add some fun to the bot where it can tell jokes.
-6- Giphy can send you GIFs when you use the #
-
+1- Regular Expressions to recognize numbers and emails -> Mohammad Bushnaq
+2- Used Compromise.cool NLP API to extract verbs, nouns, adverbs, hashtags, places and so on... -> Nader
+3- Google Custom Search API to extract feed queries -> Ruaa
+4- PIPL API to extract people information such as names, emails, ages, social media accounts and photos. ->Nader
+5- One Line Joker to add some fun to the bot where it can tell jokes. -> Mohammad Bushnaq
+6- Giphy can send you GIFs when you use the # -> Ruaa
+7- Persistent menu -> Ruaa
 
 You can do the following things with the bot:
 
