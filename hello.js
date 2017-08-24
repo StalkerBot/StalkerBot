@@ -730,7 +730,8 @@ else if (messageText.indexOf('bored') >= 0 || messageText.indexOf('angry') >= 0 
               case "😉":
               case "😌":
               case "😺":
-              case "😃":  
+              case "😃":
+  
 
       
             sendTextMessage(senderID, "I hope you are always happy :D!");
