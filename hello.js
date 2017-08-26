@@ -84,7 +84,6 @@ app.post('/webhook', function(req, res) {
         res.sendStatus(200);
     }
 });
-var messageDelay;
 // Incoming events handling
 function receivedMessage(event) {
   messageDelay = 0;
@@ -212,10 +211,7 @@ function receivedMessage(event) {
 
             }
         }
-else if (messageText.indexOf('what can you do')>=0)
-{
-	sendTextMessage(senderID,"I can do plenty of things, Stalk people, Search Facebook/Twitter, Send you Gifs, Tell you Jokes and so much more ;) ... Type help for more info");
-}
+
         // If the use wants to find a name
         else if ((messageText.indexOf('the') >= 0 && messageText.indexOf('name') >= 0 && messageText.indexOf('is') >= 0))
 
@@ -525,16 +521,6 @@ message = {
 }
 });
 }
-
-
-
-else if (messageText.indexOf('bored') >= 0 || messageText.indexOf('angry') >= 0 || messageText.indexOf('feeling') >= 0)
-
-        {
-
-            sendTextMessage(senderID, "Why are you feeling " + adjectives.out('text') + "?");
-
-        }
         
         else if (messageText.indexOf('tell me a joke') >= 0 || messageText.indexOf('one more') >= 0 || messageText.indexOf('another one') >= 0) {
             var getRandomJoke = oneLinerJoke.getRandomJoke();
@@ -590,45 +576,8 @@ else if (messageText.indexOf('bored') >= 0 || messageText.indexOf('angry') >= 0 
         } 
         
         
-        else if (messageText.indexOf('like') >= 0 && messageText.indexOf('you') >= 0 && messageText.indexOf('do') >= 0) {
-            var Y = "like ";
-            var X = messageText;
-            var Z = X.slice(X.indexOf(Y) + Y.length);
-            var likes = nlp(Z);
-            sendTextMessage(senderID, "Let me tell you something, Stalkerbot has different moods, sometimes he " + likes.verbs().toPresentTense().out('text') + ", sometimes he doesn't");
-        } else if (messageText.indexOf('your') >= 0 && messageText.indexOf('name') >= 0)
-
-        {
-            var answers = ["My name is StalkerBot 👾, and i am at your service 🎩",
-                "My name? Look at the top of your screen -.-",
-                "I...am...Stalkerbot...🙈", "Come on, you don't know my name?"
-            ];
-
-            var index = Math.floor(Math.random() * answers.length);
-            sendTextMessage(senderID, answers[index]);
-        } else if ((messageText.indexOf('search') >= 0 || messageText.indexOf('find') >= 0 || messageText.indexOf('stalk a ') >= 0) && messageText.indexOf('name') >= 0)
-
-        {
-            sendTextMessage(senderID, "Go on, tell me the name you want to stalk. Begin with: the name is, and i will do the rest ;)   ");
-
-
-        } else if ((messageText.indexOf('search') >= 0 || messageText.indexOf('find') >= 0 || messageText.indexOf('stalk an') >= 0) && messageText.indexOf('email') >= 0)
-
-        {
-            sendTextMessage(senderID, "Go on, tell me the email you want to stalk, and i will do the rest ;)");
-        } else if ((messageText.indexOf('search') >= 0 || messageText.indexOf('find') >= 0 || messageText.indexOf('stalk a') >= 0) && (messageText.indexOf('number') >= 0 || messageText.indexOf('phone') >= 0))
-
-        {
-            sendTextMessage(senderID, "Go on, tell me the phone number you want to stalk, begin with: the number is, and i will do the rest ;)");
-        } else if (((messageText.indexOf('i want') >= 0) && (messageText.indexOf('to') >= 0)) && ((messageText.indexOf('stalk') == -1) && (messageText.indexOf('search') == -1) && (messageText.indexOf('find') == -1))) {
-            var Y = "to";
-            var X = messageText;
-            var Z = X.slice(X.indexOf(Y) + Y.length);
-            sendTextMessage(senderID, "it's not time to " + Z + " 😐 come on, let's stalk 😁");
-
-        } else if (messageText.indexOf('i am hungry') >= 1 || messageText.indexOf('i want food') >= 1) {
-            sendTextMessage(senderID, "do you think i will order a pizza for you 🍕:P?");
-        } else if (messageText.indexOf('i want to stalk') >= 0 || messageText.indexOf('help') >= 0)
+  
+          /*else if (messageText.indexOf('i want to stalk') >= 0 || messageText.indexOf('help') >= 0)
 
         {
 
@@ -663,53 +612,9 @@ else if (messageText.indexOf('bored') >= 0 || messageText.indexOf('angry') >= 0 
             {i=i;}
             sendTextMessage(senderID, "Psssstttt 🙊.... you can also search twitter and facebook feeds for a specific query \n To search facebook write |The facebook query is| and your search query \n To search twitter write |The twitter query is| and then write your query \n \n \n What about some GIFS ? use # then any tag you want ;)");
 
-        } else if ((messageText.indexOf('job') >= 0 || messageText.indexOf('do') >= 0 || messageText.indexOf('goal') >= 0) && (messageText.indexOf('what') >= 0 || messageText.indexOf('your') >= 0))
-
-        {
-            sendTextMessage(senderID, "I am a stalker 🔥, i enjoy stalking people and getting their information to your doorstep, i mean to your messenger step :P");
-        } else if ((messageText.indexOf('what') >= 0 && messageText.indexOf('s') >= 0 && messageText.indexOf('up') >= 0) || (messageText.indexOf('how') >= 0 && messageText.indexOf('are') >= 0 && messageText.indexOf('you') >= 0))
-
-        {
-
-            var answers2 = ["I am doing great :D and you?", "I am doing great. What about you?", "I am doing great, are you doing great?", "I am doing great. Hope everything is awesome with you"];
-
-            var index2 = Math.floor(Math.random() * answers2.length);
-            sendTextMessage(senderID, answers2[index2]);
-        } else if (messageText.indexOf('i am good') >= 0 || messageText.indexOf('great') >= 0 || messageText.indexOf('fine') >= 0 || messageText.indexOf('awesome') >= 0) {
-            sendTextMessage(senderID, "Awesome!");
-        } else {
+        }*/  else {
             switch (messageText) {
-                case "hello":
-                case "hi":
-                case "ciao":
-                case "hey":
-                case "bonjour":
-                case "good morning":
-                case "good day":
-                case "howdy":
-                case "bonsoir":
-                case "mar7aba":
-                case "hii":
-                case "hiii":
-                case "yo":
-                case "heyy":
-                case "hola":
-
-                    var answers1 = ["Hello! ✋", "Hey 👋, hope everything is great!", "Ciao!", "Good day 😍", "Hey Dude! 👻👻👻", "Hey :D", "Hello Hello :P"];
-
-                    var index1 = Math.floor(Math.random() * answers1.length);
-                    sendTextMessage(senderID, answers1[index1]);
-
-                    sendTextMessage(senderID, "Remember that anytime you need help you can write help ;)");
-                    break;
-                case "haha":
-                case "hahaha":
-                case "hahaha":
-		case "lol":
-		case "lool":
-		case "loool":
-                    sendTextMessage(senderID, "😂");
-                    break;
+                
               case "😝":
               case "😊":
               case "😀":
@@ -737,47 +642,17 @@ else if (messageText.indexOf('bored') >= 0 || messageText.indexOf('angry') >= 0 
             sendTextMessage(senderID, "I hope you are always happy :D!");
         break;
 
-case "bye":
-case "gotta go":
-case "i have to go":
-case "goodbye":
-case "got to go":
-case "gtg":
-
-sendTextMessage(senderID, "Goodbye, it was nice stalking with you :D");
-
-break;
-
-case "cool":
-case "nice":
-case "interesting":
-case "aha":
-case "wow":
-
-sendTextMessage(senderID,"Indeed ;)");
-
-case "stalk":
-sendTextMessage(senderID, "What do you want to stalk? Type help for more info");
-break;
 
 
-case "who made you":
-case "who created you":
-case "who wrote you":
-case "who invented you":
-sendTextMessage(senderID, "Nader Shakhshir & Ruaa Irshaid");
-break;
+
+
+
 
 
 
         
                 default:
 
-                    var answers3 = ["😕","😱","😶","😧",":O", "(y)", "😲", "😮", "¯\(o_o)/¯", "Say it again?", "Hmmm...", "🙄"];
-
-                    var index3 = Math.floor(Math.random() * answers3.length);
-                    sendTextMessage(senderID, answers3[index3]);
-                    break;
             }
 
         }
