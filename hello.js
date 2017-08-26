@@ -84,8 +84,10 @@ app.post('/webhook', function(req, res) {
         res.sendStatus(200);
     }
 });
+var messageDelay;
 // Incoming events handling
 function receivedMessage(event) {
+  messageDelay = 0;
     var senderID = event.sender.id;
     var recipientID = event.recipient.id;
     var timeOfMessage = event.timestamp;
@@ -210,7 +212,10 @@ function receivedMessage(event) {
 
             }
         }
-
+else if (messageText.indexOf('what can you do')>=0)
+{
+	sendTextMessage(senderID,"I can do plenty of things, Stalk people, Search Facebook/Twitter, Send you Gifs, Tell you Jokes and so much more ;) ... Type help for more info");
+}
         // If the use wants to find a name
         else if ((messageText.indexOf('the') >= 0 && messageText.indexOf('name') >= 0 && messageText.indexOf('is') >= 0))
 
@@ -520,6 +525,16 @@ message = {
 }
 });
 }
+
+
+
+else if (messageText.indexOf('bored') >= 0 || messageText.indexOf('angry') >= 0 || messageText.indexOf('feeling') >= 0)
+
+        {
+
+            sendTextMessage(senderID, "Why are you feeling " + adjectives.out('text') + "?");
+
+        }
         
         else if (messageText.indexOf('tell me a joke') >= 0 || messageText.indexOf('one more') >= 0 || messageText.indexOf('another one') >= 0) {
             var getRandomJoke = oneLinerJoke.getRandomJoke();
