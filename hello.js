@@ -493,7 +493,7 @@ function receivedMessage(event) {
         }
 else if (messageText.indexOf('show me a photo of'))
 {
-  var Y = "of";
+  var Y = "of ";
               var X = messageText;
               var Z = X.slice(X.indexOf(Y) + Y.length);
 
