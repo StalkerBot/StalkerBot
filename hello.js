@@ -9,6 +9,9 @@ var nlp = require('compromise');
 var pipl = require('pipl')('SOCIAL-DEMO-me43g6rcbnachwhw75tlqvq5');
 var oneLinerJoke = require('one-liner-joke');
 var giphy = require('giphy-api')('06e2422c696c4d18a419fbdbab21f362');
+var spotify = require('spotify');
+
+
 
 
 
@@ -91,7 +94,7 @@ function receivedMessage(event) {
     var timeOfMessage = event.timestamp;
     var message = event.message;
 
-    //console.log("Received message for user %d and page %d at %d with message:", 
+    //console.log("Received message for user %d and page %d at %d with message:",
     //senderID, recipientID, timeOfMessage);
     //console.log(JSON.stringify(message));
 
@@ -112,7 +115,7 @@ function receivedMessage(event) {
         var adverbs = r.adverbs();
         var questions = r.questions();
         var verbs = r.verbs();
-       
+
 
 
         //Edit the text to be simple and readable by the function
@@ -122,11 +125,11 @@ function receivedMessage(event) {
 
         // If the user wants to find an email
         if (messageText.indexOf('@') >= 0 && messageText.indexOf('.') >= 0) {
-          
+
             var exp = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gim;
-            
+
             if (messageText.match(exp) !== null) {
-              
+
                 sendTextMessage(senderID, "Sending my birds across the globe to bring you this email owner 🐦");
                 var emaill = messageText.match(exp)[0];
 
@@ -137,28 +140,28 @@ function receivedMessage(event) {
                       sendTextMessage(senderID, "Okay! i found these information about the email you provided 😎");
 
                         if (data.person.names) {
-                            
+
                             for (var i = 0, len = data.person.names.length; i < len; i++) {
                                 sendTextMessage(senderID, "The name is: " + data.person.names[i].first + " " + data.person.names[i].last);
                                 }
                         }
-                        
+
                         if (data.person.usernames) {
                             for (var i = 0, len = data.person.usernames.length; i < len; i++) {wait(1000);
                                 sendTextMessage(senderID, "The username is: " + data.person.usernames[i].content);
                             }
                         }
-                        
+
                         if (data.person.gender)
                         {wait(1000);
                             sendTextMessage(senderID, "The gender is: " + data.person.gender.content);
                         }
-                        
+
                         if (data.person.dob)
                         {wait(1000);
                             sendTextMessage(senderID, "The date of birth: " + data.person.dob.date_range.start + " and is " + data.person.dob.display);
                         }
-                        
+
                         if (data.person.images && data.person.names) {
                             for (var i = 0, len = data.person.images.length; i < len; i++) {wait(1000);
                                 var thename = data.person.names[0].first + " " + data.person.names[0].last;
@@ -176,7 +179,7 @@ function receivedMessage(event) {
                                 sendMessage(senderID, message);
 
                             }
-                          
+
                         }
 
                         if (data.person.urls) {
@@ -184,7 +187,7 @@ function receivedMessage(event) {
                                 sendTextMessage(senderID, "You can find the user on the following URLs " + data.person.urls[i].url);
                             }
                         }
-                    
+
                         var message1 = {
                                 attachment: {
                                     type: "template",
@@ -204,7 +207,7 @@ function receivedMessage(event) {
                                 }
                             };
                             sendMessage(senderID, message1);
-                            
+
                     } else {sendMessage(senderID, "Make sure this email is a valid one :/");}
                 });
 
@@ -230,13 +233,13 @@ function receivedMessage(event) {
                     if (data.person.names) {
                       wait(1000);
                         for (var i = 0, len = data.person.names.length; i < len; i++) {
-                          
+
                             sendTextMessage(senderID, "The name is: " + data.person.names[i].first + " " + data.person.names[i].last);
                                     }
                                }
 
 
-                    
+
                     if (data.person.usernames) {wait(1000);
                         for (var i = 0, len = data.person.usernames.length; i < len; i++) {
                             sendTextMessage(senderID, "The username is: " + data.person.usernames[i].content);
@@ -254,11 +257,11 @@ function receivedMessage(event) {
                     if (data.person.dob)
                         sendTextMessage(senderID, "The date of birth: " + data.person.dob.date_range.start + " and is " + data.person.dob.display);
 
-                    
+
                     if (data.person.images && data.person.names) {
                         for (var i = 0, len = data.person.images.length; i < len; i++) {wait(1000);
                             var thename = data.person.names[0].first + " " + data.person.names[0].last;
-                         
+
 
                                 message = {
 
@@ -275,7 +278,7 @@ function receivedMessage(event) {
                             sendMessage(senderID, message);
 
                         }
-                       
+
                     }
 
 
@@ -308,7 +311,7 @@ function receivedMessage(event) {
                             }
                         };
                         sendMessage(senderID, message1);
-                  
+
                 } else {
                     sendTextMessage(senderID, "No exact people found, searching for possible people 😱");
                 }
@@ -360,7 +363,7 @@ function receivedMessage(event) {
                             sendMessage(senderID, message);
 
                         }
-                        
+
 
                     }
 
@@ -389,7 +392,7 @@ function receivedMessage(event) {
                             }
                         };
                         sendMessage(senderID, message1);
-                        
+
                 } else {
                     sendTextMessage(senderID, "I'm sorry but it looks like this person has no information around :(");
                 }
@@ -411,7 +414,7 @@ function receivedMessage(event) {
                 }, function(err, data) {
                     wait(5000);
                     if (data.person) {
-                      
+
                         console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', data, err);
                         sendTextMessage(senderID, "Okay! i found these information about the phone number you provided 📠");
 
@@ -422,7 +425,7 @@ function receivedMessage(event) {
 
                             }
                         }
-                        
+
                         if (data.person.usernames) {
                             for (var i = 0, len = data.person.usernames.length; i < len; i++) {wait(1000);
                                 sendTextMessage(senderID, "The username is: " + data.person.usernames[i].content);
@@ -434,7 +437,7 @@ function receivedMessage(event) {
                         wait(1000);
                         if (data.person.dob)
                             sendTextMessage(senderID, "The date of birth: " + data.person.dob.date_range.start + " and is " + data.person.dob.display);
-                       
+
                         if (data.person.images && data.person.names) {
                             for (var i = 0, len = data.person.images.length; i < len; i++) { wait(1000);
                                 var thename = data.person.names[0].first + " " + data.person.names[0].last;
@@ -453,7 +456,7 @@ function receivedMessage(event) {
                                 sendMessage(senderID, message);
 
                             }
-                           
+
 
                         }
 
@@ -481,14 +484,31 @@ function receivedMessage(event) {
                                 }
                             };
                             sendMessage(senderID, message1);
-                      
+
                     } else {
                         sendTextMessage(senderID, "I'm sorry but it looks like this person has no information around :(");
                     }
                 });
-            
 
-        } 
+
+        }
+
+else if (messageText.indexOf('the song is'))
+{
+  var Y = "is ";
+              var X = messageText;
+              var Z = X.slice(X.indexOf(Y) + Y.length);
+
+              spotify.search({ type: 'track', query: Z }, function(err, data) {
+                  if ( err ) {
+                      console.log('Error occurred: ' + err);
+                      return;
+                  }
+
+console.log(data)              });
+
+}
+
 else if (messageText.indexOf('#') >=0)
 {
 
@@ -497,12 +517,10 @@ var Y = "#";
             var X = messageText;
             var Z = X.slice(X.indexOf(Y) + Y.length);
 
-
-
 giphy.search(Z, function (err, res) {
-    // Res contains gif data!
 
-if (res)
+
+if (res)  // Res contains gif data!
 {
 message = {
 
@@ -520,13 +538,13 @@ message = {
 }
 });
 }
-        
+
         else if (messageText.indexOf('tell me a joke') >= 0 || messageText.indexOf('one more') >= 0 || messageText.indexOf('another one') >= 0) {
             var getRandomJoke = oneLinerJoke.getRandomJoke();
             sendTextMessage(senderID, getRandomJoke.body);
         }
-        
-        
+
+
         else if (messageText.indexOf('the') >= 0 && messageText.indexOf('facebook') >= 0 && messageText.indexOf('query') >= 0 && messageText.indexOf('is') >= 0) {
             var Y = "is ";
             var X = messageText;
@@ -545,9 +563,9 @@ message = {
                     }
                 }
             });
-        } 
-        
-        
+        }
+
+
         else if (messageText.indexOf('the') >= 0 && messageText.indexOf('twitter') >= 0 && messageText.indexOf('query') >= 0 && messageText.indexOf('is') >= 0)
 
         {
@@ -559,8 +577,8 @@ message = {
             googleSearch.build({
                 q: Z,
                 start: 5,
-                num: 10, // Number of search results to return between 1 and 10, inclusive 
-                //siteSearch: "https://twitter.com" // Restricts results to URLs from a specified site 
+                num: 10, // Number of search results to return between 1 and 10, inclusive
+                //siteSearch: "https://twitter.com" // Restricts results to URLs from a specified site
             }, function(error, response) {
                 console.log(response);
 
@@ -572,10 +590,10 @@ message = {
                     }
                 }
             });
-        } 
-        
-        
-  
+        }
+
+
+
           /*else if (messageText.indexOf('i want to stalk') >= 0 || messageText.indexOf('help') >= 0)
 
         {
@@ -613,7 +631,7 @@ message = {
 
         }*/  else {
             switch (messageText) {
-                
+
               case "😝":
               case "😊":
               case "😀":
@@ -635,9 +653,9 @@ message = {
               case "😌":
               case "😺":
               case "😃":
-  
 
-      
+
+
             sendTextMessage(senderID, "I hope you are always happy :D!");
         break;
 
@@ -649,7 +667,7 @@ message = {
 
 
 
-        
+
                 default:
 
             }
@@ -667,11 +685,11 @@ function receivedPostback(event) {
     var recipientID = event.recipient.id;
     var timeOfPostback = event.timestamp;
 
-    // The 'payload' param is a developer-defined field which is set in a postback 
-    // button for Structured Messages. 
+    // The 'payload' param is a developer-defined field which is set in a postback
+    // button for Structured Messages.
     var payload = event.postback.payload;
 
-    //console.log("Received postback for user %d and page %d with payload '%s' " + 
+    //console.log("Received postback for user %d and page %d with payload '%s' " +
     //"at %d", senderID, recipientID, payload, timeOfPostback);
     if (payload == "CONTACT_INFO_PAYLOAD") {
         sendTextMessage(senderID, "We are a group of students, studying at PSUT, making this bot for testing purposes, contact us here: fb.com/nadershakhshir.ns , fb.com/roaa.irshaid , fb.com/mohdbushnaq");
@@ -697,7 +715,7 @@ function receivedPostback(event) {
 
 
 
-    // When a postback is called, we'll send a message back to the sender to 
+    // When a postback is called, we'll send a message back to the sender to
     // let them know it was successful
     else {
 

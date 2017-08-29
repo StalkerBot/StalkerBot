@@ -19,6 +19,7 @@
     "express": "^4.15.4",
     "flask": "^0.2.10",
     "giphy-api": "^1.2.7",
+    "google-images": "^2.1.0",
     "google-search": "0.0.5",
     "install": "^0.10.1",
     "machinepack-pipl": "^1.0.2",
@@ -33,6 +34,7 @@
     "restling": "^0.9.1",
     "run-php": "0.0.1",
     "speakeasy-nlp": "^0.2.12",
+    "spotify": "^0.3.0",
     "superagent": "^3.5.2",
     "unirest": "^0.5.1"
   },
