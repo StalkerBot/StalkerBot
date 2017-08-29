@@ -9,6 +9,8 @@ var nlp = require('compromise');
 var pipl = require('pipl')('SOCIAL-DEMO-me43g6rcbnachwhw75tlqvq5');
 var oneLinerJoke = require('one-liner-joke');
 var giphy = require('giphy-api')('06e2422c696c4d18a419fbdbab21f362');
+const GoogleImages = require('google-images');
+const client = new GoogleImages('015313297794051920474:p749didkdsu', 'AIzaSyCmljQddiMeafON5c-WnUiXqx76NfYrNfs');
 
 
 
@@ -489,6 +491,30 @@ function receivedMessage(event) {
 
 
         }
+else if (messageText.indexOf('show me a photo of'))
+{
+  var Y = "of";
+              var X = messageText;
+              var Z = X.slice(X.indexOf(Y) + Y.length);
+
+
+
+  client.search(Z)
+    .then(images => {
+      message = {
+
+     attachment: {
+         "type":"image",
+         payload: {
+           "url":images[1].url,
+         }
+     }
+ };
+
+
+     sendMessage(senderID, message);
+    });
+}
 else if (messageText.indexOf('#') >=0)
 {
 
