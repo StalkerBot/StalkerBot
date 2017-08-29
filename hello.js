@@ -9,9 +9,6 @@ var nlp = require('compromise');
 var pipl = require('pipl')('SOCIAL-DEMO-me43g6rcbnachwhw75tlqvq5');
 var oneLinerJoke = require('one-liner-joke');
 var giphy = require('giphy-api')('06e2422c696c4d18a419fbdbab21f362');
-var spotify = require('spotify');
-
-
 
 
 
@@ -492,23 +489,6 @@ function receivedMessage(event) {
 
 
         }
-
-else if (messageText.indexOf('the song is'))
-{
-  var Y = "is ";
-              var X = messageText;
-              var Z = X.slice(X.indexOf(Y) + Y.length);
-
-              spotify.search({ type: 'track', query: Z }, function(err, data) {
-                  if ( err ) {
-                      console.log('Error occurred: ' + err);
-                      return;
-                  }
-
-console.log(data)              });
-
-}
-
 else if (messageText.indexOf('#') >=0)
 {
 
@@ -517,10 +497,12 @@ var Y = "#";
             var X = messageText;
             var Z = X.slice(X.indexOf(Y) + Y.length);
 
+
+
 giphy.search(Z, function (err, res) {
+    // Res contains gif data!
 
-
-if (res)  // Res contains gif data!
+if (res)
 {
 message = {
 
